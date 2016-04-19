@@ -19,6 +19,8 @@ var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create
 function preload() {
 
     game.load.image('fondo', 'assets/fondo.png');
+    game.load.image('ecuacionVelocidad','assets/Ecuacion velocidad.png');
+    game.load.image('ecuacionAceleracion','assets/Ecuacion aceleracion.png');
     game.load.image('salida', 'assets/salida.png');
     game.load.image('ground', 'assets/suelo.png');
     game.load.image('platform', 'assets/plataforma.png');
@@ -64,6 +66,14 @@ function create() {
     //  Ahora hacemos la puerta de salida
 
     game.add.sprite(600, 486, 'salida');
+
+    //  Hacemos la Ecuacion de velocidad
+
+    game.add.sprite(0, 0, 'ecuacionVelocidad');
+
+    //  Hacemos la Ecuacion de aceleracion
+
+    game.add.sprite(0, 100, 'ecuacionAceleracion');
 
     // The player and its settings
     player = game.add.sprite(35, game.world.height - 110, 'dude');
