@@ -21,6 +21,7 @@ function preload() {
     game.load.image('fondo', 'assets/fondo.png');
     game.load.image('ecuacionVelocidad','assets/Ecuacion velocidad.png');
     game.load.image('ecuacionAceleracion','assets/Ecuacion aceleracion.png');
+    game.load.image('cuadroVector','assets/cuadroVector.png');
     game.load.image('salida', 'assets/salida.png');
     game.load.image('ground', 'assets/suelo.png');
     game.load.image('platform', 'assets/plataforma.png');
@@ -39,91 +40,36 @@ function create() {
 
     //  We're going to be using physics, so enable the Arcade Physics system
     game.physics.startSystem(Phaser.Physics.ARCADE);
-
     //  A simple background for our game
     game.add.sprite(0, 0, 'fondo');
-
     //  The platforms group contains the ground and the 2 ledges we can jump on
     platforms = game.add.group();
-
     //  We will enable physics for any object that is created in this group
     platforms.enableBody = true;
 
-    ////Trabajo con el piso////
-        // Here we create the ground.
-        var ground = platforms.create(0, game.world.height - 64, 'ground');
-
-        //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
-        ground.scale.setTo(1, 1);
-
-        //  This stops it from falling away when you jump on it
-        ground.body.immovable = true;
-    ///////////////////////////
-
-    ////Trabajo con las plataformas////
-        //  Now let's create two ledges
-        var ledge = platforms.create(400, 400, 'platform');
-        ledge.body.immovable = true;
-
-        ledge = platforms.create(-150, 250, 'platform');
-        ledge.body.immovable = true;
-    ///////////////////////////////////
-
-    //  Ahora hacemos la puerta de salida
-
+    CrearPiso();
+    CrearPlataformas();
+    //  Crear la puerta de salida
     game.add.sprite(600, 486, 'salida');
-
-    //  Hacemos la Ecuacion de velocidad
-
+    //  Crear la Ecuacion de velocidad
     game.add.sprite(0, 0, 'ecuacionVelocidad');
-
-    //  Hacemos la Ecuacion de aceleracion
-
+    //  Crear la Ecuacion de aceleracion
     game.add.sprite(0, 100, 'ecuacionAceleracion');
-
-    ////Trabajo con el timer////
-        //  Iniciamos el timer
-        timer = game.add.sprite(750,0, 'numeros');
-
-        //  Le damos una animacion al timer
-        timer.animations.add('contar', [0, 1, 2, 3, 4, 5, 6, 7, 8], 1, true);
-    ////////////////////////////
+    //  Crear el cuadro del vector
+    game.add.sprite(550, 100, 'cuadroVector');
     
-    //Creamos el vector
-
-    game.add.sprite(200, 500, 'vector');
-
-
-    ////Trabajo con el Jugador////
-        // The player and its settings
-        player = game.add.sprite(35, game.world.height - 110, 'dude');
-
-        //  We need to enable physics on the player
-        game.physics.arcade.enable(player);
-
-        //  Player physics properties. Give the little guy a slight bounce.
-        player.body.bounce.y = 0.2;
-        player.body.gravity.y = 300;
-        player.body.collideWorldBounds = true;
-
-        //  Our two animations, walking left and right.
-        player.animations.add('left', [0, 1, 2, 3], 10, true);
-        player.animations.add('right', [5, 6, 7, 8], 10, true);
-
-        //  Our controls.
-        cursors = game.input.keyboard.createCursorKeys();
-    //////////////////////////////
+    CrearTimer();
+    CrearNumeroParaVector()
+    CrearVector();
+    CrearJugador();
 }
 
 function update() {
 
     //  Iniciamos el timer
-
     timer.animations.play('contar');
-
     //  Collide the player and the stars with the platforms
     game.physics.arcade.collide(player, platforms);
-
     //  Reset the players velocity (movement)
     player.body.velocity.x = 0;
 
@@ -131,21 +77,18 @@ function update() {
     {
         //  Move to the left
         player.body.velocity.x = -150;
-
         player.animations.play('left');
     }
     else if (cursors.right.isDown)
     {
         //  Move to the right
         player.body.velocity.x = 150;
-
         player.animations.play('right');
     }
     else
     {
         //  Stand still
         player.animations.stop();
-
         player.frame = 4;
     }
     
@@ -154,6 +97,93 @@ function update() {
     {
         player.body.velocity.y = -350;
     }
+
+}
+function fixLocation(item) {
+
+    // Move the items when it is already dropped.
+    if (item.x < 50) {
+        item.x = 50;
+    }
+    else if (item.x > 50) {
+        item.x = 50;
+    }
+    if (item.y < 500) {
+        item.y = 500;
+    }
+    else if (item.y > 500) {
+        item.y = 500;
+    }
+
+}
+
+function checkBoxInVector(item) {
+    // Move the items when it is already dropped.
+    if (((item.x < 620)&&(item.x > 550))&&((item.y < 210)&&(item.y > 130))) {
+        item.x = 580;
+        item.y = 170;
+    }
+}
+
+function CrearPiso() {
+    // Here we create the ground.
+    var ground = platforms.create(0, game.world.height - 64, 'ground');
+    //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
+    ground.scale.setTo(1, 1);
+    //  This stops it from falling away when you jump on it
+    ground.body.immovable = true;
+}
+function CrearPlataformas() {
+    //  Now let's create two ledges
+    var ledge = platforms.create(400, 400, 'platform');
+    ledge.body.immovable = true;
+
+    ledge = platforms.create(-150, 250, 'platform');
+    ledge.body.immovable = true;
+}
+function CrearTimer() {
+    //  Iniciamos el timer
+    timer = game.add.sprite(750,0, 'numeros');
+    //  Le damos una animacion al timer
+    timer.animations.add('contar', [0, 1, 2, 3, 4, 5, 6, 7, 8], 1, true);
+}
+function CrearNumeroParaVector() {
+    //Creamos el vector
+    var numero = game.add.sprite(700, 300, 'numeros');
+    //  Input Enable the sprites
+    numero.inputEnabled = true;
+    //  Allow dragging - the 'true' parameter will make the sprite snap to the center
+    numero.input.enableDrag(true);
+    // Limit drop location to only the 2 columns.
+    numero.events.onDragStop.add(checkBoxInVector);
+    numero.frame = 4;
+} 
+
+function CrearVector() {
+    //Creamos el vector
+    var vector = game.add.sprite(200, 500, 'vector');
+    //  Input Enable the sprites
+    vector.inputEnabled = true;
+    //  Allow dragging - the 'true' parameter will make the sprite snap to the center
+    vector.input.enableDrag(true);
+    // Limit drop location to only the 2 columns.
+    vector.events.onDragStop.add(fixLocation);
+
+}
+function CrearJugador() {
+    // The player and its settings
+    player = game.add.sprite(35, game.world.height - 110, 'dude');
+    //  We need to enable physics on the player
+    game.physics.arcade.enable(player);
+    //  Player physics properties. Give the little guy a slight bounce.
+    player.body.bounce.y = 0.2;
+    player.body.gravity.y = 300;
+    player.body.collideWorldBounds = true;
+    //  Our two animations, walking left and right.
+    player.animations.add('left', [0, 1, 2, 3], 10, true);
+    player.animations.add('right', [5, 6, 7, 8], 10, true);
+    //  Our controls.
+    cursors = game.input.keyboard.createCursorKeys();
 
 }
 </script>
