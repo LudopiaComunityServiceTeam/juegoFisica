@@ -58,6 +58,8 @@ var cursors;
 var clicked = false;
 var magnitud;
 var direccion = 1;
+var angulo = 0//(3.1415)/4;
+var impulsado = false;
 //var PlayButton;
 //var simboloVector;
 function create() {
@@ -118,7 +120,6 @@ function update() {
     //en el grupo de las plataformas
     game.physics.arcade.collide(player, platforms);
     ControlJugador();
-
 }
 function CrearPiso() {
     // Aqui creamos el piso.
@@ -177,6 +178,7 @@ function clickPlay(){
         timer.frame = 0;
         PlayButton.frame = 0;
         clicked = false;
+        impulsado = false;
         game.add.tween(player.body).to( { x: 35 , y:game.world.height - 110}, 1, Phaser.Easing.Linear.None, true);
         //player.y = game.world.height - 150;
     }
@@ -315,19 +317,28 @@ function ControlJugador(){
     //Le da al muñequito de palitos un movimiento clasico de plataformero 2D
     //puede saltar, correr a la izq, der y viene con las animaciones.
 
-    //Frena al muñequito
-    player.body.velocity.x = 0;
-
     if ((clicked)&&(direccion == -1))
     {
         //Moverse a la izquierda
-        player.body.velocity.x = -magnitud;
+        //los cosenos deberian calcularse solo una vez
+        if (!impulsado){
+            console.log('Subir'); 
+            player.body.velocity.x = -magnitud*Math.cos(angulo);
+            player.body.velocity.y = -magnitud*Math.sin(angulo);
+            impulsado = true;
+        }
         player.animations.play('left');
     }
     else if ((clicked)&&(direccion == 1))
     {
         //Moverse a la derecha
-        player.body.velocity.x = magnitud;
+        console.log(Math.sin(angulo));
+        if (!impulsado){
+            console.log('Subir'); 
+            player.body.velocity.x = magnitud*Math.cos(angulo);
+            player.body.velocity.y = -magnitud*Math.sin(angulo);
+            impulsado = true;
+        }
         player.animations.play('right');
     }
     else
