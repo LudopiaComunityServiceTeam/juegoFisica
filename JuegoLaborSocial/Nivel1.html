@@ -18,90 +18,273 @@ var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create
 
 function preload() {
 
+//Esta funcion carga todas las imagenes que vamos a utilizar para el juego
+//Se usa load.spritesheet cuando se quiere usar para una animación
+//Se usa load.image cuando se quiere usar como imagen fija.
+
+//Estos dos "loads" te piden el nombre con el que quieres guardar la imagen
+//y luego la ubicación del el archivo imagen
+
+//load.spritesheet te pide dos numeros despues de pedir la ubicación del archivo,
+//Estos numeros son la medida de como se va a picar la imagen en varias imagenes
+//mas pequeñas, por ejemplo, si tienes una spritesheet con un muñequito mirando
+//a la izq, luego al frente y luego a la derecha, tienes que ver que tan ancha
+//es cada imagen del muñequito y que tan alta es, pones el ancho en el primer
+//numero y la altura en el segundo
+
     game.load.image('fondo', 'assets/fondo.png');
     game.load.image('ecuacionVelocidad','assets/Ecuacion velocidad.png');
     game.load.image('ecuacionAceleracion','assets/Ecuacion aceleracion.png');
+    game.load.spritesheet('simbolos','assets/Simbolos.png',28,28);
     game.load.image('cuadroVector','assets/cuadroVector.png');
+    game.load.spritesheet('PlayButton','assets/play.png',50,50)
     game.load.image('salida', 'assets/salida.png');
-    game.load.image('ground', 'assets/suelo.png');
+    game.load.image('piso', 'assets/suelo.png');
     game.load.image('platform', 'assets/plataforma.png');
-    game.load.image('star', 'assets/star.png');
     game.load.image('vector', 'assets/Vector.png');
     game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
     game.load.spritesheet('numeros', 'assets/numeros.png', 40, 65);
 
 }
 
+//Aqui declaramos variables que sabemos que vamos a utilizar para identificar
+//objetos en nuestro juego.
+//Cursors son las teclas arriba, abajo, izq y der, esto vino con el ejemplo
+//de la página de phaser
+
 var player;
 var platforms;
 var cursors;
-
+var clicked = false;
+var magnitud;
+var direccion = 1;
+//var PlayButton;
+//var simboloVector;
 function create() {
 
-    //  We're going to be using physics, so enable the Arcade Physics system
+//Esta funcion dibuja objetos en pantalla en el orden en que se añadan
+//Si un objeto se dibuja primero, quedara como background
+//La funcion "create" se corre sola despues de preload, asi que no se
+//preocupen en llamarla
+//Cuando se crea un objeto se pide la ubicacion en x y y, y el nombre de la
+//imagen que tendra
+//En Phaser X y Y estan en 0,0 en la esquina superior izquierda y cuentan
+//positivo hasta abajo.
+
+    //Se activa la fisica de tipo "Arcade Physics"
     game.physics.startSystem(Phaser.Physics.ARCADE);
-    //  A simple background for our game
+
+    //Se agrega el background del juego
     game.add.sprite(0, 0, 'fondo');
-    //  The platforms group contains the ground and the 2 ledges we can jump on
+
+    //Se crea un grupo, este grupo se utilizara luego para agregar propiedades
+    //a las plataformas de un solo golpe
     platforms = game.add.group();
-    //  We will enable physics for any object that is created in this group
+
+    //Hacemos que las plataformas esten incluidas en la fisica del juego
     platforms.enableBody = true;
 
     CrearPiso();
     CrearPlataformas();
+
     //  Crear la puerta de salida
     game.add.sprite(600, 486, 'salida');
+
     //  Crear la Ecuacion de velocidad
     game.add.sprite(0, 0, 'ecuacionVelocidad');
+
     //  Crear la Ecuacion de aceleracion
     game.add.sprite(0, 100, 'ecuacionAceleracion');
+
     //  Crear el cuadro del vector
-    game.add.sprite(550, 100, 'cuadroVector');
-    
+    game.add.sprite(550, 100, 'cuadroVector');    
     CrearTimer();
-    CrearNumeroParaVector()
+
+    //  Crear el boton de play
+    CrearPlay();
+    CrearNumeroParaVector();
+    CrearSimboloParaVector();
     CrearVector();
     CrearJugador();
 }
 
 function update() {
+//La función update es la responsable de los "frames"
+//Aqui colocamos lo que es movimiento y cambios de variables
+//Se llama sola en forma de loop infinito
 
-    //  Iniciamos el timer
-    timer.animations.play('contar');
-    //  Collide the player and the stars with the platforms
+
+    //Permitimos que el jugador colisione con cualquier objeto 
+    //en el grupo de las plataformas
     game.physics.arcade.collide(player, platforms);
-    //  Reset the players velocity (movement)
-    player.body.velocity.x = 0;
+    ControlJugador();
 
-    if (cursors.left.isDown)
-    {
-        //  Move to the left
-        player.body.velocity.x = -150;
-        player.animations.play('left');
+}
+function CrearPiso() {
+    // Aqui creamos el piso.
+
+    var piso = platforms.create(0, game.world.height - 64, 'piso');
+
+    // Si fuera necesario cambiar el tamaño de la imagen original, se puede hacer
+    // con esta funcion. 
+    piso.scale.setTo(1, 1);
+
+    // Para que el piso no sea afectado por la gravedad le agregamos
+    // esta propiedad
+    piso.body.immovable = true;
+}
+function CrearPlataformas() {
+    //  Creamos dos plataformas flotantes
+
+    var ledge = platforms.create(400, 400, 'platform');
+    ledge.body.immovable = true;
+
+    ledge = platforms.create(-150, 250, 'platform');
+    ledge.body.immovable = true;
+}
+function CrearTimer() {
+    //  Creamos un timer
+
+    timer = game.add.sprite(750,0, 'numeros');
+
+    //  Le damos una animacion al timer
+    timer.animations.add('contar', [0, 1, 2, 3, 4, 5, 6, 7, 8], 1, true);
+}
+function CrearPlay() {
+    //  Crear el boton de play
+
+    PlayButton = game.add.button(400, 550, 'PlayButton', clickPlay, this);
+    PlayButton.frame = 0;
+    PlayButton.onInputOver.add(overPlayButton, this);
+    PlayButton.onInputOut.add(outPlayButton, this);
+    //PlayButton.onInputUp.add(up, this);
+}
+function clickPlay(){
+    //Determina que pasa cuando se hace click en el boton de play
+
+    if (!clicked){
+        //Iniciamos el timer
+        //y apretamos el boton
+        timer.animations.play('contar');
+        console.log('apretado');
+        PlayButton.frame = 3;
+        clicked = true;
     }
-    else if (cursors.right.isDown)
-    {
-        //  Move to the right
-        player.body.velocity.x = 150;
-        player.animations.play('right');
+    else{
+        //Detenemos el timer
+        //y desapretamos el boton
+        timer.animations.stop();
+        timer.frame = 0;
+        PlayButton.frame = 0;
+        clicked = false;
+        game.add.tween(player.body).to( { x: 35 , y:game.world.height - 110}, 1, Phaser.Easing.Linear.None, true);
+        //player.y = game.world.height - 150;
     }
-    else
-    {
-        //  Stand still
-        player.animations.stop();
-        player.frame = 4;
+}
+function overPlayButton(){
+    if (!clicked){
+        PlayButton.frame = 1;
     }
-    
-    //  Allow the player to jump if they are touching the ground.
-    if (cursors.up.isDown && player.body.touching.down)
-    {
-        player.body.velocity.y = -350;
+    else{
+        PlayButton.frame = 2;
     }
 
 }
-function fixLocation(item) {
+function outPlayButton(){
+    if (!clicked){
+        PlayButton.frame = 0;
+    }
+    else{
+        PlayButton.frame = 3;
+    }
 
-    // Move the items when it is already dropped.
+}
+function CrearNumeroParaVector() {
+    //Creamos un numero de prueba para poder probar
+    //nuestra funcion de click and drag
+
+    //creamos un objeto con forma de número
+    var numero = game.add.sprite(700, 300, 'numeros');
+
+    //Permitimos que se le pueda poner input al objeto
+    numero.inputEnabled = true;
+
+    //Permite arrastrar con el mouse, el "true" hace que el centro del
+    //objeto quede en donde se tiene el mouse 
+    numero.input.enableDrag(true);
+
+    //Aqui se le agrega al numero el "evento" de que cuando se suelte
+    //se corre la funcion checkMagnitudInVector
+    numero.events.onDragStop.add(checkMagnitudInVector);
+    
+    //Elegimos el numero que queremos que sea el objeto que creamos
+    //Esto cambia la imagen que tenemos del spritesheet
+    //el frame 0 seria 1, el 2 seria 3, el 3 seria el cuatro y asi.
+    numero.frame = 4;
+} 
+function CrearSimboloParaVector() {
+    //Creamos un simbolo para representar la direccion del vector
+    //Creamos un boton con forma de "+"
+    simboloVector = game.add.button(662, 190, 'simbolos', clickSimboloVector, this);
+    simboloVector.frame = 0;
+} 
+function clickSimboloVector(){
+   if (simboloVector.frame == 0){
+       simboloVector.frame = 1;
+       direccion = -1;
+   }
+   else{
+       simboloVector.frame = 0;
+       direccion = 1;
+   }
+}
+function CrearVector() {
+    //Creamos el vector
+    var vector = game.add.sprite(200, 500, 'vector');
+
+    //Permitimos que se le pueda poner input al objeto
+    vector.inputEnabled = true;
+
+    //Permite arrastrar con el mouse, el "true" hace que el centro del
+    //objeto quede en donde se tiene el mouse 
+    vector.input.enableDrag(true);
+
+    //Aqui se le agrega al numero el "evento" de que cuando se suelte
+    //se corre la funcion pegarVector
+    vector.events.onDragStop.add(pegarVector);
+
+}
+function CrearJugador() {
+    //Aqui creamos al jugador, representado en esta version por el
+    //muñequito de palitos
+
+    player = game.add.sprite(35, game.world.height - 110, 'dude');
+    //Permitimos que el muñeco sea afectado por la gravedad
+    game.physics.arcade.enable(player);
+
+    //Esto permite que el jugador rebote (vino con el ejemplo,
+    //no lo he quitado porque quiza sea util)
+    player.body.bounce.y = 0.2;
+    player.body.gravity.y = 300;
+    player.body.collideWorldBounds = true;
+
+    //Le creamos 2 animaciones
+    //Las animaciones se crean con un nombre, la seleccion en orden
+    //de los sprites que queremos mostrar, la velocidad a la que los
+    //queremos mostrar y un booleano (que no se que hace) 
+    player.animations.add('left', [0, 1, 2, 3], 10, true);
+    player.animations.add('right', [5, 6, 7, 8], 10, true);
+
+    //En una variable metemos los posibles inputs con el teclado
+    //para hacerles referencia luego cuando queramos.
+    cursors = game.input.keyboard.createCursorKeys();
+
+}
+
+function pegarVector(item) {
+    //Chequea si el vector esta fuera de un rango y si no es asi,
+    //lo lleva a dicho rango
+ 
     if (item.x < 50) {
         item.x = 50;
     }
@@ -117,74 +300,48 @@ function fixLocation(item) {
 
 }
 
-function checkBoxInVector(item) {
-    // Move the items when it is already dropped.
+function checkMagnitudInVector(item) {
+    // Revisa si el objeto esta en el rango de la caja de magnitud del vector
+    // Si es asi, ajusta el objeto para que quede justo en el centro de la caja
+
     if (((item.x < 620)&&(item.x > 550))&&((item.y < 210)&&(item.y > 130))) {
         item.x = 580;
         item.y = 170;
+        magnitud = 1000;
     }
 }
 
-function CrearPiso() {
-    // Here we create the ground.
-    var ground = platforms.create(0, game.world.height - 64, 'ground');
-    //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
-    ground.scale.setTo(1, 1);
-    //  This stops it from falling away when you jump on it
-    ground.body.immovable = true;
-}
-function CrearPlataformas() {
-    //  Now let's create two ledges
-    var ledge = platforms.create(400, 400, 'platform');
-    ledge.body.immovable = true;
+function ControlJugador(){
+    //Le da al muñequito de palitos un movimiento clasico de plataformero 2D
+    //puede saltar, correr a la izq, der y viene con las animaciones.
 
-    ledge = platforms.create(-150, 250, 'platform');
-    ledge.body.immovable = true;
-}
-function CrearTimer() {
-    //  Iniciamos el timer
-    timer = game.add.sprite(750,0, 'numeros');
-    //  Le damos una animacion al timer
-    timer.animations.add('contar', [0, 1, 2, 3, 4, 5, 6, 7, 8], 1, true);
-}
-function CrearNumeroParaVector() {
-    //Creamos el vector
-    var numero = game.add.sprite(700, 300, 'numeros');
-    //  Input Enable the sprites
-    numero.inputEnabled = true;
-    //  Allow dragging - the 'true' parameter will make the sprite snap to the center
-    numero.input.enableDrag(true);
-    // Limit drop location to only the 2 columns.
-    numero.events.onDragStop.add(checkBoxInVector);
-    numero.frame = 4;
-} 
+    //Frena al muñequito
+    player.body.velocity.x = 0;
 
-function CrearVector() {
-    //Creamos el vector
-    var vector = game.add.sprite(200, 500, 'vector');
-    //  Input Enable the sprites
-    vector.inputEnabled = true;
-    //  Allow dragging - the 'true' parameter will make the sprite snap to the center
-    vector.input.enableDrag(true);
-    // Limit drop location to only the 2 columns.
-    vector.events.onDragStop.add(fixLocation);
-
-}
-function CrearJugador() {
-    // The player and its settings
-    player = game.add.sprite(35, game.world.height - 110, 'dude');
-    //  We need to enable physics on the player
-    game.physics.arcade.enable(player);
-    //  Player physics properties. Give the little guy a slight bounce.
-    player.body.bounce.y = 0.2;
-    player.body.gravity.y = 300;
-    player.body.collideWorldBounds = true;
-    //  Our two animations, walking left and right.
-    player.animations.add('left', [0, 1, 2, 3], 10, true);
-    player.animations.add('right', [5, 6, 7, 8], 10, true);
-    //  Our controls.
-    cursors = game.input.keyboard.createCursorKeys();
-
+    if ((clicked)&&(direccion == -1))
+    {
+        //Moverse a la izquierda
+        player.body.velocity.x = -magnitud;
+        player.animations.play('left');
+    }
+    else if ((clicked)&&(direccion == 1))
+    {
+        //Moverse a la derecha
+        player.body.velocity.x = magnitud;
+        player.animations.play('right');
+    }
+    else
+    {
+        //Quedarse parado
+        player.animations.stop();
+        player.frame = 4;
+    }
+    
+    //Permite al jugador saltar si esta tocando piso.
+    if (cursors.up.isDown && player.body.touching.down)
+    {
+        player.body.velocity.y = -350;
+    }
 }
 </script>
 
