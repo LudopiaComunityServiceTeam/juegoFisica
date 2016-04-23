@@ -60,6 +60,9 @@ var magnitud;
 var direccion = 1;
 var angulo = 0//(3.1415)/4;
 var impulsado = false;
+var numeroMagnitud1;
+var numeroMagnitud2;
+var numeroMagnitud3;
 //var PlayButton;
 //var simboloVector;
 function create() {
@@ -104,7 +107,9 @@ function create() {
 
     //  Crear el boton de play
     CrearPlay();
-    CrearNumeroParaVector();
+    numeroMagnitud1 = CrearNumeroParaVector(500,550,300,5);
+    numeroMagnitud2 = CrearNumeroParaVector(300,650,300,3);
+    numeroMagnitud3 = CrearNumeroParaVector(100,750,300,1);
     CrearSimboloParaVector();
     CrearVector();
     CrearJugador();
@@ -201,29 +206,47 @@ function outPlayButton(){
     }
 
 }
-function CrearNumeroParaVector() {
+function CrearNumeroParaVector(numero,x,y,numeroMostrado) {
     //Creamos un numero de prueba para poder probar
     //nuestra funcion de click and drag
 
+    var numeroMag;
     //creamos un objeto con forma de número
-    var numero = game.add.sprite(700, 300, 'numeros');
+    numeroMag = game.add.sprite(x, y, 'numeros');
 
     //Permitimos que se le pueda poner input al objeto
-    numero.inputEnabled = true;
+    numeroMag.inputEnabled = true;
 
     //Permite arrastrar con el mouse, el "true" hace que el centro del
     //objeto quede en donde se tiene el mouse 
-    numero.input.enableDrag(true);
+    numeroMag.input.enableDrag(true);
 
     //Aqui se le agrega al numero el "evento" de que cuando se suelte
     //se corre la funcion checkMagnitudInVector
-    numero.events.onDragStop.add(checkMagnitudInVector);
+    numeroMag.events.onDragStop.add(checkMagnitudInVector);
     
     //Elegimos el numero que queremos que sea el objeto que creamos
     //Esto cambia la imagen que tenemos del spritesheet
     //el frame 0 seria 1, el 2 seria 3, el 3 seria el cuatro y asi.
-    numero.frame = 4;
+    numeroMag.frame = numeroMostrado-1;
+
+    numeroMag.numero = numero;
+
+    return numeroMag;
 } 
+
+function checkMagnitudInVector(item) {
+    // Revisa si el objeto esta en el rango de la caja de magnitud del vector
+    // Si es asi, ajusta el objeto para que quede justo en el centro de la caja
+    // Y cambia el valor de magnitud al valor que cargaba el objeto.
+
+    if (((item.x < 620)&&(item.x > 550))&&((item.y < 210)&&(item.y > 130))) {
+        item.x = 580;
+        item.y = 170;
+        magnitud = item.numero;
+    }
+}
+
 function CrearSimboloParaVector() {
     //Creamos un simbolo para representar la direccion del vector
     //Creamos un boton con forma de "+"
@@ -302,16 +325,6 @@ function pegarVector(item) {
 
 }
 
-function checkMagnitudInVector(item) {
-    // Revisa si el objeto esta en el rango de la caja de magnitud del vector
-    // Si es asi, ajusta el objeto para que quede justo en el centro de la caja
-
-    if (((item.x < 620)&&(item.x > 550))&&((item.y < 210)&&(item.y > 130))) {
-        item.x = 580;
-        item.y = 170;
-        magnitud = 1000;
-    }
-}
 
 function ControlJugador(){
     //Le da al muñequito de palitos un movimiento clasico de plataformero 2D
@@ -344,6 +357,7 @@ function ControlJugador(){
     else
     {
         //Quedarse parado
+        player.body.velocity.x = 0;
         player.animations.stop();
         player.frame = 4;
     }
