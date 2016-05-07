@@ -31,6 +31,7 @@ preload: function() {
 //numero y la altura en el segundo
 
     game.load.image('fondo', 'assets/fondo.png');
+    game.load.image('esUnVector', 'assets/estoEsUnVector.png');
     game.load.image('ecuacionVelocidad','assets/Ecuacion velocidad.png');
     game.load.image('ecuacionAceleracion','assets/Ecuacion aceleracion.png');
     game.load.spritesheet('simbolos','assets/Simbolos.png',28,28);
@@ -87,6 +88,8 @@ create: function() {
     CrearPlay();
     CrearVector(400,300,300);
     CrearJugador();
+    //  Crear texto
+    texto = game.add.sprite(100,150,'esUnVector');
 },
 
 update: function() {

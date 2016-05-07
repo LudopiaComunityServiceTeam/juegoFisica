@@ -64,7 +64,7 @@ create: function() {
     platforms.enableBody = true;
 
     CrearPiso();
-    CrearPlataformas();
+    //CrearPlataformas();
 
     //  Crear la puerta de salida
     salida = game.add.sprite(600,486,'salida');
@@ -85,7 +85,7 @@ create: function() {
     numeroMagnitud2 = CrearNumeroParaVector(300,650,300,3);
     numeroMagnitud3 = CrearNumeroParaVector(100,750,300,1);
     CrearSimboloParaVector();
-    CrearVector(400,300,300);
+    CrearVector(400,300,0);
     CrearJugador();
 },
 
