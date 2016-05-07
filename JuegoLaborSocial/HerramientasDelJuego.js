@@ -7,14 +7,12 @@ function ControlJugador(){
         //Moverse a la izquierda
         //los cosenos deberian calcularse solo una vez
         if (!impulsado){
-            console.log(nivelActual); 
-            player.body.velocity.x = -magnitud*Math.cos(angulo);
-            player.body.velocity.y = -magnitud*Math.sin(angulo);
+            player.body.velocity.x = -magnitudJugador*Math.cos(angulo);
+            player.body.velocity.y = -magnitudJugador*Math.sin(angulo);
             impulsado = true;
         }
         player.animations.play('left');
         if ((salida.x-10 < player.x)&&(player.x < salida.x+10)){
-             console.log(niveles[nivelActual+1]); 
              game.state.start(niveles[nivelActual+1]);
              nivelActual = nivelActual + 1;
              resetVariables();
@@ -23,16 +21,14 @@ function ControlJugador(){
     else if ((clicked)&&(direccion == 1))
     {
         //Moverse a la derecha
-        //console.log(Math.sin(angulo));
         if (!impulsado){
-            console.log(nivelActual); 
-            player.body.velocity.x = magnitud*Math.cos(angulo);
-            player.body.velocity.y = -magnitud*Math.sin(angulo);
+            player.body.velocity.x = magnitudJugador*Math.cos(angulo);
+            player.body.velocity.y = -magnitudJugador*Math.sin(angulo);
             impulsado = true;
         }
         player.animations.play('right');
         if ((salida.x-10 < player.x)&&(player.x < salida.x+10)){
-             console.log(niveles[nivelActual+1]); 
+
              game.state.start(niveles[nivelActual+1]);
              nivelActual = nivelActual + 1;
              resetVariables();
@@ -99,7 +95,6 @@ function clickPlay(){
         //Iniciamos el timer
         //y apretamos el boton
         timer.animations.play('contar');
-        //console.log('apretado');
         PlayButton.frame = 3;
         clicked = true;
     }
@@ -166,14 +161,16 @@ function checkMagnitudInVector(item) {
     // Revisa si el objeto esta en el rango de la caja de magnitud del vector
     // Si es asi, ajusta el objeto para que quede justo en el centro de la caja
     // Y cambia el valor de magnitud al valor que cargaba el objeto.
-
-    if (((item.x < 620)&&(item.x > 550))&&((item.y < 210)&&(item.y > 130))) {
-        item.x = 580;
-        item.y = 170;
-        magnitud = item.numero;
+    for (i = 0; i < listaDeCuadros.length; i++) {
+        if (((item.x < (listaDeCuadros[i].x+165))&&(item.x > (listaDeCuadros[i].x)))&&((item.y < (listaDeCuadros[i].y+140))&&(item.y > (listaDeCuadros[i].y)))) {
+            item.x = (listaDeCuadros[i].x+82);
+            item.y = (listaDeCuadros[i].y+70);
+            listaDeCuadros[i].vector.magnitud = item.numero;
+        
+        }
     }
 }
-
+/*
 function CrearSimboloParaVector() {
     //Creamos un simbolo para representar la direccion del vector
     //Creamos un boton con forma de "+"
@@ -190,12 +187,13 @@ function clickSimboloVector(){
        direccion = 1;
    }
 }
-function CrearVector(x,y,potencia) {
+*/
+function CrearVector(x,y,magnitud) {
     //Creamos el vector
     var vector = game.add.sprite(x, y, 'vector');
-    vector.potencia = potencia;
+    vector.magnitud = magnitud;
     vector.cargado = false
-    if (potencia != 0){
+    if (magnitud != 0){
         vector.cargado = true
     }
     //Permitimos que se le pueda poner input al objeto
@@ -208,7 +206,8 @@ function CrearVector(x,y,potencia) {
     //Aqui se le agrega al numero el "evento" de que cuando se suelte
     //se corre la funcion pegarVector
     vector.events.onDragStop.add(pegarVector);
-    //console.log(potencia);
+
+    return vector;
 
 }
 function CrearJugador() {
@@ -245,8 +244,7 @@ function pegarVector(item) {
     if ((item.x < 150)&&(item.x > 0)&&(item.y < 600)&&(item.y > 400)) {
         item.x = 50;
         item.y = 500;
-        magnitud = item.potencia
-        //console.log(magnitud);
+        magnitudJugador = item.magnitud
     }
 
 }
@@ -254,11 +252,16 @@ function resetVariables(){
     //resetea las variables del nivel para que al iniciar el nuevo
     //nivel no hayan problemas
     clicked = false;
-    magnitud = 0;
+    magnitudJugador = 0;
     direccion = 1;
     angulo = 0;
     impulsado = false;
+    listaDeCuadros = [];
 }
-
+function CrearCuadroVector(x,y,vector){
+    cuadro = game.add.sprite(x, y, 'cuadroVector');
+    cuadro.vector = vector;
+    return cuadro;
+}
 
 

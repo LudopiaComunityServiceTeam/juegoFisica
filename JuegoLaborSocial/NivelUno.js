@@ -3,10 +3,11 @@ var salida;
 var platforms;
 var cursors;
 var clicked = false;
-var magnitud;
+var magnitudJugador;
 var direccion = 1;
 var angulo = 0;//(3.1415)/4;
 var impulsado = false;
+var listaDeCuadros = [];
 var numeroMagnitud1;
 var numeroMagnitud2;
 var numeroMagnitud3;
@@ -86,7 +87,7 @@ create: function() {
     CrearTimer();
     //  Crear el boton de play
     CrearPlay();
-    CrearVector(400,300,300);
+    vector = CrearVector(400,300,300);
     CrearJugador();
     //  Crear texto
     texto = game.add.sprite(100,150,'esUnVector');

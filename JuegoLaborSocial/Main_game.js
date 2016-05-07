@@ -76,16 +76,16 @@ create: function() {
     game.add.sprite(0, 100, 'ecuacionAceleracion');
 
     //  Crear el cuadro del vector
-    game.add.sprite(550, 100, 'cuadroVector');    
     CrearTimer();
 
     //  Crear el boton de play
     CrearPlay();
+    vector = CrearVector(400,300,0);
+    cuadro = CrearCuadroVector(550,100,vector)
+    listaDeCuadros.push(cuadro); //El cuadro esta encima del vector, arreglar!
     numeroMagnitud1 = CrearNumeroParaVector(500,550,300,5);
     numeroMagnitud2 = CrearNumeroParaVector(300,650,300,3);
     numeroMagnitud3 = CrearNumeroParaVector(100,750,300,1);
-    CrearSimboloParaVector();
-    CrearVector(400,300,0);
     CrearJugador();
 },
 
