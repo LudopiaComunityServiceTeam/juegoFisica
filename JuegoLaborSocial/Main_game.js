@@ -1,15 +1,3 @@
-var player;
-var salida;
-var platforms;
-var cursors;
-var clicked = false;
-var magnitud;
-var direccion = 1;
-var angulo = 0;//(3.1415)/4;
-var impulsado = false;
-var numeroMagnitud1;
-var numeroMagnitud2;
-var numeroMagnitud3;
 var MainGame = {
 preload: function() {
 
@@ -97,7 +85,7 @@ create: function() {
     numeroMagnitud2 = CrearNumeroParaVector(300,650,300,3);
     numeroMagnitud3 = CrearNumeroParaVector(100,750,300,1);
     CrearSimboloParaVector();
-    CrearVector();
+    CrearVector(400,300,300);
     CrearJugador();
 },
 

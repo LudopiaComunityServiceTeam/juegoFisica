@@ -7,14 +7,17 @@ function ControlJugador(){
         //Moverse a la izquierda
         //los cosenos deberian calcularse solo una vez
         if (!impulsado){
-            //console.log('Subir'); 
+            console.log(nivelActual); 
             player.body.velocity.x = -magnitud*Math.cos(angulo);
             player.body.velocity.y = -magnitud*Math.sin(angulo);
             impulsado = true;
         }
         player.animations.play('left');
         if ((salida.x-10 < player.x)&&(player.x < salida.x+10)){
-            game.state.start('Main_game');
+             console.log(niveles[nivelActual+1]); 
+             game.state.start(niveles[nivelActual+1]);
+             nivelActual = nivelActual + 1;
+             resetVariables();
         }
     }
     else if ((clicked)&&(direccion == 1))
@@ -22,15 +25,17 @@ function ControlJugador(){
         //Moverse a la derecha
         //console.log(Math.sin(angulo));
         if (!impulsado){
-            //console.log('Subir'); 
-            //console.log(magnitud);
+            console.log(nivelActual); 
             player.body.velocity.x = magnitud*Math.cos(angulo);
             player.body.velocity.y = -magnitud*Math.sin(angulo);
             impulsado = true;
         }
         player.animations.play('right');
         if ((salida.x-10 < player.x)&&(player.x < salida.x+10)){
-            game.state.start('Main_game');
+             console.log(niveles[nivelActual+1]); 
+             game.state.start(niveles[nivelActual+1]);
+             nivelActual = nivelActual + 1;
+             resetVariables();
         }
 
     }
@@ -94,7 +99,7 @@ function clickPlay(){
         //Iniciamos el timer
         //y apretamos el boton
         timer.animations.play('contar');
-        console.log('apretado');
+        //console.log('apretado');
         PlayButton.frame = 3;
         clicked = true;
     }
@@ -244,6 +249,15 @@ function pegarVector(item) {
         //console.log(magnitud);
     }
 
+}
+function resetVariables(){
+    //resetea las variables del nivel para que al iniciar el nuevo
+    //nivel no hayan problemas
+    clicked = false;
+    magnitud = 0;
+    direccion = 1;
+    angulo = 0;
+    impulsado = false;
 }
 
 

@@ -1,19 +1,4 @@
-var player;
-var salida;
-var platforms;
-var cursors;
-var clicked = false;
-var magnitud;
-var direccion = 1;
-var angulo = 0;//(3.1415)/4;
-var impulsado = false;
-var numeroMagnitud1;
-var numeroMagnitud2;
-var numeroMagnitud3;
-var niveles = ['NivelUno', 'NivelDos', 'Main_game'];
-var nivelActual = 0;
-
-var Nivel1 = {
+var Nivel2 = {
 preload: function() {
 
 //Esta funcion carga todas las imagenes que vamos a utilizar para el juego
@@ -79,12 +64,21 @@ create: function() {
     platforms.enableBody = true;
 
     CrearPiso();
+    CrearPlataformas();
 
     //  Crear la puerta de salida
     salida = game.add.sprite(600,486,'salida');
+
+    //  Crear el cuadro del vector
+    game.add.sprite(550, 100, 'cuadroVector');    
     CrearTimer();
+
     //  Crear el boton de play
     CrearPlay();
+    numeroMagnitud1 = CrearNumeroParaVector(500,550,300,5);
+    numeroMagnitud2 = CrearNumeroParaVector(300,650,300,3);
+    numeroMagnitud3 = CrearNumeroParaVector(100,750,300,1);
+    CrearSimboloParaVector();
     CrearVector(400,300,300);
     CrearJugador();
 },
