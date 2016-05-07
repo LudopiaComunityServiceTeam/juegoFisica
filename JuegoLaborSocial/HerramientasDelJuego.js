@@ -2,32 +2,21 @@ function ControlJugador(){
     //Le da al muñequito de palitos un movimiento clasico de plataformero 2D
     //puede saltar, correr a la izq, der y viene con las animaciones.
 
-    if ((clicked)&&(direccion == -1))
-    {
-        //Moverse a la izquierda
-        //los cosenos deberian calcularse solo una vez
-        if (!impulsado){
-            player.body.velocity.x = -magnitudJugador*Math.cos(angulo);
-            player.body.velocity.y = -magnitudJugador*Math.sin(angulo);
-            impulsado = true;
-        }
-        player.animations.play('left');
-        if ((salida.x-10 < player.x)&&(player.x < salida.x+10)){
-             game.state.start(niveles[nivelActual+1]);
-             nivelActual = nivelActual + 1;
-             resetVariables();
-        }
-    }
-    else if ((clicked)&&(direccion == 1))
+    if ((clicked)&&(direccion == 1))
     {
         //Moverse a la derecha
         if (!impulsado){
-            player.body.velocity.x = magnitudJugador*Math.cos(angulo);
-            player.body.velocity.y = -magnitudJugador*Math.sin(angulo);
+            player.body.velocity.x = magnitudJugador*Math.cos(angulo*Math.PI / 180);
+            player.body.velocity.y = -magnitudJugador*Math.sin(angulo*Math.PI / 180);
             impulsado = true;
         }
-        player.animations.play('right');
-        if ((salida.x-10 < player.x)&&(player.x < salida.x+10)){
+        if ((angulo<90)||(angulo>270)){
+            player.animations.play('right');
+        }
+        else{
+            player.animations.play('left');
+        }
+        if (ChequearOverlap(player,salida)){
 
              game.state.start(niveles[nivelActual+1]);
              nivelActual = nivelActual + 1;
@@ -106,8 +95,7 @@ function clickPlay(){
         PlayButton.frame = 0;
         clicked = false;
         impulsado = false;
-        game.add.tween(player.body).to( { x: 35 , y:game.world.height - 110}, 1, Phaser.Easing.Linear.None, true);
-        //player.y = game.world.height - 150;
+        game.add.tween(player.body).to( { x: posInicXPlayer , y:posInicYPlayer}, 1, Phaser.Easing.Linear.None, true);
     }
 }
 function overPlayButton(){
@@ -161,13 +149,47 @@ function checkMagnitudInVector(item) {
     // Revisa si el objeto esta en el rango de la caja de magnitud del vector
     // Si es asi, ajusta el objeto para que quede justo en el centro de la caja
     // Y cambia el valor de magnitud al valor que cargaba el objeto.
+    magnitudEnCuadro = false;
+//Se revisan todos los cuadros para ver si el objeto cayó en alguno
     for (i = 0; i < listaDeCuadros.length; i++) {
-        if (((item.x < (listaDeCuadros[i].x+165))&&(item.x > (listaDeCuadros[i].x)))&&((item.y < (listaDeCuadros[i].y+140))&&(item.y > (listaDeCuadros[i].y)))) {
+        magnitudEnCuadro = false;
+//Si se arrastra el objeto tipo velocidad a un cuadro, la velocidad del vector
+//debe cambiar, y si el vector ya estaba encima del jugador la velocidad del
+//jugador tambien debe cambiar
+        if (ChequearOverlap(item,listaDeCuadros[i])) {
+            magnitudEnCuadro = true;
             item.x = (listaDeCuadros[i].x+82);
             item.y = (listaDeCuadros[i].y+70);
             listaDeCuadros[i].vector.magnitud = item.numero;
-        
+            if (ChequearOverlap(listaDeCuadros[i].vector,player)){
+                magnitudJugador = listaDeCuadros[i].vector.magnitud;
+            }
         }
+
+        else{
+//Se revisan todos los numeros para ver si hay alguno ademas del que se
+//arrastro dentro de la caja
+            for (j = 0; j < listaDeNumeros.length; j++){
+                if (ChequearOverlap(listaDeCuadros[i],listaDeNumeros[j])) {
+                    magnitudEnCuadro = true;
+                    listaDeCuadros[i].vector.magnitud = listaDeNumeros[j].numero;
+//Si el vector de dicha caja esta en contacto con el jugador entonces el jugador recibe
+//la velocidad del numero que estaba en esa caja
+                    if (ChequearOverlap(listaDeCuadros[i].vector,player)){
+                        magnitudJugador = listaDeCuadros[i].vector.magnitud;
+                    }
+                }
+            }
+            if (!magnitudEnCuadro){
+                listaDeCuadros[i].vector.magnitud = 0;
+//Si el cuadro no tiene nada adentro, pero su vector esta encima del jugador
+//entonces la "velocidad" del jugador deberia ser 0 y la del vector tambien
+                if (ChequearOverlap(listaDeCuadros[i].vector,player)){
+                    magnitudJugador = listaDeCuadros[i].vector.magnitud;
+                }
+            }        
+        }
+
     }
 }
 /*
@@ -188,11 +210,14 @@ function clickSimboloVector(){
    }
 }
 */
-function CrearVector(x,y,magnitud) {
+function CrearVector(x,y,magnitud,angulo) {
     //Creamos el vector
     var vector = game.add.sprite(x, y, 'vector');
     vector.magnitud = magnitud;
+    vector.angulo = angulo;
     vector.cargado = false
+    vector.anchor.setTo(0.5, 0.5);
+    vector.angle = angulo;
     if (magnitud != 0){
         vector.cargado = true
     }
@@ -210,11 +235,11 @@ function CrearVector(x,y,magnitud) {
     return vector;
 
 }
-function CrearJugador() {
+function CrearJugador(x,y) {
     //Aqui creamos al jugador, representado en esta version por el
     //muñequito de palitos
 
-    player = game.add.sprite(35, game.world.height - 110, 'dude');
+    player = game.add.sprite(x,y, 'dude');
     //Permitimos que el muñeco sea afectado por la gravedad
     game.physics.arcade.enable(player);
 
@@ -241,10 +266,15 @@ function pegarVector(item) {
     //Chequea si el vector esta fuera de un rango y si no es asi,
     //lo lleva a dicho rango
  
-    if ((item.x < 150)&&(item.x > 0)&&(item.y < 600)&&(item.y > 400)) {
-        item.x = 50;
-        item.y = 500;
-        magnitudJugador = item.magnitud
+    if (ChequearOverlap(player,item)) {
+        item.x = (player.x+(player.width/2));
+        item.y = (player.y+(player.height/2));
+        magnitudJugador = item.magnitud;
+        angulo = item.angulo;
+    }
+    else{
+        magnitudJugador = 0;
+        angulo = 0;
     }
 
 }
@@ -257,11 +287,18 @@ function resetVariables(){
     angulo = 0;
     impulsado = false;
     listaDeCuadros = [];
+    listaDeNumeros = [];
 }
 function CrearCuadroVector(x,y,vector){
     cuadro = game.add.sprite(x, y, 'cuadroVector');
     cuadro.vector = vector;
     return cuadro;
+}
+function ChequearOverlap(Objeto1,Objeto2){
+    var boundsA = Objeto1.getBounds();
+    var boundsB = Objeto2.getBounds();
+
+    return Phaser.Rectangle.intersects(boundsA, boundsB);
 }
 
 

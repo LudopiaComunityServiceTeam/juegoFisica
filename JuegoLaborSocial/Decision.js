@@ -1,21 +1,4 @@
-var player;
-var posInicXPlayer;
-var posInicYPlayer;
-var salida;
-var platforms;
-var cursors;
-var clicked = false;
-var magnitudJugador;
-var direccion = 1;
-var angulo = 0;//(3.1415)/4;
-var impulsado = false;
-var listaDeCuadros = [];
-var listaDeNumeros = [];
-var numeroMagnitud;
-var niveles = ['NivelUno','Decision','NivelDos', 'Main_game'];
-var nivelActual = 0;
-
-var Nivel1 = {
+var Decision = {
 preload: function() {
 
 //Esta funcion carga todas las imagenes que vamos a utilizar para el juego
@@ -84,16 +67,16 @@ create: function() {
     CrearPiso();
 
     //  Crear la puerta de salida
-    salida = game.add.sprite(600,486,'salida');
+    salida = game.add.sprite(100,486,'salida');
     CrearTimer();
     //  Crear el boton de play
     CrearPlay();
-    vector = CrearVector(400,300,300,0);
-    posInicXPlayer = 35;
+    vectorDer = CrearVector(450,300,300,0);
+    vectorIzq = CrearVector(350,300,300,180);
+    posInicXPlayer = 400;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
     //  Crear texto
-    texto = game.add.sprite(60,150,'esUnVector');
 },
 
 update: function() {
