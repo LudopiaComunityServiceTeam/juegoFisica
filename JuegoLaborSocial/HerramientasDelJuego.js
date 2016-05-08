@@ -16,11 +16,31 @@ function ControlJugador(){
         else{
             player.animations.play('left');
         }
+//Detectar si el personaje toca la salida
         if (ChequearOverlap(player,salida)){
 
              game.state.start(niveles[nivelActual+1]);
              nivelActual = nivelActual + 1;
              resetVariables();
+        }
+//Detectar si el personaje toca una espina
+        for (i = 0; i < listaDeEspinas.length; i++){
+            if (ChequearOverlap(player,listaDeEspinas[i])) {
+                player.body.velocity.x = 0;
+                player.animations.stop();
+                player.frame = 4; 
+                if (!explosion){
+                    player.kill();
+                    cabeza = game.add.sprite(player.x, player.y, 'cabeza');
+                    game.physics.arcade.enable(cabeza);
+                    cabeza.body.bounce.y = 0.2;
+                    cabeza.body.gravity.y = 300;
+                    cabeza.body.collideWorldBounds = true;
+                    cabeza.body.velocity.y = -500;
+                    explosion = true;
+                }
+            //matar
+            }
         }
 
     }
@@ -30,12 +50,6 @@ function ControlJugador(){
         player.body.velocity.x = 0;
         player.animations.stop();
         player.frame = 4;
-    }
-    
-    //Permite al jugador saltar si esta tocando piso.
-    if (cursors.up.isDown && player.body.touching.down)
-    {
-        player.body.velocity.y = -350;
     }
 }
 function CrearPiso() {
@@ -85,7 +99,7 @@ function clickPlay(){
         //y apretamos el boton
         timer.animations.play('contar');
         PlayButton.frame = 3;
-        clicked = true;
+        clicked = true; 
     }
     else{
         //Detenemos el timer
@@ -96,7 +110,15 @@ function clickPlay(){
         clicked = false;
         impulsado = false;
         game.add.tween(player.body).to( { x: posInicXPlayer , y:posInicYPlayer}, 1, Phaser.Easing.Linear.None, true);
+        if (!player.alive){
+            player.reset(posInicXPlayer,posInicYPlayer)
+        }
+        if (explosion){
+            cabeza.destroy();
+            explosion = false;
+        }
     }
+ 
 }
 function overPlayButton(){
     if (!clicked){
@@ -256,10 +278,6 @@ function CrearJugador(x,y) {
     player.animations.add('left', [0, 1, 2, 3], 10, true);
     player.animations.add('right', [5, 6, 7, 8], 10, true);
 
-    //En una variable metemos los posibles inputs con el teclado
-    //para hacerles referencia luego cuando queramos.
-    cursors = game.input.keyboard.createCursorKeys();
-
 }
 
 function pegarVector(item) {
@@ -288,6 +306,7 @@ function resetVariables(){
     impulsado = false;
     listaDeCuadros = [];
     listaDeNumeros = [];
+    listaDeEspinas = [];
 }
 function CrearCuadroVector(x,y,vector){
     cuadro = game.add.sprite(x, y, 'cuadroVector');

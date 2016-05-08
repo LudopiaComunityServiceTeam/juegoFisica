@@ -16,14 +16,11 @@ preload: function() {
 //numero y la altura en el segundo
 
     game.load.image('fondo', 'assets/fondo.png');
-    game.load.image('ecuacionVelocidad','assets/Ecuacion velocidad.png');
-    game.load.image('ecuacionAceleracion','assets/Ecuacion aceleracion.png');
     game.load.spritesheet('simbolos','assets/Simbolos.png',28,28);
     game.load.image('cuadroVector','assets/cuadroVector.png');
-    game.load.spritesheet('PlayButton','assets/play.png',50,50)
+    game.load.spritesheet('PlayButton','assets/play.png',50,50);
     game.load.image('salida', 'assets/salida.png');
     game.load.image('piso', 'assets/suelo.png');
-    game.load.image('platform', 'assets/plataforma.png');
     game.load.image('vector', 'assets/Vector.png');
     game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
     game.load.spritesheet('numeros', 'assets/numeros.png', 40, 65);
@@ -79,9 +76,9 @@ create: function() {
     numeroMagnitud = CrearNumeroParaVector(500,550,300,5);
     listaDeNumeros.push(numeroMagnitud); 
     numeroMagnitud = CrearNumeroParaVector(300,650,300,3);
-    listaDeNumeros.push(numeroMagnitud)
+    listaDeNumeros.push(numeroMagnitud);
     numeroMagnitud = CrearNumeroParaVector(100,750,300,1);
-    listaDeNumeros.push(numeroMagnitud)
+    listaDeNumeros.push(numeroMagnitud);
     posInicXPlayer = 35;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);

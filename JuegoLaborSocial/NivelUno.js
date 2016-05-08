@@ -11,9 +11,11 @@ var angulo = 0;//(3.1415)/4;
 var impulsado = false;
 var listaDeCuadros = [];
 var listaDeNumeros = [];
+var listaDeEspinas = [];
 var numeroMagnitud;
 var niveles = ['NivelUno','Decision','NivelDos', 'Main_game'];
 var nivelActual = 0;
+var explosion = false;
 
 var Nivel1 = {
 preload: function() {
@@ -34,11 +36,8 @@ preload: function() {
 
     game.load.image('fondo', 'assets/fondo.png');
     game.load.image('esUnVector', 'assets/estoEsUnVector.png');
-    game.load.image('ecuacionVelocidad','assets/Ecuacion velocidad.png');
-    game.load.image('ecuacionAceleracion','assets/Ecuacion aceleracion.png');
     game.load.spritesheet('simbolos','assets/Simbolos.png',28,28);
-    game.load.image('cuadroVector','assets/cuadroVector.png');
-    game.load.spritesheet('PlayButton','assets/play.png',50,50)
+    game.load.spritesheet('PlayButton','assets/play.png',50,50);
     game.load.image('salida', 'assets/salida.png');
     game.load.image('piso', 'assets/suelo.png');
     game.load.image('platform', 'assets/plataforma.png');
