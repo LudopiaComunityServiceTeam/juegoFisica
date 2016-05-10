@@ -259,6 +259,7 @@ function checkAnguloInVector(item) {
             item.x = (listaDeCuadros[i].x+100);
             item.y = (listaDeCuadros[i].y+70);
             listaDeCuadros[i].vector.angulo = item.numero;
+            listaDeCuadros[i].vector.angle = ConvertirAngulo(item.numero);
             if (ChequearOverlap(listaDeCuadros[i].vector,player)){
                 console.log("cambia jugador");
                 angulo = listaDeCuadros[i].vector.angulo;
@@ -273,6 +274,7 @@ function checkAnguloInVector(item) {
                     anguloEnCuadro = true;
                     console.log("vololooo");
                     listaDeCuadros[i].vector.angulo = listaDeAngulos[j].numero;
+                    listaDeCuadros[i].vector.angle = ConvertirAngulo(listaDeAngulos[j].numero);
 //Si el vector de dicha caja esta en contacto con el jugador entonces el jugador recibe
 //el angulo del numero que estaba en esa caja
                     if (ChequearOverlap(listaDeCuadros[i].vector,player)){
@@ -283,6 +285,7 @@ function checkAnguloInVector(item) {
             }
             if (!anguloEnCuadro){
                 listaDeCuadros[i].vector.angulo = 0;
+                listaDeCuadros[i].vector.angle = ConvertirAngulo(0);
 //Si el cuadro no tiene nada adentro, pero su vector esta encima del jugador
 //entonces el "angulo" del jugador deberia ser 0 y el del vector tambien
                 if (ChequearOverlap(listaDeCuadros[i].vector,player)){
