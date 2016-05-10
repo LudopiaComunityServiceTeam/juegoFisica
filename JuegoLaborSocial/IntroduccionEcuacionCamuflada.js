@@ -1,27 +1,4 @@
-var player;
-var posInicXPlayer;
-var posInicYPlayer;
-var salida;
-var platforms;
-var cursors;
-var clicked = false;
-var magnitudJugador;
-var direccion = 1;
-var angulo = 0;//(3.1415)/4;
-var tieneDistancia = false;
-var tieneTiempo = false;
-var impulsado = false;
-var listaDeCuadros = [];
-var listaDeNumeros = [];
-var listaDeEspinas = [];
-var listaDeAngulos = [];
-var ListaDeDatos = [];
-var numeroMagnitud;
-var niveles = ['NivelUno','Decision','NivelDos','IntroduccionAngulo', 'IntroduccionEcuacionCamuflada' ,'Main_game'];
-var nivelActual = 0;
-var explosion = false;
-
-var Nivel1 = {
+var IntroduccionEcuacionCamuflada = {
 preload: function() {
 
 //Esta funcion carga todas las imagenes que vamos a utilizar para el juego
@@ -39,12 +16,12 @@ preload: function() {
 //numero y la altura en el segundo
 
     game.load.image('fondo', 'assets/fondo.png');
-    game.load.image('esUnVector', 'assets/estoEsUnVector.png');
+    game.load.image('EcuacionVelocidadCamuflada', 'assets/EcuacionVelocidadCamuflada.png');
     game.load.spritesheet('simbolos','assets/Simbolos.png',28,28);
+    game.load.image('cuadroVector','assets/cuadroVector.png');
     game.load.spritesheet('PlayButton','assets/play.png',50,50);
     game.load.image('salida', 'assets/salida.png');
     game.load.image('piso', 'assets/suelo.png');
-    game.load.image('platform', 'assets/plataforma.png');
     game.load.image('vector', 'assets/Vector.png');
     game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
     game.load.spritesheet('numeros', 'assets/numeros.png', 40, 65);
@@ -88,16 +65,21 @@ create: function() {
 
     //  Crear la puerta de salida
     salida = game.add.sprite(600,486,'salida');
+
+    //  Crear el cuadro del vector
     CrearTimer();
+
     //  Crear el boton de play
     CrearPlay();
-    vector = CrearVector(400,300,300,0);
+    vector = CrearVector(400,300,0,0);
+    cuadro = CrearCuadroVector(550,100,vector)
+    listaDeCuadros.push(cuadro); //El cuadro esta encima del vector, arreglar!
     posInicXPlayer = 35;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
-    //  Crear texto
-    texto = game.add.sprite(60,150,'esUnVector');
-
+    CrearEcuacionVelocidad();
+    CrearDato(6,150,100,6,"distancia");
+    CrearDato(3,150,150,3,"tiempo");
 },
 
 update: function() {

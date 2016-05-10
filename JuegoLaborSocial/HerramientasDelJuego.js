@@ -236,7 +236,7 @@ function CrearAnguloParaVector(numero,x,y,numeroMostrado) {
     //Elegimos el numero que queremos que sea el objeto que creamos
     //Esto cambia la imagen que tenemos del spritesheet
     //el frame 0 seria 1, el 2 seria 3, el 3 seria el cuatro y asi.
-    numeroAngulo.frame = 1;
+    numeroAngulo.frame = numeroMostrado-1;
 
     numeroAngulo.numero = numero;
 
@@ -255,13 +255,11 @@ function checkAnguloInVector(item) {
 //jugador tambien debe cambiar
         if (ChequearOverlap(item,listaDeCuadros[i])) {
             anguloEnCuadro = true;
-            console.log("cambia vector");
             item.x = (listaDeCuadros[i].x+100);
             item.y = (listaDeCuadros[i].y+70);
             listaDeCuadros[i].vector.angulo = item.numero;
             listaDeCuadros[i].vector.angle = ConvertirAngulo(item.numero);
             if (ChequearOverlap(listaDeCuadros[i].vector,player)){
-                console.log("cambia jugador");
                 angulo = listaDeCuadros[i].vector.angulo;
             }
         }
@@ -272,13 +270,11 @@ function checkAnguloInVector(item) {
             for (j = 0; j < listaDeAngulos.length; j++){
                 if (ChequearOverlap(listaDeCuadros[i],listaDeAngulos[j])) {
                     anguloEnCuadro = true;
-                    console.log("vololooo");
                     listaDeCuadros[i].vector.angulo = listaDeAngulos[j].numero;
                     listaDeCuadros[i].vector.angle = ConvertirAngulo(listaDeAngulos[j].numero);
 //Si el vector de dicha caja esta en contacto con el jugador entonces el jugador recibe
 //el angulo del numero que estaba en esa caja
                     if (ChequearOverlap(listaDeCuadros[i].vector,player)){
-                        console.log("wachuuuuu");
                         angulo = listaDeCuadros[i].vector.angulo;
                     }
                 }
@@ -389,16 +385,19 @@ function pegarVector(item) {
 }
 function resetVariables(){
     //resetea las variables del nivel para que al iniciar el nuevo
-    //nivel no hayan problemas
+    //nivel no se traigan variables del nivel anterior
     clicked = false;
     magnitudJugador = 0;
     direccion = 1;
     angulo = 0;
     impulsado = false;
+    tieneDistancia = false;
+    tieneTiempo = false;
     listaDeCuadros = [];
     listaDeNumeros = [];
     listaDeEspinas = [];
     listaDeAngulos = [];
+    ListaDeDatos = [];
 }
 function CrearCuadroVector(x,y,vector){
     cuadro = game.add.sprite(x, y, 'cuadroVector');
@@ -411,5 +410,78 @@ function ChequearOverlap(Objeto1,Objeto2){
 
     return Phaser.Rectangle.intersects(boundsA, boundsB);
 }
+/*
 
 
+//Segmento para ecuaciones//
+
+
+*/
+function CrearEcuacionVelocidad(){
+    EcuacionVelocidad = game.add.sprite(100, 100, 'EcuacionVelocidadCamuflada');
+    return EcuacionVelocidad
+}
+function CrearDato(valor,x,y,numeroMostrado,tipoDeDato) {
+    //Requiere una lista de Datos llamada "ListaDeDatos"
+    //Creamos un numero que se usara para llenar la ecuacion
+    var dato;
+    //Creamos un objeto con forma de número
+    dato = game.add.sprite(x, y, 'numeros');
+    //le ponemos el tipo al dato
+    dato.tipo = tipoDeDato;
+    //Permitimos que se le pueda poner input al objeto
+    dato.inputEnabled = true;
+    //Permite arrastrar con el mouse, el "true" hace que el centro del
+    //objeto quede en donde se tiene el mouse 
+    dato.input.enableDrag(true);
+    //Aqui se le agrega al numero el "evento" de que cuando se suelte
+    //se corre la funcion checkMagnitudInVector
+    dato.events.onDragStop.add(CheckEncimaEcuacion);
+    
+    //Elegimos el numero que queremos que sea el objeto que creamos
+    //Esto cambia la imagen que tenemos del spritesheet
+    //el frame 0 seria 1, el 2 seria 3, el 3 seria el cuatro y asi.
+    dato.frame = numeroMostrado-1;
+
+    dato.valor = valor;
+    ListaDeDatos.push(dato);
+}  
+function CheckEncimaEcuacion(item){
+    if (item.tipo == "distancia"){
+        CheckDistanciaOnVelocidad(item);
+    }
+    else if (item.tipo == "tiempo"){
+        CheckTiempoOnVelocidad(item);
+    }
+}
+function CheckDistanciaOnVelocidad(item){
+//Requiere booleanos "tieneDistancia" y "tieneTiempo"
+
+    if (ChequearOverlap(item,EcuacionVelocidad)){
+        tieneDistancia = true;
+        EcuacionVelocidad.distancia = item.valor;
+        item.x = EcuacionVelocidad.x;
+        item.y = EcuacionVelocidad.y;
+    }
+    if (tieneTiempo){
+        CrearVelocidad();
+    }
+}
+function CheckTiempoOnVelocidad(item){
+//Requiere booleanos "tieneVelocidad" y "tieneTiempo"
+
+    if (ChequearOverlap(item,EcuacionVelocidad)){
+        tieneTiempo = true;
+        EcuacionVelocidad.tiempo = item.valor;
+        item.x = EcuacionVelocidad.x;
+        item.y = (EcuacionVelocidad.y+50);
+
+    }
+    if (tieneDistancia){
+        CrearVelocidad();
+    }
+}
+function CrearVelocidad(){
+    resultado = (EcuacionVelocidad.distancia/EcuacionVelocidad.tiempo);
+    CrearNumeroParaVector((resultado*100),(EcuacionVelocidad.x+80),EcuacionVelocidad.y+25,resultado)
+}
