@@ -73,6 +73,10 @@ create: function() {
     vector = CrearVector(400,300,0,0);
     cuadro = CrearCuadroVector(550,100,vector)
     listaDeCuadros.push(cuadro); //El cuadro esta encima del vector, arreglar!
+    numeroAngulo = CrearAnguloParaVector(90,550,200,5);
+    listaDeAngulos.push(numeroAngulo); 
+    numeroAngulo = CrearAnguloParaVector(45,650,200,5);
+    listaDeAngulos.push(numeroAngulo); 
     numeroMagnitud = CrearNumeroParaVector(500,550,300,5);
     listaDeNumeros.push(numeroMagnitud); 
     numeroMagnitud = CrearNumeroParaVector(300,650,300,3);

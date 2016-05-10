@@ -12,6 +12,7 @@ var impulsado = false;
 var listaDeCuadros = [];
 var listaDeNumeros = [];
 var listaDeEspinas = [];
+var listaDeAngulos = [];
 var numeroMagnitud;
 var niveles = ['NivelUno','Decision','NivelDos', 'Main_game'];
 var nivelActual = 0;

@@ -10,7 +10,7 @@ function ControlJugador(){
             player.body.velocity.y = -magnitudJugador*Math.sin(angulo*Math.PI / 180);
             impulsado = true;
         }
-        if ((angulo<90)||(angulo>270)){
+        if ((angulo<=90)||(angulo>270)){
             player.animations.play('right');
         }
         else{
@@ -180,7 +180,7 @@ function checkMagnitudInVector(item) {
 //jugador tambien debe cambiar
         if (ChequearOverlap(item,listaDeCuadros[i])) {
             magnitudEnCuadro = true;
-            item.x = (listaDeCuadros[i].x+82);
+            item.x = (listaDeCuadros[i].x+20);
             item.y = (listaDeCuadros[i].y+70);
             listaDeCuadros[i].vector.magnitud = item.numero;
             if (ChequearOverlap(listaDeCuadros[i].vector,player)){
@@ -214,6 +214,86 @@ function checkMagnitudInVector(item) {
 
     }
 }
+function CrearAnguloParaVector(numero,x,y,numeroMostrado) {
+    //Creamos un numero de prueba para poder probar
+    //nuestra funcion de click and drag
+
+    var numeroAngulo;
+    //creamos un objeto con forma de número
+    numeroAngulo = game.add.sprite(x, y, 'numeros');
+
+    //Permitimos que se le pueda poner input al objeto
+    numeroAngulo.inputEnabled = true;
+
+    //Permite arrastrar con el mouse, el "true" hace que el centro del
+    //objeto quede en donde se tiene el mouse 
+    numeroAngulo.input.enableDrag(true);
+
+    //Aqui se le agrega al numero el "evento" de que cuando se suelte
+    //se corre la funcion checkMagnitudInVector
+    numeroAngulo.events.onDragStop.add(checkAnguloInVector);
+    
+    //Elegimos el numero que queremos que sea el objeto que creamos
+    //Esto cambia la imagen que tenemos del spritesheet
+    //el frame 0 seria 1, el 2 seria 3, el 3 seria el cuatro y asi.
+    numeroAngulo.frame = 1;
+
+    numeroAngulo.numero = numero;
+
+    return numeroAngulo;
+} 
+function checkAnguloInVector(item) {
+    // Revisa si el objeto esta en el rango de la caja de angulo del vector
+    // Si es asi, ajusta el objeto para que quede justo en el centro de la caja
+    // Y cambia el valor de angulo al valor que cargaba el objeto.
+    anguloEnCuadro = false;
+//Se revisan todos los cuadros para ver si el objeto cayó en alguno
+    for (i = 0; i < listaDeCuadros.length; i++) {
+        anguloEnCuadro = false;
+//Si se arrastra el objeto tipo angulo a un cuadro, el angulo del vector
+//debe cambiar, y si el vector ya estaba encima del jugador el angulo del
+//jugador tambien debe cambiar
+        if (ChequearOverlap(item,listaDeCuadros[i])) {
+            anguloEnCuadro = true;
+            console.log("cambia vector");
+            item.x = (listaDeCuadros[i].x+100);
+            item.y = (listaDeCuadros[i].y+70);
+            listaDeCuadros[i].vector.angulo = item.numero;
+            if (ChequearOverlap(listaDeCuadros[i].vector,player)){
+                console.log("cambia jugador");
+                angulo = listaDeCuadros[i].vector.angulo;
+            }
+        }
+
+        else{
+//Se revisan todos los numeros para ver si hay alguno ademas del que se
+//arrastro dentro de la caja
+            for (j = 0; j < listaDeAngulos.length; j++){
+                if (ChequearOverlap(listaDeCuadros[i],listaDeAngulos[j])) {
+                    anguloEnCuadro = true;
+                    console.log("vololooo");
+                    listaDeCuadros[i].vector.angulo = listaDeAngulos[j].numero;
+//Si el vector de dicha caja esta en contacto con el jugador entonces el jugador recibe
+//el angulo del numero que estaba en esa caja
+                    if (ChequearOverlap(listaDeCuadros[i].vector,player)){
+                        console.log("wachuuuuu");
+                        angulo = listaDeCuadros[i].vector.angulo;
+                    }
+                }
+            }
+            if (!anguloEnCuadro){
+                listaDeCuadros[i].vector.angulo = 0;
+//Si el cuadro no tiene nada adentro, pero su vector esta encima del jugador
+//entonces el "angulo" del jugador deberia ser 0 y el del vector tambien
+                if (ChequearOverlap(listaDeCuadros[i].vector,player)){
+                    angulo = listaDeCuadros[i].vector.angulo;
+                }
+            }        
+        }
+
+    }
+}
+
 /*
 function CrearSimboloParaVector() {
     //Creamos un simbolo para representar la direccion del vector
@@ -239,7 +319,7 @@ function CrearVector(x,y,magnitud,angulo) {
     vector.angulo = angulo;
     vector.cargado = false
     vector.anchor.setTo(0.5, 0.5);
-    vector.angle = angulo;
+    vector.angle = ConvertirAngulo(angulo);
     if (magnitud != 0){
         vector.cargado = true
     }
@@ -256,6 +336,14 @@ function CrearVector(x,y,magnitud,angulo) {
 
     return vector;
 
+}
+function ConvertirAngulo(angulo){
+    if ((angulo < 180)&&(angulo => 0)){
+        return (-angulo);
+    }
+    else if ((angulo <= 359)&&(angulo >= 180)){
+        return (360 - angulo);
+    }
 }
 function CrearJugador(x,y) {
     //Aqui creamos al jugador, representado en esta version por el
@@ -307,6 +395,7 @@ function resetVariables(){
     listaDeCuadros = [];
     listaDeNumeros = [];
     listaDeEspinas = [];
+    listaDeAngulos = [];
 }
 function CrearCuadroVector(x,y,vector){
     cuadro = game.add.sprite(x, y, 'cuadroVector');
