@@ -97,7 +97,7 @@ create: function() {
     CrearJugador(posInicXPlayer, posInicYPlayer);
     //  Crear texto
     var esUnVector = "Esto es un \nvector";
-    var style = { font: "48px Gloria Hallelujah",  fill: "#1a1a1a", align: "center" };
+    var style = { font: "48px Gloria Hallelujah",  fill: colorText, align: "center" };
 
     var text = game.add.text(70, 200, esUnVector, style);
     text.angle = -20;

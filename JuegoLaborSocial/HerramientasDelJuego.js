@@ -1,3 +1,11 @@
+colorText = "#1a1a1a";
+colorTiempo = "#ff1a1a";
+colorDesplazamiento = "#ff8c1a";
+colorVelocidad = "#ffff1a";
+colorAceleracion = "#005ce6";
+colorMagnitud = "#e6005c";
+colorAngulo = "#9900cc";
+
 function ControlJugador(){
     //Le da al muñequito de palitos un movimiento clasico de plataformero 2D
     //puede saltar, correr a la izq, der y viene con las animaciones.
@@ -111,7 +119,7 @@ function clickPlay(){
         impulsado = false;
         game.add.tween(player.body).to( { x: posInicXPlayer , y:posInicYPlayer}, 1, Phaser.Easing.Linear.None, true);
         if (!player.alive){
-            player.reset(posInicXPlayer,posInicYPlayer)
+            player.reset(posInicXPlayer,posInicYPlayer);
         }
         if (explosion){
             cabeza.destroy();
@@ -145,7 +153,7 @@ function CrearNumeroParaVector(numero,x,y,numeroMostrado) {
     var numeroMag;
     //creamos un objeto con forma de número
     // numeroMag = game.add.sprite(x, y, 'numeros');
-    var style = { font: "48px Gloria Hallelujah",  fill: "#1a1a1a", align: "center" };
+    var style = { font: "48px Gloria Hallelujah",  fill: colorMagnitud, align: "center" };
 
     numeroMag = game.add.text(x, y, numeroMostrado, style);
     //Permitimos que se le pueda poner input al objeto
@@ -222,7 +230,7 @@ function CrearAnguloParaVector(numero,x,y,numeroMostrado) {
 
     var numeroAngulo;
     //creamos un objeto con forma de número
-    var style = { font: "48px Gloria Hallelujah",  fill: "#1a1a1a", align: "center" };
+    var style = { font: "48px Gloria Hallelujah",  fill: colorAngulo, align: "center" };
 
     numeroAngulo = game.add.text(x, y, numeroMostrado, style);
 
@@ -321,11 +329,11 @@ function CrearVector(x,y,magnitud,angulo) {
     var vector = game.add.sprite(x, y, 'vector');
     vector.magnitud = magnitud;
     vector.angulo = angulo;
-    vector.cargado = false
+    vector.cargado = false;
     vector.anchor.setTo(0.5, 0.5);
     vector.angle = ConvertirAngulo(angulo);
     if (magnitud != 0){
-        vector.cargado = true
+        vector.cargado = true;
     }
     //Permitimos que se le pueda poner input al objeto
     vector.inputEnabled = true;
@@ -424,14 +432,32 @@ function ChequearOverlap(Objeto1,Objeto2){
 */
 function CrearEcuacionVelocidad(){
     EcuacionVelocidad = game.add.sprite(100, 100, 'EcuacionVelocidadCamuflada');
-    return EcuacionVelocidad
+    return EcuacionVelocidad;
 }
 function CrearDato(valor,x,y,numeroMostrado,tipoDeDato) {
     //Requiere una lista de Datos llamada "ListaDeDatos"
     //Creamos un numero que se usara para llenar la ecuacion
     var dato;
     //Creamos un objeto con forma de número
-    var style = { font: "48px Gloria Hallelujah",  fill: "#1a1a1a", align: "center" };
+    switch (tipoDeDato) {
+        case "distancia":
+            color = colorDesplazamiento;
+            break;
+
+        case "velocidad":
+            color = colorVelocidad;
+            break;
+
+        case "aceleracion":
+            color = colorAceleracion;
+            break;
+
+        case "tiempo":
+            color = colorTiempo;
+            break;
+        default: color = colorText;
+    }
+    var style = { font: "48px Gloria Hallelujah",  fill: color, align: "center" };
 
     dato = game.add.text(x, y, numeroMostrado, style);
     //le ponemos el tipo al dato
@@ -490,5 +516,5 @@ function CheckTiempoOnVelocidad(item){
 }
 function CrearVelocidad(){
     resultado = (EcuacionVelocidad.distancia/EcuacionVelocidad.tiempo);
-    CrearNumeroParaVector((resultado*100),(EcuacionVelocidad.x+80),EcuacionVelocidad.y+25,resultado)
+    CrearNumeroParaVector((resultado*100),(EcuacionVelocidad.x+80),EcuacionVelocidad.y+25,resultado);
 }
