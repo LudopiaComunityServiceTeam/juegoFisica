@@ -96,8 +96,11 @@ create: function() {
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
     //  Crear texto
-    texto = game.add.sprite(60,150,'esUnVector');
+    var esUnVector = "Esto es un \nvector";
+    var style = { font: "48px Gloria Hallelujah",  fill: "#1a1a1a", align: "center" };
 
+    var text = game.add.text(70, 200, esUnVector, style);
+    text.angle = -20;
 },
 
 update: function() {
@@ -105,9 +108,9 @@ update: function() {
 //Aqui colocamos lo que es movimiento y cambios de variables
 //Se llama sola en forma de loop infinito
 
-    //Permitimos que el jugador colisione con cualquier objeto 
+    //Permitimos que el jugador colisione con cualquier objeto
     //en el grupo de las plataformas
     game.physics.arcade.collide(player, platforms);
     ControlJugador();
 }
-}
+};
