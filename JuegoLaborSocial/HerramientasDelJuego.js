@@ -28,7 +28,7 @@ function ControlJugador(){
             if (ChequearOverlap(player,listaDeEspinas[i])) {
                 player.body.velocity.x = 0;
                 player.animations.stop();
-                player.frame = 4; 
+                player.frame = 4;
                 if (!explosion){
                     player.kill();
                     cabeza = game.add.sprite(player.x, player.y, 'cabeza');
@@ -58,7 +58,7 @@ function CrearPiso() {
     var piso = platforms.create(0, game.world.height - 64, 'piso');
 
     // Si fuera necesario cambiar el tamaño de la imagen original, se puede hacer
-    // con esta funcion. 
+    // con esta funcion.
     piso.scale.setTo(1, 1);
 
     // Para que el piso no sea afectado por la gravedad le agregamos
@@ -99,7 +99,7 @@ function clickPlay(){
         //y apretamos el boton
         timer.animations.play('contar');
         PlayButton.frame = 3;
-        clicked = true; 
+        clicked = true;
     }
     else{
         //Detenemos el timer
@@ -118,7 +118,7 @@ function clickPlay(){
             explosion = false;
         }
     }
- 
+
 }
 function overPlayButton(){
     if (!clicked){
@@ -144,19 +144,21 @@ function CrearNumeroParaVector(numero,x,y,numeroMostrado) {
 
     var numeroMag;
     //creamos un objeto con forma de número
-    numeroMag = game.add.sprite(x, y, 'numeros');
+    // numeroMag = game.add.sprite(x, y, 'numeros');
+    var style = { font: "48px Gloria Hallelujah",  fill: "#1a1a1a", align: "center" };
 
+    numeroMag = game.add.text(x, y, numeroMostrado, style);
     //Permitimos que se le pueda poner input al objeto
     numeroMag.inputEnabled = true;
 
     //Permite arrastrar con el mouse, el "true" hace que el centro del
-    //objeto quede en donde se tiene el mouse 
+    //objeto quede en donde se tiene el mouse
     numeroMag.input.enableDrag(true);
 
     //Aqui se le agrega al numero el "evento" de que cuando se suelte
     //se corre la funcion checkMagnitudInVector
     numeroMag.events.onDragStop.add(checkMagnitudInVector);
-    
+
     //Elegimos el numero que queremos que sea el objeto que creamos
     //Esto cambia la imagen que tenemos del spritesheet
     //el frame 0 seria 1, el 2 seria 3, el 3 seria el cuatro y asi.
@@ -165,7 +167,7 @@ function CrearNumeroParaVector(numero,x,y,numeroMostrado) {
     numeroMag.numero = numero;
 
     return numeroMag;
-} 
+}
 
 function checkMagnitudInVector(item) {
     // Revisa si el objeto esta en el rango de la caja de magnitud del vector
@@ -209,7 +211,7 @@ function checkMagnitudInVector(item) {
                 if (ChequearOverlap(listaDeCuadros[i].vector,player)){
                     magnitudJugador = listaDeCuadros[i].vector.magnitud;
                 }
-            }        
+            }
         }
 
     }
@@ -220,19 +222,22 @@ function CrearAnguloParaVector(numero,x,y,numeroMostrado) {
 
     var numeroAngulo;
     //creamos un objeto con forma de número
-    numeroAngulo = game.add.sprite(x, y, 'numeros');
+    var style = { font: "48px Gloria Hallelujah",  fill: "#1a1a1a", align: "center" };
+
+    numeroAngulo = game.add.text(x, y, numeroMostrado, style);
+
 
     //Permitimos que se le pueda poner input al objeto
     numeroAngulo.inputEnabled = true;
 
     //Permite arrastrar con el mouse, el "true" hace que el centro del
-    //objeto quede en donde se tiene el mouse 
+    //objeto quede en donde se tiene el mouse
     numeroAngulo.input.enableDrag(true);
 
     //Aqui se le agrega al numero el "evento" de que cuando se suelte
     //se corre la funcion checkMagnitudInVector
     numeroAngulo.events.onDragStop.add(checkAnguloInVector);
-    
+
     //Elegimos el numero que queremos que sea el objeto que creamos
     //Esto cambia la imagen que tenemos del spritesheet
     //el frame 0 seria 1, el 2 seria 3, el 3 seria el cuatro y asi.
@@ -241,7 +246,7 @@ function CrearAnguloParaVector(numero,x,y,numeroMostrado) {
     numeroAngulo.numero = numero;
 
     return numeroAngulo;
-} 
+}
 function checkAnguloInVector(item) {
     // Revisa si el objeto esta en el rango de la caja de angulo del vector
     // Si es asi, ajusta el objeto para que quede justo en el centro de la caja
@@ -287,7 +292,7 @@ function checkAnguloInVector(item) {
                 if (ChequearOverlap(listaDeCuadros[i].vector,player)){
                     angulo = listaDeCuadros[i].vector.angulo;
                 }
-            }        
+            }
         }
 
     }
@@ -299,7 +304,7 @@ function CrearSimboloParaVector() {
     //Creamos un boton con forma de "+"
     simboloVector = game.add.button(662, 190, 'simbolos', clickSimboloVector, this);
     simboloVector.frame = 0;
-} 
+}
 function clickSimboloVector(){
    if (simboloVector.frame == 0){
        simboloVector.frame = 1;
@@ -326,7 +331,7 @@ function CrearVector(x,y,magnitud,angulo) {
     vector.inputEnabled = true;
 
     //Permite arrastrar con el mouse, el "true" hace que el centro del
-    //objeto quede en donde se tiene el mouse 
+    //objeto quede en donde se tiene el mouse
     vector.input.enableDrag(true);
 
     //Aqui se le agrega al numero el "evento" de que cuando se suelte
@@ -361,7 +366,7 @@ function CrearJugador(x,y) {
     //Le creamos 2 animaciones
     //Las animaciones se crean con un nombre, la seleccion en orden
     //de los sprites que queremos mostrar, la velocidad a la que los
-    //queremos mostrar y un booleano (que no se que hace) 
+    //queremos mostrar y un booleano (que no se que hace)
     player.animations.add('left', [0, 1, 2, 3], 10, true);
     player.animations.add('right', [5, 6, 7, 8], 10, true);
 
@@ -370,7 +375,7 @@ function CrearJugador(x,y) {
 function pegarVector(item) {
     //Chequea si el vector esta fuera de un rango y si no es asi,
     //lo lleva a dicho rango
- 
+
     if (ChequearOverlap(player,item)) {
         item.x = (player.x+(player.width/2));
         item.y = (player.y+(player.height/2));
@@ -426,18 +431,20 @@ function CrearDato(valor,x,y,numeroMostrado,tipoDeDato) {
     //Creamos un numero que se usara para llenar la ecuacion
     var dato;
     //Creamos un objeto con forma de número
-    dato = game.add.sprite(x, y, 'numeros');
+    var style = { font: "48px Gloria Hallelujah",  fill: "#1a1a1a", align: "center" };
+
+    dato = game.add.text(x, y, numeroMostrado, style);
     //le ponemos el tipo al dato
     dato.tipo = tipoDeDato;
     //Permitimos que se le pueda poner input al objeto
     dato.inputEnabled = true;
     //Permite arrastrar con el mouse, el "true" hace que el centro del
-    //objeto quede en donde se tiene el mouse 
+    //objeto quede en donde se tiene el mouse
     dato.input.enableDrag(true);
     //Aqui se le agrega al numero el "evento" de que cuando se suelte
     //se corre la funcion checkMagnitudInVector
     dato.events.onDragStop.add(CheckEncimaEcuacion);
-    
+
     //Elegimos el numero que queremos que sea el objeto que creamos
     //Esto cambia la imagen que tenemos del spritesheet
     //el frame 0 seria 1, el 2 seria 3, el 3 seria el cuatro y asi.
@@ -445,7 +452,7 @@ function CrearDato(valor,x,y,numeroMostrado,tipoDeDato) {
 
     dato.valor = valor;
     ListaDeDatos.push(dato);
-}  
+}
 function CheckEncimaEcuacion(item){
     if (item.tipo == "distancia"){
         CheckDistanciaOnVelocidad(item);
