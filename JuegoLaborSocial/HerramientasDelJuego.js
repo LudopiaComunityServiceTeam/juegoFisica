@@ -1,4 +1,4 @@
-colorText = "#1a1a1a";
+colorTexto = "#1a1a1a";
 colorTiempo = "#ff1a1a";
 colorDesplazamiento = "#ff8c1a";
 colorVelocidad = "#ffff1a";
@@ -82,14 +82,35 @@ function CrearPlataformas() {
     ledge = platforms.create(-150, 250, 'platform');
     ledge.body.immovable = true;
 }
+// function CrearTimer() {
+//     //  Creamos un timer
+//
+//     timer = game.add.sprite(750,0, 'numeros');
+//
+//     //  Le damos una animacion al timer
+//     timer.animations.add('contar', [0, 1, 2, 3, 4, 5, 6, 7, 8], 1, true);
+// }
+
 function CrearTimer() {
     //  Creamos un timer
+    tiempo = 0;
 
-    timer = game.add.sprite(750,0, 'numeros');
+    var x = 560;
+    var y = 10;
+    var text = game.add.text(x, y, "Tiempo: ", { font: "35px Gloria Hallelujah",  fill: colorTexto});
+    var estilo = { font: "35px Gloria Hallelujah",  fill: colorTiempo, align: "center" };
+    timerText = game.add.text(x + 140, y, "0", estilo);
 
-    //  Le damos una animacion al timer
-    timer.animations.add('contar', [0, 1, 2, 3, 4, 5, 6, 7, 8], 1, true);
+    timer = game.time.create(false);
+    timer.loop(1000, actualizarTimer, this);
 }
+
+function actualizarTimer() {
+    // Actualizar el timer
+    tiempo ++;
+    timerText.setText(tiempo);
+}
+
 function CrearPlay() {
     //  Crear el boton de play
 
@@ -104,16 +125,15 @@ function clickPlay(){
 
     if (!clicked){
         //Iniciamos el timer
+        timer.start();
         //y apretamos el boton
-        timer.animations.play('contar');
         PlayButton.frame = 3;
         clicked = true;
     }
     else{
         //Detenemos el timer
+        timer.stop();
         //y desapretamos el boton
-        timer.animations.stop();
-        timer.frame = 0;
         PlayButton.frame = 0;
         clicked = false;
         impulsado = false;
@@ -153,9 +173,9 @@ function CrearNumeroParaVector(numero,x,y,numeroMostrado) {
     var numeroMag;
     //creamos un objeto con forma de número
     // numeroMag = game.add.sprite(x, y, 'numeros');
-    var style = { font: "48px Gloria Hallelujah",  fill: colorMagnitud, align: "center" };
+    var estilo = { font: "48px Gloria Hallelujah",  fill: colorMagnitud, align: "center" };
 
-    numeroMag = game.add.text(x, y, numeroMostrado, style);
+    numeroMag = game.add.text(x, y, numeroMostrado, estilo);
     //Permitimos que se le pueda poner input al objeto
     numeroMag.inputEnabled = true;
 
@@ -230,9 +250,9 @@ function CrearAnguloParaVector(numero,x,y,numeroMostrado) {
 
     var numeroAngulo;
     //creamos un objeto con forma de número
-    var style = { font: "48px Gloria Hallelujah",  fill: colorAngulo, align: "center" };
+    var estilo = { font: "48px Gloria Hallelujah",  fill: colorAngulo, align: "center" };
 
-    numeroAngulo = game.add.text(x, y, numeroMostrado, style);
+    numeroAngulo = game.add.text(x, y, numeroMostrado, estilo);
 
 
     //Permitimos que se le pueda poner input al objeto
@@ -438,7 +458,8 @@ function CrearDato(valor,x,y,numeroMostrado,tipoDeDato) {
     //Requiere una lista de Datos llamada "ListaDeDatos"
     //Creamos un numero que se usara para llenar la ecuacion
     var dato;
-    //Creamos un objeto con forma de número
+
+    //Aregamos el color al dato dependiendo de su tipo.
     switch (tipoDeDato) {
         case "distancia":
             color = colorDesplazamiento;
@@ -455,11 +476,13 @@ function CrearDato(valor,x,y,numeroMostrado,tipoDeDato) {
         case "tiempo":
             color = colorTiempo;
             break;
-        default: color = colorText;
+        default: color = colorTexto;
     }
-    var style = { font: "48px Gloria Hallelujah",  fill: color, align: "center" };
 
-    dato = game.add.text(x, y, numeroMostrado, style);
+    //Creamos un objeto con forma de número
+    var estilo = { font: "48px Gloria Hallelujah",  fill: color, align: "center" };
+
+    dato = game.add.text(x, y, numeroMostrado, estilo);
     //le ponemos el tipo al dato
     dato.tipo = tipoDeDato;
     //Permitimos que se le pueda poner input al objeto
@@ -493,8 +516,8 @@ function CheckDistanciaOnVelocidad(item){
     if (ChequearOverlap(item,EcuacionVelocidad)){
         tieneDistancia = true;
         EcuacionVelocidad.distancia = item.valor;
-        item.x = EcuacionVelocidad.x;
-        item.y = EcuacionVelocidad.y;
+        item.x = EcuacionVelocidad.x + 15;
+        item.y = EcuacionVelocidad.y - 25;
     }
     if (tieneTiempo){
         CrearVelocidad();
@@ -506,8 +529,8 @@ function CheckTiempoOnVelocidad(item){
     if (ChequearOverlap(item,EcuacionVelocidad)){
         tieneTiempo = true;
         EcuacionVelocidad.tiempo = item.valor;
-        item.x = EcuacionVelocidad.x;
-        item.y = (EcuacionVelocidad.y+50);
+        item.x = EcuacionVelocidad.x + 15;
+        item.y = (EcuacionVelocidad.y + 25);
 
     }
     if (tieneDistancia){
