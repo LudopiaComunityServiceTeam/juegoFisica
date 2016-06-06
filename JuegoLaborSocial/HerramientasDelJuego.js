@@ -111,6 +111,11 @@ function actualizarTimer() {
     timerText.setText(tiempo);
 }
 
+function resetTimer() {
+    tiempo = 0
+    timerText.setText(tiempo);
+}
+
 function CrearPlay() {
     //  Crear el boton de play
 
@@ -132,7 +137,9 @@ function clickPlay(){
     }
     else{
         //Detenemos el timer
-        timer.stop();
+        timer.stop(false);
+        game.time.update(0);
+        resetTimer();
         //y desapretamos el boton
         PlayButton.frame = 0;
         clicked = false;
@@ -146,8 +153,8 @@ function clickPlay(){
             explosion = false;
         }
     }
-
 }
+
 function overPlayButton(){
     if (!clicked){
         PlayButton.frame = 1;
@@ -431,6 +438,9 @@ function resetVariables(){
     listaDeEspinas = [];
     listaDeAngulos = [];
     ListaDeDatos = [];
+    // timer.resume();
+    // tiempo = 0;
+    // timerText.setText("0");
 }
 function CrearCuadroVector(x,y,vector){
     cuadro = game.add.sprite(x, y, 'cuadroVector');
