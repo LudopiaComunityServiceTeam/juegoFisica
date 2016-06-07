@@ -84,6 +84,7 @@ create: function() {
     posInicXPlayer = 35;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
+    cierraSalida(2);
 },
 
 update: function() {
