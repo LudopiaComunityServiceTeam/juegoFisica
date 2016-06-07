@@ -31,15 +31,33 @@ function CrearPlataformas() {
 
 function cierraSalida(seg){
     // cierra la puerta de la salidad despues de seg segundos
-    timer.add(Phaser.Timer.SECOND * seg, gameOver, this);
+    timer.repeat(Phaser.Timer.SECOND * seg, 3, gameOver, this);
+    //3 es el numero de intentos, mejorar esto!
 }
 
 function gameOver(){
     var perder = "Perdiste!";
     var estilo = { font: "48px Gloria Hallelujah", fill: colorTexto, align: "center" };
     var text = game.add.text(200, 200, perder, estilo);
+    resetGame();
+}
+
+function resetGame(){
+    //Detenemos el timer
     timer.stop(false);
     resetTimer();
+    //y soltamos el boton
+    PlayButton.frame = 0;
+    clicked = false;
+    impulsado = false;
+    game.add.tween(player.body).to( { x: posInicXPlayer , y:posInicYPlayer}, 1, Phaser.Easing.Linear.None, true);
+    if (!player.alive){
+        player.reset(posInicXPlayer,posInicYPlayer);
+    }
+    if (explosion){
+        cabeza.destroy();
+        explosion = false;
+    }
 }
 
 function resetVariables(){

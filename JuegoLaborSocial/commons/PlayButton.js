@@ -17,21 +17,7 @@ function clickPlay(){
         clicked = true;
     }
     else{
-        //Detenemos el timer
-        timer.stop(false);
-        resetTimer();
-        //y desapretamos el boton
-        PlayButton.frame = 0;
-        clicked = false;
-        impulsado = false;
-        game.add.tween(player.body).to( { x: posInicXPlayer , y:posInicYPlayer}, 1, Phaser.Easing.Linear.None, true);
-        if (!player.alive){
-            player.reset(posInicXPlayer,posInicYPlayer);
-        }
-        if (explosion){
-            cabeza.destroy();
-            explosion = false;
-        }
+        resetGame();
     }
 }
 
