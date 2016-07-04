@@ -87,7 +87,7 @@ update: function() {
 //Aqui colocamos lo que es movimiento y cambios de variables
 //Se llama sola en forma de loop infinito
 
-    //Permitimos que el jugador colisione con cualquier objeto 
+    //Permitimos que el jugador colisione con cualquier objeto
     //en el grupo de las plataformas
     game.physics.arcade.collide(player, platforms);
     ControlJugador();
