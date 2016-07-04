@@ -31,15 +31,22 @@ function CrearPlataformas() {
 
 function cierraSalida(seg){
     // cierra la puerta de la salidad despues de seg segundos
-    timer.repeat(Phaser.Timer.SECOND * seg, 3, gameOver, this);
-    //3 es el numero de intentos, mejorar esto!
+    timer.loop(Phaser.Timer.SECOND * seg, gameOver, this);
 }
 
 function gameOver(){
-    var perder = "Perdiste!";
-    var estilo = { font: "48px Gloria Hallelujah", fill: colorTexto, align: "center" };
-    var text = game.add.text(200, 200, perder, estilo);
+    postIt = game.add.sprite(210, 200, 'post-it-verde');
+    postIt.inputEnabled = true;
+    postIt.events.onInputDown.add(gameOverDestroy, this);
+    var perder = "Perdiste!\n Haz click para\nreintentar";
+    var estilo = { font: "30px Gloria Hallelujah", fill: colorTexto, align: "center" };
+    gameOverText = game.add.text(210, 210, perder, estilo);
     resetGame();
+}
+
+function gameOverDestroy(){
+    postIt.destroy();
+    gameOverText.destroy();
 }
 
 function resetGame(){
