@@ -28,9 +28,9 @@ function CrearDato(valor,x,y,numeroMostrado,tipoDeDato) {
     }
 
     //Creamos un objeto con forma de número
-    var estilo = { font: "48px Gloria Hallelujah",  fill: color, align: "center" };
+    dato = AñadirTexto(x,y,numeroMostrado, color, 48);
+    dato.anchor.y = -0.4;
 
-    dato = game.add.text(x, y, numeroMostrado, estilo);
     //le ponemos el tipo al dato
     dato.tipo = tipoDeDato;
     //Permitimos que se le pueda poner input al objeto

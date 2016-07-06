@@ -3,10 +3,9 @@ function CrearTimer() {
     tiempo = 0;
 
     var x = 560;
-    var y = 10;
-    var text = game.add.text(x, y, "Tiempo: ", { font: "35px Gloria Hallelujah",  fill: colorTexto});
-    var estilo = { font: "35px Gloria Hallelujah",  fill: colorTiempo, align: "center" };
-    timerText = game.add.text(x + 140, y, "0", estilo);
+    var y = 20;
+    var text = AñadirTexto(x,y,"Tiempo: ",colorTexto,35)
+    timerText = AñadirTexto(x+ 140,y-10,"0",colorTiempo,50)
 
     timer = game.time.create(false);
     timer.loop(1000, actualizarTimer, this);

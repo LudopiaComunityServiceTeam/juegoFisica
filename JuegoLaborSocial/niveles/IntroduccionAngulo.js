@@ -72,14 +72,15 @@ create: function() {
 
     //  Crear el boton de play
     CrearPlay();
-    vector = CrearVector(400,300,300,0);
-    cuadro = CrearCuadroVector(550,100,vector)
+    AñadirTexto(600,550,4,colorTiempo,35);
+    vector = CrearVector(400,300,0,0);
+    cuadro = CrearCuadroVector(550,100,vector);
     listaDeCuadros.push(cuadro); //El cuadro esta encima del vector, arreglar!
-    numeroAngulo = CrearAnguloParaVector(90,550,300,90);
+    numeroAngulo = CrearAnguloParaVector(90,50,50,90);
     listaDeAngulos.push(numeroAngulo);
-    numeroAngulo = CrearAnguloParaVector(60,650,300,60);
+    numeroAngulo = CrearAnguloParaVector(60,150,50,60);
     listaDeAngulos.push(numeroAngulo);
-    numeroMagnitud = CrearNumeroParaVector(400,500,150,4);
+    numeroMagnitud = CrearNumeroParaVector(400,50,150,4);
     listaDeNumeros.push(numeroMagnitud);
     espinas = game.add.sprite(300,440,'Espinas');
     listaDeEspinas.push(espinas);

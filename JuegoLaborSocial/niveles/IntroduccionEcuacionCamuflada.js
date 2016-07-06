@@ -23,6 +23,7 @@ preload: function() {
     game.load.image('salida', 'assets/salida.png');
     game.load.image('piso', 'assets/suelo.png');
     game.load.image('vector', 'assets/Vector.png');
+    game.load.image('linea', 'assets/LineaDistancia.png');
     game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
     game.load.spritesheet('numeros', 'assets/numeros.png', 40, 65);
 
@@ -71,6 +72,10 @@ create: function() {
 
     //  Crear el boton de play
     CrearPlay();
+    lineaizq = game.add.sprite(50, 450, 'linea');
+    lineaizq.scale.setTo(20, 1);
+    lineader = game.add.sprite(400, 450, 'linea');
+    lineader.scale.setTo(20, 1);
     vector = CrearVector(400,300,0,0);
     cuadro = CrearCuadroVector(550,100,vector)
     listaDeCuadros.push(cuadro); //El cuadro esta encima del vector, arreglar!
@@ -78,8 +83,8 @@ create: function() {
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
     CrearEcuacionVelocidad();
-    CrearDato(6,150,100,6,"distancia");
-    CrearDato(3,150,150,3,"tiempo");
+    CrearDato(6,320,400,6,"distancia");
+    CrearDato(3,600,510,3,"tiempo");
 },
 
 update: function() {

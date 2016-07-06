@@ -5,9 +5,8 @@ function CrearNumeroParaVector(numero,x,y,numeroMostrado) {
     var numeroMag;
     //creamos un objeto con forma de número
     // numeroMag = game.add.sprite(x, y, 'numeros');
-    var estilo = { font: "48px Gloria Hallelujah",  fill: colorMagnitud, align: "center" };
-
-    numeroMag = game.add.text(x, y, numeroMostrado, estilo);
+    numeroMag = AñadirTexto(x,y,numeroMostrado, colorMagnitud, 48)
+    numeroMag.anchor.y = -0.4;
     //Permitimos que se le pueda poner input al objeto
     numeroMag.inputEnabled = true;
 
@@ -82,10 +81,9 @@ function CrearAnguloParaVector(numero,x,y,numeroMostrado) {
 
     var numeroAngulo;
     //creamos un objeto con forma de número
-    var estilo = { font: "48px Gloria Hallelujah",  fill: colorAngulo, align: "center" };
-
-    numeroAngulo = game.add.text(x, y, numeroMostrado, estilo);
-
+    numeroAngulo = AñadirTexto(x,y,numeroMostrado, colorAngulo, 48)
+    numeroAngulo.anchor.y = -0.4;
+    numeroAngulo.anchor.x = -0.25;
 
     //Permitimos que se le pueda poner input al objeto
     numeroAngulo.inputEnabled = true;

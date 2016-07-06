@@ -73,10 +73,8 @@ create: function() {
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
     //  Crear texto
-    var esUnVector = "Esto es un \nvector";
-    var estilo = { font: "48px Gloria Hallelujah",  fill: colorTexto, align: "center" };
-
-    var text = game.add.text(70, 200, esUnVector, estilo);
+    text = AñadirTexto(70,200,"Esto es un \nvector",colorTexto,48)
+    text.align = 'center'
     text.angle = -20;
 },
 

@@ -3,7 +3,7 @@ colorTiempo = "#ff1a1a";
 colorDesplazamiento = "#ff8c1a";
 colorVelocidad = "#ffff1a";
 colorAceleracion = "#005ce6";
-colorMagnitud = "#e6005c";
+colorMagnitud = "#1e3bec";
 colorAngulo = "#9900cc";
 
 function CrearPiso() {
@@ -49,6 +49,16 @@ function cierraSalida(seg){
     // cierra la puerta de la salidad despues de seg segundos
     timer.loop(Phaser.Timer.SECOND * seg, gameOver, this);
 }
+function AñadirTexto(x,y,texto,color,tamanno){
+    var text = game.add.text(x, y, texto);
+    text.fill = color;
+    text.font = 'Indie Flower';
+    text.fontSize = tamanno;
+    text.align = 'center';
+    return text
+
+}
+
 
 function gameOver(){
     postIt = game.add.sprite(210, 200, 'post-it-verde');

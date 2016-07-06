@@ -51,18 +51,19 @@ create: function() {
 //En Phaser X y Y estan en 0,0 en la esquina superior izquierda y cuentan
 //positivo hasta abajo.
    CrearFondo();
-   var text = game.add.text(150, 10, "Escoge un nivel:", { font: "30px Gloria Hallelujah",  fill: colorTexto});
-   var text = game.add.text(315, 150, "1", { font: "35px Gloria Hallelujah",  fill: colorTexto});
+         
+   var text = AñadirTexto(100,10,"Escoge un nivel:",colorTexto,40);
+   var text = AñadirTexto(315,150,"1",colorTexto,35);
    CrearBotonDeNivel(300, 200, 1);
-   var text = game.add.text(415, 150, "2", { font: "35px Gloria Hallelujah",  fill: colorTexto});
+   var text = AñadirTexto(415,150,"2",colorTexto,35);
    CrearBotonDeNivel(400, 200, 2);
-   var text = game.add.text(515, 150, "3", { font: "35px Gloria Hallelujah",  fill: colorTexto});
+   var text = AñadirTexto(515,150,"3",colorTexto,35);
    CrearBotonDeNivel(500, 200, 3);
-   var text = game.add.text(315, 375, "4", { font: "35px Gloria Hallelujah",  fill: colorTexto});
+   var text = AñadirTexto(315,375,"4",colorTexto,35);
    CrearBotonDeNivel(300, 300, 4);
-   var text = game.add.text(415, 375, "5", { font: "35px Gloria Hallelujah",  fill: colorTexto});
+   var text = AñadirTexto(415,375,"5",colorTexto,35);
    CrearBotonDeNivel(400, 300, 5);
-   var text = game.add.text(515, 375, "6", { font: "35px Gloria Hallelujah",  fill: colorTexto});
+   var text = AñadirTexto(515,375,"6",colorTexto,35);
    CrearBotonDeNivel(500, 300, 6);
 
 },
