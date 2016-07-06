@@ -1,4 +1,4 @@
-var IntroduccionAngulo = {
+var Nivel2 = {
 preload: function() {
 
 //Esta funcion carga todas las imagenes que vamos a utilizar para el juego
@@ -24,7 +24,6 @@ preload: function() {
     game.load.image('vector', 'assets/Vector.png');
     game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
     game.load.spritesheet('numeros', 'assets/numeros.png', 40, 65);
-    game.load.image('post-it-verde', 'assets/post-it-verde.png');
 
 },
 create: function() {
@@ -52,7 +51,7 @@ create: function() {
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
     //Se agrega el background del juego
-    game.add.sprite(0, 0, 'fondo');
+    CrearFondo();
 
     //Se crea un grupo, este grupo se utilizara luego para agregar propiedades
     //a las plataformas de un solo golpe
@@ -64,28 +63,24 @@ create: function() {
     CrearPiso();
 
     //  Crear la puerta de salida
-    salida = game.add.sprite(600,486,'salida');
-
+    CrearSalida(600,486);
     //  Crear el cuadro del vector
     CrearTimer();
 
     //  Crear el boton de play
     CrearPlay();
-    vector = CrearVector(400,300,300,0);
+    vector = CrearVector(400,300,0,0);
     cuadro = CrearCuadroVector(550,100,vector)
     listaDeCuadros.push(cuadro); //El cuadro esta encima del vector, arreglar!
-    numeroAngulo = CrearAnguloParaVector(90,550,300,90);
-    listaDeAngulos.push(numeroAngulo);
-    numeroAngulo = CrearAnguloParaVector(60,650,300,60);
-    listaDeAngulos.push(numeroAngulo);
-    numeroMagnitud = CrearNumeroParaVector(400,580,150,4);
+    numeroMagnitud = CrearNumeroParaVector(500,550,300,5);
+    listaDeNumeros.push(numeroMagnitud); 
+    numeroMagnitud = CrearNumeroParaVector(300,650,300,3);
     listaDeNumeros.push(numeroMagnitud);
-    espinas = game.add.sprite(300,440,'Espinas');
-    listaDeEspinas.push(espinas);
+    numeroMagnitud = CrearNumeroParaVector(100,750,300,1);
+    listaDeNumeros.push(numeroMagnitud);
     posInicXPlayer = 35;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
-    cierraSalida(2);
 },
 
 update: function() {
@@ -93,7 +88,7 @@ update: function() {
 //Aqui colocamos lo que es movimiento y cambios de variables
 //Se llama sola en forma de loop infinito
 
-    //Permitimos que el jugador colisione con cualquier objeto
+    //Permitimos que el jugador colisione con cualquier objeto 
     //en el grupo de las plataformas
     game.physics.arcade.collide(player, platforms);
     ControlJugador();

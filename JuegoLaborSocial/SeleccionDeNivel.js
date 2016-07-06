@@ -17,11 +17,11 @@ var listaDeEspinas = [];
 var listaDeAngulos = [];
 var ListaDeDatos = [];
 var numeroMagnitud;
-var niveles = ['NivelUno','Decision','NivelDos','IntroduccionAngulo', 'IntroduccionEcuacionCamuflada' ,'Main_game'];
+var niveles = ['SeleccionDeNivel','NivelUno','Decision','NivelDos','IntroduccionAngulo', 'IntroduccionEcuacionCamuflada' ,'Main_game'];
 var nivelActual = 0;
 var explosion = false;
 
-var Nivel1 = {
+var SeleccionDeNivel = {
 preload: function() {
 
 //Esta funcion carga todas las imagenes que vamos a utilizar para el juego
@@ -37,30 +37,10 @@ preload: function() {
 //a la izq, luego al frente y luego a la derecha, tienes que ver que tan ancha
 //es cada imagen del muñequito y que tan alta es, pones el ancho en el primer
 //numero y la altura en el segundo
-
-    game.load.image('fondo', 'assets/fondo.png');
-    game.load.image('esUnVector', 'assets/estoEsUnVector.png');
-    game.load.spritesheet('simbolos','assets/Simbolos.png',28,28);
     game.load.spritesheet('PlayButton','assets/play.png',50,50);
-    game.load.image('salida', 'assets/salida.png');
-    game.load.image('piso', 'assets/suelo.png');
-    game.load.image('platform', 'assets/plataforma.png');
-    game.load.image('vector', 'assets/Vector.png');
-    game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
-    game.load.spritesheet('numeros', 'assets/numeros.png', 40, 65);
-
+    game.load.image('fondo', 'assets/fondo.png');
 },
 create: function() {
-
-//Aqui declaramos variables que sabemos que vamos a utilizar para identificar
-//objetos en nuestro juego.
-//Cursors son las teclas arriba, abajo, izq y der, esto vino con el ejemplo
-//de la página de phaser
-
-
-//var PlayButton;
-//var simboloVector;
-
 
 //Esta funcion dibuja objetos en pantalla en el orden en que se añadan
 //Si un objeto se dibuja primero, quedara como background
@@ -70,37 +50,14 @@ create: function() {
 //imagen que tendra
 //En Phaser X y Y estan en 0,0 en la esquina superior izquierda y cuentan
 //positivo hasta abajo.
+   CrearFondo();
+   CrearBotonDeNivel(300, 200, 1);
+   CrearBotonDeNivel(400, 200, 2);
+   CrearBotonDeNivel(500, 200, 3);
+   CrearBotonDeNivel(300, 300, 4);
+   CrearBotonDeNivel(400, 300, 5);
+   CrearBotonDeNivel(500, 300, 6);
 
-    //Se activa la fisica de tipo "Arcade Physics"
-    game.physics.startSystem(Phaser.Physics.ARCADE);
-
-    //Se agrega el background del juego
-    game.add.sprite(0, 0, 'fondo');
-
-    //Se crea un grupo, este grupo se utilizara luego para agregar propiedades
-    //a las plataformas de un solo golpe
-    platforms = game.add.group();
-
-    //Hacemos que las plataformas esten incluidas en la fisica del juego
-    platforms.enableBody = true;
-
-    CrearPiso();
-
-    //  Crear la puerta de salida
-    salida = game.add.sprite(600,486,'salida');
-    CrearTimer();
-    //  Crear el boton de play
-    CrearPlay();
-    vector = CrearVector(400,300,300,0);
-    posInicXPlayer = 35;
-    posInicYPlayer = game.world.height - 110;
-    CrearJugador(posInicXPlayer, posInicYPlayer);
-    //  Crear texto
-    var esUnVector = "Esto es un \nvector";
-    var estilo = { font: "48px Gloria Hallelujah",  fill: colorTexto, align: "center" };
-
-    var text = game.add.text(70, 200, esUnVector, estilo);
-    text.angle = -20;
 },
 
 update: function() {
@@ -110,7 +67,6 @@ update: function() {
 
     //Permitimos que el jugador colisione con cualquier objeto
     //en el grupo de las plataformas
-    game.physics.arcade.collide(player, platforms);
-    ControlJugador();
+    
 }
 };

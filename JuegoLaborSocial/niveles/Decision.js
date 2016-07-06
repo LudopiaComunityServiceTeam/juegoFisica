@@ -54,7 +54,7 @@ create: function() {
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
     //Se agrega el background del juego
-    game.add.sprite(0, 0, 'fondo');
+    CrearFondo();
 
     //Se crea un grupo, este grupo se utilizara luego para agregar propiedades
     //a las plataformas de un solo golpe

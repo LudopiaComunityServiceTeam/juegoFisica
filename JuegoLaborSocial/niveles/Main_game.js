@@ -1,22 +1,5 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8" />
-    <title>Juego de fisica, cinematica</title>
-	<script type="text/javascript" src="js/phaser.min.js"></script>
-    <style type="text/css">
-        body {
-            margin: 0;
-        }
-    </style>
-</head>
-<body>
-
-<script type="text/javascript">
-
-var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
-
-function preload() {
+var MainGame = {
+preload: function() {
 
 //Esta funcion carga todas las imagenes que vamos a utilizar para el juego
 //Se usa load.spritesheet cuando se quiere usar para una animación
@@ -37,7 +20,7 @@ function preload() {
     game.load.image('ecuacionAceleracion','assets/Ecuacion aceleracion.png');
     game.load.spritesheet('simbolos','assets/Simbolos.png',28,28);
     game.load.image('cuadroVector','assets/cuadroVector.png');
-    game.load.spritesheet('PlayButton','assets/play.png',50,50)
+    game.load.spritesheet('PlayButton','assets/play.png',50,50);
     game.load.image('salida', 'assets/salida.png');
     game.load.image('piso', 'assets/suelo.png');
     game.load.image('platform', 'assets/plataforma.png');
@@ -45,27 +28,18 @@ function preload() {
     game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
     game.load.spritesheet('numeros', 'assets/numeros.png', 40, 65);
 
-}
+},
+create: function() {
 
 //Aqui declaramos variables que sabemos que vamos a utilizar para identificar
 //objetos en nuestro juego.
 //Cursors son las teclas arriba, abajo, izq y der, esto vino con el ejemplo
 //de la página de phaser
 
-var player;
-var platforms;
-var cursors;
-var clicked = false;
-var magnitud;
-var direccion = 1;
-var angulo = 0//(3.1415)/4;
-var impulsado = false;
-var numeroMagnitud1;
-var numeroMagnitud2;
-var numeroMagnitud3;
+
 //var PlayButton;
 //var simboloVector;
-function create() {
+
 
 //Esta funcion dibuja objetos en pantalla en el orden en que se añadan
 //Si un objeto se dibuja primero, quedara como background
@@ -76,11 +50,13 @@ function create() {
 //En Phaser X y Y estan en 0,0 en la esquina superior izquierda y cuentan
 //positivo hasta abajo.
 
+
     //Se activa la fisica de tipo "Arcade Physics"
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
     //Se agrega el background del juego
-    game.add.sprite(0, 0, 'fondo');
+
+    CrearFondo()
 
     //Se crea un grupo, este grupo se utilizara luego para agregar propiedades
     //a las plataformas de un solo golpe
@@ -90,10 +66,10 @@ function create() {
     platforms.enableBody = true;
 
     CrearPiso();
-    CrearPlataformas();
+    //CrearPlataformas();
 
     //  Crear la puerta de salida
-    game.add.sprite(600, 486, 'salida');
+    CrearSalida(600,486);
 
     //  Crear la Ecuacion de velocidad
     game.add.sprite(0, 0, 'ecuacionVelocidad');
@@ -102,31 +78,29 @@ function create() {
     game.add.sprite(0, 100, 'ecuacionAceleracion');
 
     //  Crear el cuadro del vector
-    game.add.sprite(550, 100, 'cuadroVector');
     CrearTimer();
 
     //  Crear el boton de play
     CrearPlay();
+    vector = CrearVector(400,300,0,0);
+    cuadro = CrearCuadroVector(550,100,vector);
+    listaDeCuadros.push(cuadro); //El cuadro esta encima del vector, arreglar!
     numeroMagnitud1 = CrearNumeroParaVector(500,550,300,5);
     numeroMagnitud2 = CrearNumeroParaVector(300,650,300,3);
     numeroMagnitud3 = CrearNumeroParaVector(100,750,300,1);
-    CrearSimboloParaVector();
-    CrearVector();
-    CrearJugador();
-}
+    posInicXPlayer = 35;
+    posInicYPlayer = game.world.height - 110;
+    CrearJugador(posInicXPlayer, posInicYPlayer);
+},
 
-function update() {
+update: function() {
 //La función update es la responsable de los "frames"
 //Aqui colocamos lo que es movimiento y cambios de variables
 //Se llama sola en forma de loop infinito
-
 
     //Permitimos que el jugador colisione con cualquier objeto
     //en el grupo de las plataformas
     game.physics.arcade.collide(player, platforms);
     ControlJugador();
 }
-</script>
-
-</body>
-</html>
+};

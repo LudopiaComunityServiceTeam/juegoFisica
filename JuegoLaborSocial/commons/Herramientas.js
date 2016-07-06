@@ -29,6 +29,22 @@ function CrearPlataformas() {
     ledge.body.immovable = true;
 }
 
+function CrearSalida(x,y) {
+
+    salida = game.add.sprite(x,y,'salida');
+
+}
+function CrearFondo(){
+    game.add.sprite(0, 0, 'fondo');
+}
+function CrearBotonDeNivel(x,y,nivel){
+
+   button = game.add.sprite(x, y, 'PlayButton');
+   button.i = nivel;
+   button.inputEnabled = true;
+   button.events.onInputDown.add(SeleccionarNivel, this);
+
+}
 function cierraSalida(seg){
     // cierra la puerta de la salidad despues de seg segundos
     timer.loop(Phaser.Timer.SECOND * seg, gameOver, this);
@@ -67,6 +83,13 @@ function resetGame(){
     }
 }
 
+
+function SeleccionarNivel(item){
+    //Determina que pasa cuando se hace click en el boton de play
+    game.state.start(niveles[item.i]);
+    nivelActual = item.i;
+    resetVariables();
+}
 function resetVariables(){
     //resetea las variables del nivel para que al iniciar el nuevo
     //nivel no se traigan variables del nivel anterior
