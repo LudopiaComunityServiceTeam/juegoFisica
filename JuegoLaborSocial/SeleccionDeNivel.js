@@ -20,6 +20,7 @@ var numeroMagnitud;
 var niveles = ['SeleccionDeNivel','NivelUno','Decision','NivelDos','IntroduccionAngulo', 'IntroduccionEcuacionCamuflada' ,'Main_game'];
 var nivelActual = 0;
 var explosion = false;
+var music1;
 
 var SeleccionDeNivel = {
 preload: function() {
@@ -39,6 +40,7 @@ preload: function() {
 //numero y la altura en el segundo
     game.load.spritesheet('PlayButton','assets/play.png',50,50);
     game.load.image('fondo', 'assets/fondo.png');
+    game.load.audio('musica', 'assets/juegoFisica.ogg');
 },
 create: function() {
 
@@ -51,7 +53,10 @@ create: function() {
 //En Phaser X y Y estan en 0,0 en la esquina superior izquierda y cuentan
 //positivo hasta abajo.
    CrearFondo();
-         
+   music1 = game.add.audio('musica');
+   music1.loop = true;
+   music1.play();
+    
    var text = AñadirTexto(100,10,"Escoge un nivel:",colorTexto,40);
    var text = AñadirTexto(315,150,"1",colorTexto,35);
    CrearBotonDeNivel(300, 200, 1);
