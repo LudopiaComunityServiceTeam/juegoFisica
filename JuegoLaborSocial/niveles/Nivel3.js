@@ -1,4 +1,4 @@
-var IntroduccionAngulo = {
+var Nivel3 = {
 preload: function() {
 
 //Esta funcion carga todas las imagenes que vamos a utilizar para el juego
@@ -16,8 +16,6 @@ preload: function() {
 //numero y la altura en el segundo
 
     game.load.image('fondo', 'assets/fondo.png');
-    game.load.image('cabeza','assets/Cabeza.png');
-    game.load.image('Espinas', 'assets/Espinas.png');
     game.load.spritesheet('simbolos','assets/Simbolos.png',28,28);
     game.load.image('cuadroVector','assets/cuadroVector.png');
     game.load.spritesheet('PlayButton','assets/play.png',50,50);
@@ -26,7 +24,6 @@ preload: function() {
     game.load.image('vector', 'assets/Vector.png');
     game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
     game.load.spritesheet('numeros', 'assets/numeros.png', 40, 65);
-    game.load.image('post-it-verde', 'assets/post-it-verde.png');
 
 },
 create: function() {
@@ -72,21 +69,24 @@ create: function() {
 
     //  Crear el boton de play
     CrearPlay();
-    AñadirTexto(600,550,4,colorTiempo,35);
     vector = CrearVector(400,300,0,0);
-    cuadro = CrearCuadroVector(550,100,vector);
+    cuadro = CrearCuadroVector(550,100,vector)
     listaDeCuadros.push(cuadro); //El cuadro esta encima del vector, arreglar!
-    numeroAngulo = CrearAnguloParaVector(90,50,50,90);
-    listaDeAngulos.push(numeroAngulo);
-    numeroAngulo = CrearAnguloParaVector(60,150,50,60);
-    listaDeAngulos.push(numeroAngulo);
-    numeroMagnitud = CrearNumeroParaVector(400,50,150,4);
+
+    // angulo inmovil
+    AñadirTexto(cuadro.x + 110, cuadro.y + 65,"0", colorAngulo, 48)
+
+    numeroMagnitud = CrearNumeroParaVector(500,550,300,5);
     listaDeNumeros.push(numeroMagnitud);
-    espinas = game.add.sprite(300,440,'Espinas');
-    listaDeEspinas.push(espinas);
+    numeroMagnitud = CrearNumeroParaVector(300,650,300,3);
+    listaDeNumeros.push(numeroMagnitud);
+    numeroMagnitud = CrearNumeroParaVector(100,750,300,1);
+    listaDeNumeros.push(numeroMagnitud);
     posInicXPlayer = 35;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
+
+    // Cerrar salida
     cierraSalida(3);
 },
 

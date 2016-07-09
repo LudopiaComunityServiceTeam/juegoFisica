@@ -17,7 +17,7 @@ var listaDeEspinas = [];
 var listaDeAngulos = [];
 var ListaDeDatos = [];
 var numeroMagnitud;
-var niveles = ['SeleccionDeNivel','NivelUno','Decision','NivelDos','Nivel4','IntroduccionAngulo', 'IntroduccionEcuacionCamuflada' ,'Main_game'];
+var niveles = ['SeleccionDeNivel','Nivel1','Nivel2','Nivel3','Nivel4','Nivel5', 'Nivel6' ,'Main_game'];
 var nivelActual = 0;
 var explosion = false;
 var music1;

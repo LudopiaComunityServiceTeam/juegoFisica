@@ -76,6 +76,9 @@ create: function() {
     text = AñadirTexto(70,200,"Esto es un \nvector",colorTexto,48)
     text.align = 'center'
     text.angle = -20;
+
+    // Cerrar salida
+    cierraSalida(2);
 },
 
 update: function() {

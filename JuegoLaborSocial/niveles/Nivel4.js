@@ -87,10 +87,9 @@ create: function() {
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
 
-    // tiempo para cerra la salida
-    tiempoSalida = 3;
-    AñadirTexto(600,550,tiempoSalida,colorTiempo,35);
-    cierraSalida(tiempoSalida);
+    // tiempo para cerrar la salida
+    AñadirTexto(600,550,3,colorTiempo,35);
+    cierraSalida(3);
 },
 
 update: function() {
