@@ -72,8 +72,12 @@ create: function() {
     vector = CrearVector(400,300,0,0);
     cuadro = CrearCuadroVector(550,100,vector)
     listaDeCuadros.push(cuadro); //El cuadro esta encima del vector, arreglar!
+
+    // angulo inmovil
+    AñadirTexto(cuadro.x + 110, cuadro.y + 65,"0", colorAngulo, 48)
+    
     numeroMagnitud = CrearNumeroParaVector(500,550,300,5);
-    listaDeNumeros.push(numeroMagnitud); 
+    listaDeNumeros.push(numeroMagnitud);
     numeroMagnitud = CrearNumeroParaVector(300,650,300,3);
     listaDeNumeros.push(numeroMagnitud);
     numeroMagnitud = CrearNumeroParaVector(100,750,300,1);
@@ -88,7 +92,7 @@ update: function() {
 //Aqui colocamos lo que es movimiento y cambios de variables
 //Se llama sola en forma de loop infinito
 
-    //Permitimos que el jugador colisione con cualquier objeto 
+    //Permitimos que el jugador colisione con cualquier objeto
     //en el grupo de las plataformas
     game.physics.arcade.collide(player, platforms);
     ControlJugador();
