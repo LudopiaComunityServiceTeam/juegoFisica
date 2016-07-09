@@ -17,7 +17,7 @@ var listaDeEspinas = [];
 var listaDeAngulos = [];
 var ListaDeDatos = [];
 var numeroMagnitud;
-var niveles = ['SeleccionDeNivel','NivelUno','Decision','NivelDos','IntroduccionAngulo', 'IntroduccionEcuacionCamuflada' ,'Main_game'];
+var niveles = ['SeleccionDeNivel','NivelUno','Decision','NivelDos','Nivel4','IntroduccionAngulo', 'IntroduccionEcuacionCamuflada' ,'Main_game'];
 var nivelActual = 0;
 var explosion = false;
 var music1;
@@ -56,7 +56,7 @@ create: function() {
    music1 = game.add.audio('musica');
    music1.loop = true;
    music1.play();
-    
+
    var text = AñadirTexto(100,10,"Escoge un nivel:",colorTexto,40);
    var text = AñadirTexto(315,150,"1",colorTexto,35);
    CrearBotonDeNivel(300, 200, 1);
@@ -80,6 +80,6 @@ update: function() {
 
     //Permitimos que el jugador colisione con cualquier objeto
     //en el grupo de las plataformas
-    
+
 }
 };

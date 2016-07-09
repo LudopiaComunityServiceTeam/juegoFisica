@@ -37,6 +37,7 @@ function CrearSalida(x,y) {
 function CrearFondo(){
     game.add.sprite(0, 0, 'fondo');
 }
+
 function CrearBotonDeNivel(x,y,nivel){
 
    button = game.add.sprite(x, y, 'PlayButton');
@@ -45,10 +46,12 @@ function CrearBotonDeNivel(x,y,nivel){
    button.events.onInputDown.add(SeleccionarNivel, this);
 
 }
+
 function cierraSalida(seg){
-    // cierra la puerta de la salidad despues de seg segundos
+    // cierra la puerta de la salida despues de seg segundos
     timer.loop(Phaser.Timer.SECOND * seg, gameOver, this);
 }
+
 function AñadirTexto(x,y,texto,color,tamanno){
     var text = game.add.text(x, y, texto);
     text.fill = color;
@@ -59,14 +62,12 @@ function AñadirTexto(x,y,texto,color,tamanno){
 
 }
 
-
 function gameOver(){
     postIt = game.add.sprite(210, 200, 'post-it-verde');
     postIt.inputEnabled = true;
     postIt.events.onInputDown.add(gameOverDestroy, this);
-    var perder = "Perdiste!\n Haz click para\nreintentar";
-    var estilo = { font: "30px Gloria Hallelujah", fill: colorTexto, align: "center" };
-    gameOverText = game.add.text(210, 210, perder, estilo);
+    var perder = "Perdiste!\nHaz click para\nreintentar";
+    gameOverText = AñadirTexto(230,230,perder,colorTexto,32);
     resetGame();
 }
 
