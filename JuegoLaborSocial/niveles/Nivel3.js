@@ -87,7 +87,7 @@ create: function() {
     CrearJugador(posInicXPlayer, posInicYPlayer);
 
     // Cerrar salida
-    cierraSalida(3);
+    cierraSalida(Infinity);
 },
 
 update: function() {

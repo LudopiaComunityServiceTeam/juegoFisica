@@ -78,7 +78,7 @@ create: function() {
     text.angle = -20;
 
     // Cerrar salida
-    cierraSalida(2);
+    cierraSalida(Infinity);
 },
 
 update: function() {

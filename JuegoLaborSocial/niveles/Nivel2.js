@@ -79,7 +79,7 @@ create: function() {
     listaDeEspinas.push(espinas);
 
     // Cerrar salida
-    cierraSalida(2);
+    cierraSalida(Infinity);
 },
 
 update: function() {

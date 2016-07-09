@@ -19,9 +19,15 @@ function ControlJugador(){
 //Detectar si el personaje toca la salida
         if (ChequearOverlap(player,salida)){
 
-             game.state.start(niveles[nivelActual+1]);
-             nivelActual = nivelActual + 1;
-             resetVariables();
+            if (tiempoSalida == Infinity ||tiempoSalida == tiempo || tiempoSalida == tiempo + 1) {
+                game.state.start(niveles[nivelActual+1]);
+                nivelActual = nivelActual + 1;
+                resetVariables();
+            }
+            else {
+                AñadirTexto(100,10,tiempo,colorTexto,40);
+                gameOver();
+            }
         }
 //Detectar si el personaje toca una espina
         for (i = 0; i < listaDeEspinas.length; i++){

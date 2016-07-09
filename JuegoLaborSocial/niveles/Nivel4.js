@@ -77,9 +77,9 @@ create: function() {
     // angulo inmovil
     AñadirTexto(cuadro.x + 110, cuadro.y + 65,"0", colorAngulo, 48)
 
-    numeroMagnitud = CrearNumeroParaVector(500,550,300,5);
+    numeroMagnitud = CrearNumeroParaVector(500,550,300,8);
     listaDeNumeros.push(numeroMagnitud);
-    numeroMagnitud = CrearNumeroParaVector(300,650,300,3);
+    numeroMagnitud = CrearNumeroParaVector(300,650,300,2);
     listaDeNumeros.push(numeroMagnitud);
     numeroMagnitud = CrearNumeroParaVector(100,750,300,1);
     listaDeNumeros.push(numeroMagnitud);
