@@ -19,13 +19,12 @@ function ControlJugador(){
 //Detectar si el personaje toca la salida
         if (ChequearOverlap(player,salida)){
 
-            if (tiempoSalida == Infinity ||tiempoSalida == tiempo || tiempoSalida == tiempo + 1) {
+            if (tiempoSalida == Infinity ||tiempoSalida == tiempo) {
                 game.state.start(niveles[nivelActual+1]);
                 nivelActual = nivelActual + 1;
                 resetVariables();
             }
             else {
-                AñadirTexto(100,10,tiempo,colorTexto,40);
                 gameOver();
             }
         }
