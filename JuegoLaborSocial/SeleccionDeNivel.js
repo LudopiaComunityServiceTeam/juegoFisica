@@ -40,7 +40,7 @@ preload: function() {
 //numero y la altura en el segundo
     game.load.spritesheet('PlayButton','assets/play.png',50,50);
     game.load.image('fondo', 'assets/fondo.png');
-    game.load.audio('musica', 'assets/juegoFisica.ogg');
+    game.load.audio('musica', ['assets/juegoFisica.ogg','assets/juegoFisica.mp3']);
 },
 create: function() {
 
@@ -52,25 +52,13 @@ create: function() {
 //imagen que tendra
 //En Phaser X y Y estan en 0,0 en la esquina superior izquierda y cuentan
 //positivo hasta abajo.
-   CrearFondo();
-   music1 = game.add.audio('musica');
-   music1.loop = true;
-   music1.play();
-
-   var text = AñadirTexto(100,10,"Escoge un nivel:",colorTexto,40);
-   var text = AñadirTexto(315,150,"1",colorTexto,35);
-   CrearBotonDeNivel(300, 200, 1);
-   var text = AñadirTexto(415,150,"2",colorTexto,35);
-   CrearBotonDeNivel(400, 200, 2);
-   var text = AñadirTexto(515,150,"3",colorTexto,35);
-   CrearBotonDeNivel(500, 200, 3);
-   var text = AñadirTexto(315,375,"4",colorTexto,35);
-   CrearBotonDeNivel(300, 300, 4);
-   var text = AñadirTexto(415,375,"5",colorTexto,35);
-   CrearBotonDeNivel(400, 300, 5);
-   var text = AñadirTexto(515,375,"6",colorTexto,35);
-   CrearBotonDeNivel(500, 300, 6);
-
+    CrearFondo();
+    music1 = game.add.audio('musica');
+    music1.loop = true;
+//    music1.volume = 0;
+    music1.play();
+//    music1.volume = 0;
+    game.time.events.add(Phaser.Timer.SECOND/2, escribir, this);
 },
 
 update: function() {
@@ -82,4 +70,21 @@ update: function() {
     //en el grupo de las plataformas
 
 }
-};
+}
+function escribir(){
+    
+    var text = AñadirTexto(60,10,"Escoge un nivel:",colorTexto,50);
+    var text = AñadirTexto(312,150,"1",colorTexto,35);
+    CrearBotonDeNivel(300, 200, 1);
+    var text = AñadirTexto(415,150,"2",colorTexto,35);
+    CrearBotonDeNivel(400, 200, 2);
+    var text = AñadirTexto(515,150,"3",colorTexto,35);
+    CrearBotonDeNivel(500, 200, 3);
+    var text = AñadirTexto(315,375,"4",colorTexto,35);
+    CrearBotonDeNivel(300, 300, 4);
+    var text = AñadirTexto(415,375,"5",colorTexto,35);
+    CrearBotonDeNivel(400, 300, 5);
+    var text = AñadirTexto(515,375,"6",colorTexto,35);
+    CrearBotonDeNivel(500, 300, 6);
+    
+} 
