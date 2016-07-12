@@ -123,7 +123,9 @@ function resetVariables(){
     angulo = 0;
     impulsado = false;
     tieneDistancia = false;
-    tieneTiempo = false;
+    tieneTiempo = false; 
+    postIt = null;
+    gameOverText = null;
     listaDeCuadros = [];
     listaDeNumeros = [];
     listaDeEspinas = [];
