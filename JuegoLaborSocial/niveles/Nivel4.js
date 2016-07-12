@@ -88,8 +88,8 @@ create: function() {
     CrearJugador(posInicXPlayer, posInicYPlayer);
 
     // tiempo para cerrar la salida
-    AñadirTexto(600,550,3,colorTiempo,35);
-    cierraSalida(3);
+    AñadirTexto(600,550,2,colorTiempo,35);
+    cierraSalida(2);
 },
 
 update: function() {
