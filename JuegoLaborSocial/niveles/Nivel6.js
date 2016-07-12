@@ -16,6 +16,9 @@ preload: function() {
 //numero y la altura en el segundo
 
 //Imagenes de game over
+    game.load.image('cuerpo','assets/Cuerpo.png');
+    game.load.image('brazo','assets/Brazo.png');
+    game.load.image('pierna','assets/Pierna.png');
     game.load.image('cabeza','assets/Cabeza.png');
     game.load.image('post-it-verde', 'assets/post-it-verde.png');
 //
@@ -91,9 +94,6 @@ create: function() {
     CrearEcuacionVelocidad();
     CrearDato(6,320,400,6,"distancia");
     CrearDato(3,600,510,3,"tiempo");
-
-    // tiempo para cerrar la salida
-    cierraSalida(3);
 },
 
 update: function() {
