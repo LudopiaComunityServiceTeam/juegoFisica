@@ -6,8 +6,10 @@ colorAceleracion = "#005ce6";
 colorMagnitud = "#1e3bec";
 colorAngulo = "#9900cc";
 
+/**
+* Funcion que crea todo el piso del juego.
+*/
 function CrearPiso() {
-    // Aqui creamos el piso.
 
     var piso = platforms.create(0, game.world.height - 64, 'piso');
 
@@ -19,8 +21,12 @@ function CrearPiso() {
     // esta propiedad
     piso.body.immovable = true;
 }
+
+/**
+* Funcion que crea dos plataformas flotantes.
+*/
+
 function CrearPlataformas() {
-    //  Creamos dos plataformas flotantes
 
     var ledge = platforms.create(400, 400, 'platform');
     ledge.body.immovable = true;
@@ -29,15 +35,38 @@ function CrearPlataformas() {
     ledge.body.immovable = true;
 }
 
+/**
+* Funcion que crea el sprite de la salida en la posicion
+* indicada.
+*
+* @param x: posicion en el eje x
+* @param y: posicion en el eje y
+*
+*/
+
 function CrearSalida(x,y) {
 
     salida = game.add.sprite(x,y,'salida');
 
 }
+
+/**
+* Funcion que crea el sprite del fondo.
+*
+*/
 function CrearFondo(){
     game.add.sprite(0, 0, 'fondo');
 }
 
+/**
+* Funcion que crea el sprite del boton para inicial
+* el nivel.
+*
+* @param x: posicion en el eje x
+* @param y: posicion en el eje y
+* @param nivel: nivel al que pertenece el boton
+*
+*/
 function CrearBotonDeNivel(x,y,nivel){
 
    button = game.add.sprite(x, y, 'PlayButton');
@@ -47,22 +76,46 @@ function CrearBotonDeNivel(x,y,nivel){
 
 }
 
+/**
+* Funcion que cierra la puerta de la salida despues de seg
+* segundos.
+*
+* @param seg: segundos para cerrar la puerta
+*
+*/
 function cierraSalida(seg){
-    // cierra la puerta de la salida despues de seg segundos
     tiempoSalida = seg;
     timer.loop(Phaser.Timer.SECOND * (seg + 1), gameOver, this);
 }
 
+/**
+* Funcion que agrega un texto en el juego.
+*
+* @param x: posicion en el eje x
+* @param y: posicion en el eje x
+* @param texto: texto a escribir en pantalla
+* @param color: color del texto
+* @param tamanno: tamaño de la fuente del texto
+*
+* @return text: el texto con las características de los
+* argumentos.
+*
+*/
 function AñadirTexto(x,y,texto,color,tamanno){
     var text = game.add.text(x, y, texto);
     text.fill = color;
     text.font = 'Indie Flower';
     text.fontSize = tamanno;
     text.align = 'center';
-    return text
+    return text;
 
 }
 
+/**
+* Funcion que muestra el sprite de finalizar el juego
+* y reproduce el sonido correspondiente.
+*
+*/
 function gameOver(){
     postIt = game.add.sprite(210, 200, 'post-it-verde');
     postIt.inputEnabled = true;
@@ -74,11 +127,19 @@ function gameOver(){
     resetGame();
 }
 
+/**
+* Funcion que quita el fin de juego de la pantalla
+*
+*/
 function gameOverDestroy(){
     postIt.destroy();
     gameOverText.destroy();
 }
 
+/**
+* Funcion que reinicia el juego.
+*
+*/
 function resetGame(){
     //Detenemos el timer
     timer.stop(false);
@@ -97,6 +158,12 @@ function resetGame(){
     }
 }
 
+/**
+* Funcion que inicia el nivel escogido.
+*
+* @param item: nivel seleccionado
+*
+*/
 
 function SeleccionarNivel(item){
     //Determina que pasa cuando se hace click en el boton de play
@@ -104,6 +171,12 @@ function SeleccionarNivel(item){
     nivelActual = item.i;
     resetVariables();
 }
+
+/**
+* Funcion reinicia todas la variables involucradas
+* en el juego.
+*
+*/
 function resetVariables(){
     //resetea las variables del nivel para que al iniciar el nuevo
     //nivel no se traigan variables del nivel anterior
@@ -120,6 +193,15 @@ function resetVariables(){
     listaDeAngulos = [];
     ListaDeDatos = [];
 }
+
+/**
+* Funcion que determina si dos objetos colisionaron
+*
+* @param Objeto1: objeto con el que se chequeara la colision
+* @param Objeto2: objeto con el que se chequeara la colision
+* del objeto 1.
+*
+*/
 
 function ChequearOverlap(Objeto1,Objeto2){
     var boundsA = Objeto1.getBounds();
