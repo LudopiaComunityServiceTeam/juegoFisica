@@ -21,6 +21,10 @@ var niveles = ['SeleccionDeNivel','Nivel1','Nivel2','Nivel3','Nivel4','Nivel5', 
 var nivelActual = 0;
 var explosion = false;
 var music1;
+var postIt;
+var gameOverText;
+var limiteDeTiempo;
+var salidaCerrandose;
 
 var SeleccionDeNivel = {
 preload: function() {

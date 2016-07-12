@@ -15,6 +15,11 @@ preload: function() {
 //es cada imagen del muñequito y que tan alta es, pones el ancho en el primer
 //numero y la altura en el segundo
 
+//Imagenes de game over
+    game.load.image('cabeza','assets/Cabeza.png');
+    game.load.image('post-it-verde', 'assets/post-it-verde.png');
+//
+
     game.load.image('fondo', 'assets/fondo.png');
     game.load.spritesheet('simbolos','assets/Simbolos.png',28,28);
     game.load.image('cuadroVector','assets/cuadroVector.png');
@@ -68,7 +73,7 @@ create: function() {
     CrearTimer();
 
     //  Crear el boton de play
-    CrearPlay();
+    CrearPlay(Infinity);
     vector = CrearVector(400,300,0,0);
     cuadro = CrearCuadroVector(550,100,vector)
     listaDeCuadros.push(cuadro); //El cuadro esta encima del vector, arreglar!
@@ -86,8 +91,6 @@ create: function() {
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
 
-    // Cerrar salida
-    cierraSalida(Infinity);
 },
 
 update: function() {

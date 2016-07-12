@@ -15,6 +15,10 @@ preload: function() {
 //es cada imagen del muñequito y que tan alta es, pones el ancho en el primer
 //numero y la altura en el segundo
 
+//Imagenes de game over
+    game.load.image('cabeza','assets/Cabeza.png');
+    game.load.image('post-it-verde', 'assets/post-it-verde.png');
+//
     game.load.image('fondo', 'assets/fondo.png');
     game.load.image('esUnVector', 'assets/estoEsUnVector.png');
     game.load.spritesheet('simbolos','assets/Simbolos.png',28,28);
@@ -65,20 +69,19 @@ create: function() {
 
     //  Crear la puerta de salida
     CrearSalida(600,486);
-    CrearTimer();
+    CrearTimer(Infinity);
     //  Crear el boton de play
     CrearPlay();
+    limiteDeTiempo = Infinity;
     vector = CrearVector(400,300,300,0);
     posInicXPlayer = 35;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
     //  Crear texto
-    text = AñadirTexto(70,200,"Esto es un \nvector",colorTexto,48)
+    text = AñadirTexto(200,200,"Esto es un \nvector",colorTexto,48)
     text.align = 'center'
     text.angle = -20;
 
-    // Cerrar salida
-    cierraSalida(Infinity);
 },
 
 update: function() {

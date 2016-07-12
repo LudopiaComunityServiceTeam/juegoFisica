@@ -21,15 +21,9 @@ function ControlJugador(){
         }
         //Detectar si el personaje toca la salida
         if (ChequearOverlap(player,salida)){
-
-            if (tiempoSalida == Infinity ||tiempoSalida == tiempo) {
-                game.state.start(niveles[nivelActual+1]);
-                nivelActual = nivelActual + 1;
-                resetVariables();
-            }
-            else {
-                gameOver();
-            }
+            game.state.start(niveles[nivelActual+1]);
+            nivelActual = nivelActual + 1;
+            resetVariables();
         }
         //Detectar si el personaje toca una espina
         for (i = 0; i < listaDeEspinas.length; i++){
@@ -38,14 +32,7 @@ function ControlJugador(){
                 player.animations.stop();
                 player.frame = 4;
                 if (!explosion){
-                    player.kill();
-                    cabeza = game.add.sprite(player.x, player.y, 'cabeza');
-                    game.physics.arcade.enable(cabeza);
-                    cabeza.body.bounce.y = 0.2;
-                    cabeza.body.gravity.y = 300;
-                    cabeza.body.collideWorldBounds = true;
-                    cabeza.body.velocity.y = -500;
-                    explosion = true;
+                    gameOver();
                 }
             //matar
             }
@@ -59,6 +46,22 @@ function ControlJugador(){
         player.animations.stop();
         player.frame = 4;
     }
+}
+
+/**
+* Funcion hace que el personaje explote al morir.
+*
+*
+*/
+function Explotar(){
+    player.kill();
+    cabeza = game.add.sprite(player.x, player.y, 'cabeza');
+    game.physics.arcade.enable(cabeza);
+    cabeza.body.bounce.y = 0.2;
+    cabeza.body.gravity.y = 300;
+    cabeza.body.collideWorldBounds = true;
+    cabeza.body.velocity.y = -500;
+    explosion = true;
 }
 
 /**
