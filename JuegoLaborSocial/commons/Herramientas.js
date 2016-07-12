@@ -49,8 +49,7 @@ function CrearBotonDeNivel(x,y,nivel){
 
 function cierraSalida(seg){
     // cierra la puerta de la salida despues de seg segundos
-    tiempoSalida = seg;
-    timer.loop(Phaser.Timer.SECOND * seg, gameOver, this);
+    salidaCerrandose = game.time.events.add(Phaser.Timer.SECOND * seg, gameOver, this);
 }
 
 function AñadirTexto(x,y,texto,color,tamanno){
@@ -64,25 +63,38 @@ function AñadirTexto(x,y,texto,color,tamanno){
 }
 
 function gameOver(){
-    postIt = game.add.sprite(210, 200, 'post-it-verde');
-    postIt.inputEnabled = true;
-    postIt.events.onInputDown.add(gameOverDestroy, this);
+
+    Explotar();
     // Experimento de sonido
     BustedSoundEffect.play();
-    var perder = "Perdiste!\nHaz click para\nreintentar";
-    gameOverText = AñadirTexto(230,230,perder,colorTexto,32);
-    resetGame();
+    if((postIt==null)||(gameOverText==null)){
+        postIt = game.add.sprite(300, 200, 'post-it-verde');
+        postIt.inputEnabled = true;
+        postIt.events.onInputDown.add(resetGame, this);
+        var perder = "Perdiste!\nHaz click para\nreintentar";
+        gameOverText = AñadirTexto(320,230,perder,colorTexto,32);
+
+    }
+    else{
+        postIt.reset(300,200);
+        gameOverText.reset(320,230);
+    }
 }
 
 function gameOverDestroy(){
-    postIt.destroy();
-    gameOverText.destroy();
+    if (!(postIt==null)&&!(gameOverText==null)){
+        if((postIt.alive)||(gameOverText.alive)){
+            postIt.kill();
+            gameOverText.kill();
+        }
+    }
 }
 
 function resetGame(){
     //Detenemos el timer
     timer.stop(false);
     resetTimer();
+    game.time.events.remove(salidaCerrandose);
     //y soltamos el boton
     PlayButton.frame = 0;
     clicked = false;
@@ -91,6 +103,7 @@ function resetGame(){
     if (!player.alive){
         player.reset(posInicXPlayer,posInicYPlayer);
     }
+    gameOverDestroy();
     if (explosion){
         cabeza.destroy();
         explosion = false;
@@ -113,7 +126,9 @@ function resetVariables(){
     angulo = 0;
     impulsado = false;
     tieneDistancia = false;
-    tieneTiempo = false;
+    tieneTiempo = false; 
+    postIt = null;
+    gameOverText = null;
     listaDeCuadros = [];
     listaDeNumeros = [];
     listaDeEspinas = [];
