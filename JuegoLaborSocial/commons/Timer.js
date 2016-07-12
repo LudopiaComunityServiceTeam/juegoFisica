@@ -1,5 +1,8 @@
+/**
+* Funcion que crea el timer y el tiempo a mostrar
+*
+*/
 function CrearTimer() {
-    //  Creamos un timer
     tiempo = 0;
 
     var x = 560;
@@ -11,12 +14,20 @@ function CrearTimer() {
     timer.loop(1000, actualizarTimer, this);
 }
 
+/**
+* Funcion que es activada cada segundo para actualizar
+* el tiempo mostrado.
+*
+*/
 function actualizarTimer() {
-    // Actualizar el timer
     tiempo ++;
     timerText.setText(tiempo);
 }
 
+/**
+* Funcion que reinicia el tiempo mostrado.
+*
+*/
 function resetTimer() {
     tiempo = 0
     timerText.setText(tiempo);

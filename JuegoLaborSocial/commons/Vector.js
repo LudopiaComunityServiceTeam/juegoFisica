@@ -1,3 +1,13 @@
+/**
+* Funcion que crea la magnitud para el vector.
+* el nivel.
+*
+* @param numero: valor de la magnitud
+* @param x: posicion en el eje x
+* @param y: posicion en el eje y
+* @param numeroMostrado: valor de la magnitud (redundante)
+*
+*/
 function CrearNumeroParaVector(numero,x,y,numeroMostrado) {
     //Creamos un numero de prueba para poder probar
     //nuestra funcion de click and drag
@@ -28,10 +38,18 @@ function CrearNumeroParaVector(numero,x,y,numeroMostrado) {
     return numeroMag;
 }
 
+/**
+* Funcion que revisa si el objeto esta en el rango de la
+* caja de magnitud del vector. Si es asi, ajusta el objeto
+* para que quede justo en el centro de la caja y cambia
+* el valor de magnitud al valor que cargaba el objeto.
+* el nivel.
+*
+* @param item: valor de la magnitud
+*
+*/
 function checkMagnitudInVector(item) {
-    // Revisa si el objeto esta en el rango de la caja de magnitud del vector
-    // Si es asi, ajusta el objeto para que quede justo en el centro de la caja
-    // Y cambia el valor de magnitud al valor que cargaba el objeto.
+
     magnitudEnCuadro = false;
 //Se revisan todos los cuadros para ver si el objeto cayó en alguno
     for (i = 0; i < listaDeCuadros.length; i++) {
@@ -75,6 +93,17 @@ function checkMagnitudInVector(item) {
 
     }
 }
+
+/**
+* Funcion que crea el angulo para el vector.
+* el nivel.
+*
+* @param numero: valor de la magnitud
+* @param x: posicion en el eje x
+* @param y: posicion en el eje y
+* @param numeroMostrado: valor de la magnitud (redundante)
+*
+*/
 function CrearAnguloParaVector(numero,x,y,numeroMostrado) {
     //Creamos un numero de prueba para poder probar
     //nuestra funcion de click and drag
@@ -105,10 +134,18 @@ function CrearAnguloParaVector(numero,x,y,numeroMostrado) {
 
     return numeroAngulo;
 }
+
+/**
+* Funcion que revisa si el objeto esta en el rango de la
+* caja de angulo del vector. Si es asi, ajusta el objeto
+* para que quede justo en el centro de la caja y cambia
+* el valor de magnitud al valor que cargaba el objeto.
+* el nivel.
+*
+* @param item: valor de la magnitud
+*
+*/
 function checkAnguloInVector(item) {
-    // Revisa si el objeto esta en el rango de la caja de angulo del vector
-    // Si es asi, ajusta el objeto para que quede justo en el centro de la caja
-    // Y cambia el valor de angulo al valor que cargaba el objeto.
     anguloEnCuadro = false;
 //Se revisan todos los cuadros para ver si el objeto cayó en alguno
     for (i = 0; i < listaDeCuadros.length; i++) {
@@ -155,6 +192,19 @@ function checkAnguloInVector(item) {
 
     }
 }
+
+/**
+* Funcion que crea un vector con las caracteristicas
+* especificadas.
+*
+* @param numero: valor de la magnitud
+* @param x: posicion en el eje x
+* @param y: posicion en el eje y
+* @param numeroMostrado: valor de la magnitud (redundante)
+*
+* @return el vector con las caracteristicas especificadas.
+*
+*/
 function CrearVector(x,y,magnitud,angulo) {
     //Creamos el vector
     var vector = game.add.sprite(x, y, 'vector');
@@ -180,6 +230,15 @@ function CrearVector(x,y,magnitud,angulo) {
     return vector;
 
 }
+
+/**
+* Funcion que convierte el angulo que ve el usuario
+* a su equivalente segun las coordenas de phaser.
+*
+* @param angulo: angulo a convertir
+*
+*/
+
 function ConvertirAngulo(angulo){
     if ((angulo < 180)&&(angulo => 0)){
         return (-angulo);
@@ -189,6 +248,12 @@ function ConvertirAngulo(angulo){
     }
 }
 
+/**
+* Funcion que agrega el vector al objeto especificado.
+*
+* @param item: objeto al cual se le colocara el vector
+*
+*/
 function pegarVector(item) {
     //Chequea si el vector esta fuera de un rango y si no es asi,
     //lo lleva a dicho rango
@@ -205,6 +270,15 @@ function pegarVector(item) {
     }
 }
 
+/**
+* Funcion que crea el cuadro con la magnitud y el
+* angulo del vector.
+*
+* @param x: posicion en el eje x
+* @param y: posicion en el eje y
+* @param vector: vector al cual esta asociado el cuadro.
+*
+*/
 function CrearCuadroVector(x,y,vector){
     cuadro = game.add.sprite(x, y, 'cuadroVector');
     cuadro.vector = vector;

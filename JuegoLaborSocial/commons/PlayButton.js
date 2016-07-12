@@ -1,3 +1,7 @@
+/**
+* Funcion que el comportamiento de boton de play
+*
+*/
 function CrearPlay() {
     //  Crear el boton de play
     PlayButton = game.add.button(400, 550, 'PlayButton', clickPlay, this);
@@ -6,6 +10,11 @@ function CrearPlay() {
     PlayButton.onInputOut.add(outPlayButton, this);
 }
 
+/**
+* Funcion que crea el comportamiento de boton cuando esta
+* presionado y cuando no.
+*
+*/
 function clickPlay(){
     //Determina que pasa cuando se hace click en el boton de play
 
@@ -21,6 +30,11 @@ function clickPlay(){
     }
 }
 
+/**
+* Funcion que crea el comportamiento del boton cuando
+* esta presionado.
+*
+*/
 function overPlayButton(){
     if (!clicked){
         PlayButton.frame = 1;
@@ -30,6 +44,11 @@ function overPlayButton(){
     }
 }
 
+/**
+* Funcion que crea el comportamiento del boton cuando
+* no esta presionado.
+*
+*/
 function outPlayButton(){
     if (!clicked){
         PlayButton.frame = 0;

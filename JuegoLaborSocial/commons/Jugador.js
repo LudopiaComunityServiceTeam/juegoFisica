@@ -1,6 +1,9 @@
+/**
+* Funcion que le da al muñequito de palitos un movimiento clasico de plataformero 2D
+* puede saltar, correr a la izq, der y viene con las animaciones.
+*
+*/
 function ControlJugador(){
-    //Le da al muñequito de palitos un movimiento clasico de plataformero 2D
-    //puede saltar, correr a la izq, der y viene con las animaciones.
 
     if ((clicked)&&(direccion == 1))
     {
@@ -16,7 +19,7 @@ function ControlJugador(){
         else{
             player.animations.play('left');
         }
-//Detectar si el personaje toca la salida
+        //Detectar si el personaje toca la salida
         if (ChequearOverlap(player,salida)){
 
             if (tiempoSalida == Infinity ||tiempoSalida == tiempo) {
@@ -28,7 +31,7 @@ function ControlJugador(){
                 gameOver();
             }
         }
-//Detectar si el personaje toca una espina
+        //Detectar si el personaje toca una espina
         for (i = 0; i < listaDeEspinas.length; i++){
             if (ChequearOverlap(player,listaDeEspinas[i])) {
                 player.body.velocity.x = 0;
@@ -58,9 +61,14 @@ function ControlJugador(){
     }
 }
 
+/**
+* Funcion que crea el personaje principal.
+*
+* @param x: posicion en el eje x
+* @param y: posicion en el eje y
+*
+*/
 function CrearJugador(x,y) {
-    //Aqui creamos al jugador, representado en esta version por el
-    //muñequito de palitos
 
     player = game.add.sprite(x,y, 'dude');
     //Permitimos que el muñeco sea afectado por la gravedad
