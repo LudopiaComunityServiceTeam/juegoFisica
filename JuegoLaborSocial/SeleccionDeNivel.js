@@ -42,8 +42,9 @@ preload: function() {
     game.load.spritesheet('PlayButton','assets/play.png',50,50);
     /* Repertorio De Fondos */
     game.load.image('fondo', 'assets/fondo.png');
-    CargarRepertorio();
+    PreCargarRepertorioMusica();
     /* Repertorio De Sonidos */
+    PreCargarRepertorioSonido();
 },
 create: function() 
 {
@@ -56,7 +57,9 @@ create: function()
 //En Phaser X y Y estan en 0,0 en la esquina superior izquierda y cuentan
 //positivo hasta abajo.
     CrearFondo();
-    ReproducirLoopAudio('jazzFunkThoughts',0.6);
+    CargarRepertorioMusica();
+    CargarRepertorioSonido();
+    ReproducirLoopAudio(jazzFunkThoughts,0.6);
     game.time.events.add(Phaser.Timer.SECOND/2, escribir, this);
 },
 
@@ -85,7 +88,5 @@ function escribir(){
     CrearBotonDeNivel(400, 300, 5);
     var text = AñadirTexto(515,375,"6",colorTexto,35);
     CrearBotonDeNivel(500, 300, 6);
-    var text = AñadirTexto(315,475,"7",colorTexto,35);
-    CrearBotonDeNivel(300, 425, 7);
     
 } 

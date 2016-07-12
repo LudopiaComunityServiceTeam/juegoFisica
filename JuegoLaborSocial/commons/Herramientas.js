@@ -67,6 +67,8 @@ function gameOver(){
     postIt = game.add.sprite(210, 200, 'post-it-verde');
     postIt.inputEnabled = true;
     postIt.events.onInputDown.add(gameOverDestroy, this);
+    // Experimento de sonido
+    BustedSoundEffect.play();
     var perder = "Perdiste!\nHaz click para\nreintentar";
     gameOverText = AñadirTexto(230,230,perder,colorTexto,32);
     resetGame();

@@ -1,13 +1,26 @@
-/* Carga el repertorio de musica completo */
-function CargarRepertorioMusica() 
+/* PreCarga el repertorio de musica completo (Preload)*/
+function PreCargarRepertorioMusica() 
 {
     /* Repertorio De Musica */
     game.load.audio('jazzFunkThoughts', ['assets/jazzFunkThoughts.ogg','assets/jazzFunkThoughts.mp3']);
 }
-/* Carga el repertorio de sonidos completo */
+/* PreCarga el repertorio de sonidos completo (Preload)*/
+function PreCargarRepertorioSonido() 
+{
+    /* Repertorio De Sonidos */
+    game.load.audio('BustedSoundEffect', ['assets/BustedSoundEffect.ogg']);
+}
+/* PreCarga el repertorio de musica completo (Create)*/
+function CargarRepertorioMusica() 
+{
+    /* Repertorio De musica */
+    jazzFunkThoughts = game.add.audio('jazzFunkThoughts');
+}
+/* PreCarga el repertorio de sonidos completo (Create)*/
 function CargarRepertorioSonido() 
 {
     /* Repertorio De Sonidos */
+    BustedSoundEffect = game.add.audio('BustedSoundEffect');
 }
 /* Carga una cancion en particular */
 function CargarCancion(cancion) 
@@ -20,14 +33,10 @@ function CargarCancion(cancion)
 volumen 'volumen' */
 function ReproducirLoopAudio(cancion,volumen) 
 {
-    /* Cargamos el archivo */
-    music = game.add.audio(cancion);
     /* Definimos que sera un loop */
-    music.loop = true;
+    cancion.loop = true;
     /* Definimos el volumen */
-    music.volume = volumen;
+    cancion.volume = volumen;
     /* Reproducimos el audio */
-    music.play();
-    /* Retornamos el objeto de audio */
-    return music;
+    cancion.play();
 }
