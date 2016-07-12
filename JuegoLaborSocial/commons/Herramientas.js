@@ -106,6 +106,11 @@ function resetGame(){
     gameOverDestroy();
     if (explosion){
         cabeza.destroy();
+        cuerpo.destroy();
+        brazoI.destroy();
+        brazoD.destroy();
+        piernaI.destroy();
+        piernaD.destroy();
         explosion = false;
     }
 }

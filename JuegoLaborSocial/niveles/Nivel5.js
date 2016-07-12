@@ -16,6 +16,9 @@ preload: function() {
 //numero y la altura en el segundo
 
 //Imagenes de game over
+    game.load.image('cuerpo','assets/Cuerpo.png');
+    game.load.image('brazo','assets/Brazo.png');
+    game.load.image('pierna','assets/Pierna.png');
     game.load.image('cabeza','assets/Cabeza.png');
     game.load.image('post-it-verde', 'assets/post-it-verde.png');
 //
@@ -75,8 +78,10 @@ create: function() {
 
     //  Crear el boton de play
     CrearPlay();
-    limiteDeTiempo = 5;
-    AñadirTexto(600,550,4,colorTiempo,35);
+    limiteDeTiempo = 5.1;
+    //  Texto bajo la puerta
+    AñadirTexto(600,550,5,colorTiempo,35);
+    //
     vector = CrearVector(400,300,0,0);
     cuadro = CrearCuadroVector(550,100,vector);
     listaDeCuadros.push(cuadro); //El cuadro esta encima del vector, arreglar!
