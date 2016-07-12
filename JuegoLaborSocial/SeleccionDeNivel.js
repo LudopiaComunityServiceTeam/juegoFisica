@@ -21,6 +21,10 @@ var niveles = ['SeleccionDeNivel','Nivel1','Nivel2','Nivel3','Nivel4','Nivel5', 
 var nivelActual = 0;
 var explosion = false;
 var music1;
+var postIt;
+var gameOverText;
+var limiteDeTiempo;
+var salidaCerrandose;
 
 var SeleccionDeNivel = {
 preload: function() {
@@ -55,9 +59,9 @@ create: function() {
     CrearFondo();
     music1 = game.add.audio('musica');
     music1.loop = true;
-//    music1.volume = 0;
+    music1.volume = 0;
     music1.play();
-//    music1.volume = 0;
+    music1.volume = 0;
     game.time.events.add(Phaser.Timer.SECOND/2, escribir, this);
 },
 

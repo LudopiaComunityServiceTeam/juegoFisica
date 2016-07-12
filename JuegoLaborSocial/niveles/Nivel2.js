@@ -15,8 +15,12 @@ preload: function() {
 //es cada imagen del muñequito y que tan alta es, pones el ancho en el primer
 //numero y la altura en el segundo
 
-    game.load.image('fondo', 'assets/fondo.png');
+//Imagenes de game over
     game.load.image('cabeza','assets/Cabeza.png');
+    game.load.image('post-it-verde', 'assets/post-it-verde.png');
+//
+
+    game.load.image('fondo', 'assets/fondo.png');
     game.load.image('Espinas', 'assets/Espinas.png');
     game.load.image('esUnVector', 'assets/estoEsUnVector.png');
     game.load.spritesheet('simbolos','assets/Simbolos.png',28,28);
@@ -70,6 +74,7 @@ create: function() {
     CrearTimer();
     //  Crear el boton de play
     CrearPlay();
+    limiteDeTiempo = Infinity;
     vectorDer = CrearVector(450,300,300,0);
     vectorIzq = CrearVector(350,300,300,180);
     posInicXPlayer = 400;
@@ -78,8 +83,6 @@ create: function() {
     espinas = game.add.sprite(600,440,'Espinas');
     listaDeEspinas.push(espinas);
 
-    // Cerrar salida
-    cierraSalida(Infinity);
 },
 
 update: function() {

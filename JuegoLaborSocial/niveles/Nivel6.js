@@ -15,6 +15,11 @@ preload: function() {
 //es cada imagen del muñequito y que tan alta es, pones el ancho en el primer
 //numero y la altura en el segundo
 
+//Imagenes de game over
+    game.load.image('cabeza','assets/Cabeza.png');
+    game.load.image('post-it-verde', 'assets/post-it-verde.png');
+//
+
     game.load.image('fondo', 'assets/fondo.png');
     game.load.image('EcuacionVelocidadCamuflada', 'assets/EcuacionVelocidadCamuflada.png');
     game.load.spritesheet('simbolos','assets/Simbolos.png',28,28);
@@ -72,6 +77,7 @@ create: function() {
 
     //  Crear el boton de play
     CrearPlay();
+    limiteDeTiempo = Infinity;
     lineaizq = game.add.sprite(50, 450, 'linea');
     lineaizq.scale.setTo(20, 1);
     lineader = game.add.sprite(400, 450, 'linea');
