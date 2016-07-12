@@ -60,7 +60,7 @@ function checkMagnitudInVector(item) {
         if (ChequearOverlap(item,listaDeCuadros[i])) {
             magnitudEnCuadro = true;
             item.x = (listaDeCuadros[i].x+30);
-            item.y = (listaDeCuadros[i].y+45);
+            item.y = (listaDeCuadros[i].y+50);
             listaDeCuadros[i].vector.magnitud = item.numero;
             if (ChequearOverlap(listaDeCuadros[i].vector,player)){
                 magnitudJugador = listaDeCuadros[i].vector.magnitud;
@@ -155,8 +155,8 @@ function checkAnguloInVector(item) {
 //jugador tambien debe cambiar
         if (ChequearOverlap(item,listaDeCuadros[i])) {
             anguloEnCuadro = true;
-            item.x = (listaDeCuadros[i].x+93);
-            item.y = (listaDeCuadros[i].y+45);
+            item.x = (listaDeCuadros[i].x+90);
+            item.y = (listaDeCuadros[i].y+50);
             listaDeCuadros[i].vector.angulo = item.numero;
             listaDeCuadros[i].vector.angle = ConvertirAngulo(item.numero);
             if (ChequearOverlap(listaDeCuadros[i].vector,player)){

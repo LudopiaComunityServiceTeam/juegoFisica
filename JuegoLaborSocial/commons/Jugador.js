@@ -26,9 +26,6 @@ function ControlJugador(){
                 nivelActual = nivelActual + 1;
                 resetVariables();
             }
-            // else {
-            //     gameOver();
-            // }
         }
         //Detectar si el personaje toca una espina
         for (i = 0; i < listaDeEspinas.length; i++){
