@@ -85,6 +85,9 @@ create: function() {
     CrearEcuacionVelocidad();
     CrearDato(6,320,400,6,"distancia");
     CrearDato(3,600,510,3,"tiempo");
+
+    // tiempo para cerrar la salida
+    cierraSalida(3);
 },
 
 update: function() {
