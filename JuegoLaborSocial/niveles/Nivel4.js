@@ -74,7 +74,7 @@ create: function() {
 
     //  Crear el boton de play
     CrearPlay();
-    limiteDeTiempo = 3;
+    limiteDeTiempo = 2;
     vector = CrearVector(400,300,0,0);
     cuadro = CrearCuadroVector(550,100,vector)
     listaDeCuadros.push(cuadro); //El cuadro esta encima del vector, arreglar!
@@ -92,7 +92,7 @@ create: function() {
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
 
-    AñadirTexto(600,550,3,colorTiempo,35);
+    AñadirTexto(600,550,2,colorTiempo,35);
 },
 
 update: function() {

@@ -84,8 +84,7 @@ function CrearBotonDeNivel(x,y,nivel){
 *
 */
 function cierraSalida(seg){
-    // cierra la puerta de la salida despues de seg segundos
-    salidaCerrandose = game.time.events.add(Phaser.Timer.SECOND * seg, gameOver, this);
+    salidaCerrandose = game.time.events.add(Phaser.Timer.SECOND * (seg + 1), gameOver, this);
 }
 
 /**
