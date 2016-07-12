@@ -17,7 +17,7 @@ var listaDeEspinas = [];
 var listaDeAngulos = [];
 var ListaDeDatos = [];
 var numeroMagnitud;
-var niveles = ['SeleccionDeNivel','Nivel1','Nivel2','Nivel3','Nivel4','Nivel5', 'Nivel6' ,'Main_game'];
+var niveles = ['SeleccionDeNivel','Nivel1','Nivel2','Nivel3','Nivel4','Nivel5', 'Nivel6' ,'Nivel6','Main_game'];
 var nivelActual = 0;
 var explosion = false;
 var music1;
@@ -38,12 +38,15 @@ preload: function() {
 //a la izq, luego al frente y luego a la derecha, tienes que ver que tan ancha
 //es cada imagen del muñequito y que tan alta es, pones el ancho en el primer
 //numero y la altura en el segundo
+    /* Repertorio De Sprites */
     game.load.spritesheet('PlayButton','assets/play.png',50,50);
+    /* Repertorio De Fondos */
     game.load.image('fondo', 'assets/fondo.png');
-    game.load.audio('musica', ['assets/juegoFisica.ogg','assets/juegoFisica.mp3']);
+    CargarRepertorio();
+    /* Repertorio De Sonidos */
 },
-create: function() {
-
+create: function() 
+{
 //Esta funcion dibuja objetos en pantalla en el orden en que se añadan
 //Si un objeto se dibuja primero, quedara como background
 //La funcion "create" se corre sola despues de preload, asi que no se
@@ -53,11 +56,7 @@ create: function() {
 //En Phaser X y Y estan en 0,0 en la esquina superior izquierda y cuentan
 //positivo hasta abajo.
     CrearFondo();
-    music1 = game.add.audio('musica');
-    music1.loop = true;
-//    music1.volume = 0;
-    music1.play();
-//    music1.volume = 0;
+    ReproducirLoopAudio('jazzFunkThoughts',0.6);
     game.time.events.add(Phaser.Timer.SECOND/2, escribir, this);
 },
 
@@ -86,5 +85,7 @@ function escribir(){
     CrearBotonDeNivel(400, 300, 5);
     var text = AñadirTexto(515,375,"6",colorTexto,35);
     CrearBotonDeNivel(500, 300, 6);
+    var text = AñadirTexto(315,475,"7",colorTexto,35);
+    CrearBotonDeNivel(300, 425, 7);
     
 } 
