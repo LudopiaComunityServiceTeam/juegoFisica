@@ -57,6 +57,9 @@ function ControlJugador(){
 */
 function Explotar(){
     player.kill();
+    // Experimento de sonido
+    Explosion.volume = 1;
+    Explosion.play();
     cabeza = game.add.sprite(player.x, player.y, 'cabeza');
     cuerpo = game.add.sprite(player.x, player.y, 'cuerpo');
     brazoI = game.add.sprite(player.x, player.y, 'brazo');
