@@ -9,6 +9,7 @@ function PreCargarRepertorioSonido()
 {
     /* Repertorio De Sonidos */
     game.load.audio('BustedSoundEffect', ['assets/BustedSoundEffect.ogg']);
+    game.load.audio('Explosion', ['assets/Explosion.ogg']);
 }
 /* PreCarga el repertorio de musica completo (Create)*/
 function CargarRepertorioMusica() 
@@ -21,6 +22,7 @@ function CargarRepertorioSonido()
 {
     /* Repertorio De Sonidos */
     BustedSoundEffect = game.add.audio('BustedSoundEffect');
+    Explosion = game.add.audio('Explosion');
 }
 /* Carga una cancion en particular */
 function CargarCancion(cancion) 
