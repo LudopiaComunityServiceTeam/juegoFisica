@@ -84,9 +84,10 @@ function CrearBotonDeNivel(x,y,nivel){
 *
 */
 function cierraSalida(seg){
-    // salidaCerrandose = game.time.events.add(Phaser.Timer.SECOND * (seg + 1), gameOver, this);
     actualizarTimer();
     if (tiempo == (seg + 1)){
+        stopTimer();
+        resetTimer();
         gameOver();
     }
 }
@@ -157,9 +158,8 @@ function gameOverDestroy(){
 */
 function resetGame(){
     //Detenemos el timer
-    // timer.stop(false);
+    stopTimer();
     resetTimer();
-    // game.time.events.remove(salidaCerrandose);
     //y soltamos el boton
     PlayButton.frame = 0;
     clicked = false;

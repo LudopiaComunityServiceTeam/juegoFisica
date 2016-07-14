@@ -78,8 +78,8 @@ create: function() {
 
     //  Crear el boton de play
     CrearPlay();
-    limiteDeTiempo = 3;
-    AñadirTexto(600,550,3,colorTiempo,35);
+    limiteDeTiempo = 4;
+    AñadirTexto(600,550,4,colorTiempo,35);
     vector = CrearVector(400,300,0,0);
     cuadro = CrearCuadroVector(550,100,vector);
     listaDeCuadros.push(cuadro); //El cuadro esta encima del vector, arreglar!
@@ -105,5 +105,6 @@ update: function() {
     //en el grupo de las plataformas
     game.physics.arcade.collide(player, platforms);
     ControlJugador();
+    cierraSalida(limiteDeTiempo);
 }
-}
+};

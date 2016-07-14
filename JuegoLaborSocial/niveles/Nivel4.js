@@ -79,11 +79,11 @@ create: function() {
     CrearPlay();
     limiteDeTiempo = 2;
     vector = CrearVector(400,300,0,0);
-    cuadro = CrearCuadroVector(550,100,vector)
+    cuadro = CrearCuadroVector(550,100,vector);
     listaDeCuadros.push(cuadro); //El cuadro esta encima del vector, arreglar!
 
     // angulo inmovil
-    AñadirTexto(cuadro.x + 110, cuadro.y + 72,"0", colorAngulo, 48)
+    AñadirTexto(cuadro.x + 110, cuadro.y + 72,"0", colorAngulo, 48);
 
     numeroMagnitud = CrearNumeroParaVector(500,550,300,8);
     listaDeNumeros.push(numeroMagnitud);
@@ -109,4 +109,4 @@ update: function() {
     ControlJugador();
     cierraSalida(limiteDeTiempo);
 }
-}
+};

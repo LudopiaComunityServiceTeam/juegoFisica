@@ -59,7 +59,7 @@ create: function() {
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
     //Se agrega el background del juego
-    CrearFondo()
+    CrearFondo();
 
     //Se crea un grupo, este grupo se utilizara luego para agregar propiedades
     //a las plataformas de un solo golpe
@@ -81,8 +81,7 @@ create: function() {
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
     //  Crear texto
-    text = AñadirTexto(200,200,"Esto es un \nvector",colorTexto,48)
-    text.align = 'center'
+    text = AñadirTexto(200,200,"Esto es un \nvector",colorTexto,48);
     text.angle = -20;
 
 },
@@ -96,5 +95,6 @@ update: function() {
     //en el grupo de las plataformas
     game.physics.arcade.collide(player, platforms);
     ControlJugador();
+    cierraSalida(limiteDeTiempo);
 }
 };

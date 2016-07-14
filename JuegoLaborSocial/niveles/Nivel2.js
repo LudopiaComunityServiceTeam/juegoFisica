@@ -97,5 +97,6 @@ update: function() {
     //en el grupo de las plataformas
     game.physics.arcade.collide(player, platforms);
     ControlJugador();
+    cierraSalida(limiteDeTiempo);
 }
-}
+};

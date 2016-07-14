@@ -20,7 +20,7 @@ function clickPlay(){
 
     if (!clicked){
         //Iniciamos el timer
-        // timer.start();
+        startTimer();
         //y apretamos el boton
         PlayButton.frame = 3;
         clicked = true;

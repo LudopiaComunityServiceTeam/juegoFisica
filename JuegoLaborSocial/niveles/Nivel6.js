@@ -86,12 +86,12 @@ create: function() {
     lineader = game.add.sprite(400, 450, 'linea');
     lineader.scale.setTo(20, 1);
     vector = CrearVector(400,300,0,0);
-    cuadro = CrearCuadroVector(550,100,vector)
+    cuadro = CrearCuadroVector(550,100,vector);
     listaDeCuadros.push(cuadro); //El cuadro esta encima del vector, arreglar!
 
     // angulo inmovil
-    AñadirTexto(cuadro.x + 110, cuadro.y + 72,"0", colorAngulo, 48)
-    
+    AñadirTexto(cuadro.x + 110, cuadro.y + 72,"0", colorAngulo, 48);
+
     posInicXPlayer = 35;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
@@ -109,5 +109,6 @@ update: function() {
     //en el grupo de las plataformas
     game.physics.arcade.collide(player, platforms);
     ControlJugador();
+    cierraSalida(limiteDeTiempo);
 }
-}
+};
