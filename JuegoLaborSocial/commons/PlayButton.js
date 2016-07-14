@@ -20,12 +20,12 @@ function clickPlay(){
 
     if (!clicked){
         //Iniciamos el timer
-        timer.start();
+        // timer.start();
         //y apretamos el boton
         PlayButton.frame = 3;
         clicked = true;
         gameOverDestroy();
-        cierraSalida(limiteDeTiempo);
+        // cierraSalida(limiteDeTiempo);
     }
     else{
         resetGame();
