@@ -9,6 +9,9 @@ function PreCargarRepertorioSonido()
 {
     /* Repertorio De Sonidos */
     game.load.audio('BustedSoundEffect', ['assets/BustedSoundEffect.ogg']);
+    game.load.audio('Explosion', ['assets/Explosion.ogg']);
+    game.load.audio('OpenDoor', ['assets/OpenDoor.ogg']);
+    game.load.audio('CloseDoor', ['assets/CloseDoor.ogg']);
 }
 /* PreCarga el repertorio de musica completo (Create)*/
 function CargarRepertorioMusica() 
@@ -21,6 +24,9 @@ function CargarRepertorioSonido()
 {
     /* Repertorio De Sonidos */
     BustedSoundEffect = game.add.audio('BustedSoundEffect');
+    Explosion = game.add.audio('Explosion');
+    OpenDoor = game.add.audio('OpenDoor');
+    CloseDoor = game.add.audio('CloseDoor');
 }
 /* Carga una cancion en particular */
 function CargarCancion(cancion) 

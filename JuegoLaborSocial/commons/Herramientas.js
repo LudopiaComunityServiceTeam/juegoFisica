@@ -123,8 +123,6 @@ function AñadirTexto(x,y,texto,color,tamanno){
 function gameOver(){
 
     Explotar();
-    // Experimento de sonido
-    BustedSoundEffect.play();
     if((postIt==null)||(gameOverText==null)){
         postIt = game.add.sprite(300, 200, 'post-it-verde');
         postIt.inputEnabled = true;

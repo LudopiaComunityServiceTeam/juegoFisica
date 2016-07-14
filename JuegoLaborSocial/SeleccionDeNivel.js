@@ -63,7 +63,7 @@ create: function()
     CrearFondo();
     CargarRepertorioMusica();
     CargarRepertorioSonido();
-    ReproducirLoopAudio(jazzFunkThoughts,0.6);
+    ReproducirLoopAudio(jazzFunkThoughts,0.3);
     game.time.events.add(Phaser.Timer.SECOND/2, escribir, this);
 },
 

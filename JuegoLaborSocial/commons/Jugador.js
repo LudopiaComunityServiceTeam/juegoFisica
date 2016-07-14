@@ -22,6 +22,7 @@ function ControlJugador(){
         //Detectar si el personaje toca la salida
         if (ChequearOverlap(player,salida)){
             if (limiteDeTiempo == Infinity || limiteDeTiempo == tiempo) {
+                CloseDoor.play();
                 game.state.start(niveles[nivelActual+1]);
                 nivelActual = nivelActual + 1;
                 resetVariables();
@@ -57,6 +58,9 @@ function ControlJugador(){
 */
 function Explotar(){
     player.kill();
+    // Experimento de sonido
+    Explosion.volume = 1;
+    Explosion.play();
     cabeza = game.add.sprite(player.x, player.y, 'cabeza');
     cuerpo = game.add.sprite(player.x, player.y, 'cuerpo');
     brazoI = game.add.sprite(player.x, player.y, 'brazo');
