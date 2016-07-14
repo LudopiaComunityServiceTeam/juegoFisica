@@ -22,6 +22,7 @@ function ControlJugador(){
         //Detectar si el personaje toca la salida
         if (ChequearOverlap(player,salida)){
             if (limiteDeTiempo == Infinity || limiteDeTiempo == tiempo) {
+                CloseDoor.play();
                 game.state.start(niveles[nivelActual+1]);
                 nivelActual = nivelActual + 1;
                 resetVariables();
