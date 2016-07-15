@@ -4,14 +4,13 @@
 */
 function CrearTimer() {
     tiempo = 0;
-
+    fpscont = 0;
+    tiempoStart = false;
     var x = 560;
     var y = 20;
-    var text = AñadirTexto(x,y,"Tiempo: ",colorTexto,35)
-    timerText = AñadirTexto(x+ 140,y-10,"0",colorTiempo,50)
+    var text = AñadirTexto(x,y,"Tiempo: ",colorTexto,35);
+    timerText = AñadirTexto(x+ 140,y-10,"0",colorTiempo,50);
 
-    timer = game.time.create(false);
-    timer.loop(1000, actualizarTimer, this);
 }
 
 /**
@@ -20,8 +19,24 @@ function CrearTimer() {
 *
 */
 function actualizarTimer() {
-    tiempo ++;
-    timerText.setText(tiempo);
+
+    if (tiempoStart){
+        fpscont++;
+
+        if (fpscont == 40) {
+            tiempo++;
+            timerText.setText(tiempo);
+            fpscont = 0;
+        }
+    }
+}
+
+/**
+* Funcion que inicia el tiempo mostrado.
+*
+*/
+function startTimer() {
+    tiempoStart = true;
 }
 
 /**
@@ -29,6 +44,14 @@ function actualizarTimer() {
 *
 */
 function resetTimer() {
-    tiempo = 0
+    tiempo = 0;
     timerText.setText(tiempo);
+}
+
+/**
+* Funcion que detiene el tiempo mostrado.
+*
+*/
+function stopTimer() {
+    tiempoStart = false;
 }
