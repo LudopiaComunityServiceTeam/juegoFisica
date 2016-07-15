@@ -85,11 +85,11 @@ create: function() {
     // angulo inmovil
     AñadirTexto(cuadro.x + 110, cuadro.y + 72,"0", colorAngulo, 48);
 
-    numeroMagnitud = CrearNumeroParaVector(500,550,300,8);
+    numeroMagnitud = CrearNumeroParaVector(600,550,300,6);
     listaDeNumeros.push(numeroMagnitud);
-    numeroMagnitud = CrearNumeroParaVector(300,650,300,2);
+    numeroMagnitud = CrearNumeroParaVector(300,650,300,3);
     listaDeNumeros.push(numeroMagnitud);
-    numeroMagnitud = CrearNumeroParaVector(100,750,300,1);
+    numeroMagnitud = CrearNumeroParaVector(200,750,300,2);
     listaDeNumeros.push(numeroMagnitud);
     posInicXPlayer = 35;
     posInicYPlayer = game.world.height - 110;
