@@ -79,6 +79,9 @@ function CheckDistanciaOnVelocidad(item){
             CrearVelocidad();
         }
     }
+    else {
+        tieneDistancia = false;
+    }
 
 }
 function CheckTiempoOnVelocidad(item){
@@ -92,6 +95,9 @@ function CheckTiempoOnVelocidad(item){
         if (tieneDistancia){
             CrearVelocidad();
         }
+    }
+    else {
+        tieneTiempo = false;
     }
 }
 
