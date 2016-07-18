@@ -50,6 +50,7 @@ function CrearSalida(x,y) {
 
 }
 
+
 /**
 * Funcion que crea el sprite del fondo.
 *
@@ -73,6 +74,21 @@ function CrearBotonDeNivel(x,y,nivel){
    button.i = nivel;
    button.inputEnabled = true;
    button.events.onInputDown.add(SeleccionarNivel, this);
+
+}
+
+/**
+* Funcion que crea el sprite de una mano para el tutorial
+* del nivel 1.
+*
+
+* @param x: posicion en el eje x
+* @param y: posicion en el eje y
+*
+*/
+function CrearMano(x,y){
+
+    mano = game.add.sprite(x,y, 'mano');
 
 }
 

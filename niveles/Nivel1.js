@@ -32,6 +32,7 @@ preload: function() {
     game.load.image('vector', 'assets/Vector.png');
     game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
     game.load.spritesheet('numeros', 'assets/numeros.png', 40, 65);
+    game.load.image('mano', 'assets/hand1.png');
 
 },
 create: function() {
@@ -84,6 +85,9 @@ create: function() {
     text = AñadirTexto(200,200,"Esto es un \nvector",colorTexto,48);
     text.angle = -20;
 
+    //Crear mano
+    CrearMano(290, 275);
+
 },
 
 update: function() {
@@ -96,5 +100,15 @@ update: function() {
     game.physics.arcade.collide(player, platforms);
     ControlJugador();
     cierraSalida(limiteDeTiempo);
-}
+    if (mano.x > player.x){
+    mano.x = mano.x-1;
+    }
+    if (mano.y < player.y){
+        mano.y = mano.y+1;
+    }
+    if ((mano.x <= player.x)&&(mano.y >= player.y)){
+        mano.x = 300;
+        mano.y = 300;
+    }
+ }
 };
