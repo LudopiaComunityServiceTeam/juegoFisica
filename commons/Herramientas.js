@@ -231,33 +231,3 @@ function ChequearOverlap(Objeto1,Objeto2){
 
     return Phaser.Rectangle.intersects(boundsA, boundsB);
 }
-
-function resaltarSprite(x, y, scaleX, scaleY, sprite, objeto) {
-    mask = game.add.sprite(x, y, sprite);
-    mask.anchor.setTo(0.5, 0.5);
-    mask.scale.setTo(scaleX,scaleY);
-    mask.alpha = 0.8;
-    mask.frame = 4;
-    evento = game.time.events.loop(1000, titilar, this, mask);
-    // objeto.events.onInputDown.add(pararTitilar, {evento: evento, objeto2: mask});
-    // mask.tint = 0x00ff58;
-    // var bmd = game.make.bitmapData();
-    // bmd.load(vectorS);
-    // bmd.addToWorld(game.world.centerX, game.world.centerY, 0.5, 0.5);
-    // bmd.replaceRGB(0, 0, 0, 255, 0, 0, 0, 255);
-    return mask;
-}
-
-function titilar(objeto) {
-    if (objeto.visible) {
-        objeto.visible = false;
-    }
-    else {
-        objeto.visible = true;
-    }
-}
-
-function pararTitilar(objeto) {
-    game.time.events.remove(this.evento);
-    this.objeto2.destroy();
-}

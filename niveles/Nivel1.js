@@ -79,11 +79,11 @@ create: function() {
     vector = CrearVector(400,300,300,0);
     posInicXPlayer = 35;
     posInicYPlayer = game.world.height - 110;
-    jugador = CrearJugador(posInicXPlayer, posInicYPlayer);
+    CrearJugador(posInicXPlayer, posInicYPlayer);
     //  Crear texto
     text = AñadirTexto(200,200,"Esto es un \nvector",colorTexto,48);
     text.angle = -20;
-    tutorial1();
+
 },
 
 update: function() {
@@ -96,18 +96,5 @@ update: function() {
     game.physics.arcade.collide(player, platforms);
     ControlJugador();
     cierraSalida(limiteDeTiempo);
-    if (ChequearOverlap(player, vector)) {
-        pararTitilar(jugador, {evento: evento, objeto2: objeto2});
-    }
 }
 };
-
-function tutorial1(){
-    resaltarSprite(397,300, 1.2, 1.7, 'vector', vector);
-    vector.events.onInputDown.add(pararTitilar, {evento: evento, objeto2: mask});
-    vector.events.onDragStart.addOnce(resaltarPlayerTutorial, this);
-}
-
-function resaltarPlayerTutorial(objeto) {
-    objeto2 = resaltarSprite(posInicXPlayer+16, posInicYPlayer+23, 1.2, 1.2, 'dude', vector);
-}
