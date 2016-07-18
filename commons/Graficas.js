@@ -32,18 +32,11 @@ function AnimarMano(){
     if (mano.y < distanciaObjY){
         mano.y = mano.y-movEnY;
     }
-    if ((mano.x <= distanciaObjX)||(mano.y >= distanciaObjY)){
-	if ((vector.x <= distanciaObjX)&&!(vector.y >= distanciaObjY)){
-	    mano.y = mano.y-movEnY;
-	} else if ((vector.y >= distanciaObjY)&&!(vector.x <= distanciaObjX)){
-	    mano.x = mano.x-movEnX;
-	} else if ((vector.y >= distanciaObjY)&&(vector.x <= distanciaObjX)){
-	    mano.y = mano.y+movEnY;
-	    mano.x = mano.x+movEnX;
-	}else{
+    if ((mano.x <= distanciaObjX + 10) && (mano.x >= distanciaObjX-10))&&((mano.y<=distanciaObjY + 10) && (mano.y >= distanciaObjY-10)){
+    
 	console.log(movEnY)
         mano.x = vector.x - 100;
-        mano.y = vector.y - 25;}
+        mano.y = vector.y - 25;
     }
-
+    
 }
