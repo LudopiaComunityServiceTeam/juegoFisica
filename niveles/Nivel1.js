@@ -104,13 +104,13 @@ update: function() {
 //Animacion de la mano
 
 var distanciaObjX = player.x - 50
-var distanciaObjY = player.y - 150
+var distanciaObjY = player.y - 50
 
 var distanciaX = mano.x - distanciaObjX
 var distanciaY = mano.y - distanciaObjY
 
-var movEnX = 1
-var movEnY = movEnX*(mano.x - distanciaObjX)/(mano.y - distanciaObjY)
+var movEnX = 2
+var movEnY = movEnX*(mano.y - distanciaObjY)/(mano.x - distanciaObjX)
  
     if (mano.x > distanciaObjX){
     mano.x = mano.x-movEnX;
@@ -118,9 +118,10 @@ var movEnY = movEnX*(mano.x - distanciaObjX)/(mano.y - distanciaObjY)
     if (mano.y < distanciaObjY){
         mano.y = mano.y-movEnY;
     }
-    if ((mano.x <= distanciaObjX)&&(mano.y >= distanciaObjY)){
-        mano.x = 290;
-        mano.y = 275;
+    if ((mano.x <= distanciaObjX)||(mano.y >= distanciaObjY)){
+	console.log(movEnY)
+        mano.x = vector.x - 100;
+        mano.y = vector.y - 25;
     }
  }
 };
