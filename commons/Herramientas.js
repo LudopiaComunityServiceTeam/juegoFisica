@@ -77,20 +77,6 @@ function CrearBotonDeNivel(x,y,nivel){
 
 }
 
-/**
-* Funcion que crea el sprite de una mano para el tutorial
-* del nivel 1.
-*
-
-* @param x: posicion en el eje x
-* @param y: posicion en el eje y
-*
-*/
-function CrearMano(x,y){
-
-    mano = game.add.sprite(x,y, 'mano');
-
-}
 
 /**
 * Funcion que cierra la puerta de la salida despues de seg
