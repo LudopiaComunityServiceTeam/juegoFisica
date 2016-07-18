@@ -77,13 +77,13 @@ create: function() {
     CrearPlay();
     limiteDeTiempo = Infinity;
     vector = CrearVector(400,300,300,0);
+    resaltarSprite(397,300, 'vector', vector);
     posInicXPlayer = 35;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
     //  Crear texto
     text = AñadirTexto(200,200,"Esto es un \nvector",colorTexto,48);
     text.angle = -20;
-
 },
 
 update: function() {
