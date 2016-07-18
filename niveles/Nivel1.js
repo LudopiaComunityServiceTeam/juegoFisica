@@ -100,15 +100,27 @@ update: function() {
     game.physics.arcade.collide(player, platforms);
     ControlJugador();
     cierraSalida(limiteDeTiempo);
-    if (mano.x > player.x){
-    mano.x = mano.x-1;
+
+//Animacion de la mano
+
+var distanciaObjX = player.x - 50
+var distanciaObjY = player.y - 150
+
+var distanciaX = mano.x - distanciaObjX
+var distanciaY = mano.y - distanciaObjY
+
+var movEnX = 1
+var movEnY = movEnX*(mano.x - distanciaObjX)/(mano.y - distanciaObjY)
+ 
+    if (mano.x > distanciaObjX){
+    mano.x = mano.x-movEnX;
     }
-    if (mano.y < player.y){
-        mano.y = mano.y+1;
+    if (mano.y < distanciaObjY){
+        mano.y = mano.y-movEnY;
     }
-    if ((mano.x <= player.x)&&(mano.y >= player.y)){
-        mano.x = 300;
-        mano.y = 300;
+    if ((mano.x <= distanciaObjX)&&(mano.y >= distanciaObjY)){
+        mano.x = 290;
+        mano.y = 275;
     }
  }
 };
