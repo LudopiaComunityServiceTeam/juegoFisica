@@ -15,14 +15,14 @@ function CrearMano(x,y){
 
 }
 
-function AnimarMano(){
+function AnimarMano(inicio,objetivo){
 
-    if (!ChequearOverlap(player,vector)){
+    if (!ChequearOverlap(inicio,objetivo)&&(!clicked)){
         if (!mano.alive){
-            mano.reset(vector.x - 100, vector.y - 25)
+            mano.reset(inicio.x - 100, inicio.y - 25)
         }
-        var distanciaObjX = player.x - 50
-        var distanciaObjY = player.y 
+        var distanciaObjX = objetivo.x - 50
+        var distanciaObjY = objetivo.y 
 
         var distanciaX = Math.abs(mano.x - distanciaObjX)
         var distanciaY = Math.abs(mano.y - distanciaObjY)
@@ -38,7 +38,6 @@ function AnimarMano(){
         {
         
             proporcion = (distanciaY)/(distanciaX)
-            console.log("X: " + proporcion)
             suma = proporcion + 1
             movEnX = (1/suma)*velocidad
             movEnY = (proporcion/suma)*velocidad
@@ -46,7 +45,6 @@ function AnimarMano(){
         else 
         {
             proporcion = (distanciaX)/(distanciaY)
-            console.log("X: " + proporcion)
             suma = proporcion + 1
             movEnX = (proporcion/suma)*velocidad
             movEnY = (1/suma)*velocidad
@@ -67,11 +65,11 @@ function AnimarMano(){
         if (((mano.x <= distanciaObjX + 10) && (mano.x >= distanciaObjX-10))&&((mano.y<=distanciaObjY + 10) && (mano.y >= distanciaObjY-10))){
     
             console.log(movEnY)
-            mano.x = vector.x - 100;
-            mano.y = vector.y - 25;
+            mano.x = inicio.x - 100;
+            mano.y = inicio.y - 25;
         }
     }
-    else if ((mano.alive)&&(ChequearOverlap(player,vector))){
+    else if (((mano.alive)&&(ChequearOverlap(inicio,objetivo)))||clicked){
         mano.kill();
     }
 }
