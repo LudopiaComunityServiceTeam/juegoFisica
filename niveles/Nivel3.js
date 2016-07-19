@@ -94,7 +94,7 @@ create: function() {
     posInicXPlayer = 35;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
-    CrearMano(listaDeNumeros[0].x, listaDeNumeros[0].y);
+    CrearMano(listaDeNumeros[0].x -55 , listaDeNumeros[0].y + 25);
 
 },
 
@@ -108,6 +108,6 @@ update: function() {
     game.physics.arcade.collide(player, platforms);
     ControlJugador();
     cierraSalida(limiteDeTiempo);
-    AnimarMano(listaDeNumeros[0],listaDeCuadros[0]);
+    AnimarMano(listaDeNumeros[0],listaDeCuadros[0],[-55,25,-40,+60]);
 }
 };

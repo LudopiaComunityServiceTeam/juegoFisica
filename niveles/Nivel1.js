@@ -103,6 +103,6 @@ update: function() {
 
 //Animacion de la mano
 
-    AnimarMano(vector,player);
+    AnimarMano(vector,player,[-100,-25,-50,0]);
  }
 };

@@ -15,14 +15,14 @@ function CrearMano(x,y){
 
 }
 
-function AnimarMano(inicio,objetivo){
+function AnimarMano(inicio,objetivo,offsets){
 
     if (!ChequearOverlap(inicio,objetivo)&&(!clicked)){
         if (!mano.alive){
-            mano.reset(inicio.x - 100, inicio.y - 25)
+            mano.reset(inicio.x + offsets[0], inicio.y + offsets[1])
         }
-        var distanciaObjX = objetivo.x - 50
-        var distanciaObjY = objetivo.y 
+        var distanciaObjX = objetivo.x + offsets[2]
+        var distanciaObjY = objetivo.y + offsets[3]
 
         var distanciaX = Math.abs(mano.x - distanciaObjX)
         var distanciaY = Math.abs(mano.y - distanciaObjY)
@@ -65,8 +65,8 @@ function AnimarMano(inicio,objetivo){
         if (((mano.x <= distanciaObjX + 10) && (mano.x >= distanciaObjX-10))&&((mano.y<=distanciaObjY + 10) && (mano.y >= distanciaObjY-10))){
     
             console.log(movEnY)
-            mano.x = inicio.x - 100;
-            mano.y = inicio.y - 25;
+            mano.x = inicio.x + offsets[0];
+            mano.y = inicio.y + offsets[1];
         }
     }
     else if (((mano.alive)&&(ChequearOverlap(inicio,objetivo)))||clicked){
