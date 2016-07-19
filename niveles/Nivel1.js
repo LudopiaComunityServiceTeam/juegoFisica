@@ -98,16 +98,18 @@ update: function() {
     cierraSalida(limiteDeTiempo);
     if (ChequearOverlap(player, vector)) {
         pararTitilar(jugador, {evento: evento, objeto2: objeto2});
+        // objeto2 = resaltarSprite(400, 550, 1.2, 1.2, 'PlayButton');
+        // PlayButton.events.onInputDown.addOnce(pararTitilar, {evento: evento, objeto2: objeto2});
     }
 }
 };
 
 function tutorial1(){
-    resaltarSprite(397,300, 1.2, 1.7, 'vector', vector);
-    vector.events.onInputDown.add(pararTitilar, {evento: evento, objeto2: mask});
+    resaltarSprite(397,300, 1.2, 1.7, 'vector');
+    vector.events.onInputDown.add(pararTitilar, {evento: evento, objeto2: objetoTitila});
     vector.events.onDragStart.addOnce(resaltarPlayerTutorial, this);
 }
 
 function resaltarPlayerTutorial(objeto) {
-    objeto2 = resaltarSprite(posInicXPlayer+16, posInicYPlayer+23, 1.2, 1.2, 'dude', vector);
+    objeto2 = resaltarSprite(posInicXPlayer+16, posInicYPlayer+23, 1.2, 1.2, 'dude');
 }

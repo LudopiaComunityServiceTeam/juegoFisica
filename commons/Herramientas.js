@@ -224,7 +224,6 @@ function resetVariables(){
 * del objeto 1.
 *
 */
-
 function ChequearOverlap(Objeto1,Objeto2){
     var boundsA = Objeto1.getBounds();
     var boundsB = Objeto2.getBounds();
@@ -232,22 +231,32 @@ function ChequearOverlap(Objeto1,Objeto2){
     return Phaser.Rectangle.intersects(boundsA, boundsB);
 }
 
-function resaltarSprite(x, y, scaleX, scaleY, sprite, objeto) {
-    mask = game.add.sprite(x, y, sprite);
-    mask.anchor.setTo(0.5, 0.5);
-    mask.scale.setTo(scaleX,scaleY);
-    mask.alpha = 0.8;
-    mask.frame = 4;
-    evento = game.time.events.loop(1000, titilar, this, mask);
-    // objeto.events.onInputDown.add(pararTitilar, {evento: evento, objeto2: mask});
-    // mask.tint = 0x00ff58;
-    // var bmd = game.make.bitmapData();
-    // bmd.load(vectorS);
-    // bmd.addToWorld(game.world.centerX, game.world.centerY, 0.5, 0.5);
-    // bmd.replaceRGB(0, 0, 0, 255, 0, 0, 0, 255);
-    return mask;
+/**
+* Funcion que hace titilar un nuevo objeto
+*
+* @param x: posicion en el eje x
+* @param y: posicion en el eje y
+* @param scaleX: escala del objeto en coordenada x
+* @param scaleY: escala del objeto en coordenada y
+* @param sprite: clave del sprite
+*
+*/
+function resaltarSprite(x, y, scaleX, scaleY, sprite) {
+    objetoTitila = game.add.sprite(x, y, sprite);
+    objetoTitila.anchor.setTo(0.5, 0.5);
+    objetoTitila.scale.setTo(scaleX,scaleY);
+    objetoTitila.alpha = 0.8;
+    objetoTitila.frame = 4;
+    evento = game.time.events.loop(1000, titilar, this, objetoTitila);
+    return objetoTitila;
 }
 
+/**
+* Funcion que hace titilar un objeto
+*
+* @param objeto: objeto a hacer titilar
+*
+*/
 function titilar(objeto) {
     if (objeto.visible) {
         objeto.visible = false;
@@ -257,6 +266,12 @@ function titilar(objeto) {
     }
 }
 
+/**
+* Funcion que detiene el titilar de un objeto
+*
+* @param objeto: objeto que dispara el evento de dejar titilar
+*
+*/
 function pararTitilar(objeto) {
     game.time.events.remove(this.evento);
     this.objeto2.destroy();
