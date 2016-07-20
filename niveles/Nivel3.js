@@ -96,6 +96,9 @@ create: function() {
     CrearJugador(posInicXPlayer, posInicYPlayer);
     CrearMano(listaDeNumeros[0].x -55 , listaDeNumeros[0].y + 25);
 
+    // informacion sobre la magnitud
+    info = "Una magnitud física es\n un valor asociado a una\n propiedad física y es un \ncomponente que cambia la\n intensidad de un vector";
+    AñadirTexto(60, 60, info, colorTexto, 30);
 },
 
 update: function() {
