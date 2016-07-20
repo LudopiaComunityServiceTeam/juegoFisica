@@ -32,6 +32,7 @@ preload: function() {
     game.load.image('vector', 'assets/Vector.png');
     game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
     game.load.spritesheet('numeros', 'assets/numeros.png', 40, 65);
+    game.load.image('mano', 'assets/hand1.png');
 
 },
 create: function() {
@@ -93,6 +94,7 @@ create: function() {
     posInicXPlayer = 35;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
+    CrearMano(listaDeNumeros[0].x -55 , listaDeNumeros[0].y + 25);
 
 },
 
@@ -106,5 +108,6 @@ update: function() {
     game.physics.arcade.collide(player, platforms);
     ControlJugador();
     cierraSalida(limiteDeTiempo);
+    AnimarMano(listaDeNumeros[0],listaDeCuadros[0],[-55,25,-40,+60]);
 }
 };

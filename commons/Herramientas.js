@@ -50,6 +50,7 @@ function CrearSalida(x,y) {
 
 }
 
+
 /**
 * Funcion que crea el sprite del fondo.
 *
@@ -75,6 +76,7 @@ function CrearBotonDeNivel(x,y,nivel){
    button.events.onInputDown.add(SeleccionarNivel, this);
 
 }
+
 
 /**
 * Funcion que cierra la puerta de la salida despues de seg
