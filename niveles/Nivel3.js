@@ -77,7 +77,8 @@ create: function() {
     CrearTimer();
 
     //  Crear el boton de play
-    CrearPlay(Infinity);
+    CrearPlay();
+    limiteDeTiempo = Infinity;
     vector = CrearVector(400,300,0,0);
     cuadro = CrearCuadroVector(550,100,vector);
     listaDeCuadros.push(cuadro); //El cuadro esta encima del vector, arreglar!
@@ -97,7 +98,7 @@ create: function() {
     CrearMano(listaDeNumeros[0].x -55 , listaDeNumeros[0].y + 25);
 
     // informacion sobre la magnitud
-    info = "Una magnitud física es\n un valor asociado a una\n propiedad física y es un \ncomponente que cambia la\n intensidad de un vector";
+    info = "Un vector tiene magnitud, que\n es un valor asociado a una\n propiedad física y que cambia\n la intensidad del mismo";
     AñadirTexto(60, 60, info, colorTexto, 30);
 },
 

@@ -36,13 +36,13 @@ function AnimarMano(inicio,objetivo,offsets){
 
         if (Math.abs(distanciaX) < Math.abs(distanciaY))
         {
-        
+
             proporcion = (distanciaY)/(distanciaX)
             suma = proporcion + 1
             movEnX = (1/suma)*velocidad
             movEnY = (proporcion/suma)*velocidad
-        }    
-        else 
+        }
+        else
         {
             proporcion = (distanciaX)/(distanciaY)
             suma = proporcion + 1
@@ -63,7 +63,7 @@ function AnimarMano(inicio,objetivo,offsets){
         }
 
         if (((mano.x <= distanciaObjX + 10) && (mano.x >= distanciaObjX-10))&&((mano.y<=distanciaObjY + 10) && (mano.y >= distanciaObjY-10))){
-    
+
             console.log(movEnY)
             mano.x = inicio.x + offsets[0];
             mano.y = inicio.y + offsets[1];
