@@ -73,7 +73,7 @@ create: function() {
 
     //  Crear la puerta de salida
     CrearSalida(600,486);
-    CrearTimer(Infinity);
+    CrearTimer();
     //  Crear el boton de play
     CrearPlay();
     limiteDeTiempo = Infinity;
