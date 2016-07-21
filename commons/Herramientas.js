@@ -47,6 +47,7 @@ function CrearPlataformas() {
 function CrearSalida(x,y) {
 
     salida = game.add.sprite(x,y,'salida');
+    salida.animations.add('accionar',[1,2,3,4],10,false);
 
 }
 
@@ -86,6 +87,7 @@ function CrearBotonDeNivel(x,y,nivel){
 *
 */
 function cierraSalida(seg){
+    salida.animations.play('accionar',10,true);
     actualizarTimer();
     if (tiempo == (seg + 1)){
         stopTimer();
