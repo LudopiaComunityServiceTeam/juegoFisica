@@ -87,14 +87,18 @@ function CrearBotonDeNivel(x,y,nivel){
 *
 */
 function cierraSalida(seg){
-    salida.animations.play('accionar',10,true);
     actualizarTimer();
     if (tiempo == (seg + 1)){
+        salida.animations.play('accionar',10,true);
         stopTimer();
         resetTimer();
         gameOver();
     }
 }
+
+//function abreSalida(seg){
+//
+//}
 
 /**
 * Funcion que agrega un texto en el juego.
