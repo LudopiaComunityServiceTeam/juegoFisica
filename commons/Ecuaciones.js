@@ -56,11 +56,6 @@ function CrearDato(valor,x,y,numeroMostrado,tipoDeDato) {
     //se corre la funcion checkMagnitudInVector
     dato.events.onDragStop.add(CheckEncimaEcuacion);
 
-    //Elegimos el numero que queremos que sea el objeto que creamos
-    //Esto cambia la imagen que tenemos del spritesheet
-    //el frame 0 seria 1, el 2 seria 3, el 3 seria el cuatro y asi.
-    dato.frame = numeroMostrado-1;
-
     dato.valor = valor;
     ListaDeDatos.push(dato);
 }
@@ -80,10 +75,14 @@ function CheckDistanciaOnVelocidad(item){
         EcuacionVelocidad.distancia = item.valor;
         item.x = EcuacionVelocidad.x + 15;
         item.y = EcuacionVelocidad.y - 25;
+        if (tieneTiempo){
+            CrearVelocidad();
+        }
     }
-    if (tieneTiempo){
-        CrearVelocidad();
+    else {
+        tieneDistancia = false;
     }
+
 }
 function CheckTiempoOnVelocidad(item){
 //Requiere booleanos "tieneVelocidad" y "tieneTiempo"
@@ -93,10 +92,12 @@ function CheckTiempoOnVelocidad(item){
         EcuacionVelocidad.tiempo = item.valor;
         item.x = EcuacionVelocidad.x + 15;
         item.y = (EcuacionVelocidad.y + 25);
-
+        if (tieneDistancia){
+            CrearVelocidad();
+        }
     }
-    if (tieneDistancia){
-        CrearVelocidad();
+    else {
+        tieneTiempo = false;
     }
 }
 
@@ -105,6 +106,6 @@ function CheckTiempoOnVelocidad(item){
 * la distancia y el tiempo
 */
 function CrearVelocidad(){
-    resultado = (EcuacionVelocidad.distancia/EcuacionVelocidad.tiempo);
+    resultado = Math.floor(EcuacionVelocidad.distancia/EcuacionVelocidad.tiempo);
     CrearNumeroParaVector((resultado*100),(EcuacionVelocidad.x+80),EcuacionVelocidad.y+25,resultado);
 }

@@ -15,7 +15,7 @@ function CrearNumeroParaVector(numero,x,y,numeroMostrado) {
     var numeroMag;
     //creamos un objeto con forma de número
     // numeroMag = game.add.sprite(x, y, 'numeros');
-    numeroMag = AñadirTexto(x,y,numeroMostrado, colorMagnitud, 48)
+    numeroMag = AñadirTexto(x,y,numeroMostrado, colorMagnitud, 48);
     numeroMag.anchor.y = -0.4;
     //Permitimos que se le pueda poner input al objeto
     numeroMag.inputEnabled = true;
@@ -110,7 +110,7 @@ function CrearAnguloParaVector(numero,x,y,numeroMostrado) {
 
     var numeroAngulo;
     //creamos un objeto con forma de número
-    numeroAngulo = AñadirTexto(x,y,numeroMostrado, colorAngulo, 48)
+    numeroAngulo = AñadirTexto(x,y,numeroMostrado, colorAngulo, 48);
     numeroAngulo.anchor.y = -0.4;
     numeroAngulo.anchor.x = -0.25;
 
@@ -218,7 +218,7 @@ function CrearVector(x,y,magnitud,angulo) {
     }
     //Permitimos que se le pueda poner input al objeto
     vector.inputEnabled = true;
-
+    vector.input.useHandCursor = true;
     //Permite arrastrar con el mouse, el "true" hace que el centro del
     //objeto quede en donde se tiene el mouse
     vector.input.enableDrag(true);
@@ -240,7 +240,7 @@ function CrearVector(x,y,magnitud,angulo) {
 */
 
 function ConvertirAngulo(angulo){
-    if ((angulo < 180)&&(angulo => 0)){
+    if ((angulo < 180)&&(angulo >= 0)){
         return (-angulo);
     }
     else if ((angulo <= 359)&&(angulo >= 180)){

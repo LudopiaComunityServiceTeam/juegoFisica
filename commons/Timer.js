@@ -45,6 +45,7 @@ function startTimer() {
 */
 function resetTimer() {
     tiempo = 0;
+    fpscont = 0;
     timerText.setText(tiempo);
 }
 

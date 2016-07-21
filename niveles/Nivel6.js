@@ -73,17 +73,17 @@ create: function() {
     CrearPiso();
 
     //  Crear la puerta de salida
-    CrearSalida(600,486);
+    CrearSalida(610,486);
 
     //  Crear el cuadro del vector
     CrearTimer();
 
     //  Crear el boton de play
     CrearPlay();
-    limiteDeTiempo = Infinity;
-    lineaizq = game.add.sprite(50, 450, 'linea');
+    limiteDeTiempo = 3;
+    lineaizq = game.add.sprite(52, 450, 'linea');
     lineaizq.scale.setTo(20, 1);
-    lineader = game.add.sprite(400, 450, 'linea');
+    lineader = game.add.sprite(405, 450, 'linea');
     lineader.scale.setTo(20, 1);
     vector = CrearVector(400,300,0,0);
     cuadro = CrearCuadroVector(550,100,vector);
@@ -96,7 +96,7 @@ create: function() {
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
     CrearEcuacionVelocidad();
-    CrearDato(6,320,400,6,"distancia");
+    CrearDato(9,320,400,9,"distancia");
     CrearDato(3,600,510,3,"tiempo");
 },
 

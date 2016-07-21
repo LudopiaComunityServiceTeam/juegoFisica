@@ -9,7 +9,7 @@ function PreCargarRepertorioSonido()
 {
     /* Repertorio De Sonidos */
     game.load.audio('BustedSoundEffect', ['assets/BustedSoundEffect.ogg']);
-    game.load.audio('Explosion', ['assets/Explosion.ogg']);
+    game.load.audio('legoDisarm', ['assets/legoDisarm.ogg']);
     game.load.audio('OpenDoor', ['assets/OpenDoor.ogg']);
     game.load.audio('CloseDoor', ['assets/CloseDoor.ogg']);
 }
@@ -24,7 +24,7 @@ function CargarRepertorioSonido()
 {
     /* Repertorio De Sonidos */
     BustedSoundEffect = game.add.audio('BustedSoundEffect');
-    Explosion = game.add.audio('Explosion');
+    legoDisarm = game.add.audio('legoDisarm');
     OpenDoor = game.add.audio('OpenDoor');
     CloseDoor = game.add.audio('CloseDoor');
 }

@@ -17,7 +17,7 @@ var listaDeEspinas = [];
 var listaDeAngulos = [];
 var ListaDeDatos = [];
 var numeroMagnitud;
-var niveles = ['SeleccionDeNivel','Nivel1','Nivel2','Nivel3','Nivel4','Nivel5', 'Nivel6' ,'Nivel6','Main_game'];
+var niveles = ['SeleccionDeNivel','Nivel1','Nivel2','Nivel3','Nivel4','Nivel5', 'Nivel6','Main_game'];
 var nivelActual = 0;
 var explosion = false;
 var music1;
@@ -50,7 +50,7 @@ preload: function() {
     /* Repertorio De Sonidos */
     PreCargarRepertorioSonido();
 },
-create: function() 
+create: function()
 {
 //Esta funcion dibuja objetos en pantalla en el orden en que se añadan
 //Si un objeto se dibuja primero, quedara como background
@@ -78,7 +78,7 @@ update: function() {
 }
 }
 function escribir(){
-    
+
     var text = AñadirTexto(60,10,"Escoge un nivel:",colorTexto,50);
     var text = AñadirTexto(312,150,"1",colorTexto,35);
     CrearBotonDeNivel(300, 200, 1);
@@ -92,5 +92,5 @@ function escribir(){
     CrearBotonDeNivel(400, 300, 5);
     var text = AñadirTexto(515,375,"6",colorTexto,35);
     CrearBotonDeNivel(500, 300, 6);
-    
-} 
+
+}
