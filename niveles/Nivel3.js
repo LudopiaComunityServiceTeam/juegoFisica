@@ -112,6 +112,8 @@ update: function() {
     game.physics.arcade.collide(player, platforms);
     ControlJugador();
     cierraSalida(limiteDeTiempo);
-    AnimarMano(listaDeNumeros[0],listaDeCuadros[0],[-55,25,-40,+60]);
+    if (!(listaDeNumeros[0] === undefined && listaDeNumeros[0] === undefined)) {
+        AnimarMano(listaDeNumeros[0],listaDeCuadros[0],[-55,25,-40,+60]);
+    }
 }
 };
