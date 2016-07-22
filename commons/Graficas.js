@@ -15,8 +15,18 @@ function CrearMano(x,y){
 
 }
 
+/**
+* Funcion que anima la mano, la mueve desde el inicio
+* hasta el objetivo
+*
+* @param inicio: objeto de donde parte la animacion
+* @param objetivo: objeto a donde llega la animacion
+* @param offsets: lista con los offsets del inicio y el objetivo.
+*
+*/
 function AnimarMano(inicio,objetivo,offsets){
-
+    //Nota: esta funcion debe ir entre un if que asegure que los
+    //objetos que seran verificados por colision estan definidos
     if (!ChequearOverlap(inicio,objetivo)&&(!clicked)){
         if (!mano.alive){
             mano.reset(inicio.x + offsets[0], inicio.y + offsets[1])
@@ -36,13 +46,13 @@ function AnimarMano(inicio,objetivo,offsets){
 
         if (Math.abs(distanciaX) < Math.abs(distanciaY))
         {
-        
+
             proporcion = (distanciaY)/(distanciaX)
             suma = proporcion + 1
             movEnX = (1/suma)*velocidad
             movEnY = (proporcion/suma)*velocidad
-        }    
-        else 
+        }
+        else
         {
             proporcion = (distanciaX)/(distanciaY)
             suma = proporcion + 1
@@ -63,7 +73,7 @@ function AnimarMano(inicio,objetivo,offsets){
         }
 
         if (((mano.x <= distanciaObjX + 10) && (mano.x >= distanciaObjX-10))&&((mano.y<=distanciaObjY + 10) && (mano.y >= distanciaObjY-10))){
-    
+
             console.log(movEnY)
             mano.x = inicio.x + offsets[0];
             mano.y = inicio.y + offsets[1];

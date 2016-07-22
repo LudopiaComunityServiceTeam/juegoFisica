@@ -49,6 +49,15 @@ function ControlJugador(){
         player.animations.stop();
         player.frame = 4;
     }
+    if (!(player.alive))
+    {
+        game.physics.arcade.collide(cabeza, platforms);
+        game.physics.arcade.collide(cuerpo, platforms);
+        game.physics.arcade.collide(brazoI, platforms);
+        game.physics.arcade.collide(brazoD, platforms);
+        game.physics.arcade.collide(piernaI, platforms);
+        game.physics.arcade.collide(piernaD, platforms);
+    }  
 }
 
 /**
@@ -59,8 +68,8 @@ function ControlJugador(){
 function Explotar(){
     player.kill();
     // Experimento de sonido
-    Explosion.volume = 1;
-    Explosion.play();
+    legoDisarm.volume = 1;
+    legoDisarm.play();
     cabeza = game.add.sprite(player.x, player.y, 'cabeza');
     cuerpo = game.add.sprite(player.x, player.y, 'cuerpo');
     brazoI = game.add.sprite(player.x, player.y, 'brazo');
@@ -81,47 +90,52 @@ function Explotar(){
     cabeza.body.bounce.y = 0.2;
     cabeza.body.gravity.y = 300;
     cabeza.body.collideWorldBounds = true;
-    cabeza.body.velocity.y = -500;
+    cabeza.body.velocity.y = -5;
 //
 //explosion cuerpo
     cuerpo.body.bounce.y = 0.2;
+    cuerpo.body.bounce.x = 10;
     cuerpo.body.gravity.y = 300;
     cuerpo.body.collideWorldBounds = true;
-    cuerpo.body.velocity.y = -300;
-    cuerpo.body.velocity.x = game.rnd.integerInRange(-100, 100);
-    cuerpo.body.angularVelocity = game.rnd.integerInRange(-1000, 1000);
+    cuerpo.body.velocity.y = -3;
+    cuerpo.body.velocity.x = game.rnd.integerInRange(-0, 0);
+    cuerpo.body.angularVelocity = game.rnd.integerInRange(-0, 0);
 //
 //explosion brazo izq
     brazoI.body.bounce.y = 0.2;
+    brazoI.body.bounce.x = 10;
     brazoI.body.gravity.y = 300;
     brazoI.body.collideWorldBounds = true;
-    brazoI.body.velocity.y = -400;
-    brazoI.body.velocity.x = -game.rnd.integerInRange(200, 300);
-    brazoI.body.angularVelocity = game.rnd.integerInRange(-1000, 1000);
+    brazoI.body.velocity.y = -4;
+    brazoI.body.velocity.x = -game.rnd.integerInRange(0, 0);
+    brazoI.body.angularVelocity = game.rnd.integerInRange(-0, 0);
 //
 //explosion brazo der
     brazoD.body.bounce.y = 0.2;
+    brazoD.body.bounce.x = 10;
     brazoD.body.gravity.y = 300;
     brazoD.body.collideWorldBounds = true;
-    brazoD.body.velocity.y = -400;
-    brazoD.body.velocity.x = game.rnd.integerInRange(200, 300);
-    brazoD.body.angularVelocity = game.rnd.integerInRange(-1000, 1000);
+    brazoD.body.velocity.y = -4;
+    brazoD.body.velocity.x = game.rnd.integerInRange(0, 0);
+    brazoD.body.angularVelocity = game.rnd.integerInRange(-0, 0);
 //
 //explosion pierna izq
     piernaI.body.bounce.y = 0.2;
+    piernaI.body.bounce.x = 10;
     piernaI.body.gravity.y = 300;
     piernaI.body.collideWorldBounds = true;
-    piernaI.body.velocity.y = -200;
-    piernaI.body.velocity.x = -game.rnd.integerInRange(200, 300);
-    piernaI.body.angularVelocity = game.rnd.integerInRange(-1000, 1000);
+    piernaI.body.velocity.y = -2;
+    piernaI.body.velocity.x = -game.rnd.integerInRange(0, 0);
+    piernaI.body.angularVelocity = game.rnd.integerInRange(-0, 0);
 //
 //explosion pierna der
     piernaD.body.bounce.y = 0.2;
+    piernaD.body.bounce.x = 10;
     piernaD.body.gravity.y = 300;
     piernaD.body.collideWorldBounds = true;
-    piernaD.body.velocity.y = -200;
-    piernaD.body.velocity.x = game.rnd.integerInRange(200, 300);
-    piernaD.body.angularVelocity = game.rnd.integerInRange(-1000, 1000);
+    piernaD.body.velocity.y = -2;
+    piernaD.body.velocity.x = game.rnd.integerInRange(0, 0);
+    piernaD.body.angularVelocity = game.rnd.integerInRange(-0, 0);
 
 //
     explosion = true;

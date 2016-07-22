@@ -77,7 +77,8 @@ create: function() {
     CrearTimer();
 
     //  Crear el boton de play
-    CrearPlay(Infinity);
+    CrearPlay();
+    limiteDeTiempo = Infinity;
     vector = CrearVector(400,300,0,0);
     cuadro = CrearCuadroVector(550,100,vector);
     listaDeCuadros.push(cuadro); //El cuadro esta encima del vector, arreglar!
@@ -96,6 +97,9 @@ create: function() {
     CrearJugador(posInicXPlayer, posInicYPlayer);
     CrearMano(listaDeNumeros[0].x -55 , listaDeNumeros[0].y + 25);
 
+    // informacion sobre la magnitud
+    info = "Un vector tiene magnitud, que\n es un valor asociado a una\n propiedad física y que cambia\n la intensidad del mismo";
+    AñadirTexto(60, 60, info, colorTexto, 30);
 },
 
 update: function() {
@@ -108,6 +112,8 @@ update: function() {
     game.physics.arcade.collide(player, platforms);
     ControlJugador();
     cierraSalida(limiteDeTiempo);
-    AnimarMano(listaDeNumeros[0],listaDeCuadros[0],[-55,25,-40,+60]);
+    if (!(listaDeNumeros[0] === undefined && listaDeNumeros[0] === undefined)) {
+        AnimarMano(listaDeNumeros[0],listaDeCuadros[0],[-55,25,-40,+60]);
+    }
 }
 };

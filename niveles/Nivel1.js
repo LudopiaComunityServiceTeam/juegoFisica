@@ -73,19 +73,21 @@ create: function() {
     CrearPiso();
 
     //  Crear la puerta de salida
+
     CrearSalida(600,484);
     CrearTimer(Infinity);
+
     //  Crear el boton de play
     CrearPlay();
     limiteDeTiempo = Infinity;
     vector = CrearVector(400,300,300,0);
     posInicXPlayer = 35;
     posInicYPlayer = game.world.height - 110;
-    CrearJugador(posInicXPlayer, posInicYPlayer);
+    jugador = CrearJugador(posInicXPlayer, posInicYPlayer);
     //  Crear texto
     text = AñadirTexto(200,200,"Esto es un \nvector",colorTexto,48);
     text.angle = -20;
-
+    tutorial1();
     //Crear mano
     CrearMano(290, 275);
 
@@ -101,9 +103,23 @@ update: function() {
     game.physics.arcade.collide(player, platforms);
     ControlJugador();
     cierraSalida(limiteDeTiempo);
-
-//Animacion de la mano
+    if (ChequearOverlap(player, vector)) {
+        pararTitilar(jugador, {evento: evento, objeto2: objeto2});
+        // objeto2 = resaltarSprite(400, 550, 1.2, 1.2, 'PlayButton');
+        // PlayButton.events.onInputDown.addOnce(pararTitilar, {evento: evento, objeto2: objeto2});
+    }
+    //Animacion de la mano
 
     AnimarMano(vector,player,[-100,-25,-50,0]);
  }
 };
+
+function tutorial1(){
+    resaltarSprite(397,300, 1.2, 1.7, 'vector');
+    vector.events.onInputDown.add(pararTitilar, {evento: evento, objeto2: objetoTitila});
+    vector.events.onDragStart.addOnce(resaltarPlayerTutorial, this);
+}
+
+function resaltarPlayerTutorial(objeto) {
+    objeto2 = resaltarSprite(posInicXPlayer+16, posInicYPlayer+23, 1.2, 1.2, 'dude');
+}
