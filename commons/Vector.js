@@ -34,6 +34,9 @@ function CrearNumeroParaVector(numero,x,y,numeroMostrado) {
     numeroMag.frame = numeroMostrado-1;
 
     numeroMag.numero = numero;
+    numeroMag.posXInit = x;
+    numeroMag.posYInit = y;
+    numeroMag.enCuadro = false;
 
     return numeroMag;
 }
@@ -131,6 +134,8 @@ function CrearAnguloParaVector(numero,x,y,numeroMostrado) {
     numeroAngulo.frame = numeroMostrado-1;
 
     numeroAngulo.numero = numero;
+    numeroAngulo.posXInit = x;
+    numeroAngulo.posYInit = y;
 
     return numeroAngulo;
 }
@@ -282,5 +287,15 @@ function pegarVector(item) {
 function CrearCuadroVector(x,y,vector){
     cuadro = game.add.sprite(x, y, 'cuadroVector');
     cuadro.vector = vector;
+
+    //inicializacion de la magnitud del vector
+    magnitud = CrearNumeroParaVector(vector.magnitud, x + 30,y + 50, vector.magnitud);
+    magnitud.input.draggable = false;
+    checkMagnitudInVector(magnitud);
+
+    // inicializacion del angulo del vector
+    angulo = CrearAnguloParaVector(vector.angulo, x + 105,y + 50, vector.angulo);
+    angulo.input.draggable = false;
+    checkAnguloInVector(angulo);
     return cuadro;
 }

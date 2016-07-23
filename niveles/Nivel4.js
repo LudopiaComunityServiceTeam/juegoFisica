@@ -82,9 +82,6 @@ create: function() {
     cuadro = CrearCuadroVector(550,100,vector);
     listaDeCuadros.push(cuadro); //El cuadro esta encima del vector, arreglar!
 
-    // angulo inmovil
-    AñadirTexto(cuadro.x + 110, cuadro.y + 72,"0", colorAngulo, 48);
-
     numeroMagnitud = CrearNumeroParaVector(600,550,300,6);
     listaDeNumeros.push(numeroMagnitud);
     numeroMagnitud = CrearNumeroParaVector(300,650,300,3);
