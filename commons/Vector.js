@@ -79,7 +79,7 @@ function checkMagnitudInVector(item) {
 
         else {
 //Se revisan todos los numeros para ver si hay alguno ademas del que se
-//arrastro dentro de la caja
+//arrastro.
             for (j = 0; j < listaDeNumeros.length; j++){
                 if (ChequearOverlap(listaDeCuadros[i],listaDeNumeros[j])) {
                     magnitudEnCuadro = true;
@@ -166,14 +166,21 @@ function checkAnguloInVector(item) {
 //debe cambiar, y si el vector ya estaba encima del jugador el angulo del
 //jugador tambien debe cambiar
         if (ChequearOverlap(item,listaDeCuadros[i])) {
+            for (j = 0; j < listaDeAngulos.length; j++){
+                listaDeAngulos[j].enCuadro = false;
+                listaDeAngulos[j].x = listaDeAngulos[j].posXInit;
+                listaDeAngulos[j].y = listaDeAngulos[j].posYInit;
+            }
+            listaDeAngulos[0].visible = false;
             anguloEnCuadro = true;
-            item.x = (listaDeCuadros[i].x+90);
-            item.y = (listaDeCuadros[i].y+50);
+            item.x = listaDeCuadros[i].x + 90;
+            item.y = listaDeCuadros[i].y + 50;
             listaDeCuadros[i].vector.angulo = item.numero;
             listaDeCuadros[i].vector.angle = ConvertirAngulo(item.numero);
             if (ChequearOverlap(listaDeCuadros[i].vector,player)){
                 angulo = listaDeCuadros[i].vector.angulo;
             }
+            item.enCuadro = true;
         }
 
         else{
@@ -304,6 +311,8 @@ function CrearCuadroVector(x,y,vector){
     // inicializacion del angulo del vector
     angulo = CrearAnguloParaVector(vector.angulo, x + 105,y + 50, vector.angulo);
     angulo.input.draggable = false;
+    angulo.enCuadro = true;
+    listaDeAngulos.push(angulo);
     checkAnguloInVector(angulo);
     return cuadro;
 }
