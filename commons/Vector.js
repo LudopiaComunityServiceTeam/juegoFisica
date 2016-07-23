@@ -61,16 +61,23 @@ function checkMagnitudInVector(item) {
 //debe cambiar, y si el vector ya estaba encima del jugador la velocidad del
 //jugador tambien debe cambiar
         if (ChequearOverlap(item,listaDeCuadros[i])) {
+            for (j = 0; j < listaDeNumeros.length; j++){
+                listaDeNumeros[j].enCuadro = false;
+                listaDeNumeros[j].x = listaDeNumeros[j].posXInit;
+                listaDeNumeros[j].y = listaDeNumeros[j].posYInit;
+            }
+            listaDeNumeros[0].visible = false;
             magnitudEnCuadro = true;
-            item.x = (listaDeCuadros[i].x+30);
-            item.y = (listaDeCuadros[i].y+50);
+            item.x = listaDeCuadros[i].x + 30;
+            item.y = listaDeCuadros[i].y + 50;
             listaDeCuadros[i].vector.magnitud = item.numero;
             if (ChequearOverlap(listaDeCuadros[i].vector,player)){
                 magnitudJugador = listaDeCuadros[i].vector.magnitud;
             }
+            item.enCuadro = true;
         }
 
-        else{
+        else {
 //Se revisan todos los numeros para ver si hay alguno ademas del que se
 //arrastro dentro de la caja
             for (j = 0; j < listaDeNumeros.length; j++){
@@ -243,7 +250,6 @@ function CrearVector(x,y,magnitud,angulo) {
 * @param angulo: angulo a convertir
 *
 */
-
 function ConvertirAngulo(angulo){
     if ((angulo < 180)&&(angulo >= 0)){
         return (-angulo);
@@ -291,6 +297,8 @@ function CrearCuadroVector(x,y,vector){
     //inicializacion de la magnitud del vector
     magnitud = CrearNumeroParaVector(vector.magnitud, x + 30,y + 50, vector.magnitud);
     magnitud.input.draggable = false;
+    magnitud.enCuadro = true;
+    listaDeNumeros.push(magnitud);
     checkMagnitudInVector(magnitud);
 
     // inicializacion del angulo del vector
