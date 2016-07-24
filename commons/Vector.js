@@ -62,11 +62,13 @@ function checkMagnitudInVector(item) {
 //jugador tambien debe cambiar
         if (ChequearOverlap(item,listaDeCuadros[i])) {
             for (j = 0; j < listaDeNumeros.length; j++){
-                listaDeNumeros[j].enCuadro = false;
-                listaDeNumeros[j].x = listaDeNumeros[j].posXInit;
-                listaDeNumeros[j].y = listaDeNumeros[j].posYInit;
+                if (listaDeNumeros[j].enCuadro) {
+                    listaDeNumeros[j].enCuadro = false;
+                    listaDeNumeros[j].x = listaDeNumeros[j].posXInit;
+                    listaDeNumeros[j].y = listaDeNumeros[j].posYInit;
+                }
             }
-            listaDeNumeros[0].visible = false;
+            listaDeCuadros[i].magnitudInicial.visible = false;
             magnitudEnCuadro = true;
             item.x = listaDeCuadros[i].x + 30;
             item.y = listaDeCuadros[i].y + 50;
@@ -93,6 +95,7 @@ function checkMagnitudInVector(item) {
             }
             if (!magnitudEnCuadro){
                 listaDeCuadros[i].vector.magnitud = 0;
+                listaDeCuadros[i].magnitudInicial.visible = true;
 //Si el cuadro no tiene nada adentro, pero su vector esta encima del jugador
 //entonces la "velocidad" del jugador deberia ser 0 y la del vector tambien
                 if (ChequearOverlap(listaDeCuadros[i].vector,player)){
@@ -143,6 +146,7 @@ function CrearAnguloParaVector(numero,x,y,numeroMostrado) {
     numeroAngulo.numero = numero;
     numeroAngulo.posXInit = x;
     numeroAngulo.posYInit = y;
+    numeroAngulo.enCuadro = false;
 
     return numeroAngulo;
 }
@@ -167,11 +171,13 @@ function checkAnguloInVector(item) {
 //jugador tambien debe cambiar
         if (ChequearOverlap(item,listaDeCuadros[i])) {
             for (j = 0; j < listaDeAngulos.length; j++){
-                listaDeAngulos[j].enCuadro = false;
-                listaDeAngulos[j].x = listaDeAngulos[j].posXInit;
-                listaDeAngulos[j].y = listaDeAngulos[j].posYInit;
+                if (listaDeAngulos[j].enCuadro){
+                    listaDeAngulos[j].enCuadro = false;
+                    listaDeAngulos[j].x = listaDeAngulos[j].posXInit;
+                    listaDeAngulos[j].y = listaDeAngulos[j].posYInit;
+                }
             }
-            listaDeAngulos[0].visible = false;
+            listaDeCuadros[i].anguloInicial.visible = false;
             anguloEnCuadro = true;
             item.x = listaDeCuadros[i].x + 90;
             item.y = listaDeCuadros[i].y + 50;
@@ -201,6 +207,7 @@ function checkAnguloInVector(item) {
             if (!anguloEnCuadro){
                 listaDeCuadros[i].vector.angulo = 0;
                 listaDeCuadros[i].vector.angle = ConvertirAngulo(0);
+                listaDeCuadros[i].anguloInicial.visible = true;
 //Si el cuadro no tiene nada adentro, pero su vector esta encima del jugador
 //entonces el "angulo" del jugador deberia ser 0 y el del vector tambien
                 if (ChequearOverlap(listaDeCuadros[i].vector,player)){
@@ -305,14 +312,14 @@ function CrearCuadroVector(x,y,vector){
     magnitud = CrearNumeroParaVector(vector.magnitud, x + 30,y + 50, vector.magnitud);
     magnitud.input.draggable = false;
     magnitud.enCuadro = true;
-    listaDeNumeros.push(magnitud);
+    cuadro.magnitudInicial = magnitud;
     checkMagnitudInVector(magnitud);
 
     // inicializacion del angulo del vector
     angulo = CrearAnguloParaVector(vector.angulo, x + 105,y + 50, vector.angulo);
     angulo.input.draggable = false;
     angulo.enCuadro = true;
-    listaDeAngulos.push(angulo);
+    cuadro.anguloInicial = angulo;
     checkAnguloInVector(angulo);
     return cuadro;
 }
