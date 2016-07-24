@@ -101,8 +101,12 @@ update: function() {
     //Permitimos que el jugador colisione con cualquier objeto
     //en el grupo de las plataformas
     game.physics.arcade.collide(player, platforms);
+
+
     ControlJugador();
-    cierraSalida(limiteDeTiempo);
+    ControlarNivel();
+    
+
     if (ChequearOverlap(player, vector)) {
         pararTitilar(jugador, {evento: evento, objeto2: objeto2});
         // objeto2 = resaltarSprite(400, 550, 1.2, 1.2, 'PlayButton');

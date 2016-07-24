@@ -48,6 +48,7 @@ function CrearSalida(x,y) {
 
     salida = game.add.sprite(x,y,'salida');
     salida.animations.add('accionar',[1,2,3,4],10,false);
+    salida.animations.add('cerrar',[3,2,1,0],10,false);
 
 }
 
@@ -89,16 +90,20 @@ function CrearBotonDeNivel(x,y,nivel){
 function cierraSalida(seg){
     actualizarTimer();
     if (tiempo == (seg + 1)){
-        salida.animations.play('accionar',10,true);
+        salida.animations.play('cerrar',10,false);
         stopTimer();
         resetTimer();
         gameOver();
     }
 }
 
-//function abreSalida(seg){
-//
-//}
+function abreSalida(seg){
+
+    if (limiteDeTiempo == Infinity || limiteDeTiempo == tiempo) {
+        salida.animations.play('accionar',10,false);
+    }
+
+}
 
 /**
 * Funcion que agrega un texto en el juego.
