@@ -23,7 +23,6 @@ preload: function() {
     game.load.image('post-it-verde', 'assets/post-it-verde.png');
 //
     game.load.image('fondo', 'assets/fondo.png');
-    game.load.image('esUnVector', 'assets/estoEsUnVector.png');
     game.load.spritesheet('simbolos','assets/Simbolos.png',28,28);
     game.load.spritesheet('PlayButton','assets/play.png',50,50);
     game.load.image('salida', 'assets/salida.png');

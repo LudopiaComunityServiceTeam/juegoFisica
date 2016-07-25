@@ -32,6 +32,7 @@ preload: function() {
     game.load.image('piso', 'assets/suelo.png');
     game.load.image('vector', 'assets/Vector.png');
     game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
+    game.load.image('mano', 'assets/hand1.png');
 
 },
 create: function() {
@@ -40,11 +41,6 @@ create: function() {
 //objetos en nuestro juego.
 //Cursors son las teclas arriba, abajo, izq y der, esto vino con el ejemplo
 //de la página de phaser
-
-
-//var PlayButton;
-//var simboloVector;
-
 
 //Esta funcion dibuja objetos en pantalla en el orden en que se añadan
 //Si un objeto se dibuja primero, quedara como background
@@ -79,20 +75,25 @@ create: function() {
     CrearPlay();
     limiteDeTiempo = 4;
     AñadirTexto(600,550,4,colorTiempo,35);
-    vector = CrearVector(400,300,0,0);
+    vector = CrearVector(400,350,0,0);
     cuadro = CrearCuadroVector(550,100,vector);
     listaDeCuadros.push(cuadro); //El cuadro esta encima del vector, arreglar!
-    numeroAngulo = CrearAnguloParaVector(90,50,50,90);
+    numeroAngulo = CrearAnguloParaVector(90,180,160,90);
     listaDeAngulos.push(numeroAngulo);
-    numeroAngulo = CrearAnguloParaVector(60,150,50,60);
+    numeroAngulo = CrearAnguloParaVector(60,300,200,60);
     listaDeAngulos.push(numeroAngulo);
-    numeroMagnitud = CrearNumeroParaVector(400,50,150,4);
+    numeroMagnitud = CrearNumeroParaVector(400,100,250,4);
     listaDeNumeros.push(numeroMagnitud);
     espinas = game.add.sprite(300,440,'Espinas');
     listaDeEspinas.push(espinas);
     posInicXPlayer = 35;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
+    CrearMano(listaDeAngulos[0].x -55 , listaDeAngulos[0].y + 25);
+
+    // informacion sobre el angulo
+    info = "Un vector también tiene un \nángulo que define su sentido, \nhacia donde apunta";
+    AñadirTexto(100, 40, info, colorTexto, 30);
 },
 
 update: function() {
@@ -105,5 +106,8 @@ update: function() {
     game.physics.arcade.collide(player, platforms);
     ControlJugador();
     cierraSalida(limiteDeTiempo);
+    if (!(listaDeNumeros[0] === undefined && listaDeAngulos[0] === undefined)) {
+        AnimarMano(listaDeAngulos[0],listaDeCuadros[0],[-55,40,60,65]);
+    }
 }
 };

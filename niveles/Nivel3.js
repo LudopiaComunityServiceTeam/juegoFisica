@@ -106,7 +106,7 @@ update: function() {
     game.physics.arcade.collide(player, platforms);
     ControlJugador();
     cierraSalida(limiteDeTiempo);
-    if (!(listaDeNumeros[0] === undefined && listaDeNumeros[0] === undefined)) {
+    if (!(listaDeNumeros[0] === undefined && listaDeAngulos[0] === undefined)) {
         AnimarMano(listaDeNumeros[0],listaDeCuadros[0],[-55,25,-40,+60]);
     }
 }
