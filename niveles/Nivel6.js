@@ -33,7 +33,6 @@ preload: function() {
     game.load.image('vector', 'assets/Vector.png');
     game.load.image('linea', 'assets/LineaDistancia.png');
     game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
-    game.load.spritesheet('numeros', 'assets/numeros.png', 40, 65);
 
 },
 create: function() {

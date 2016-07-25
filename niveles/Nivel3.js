@@ -21,8 +21,6 @@ preload: function() {
     game.load.image('pierna','assets/Pierna.png');
     game.load.image('cabeza','assets/Cabeza.png');
     game.load.image('post-it-verde', 'assets/post-it-verde.png');
-//
-
     game.load.image('fondo', 'assets/fondo.png');
     game.load.spritesheet('simbolos','assets/Simbolos.png',28,28);
     game.load.image('cuadroVector','assets/cuadroVector.png');
@@ -31,7 +29,6 @@ preload: function() {
     game.load.image('piso', 'assets/suelo.png');
     game.load.image('vector', 'assets/Vector.png');
     game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
-    game.load.spritesheet('numeros', 'assets/numeros.png', 40, 65);
     game.load.image('mano', 'assets/hand1.png');
 
 },

@@ -31,7 +31,6 @@ preload: function() {
     game.load.image('platform', 'assets/plataforma.png');
     game.load.image('vector', 'assets/Vector.png');
     game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
-    game.load.spritesheet('numeros', 'assets/numeros.png', 40, 65);
     game.load.image('mano', 'assets/hand1.png');
 
 },
