@@ -82,6 +82,7 @@ function checkMagnitudInVector(item) {
         else {
             //Se revisan todos los numeros para ver si hay alguno ademas del que se
             //arrastro.
+            item.enCuadro = false;
             for (j = 0; j < listaDeNumeros.length; j++){
                 if (ChequearOverlap(listaDeCuadros[i],listaDeNumeros[j])) {
                     magnitudEnCuadro = true;
@@ -195,6 +196,7 @@ function checkAnguloInVector(item) {
         else {
             //Se revisan todos los numeros para ver si hay alguno ademas del que se
             //arrastro dentro de la caja
+            item.enCuadro = false;
             for (j = 0; j < listaDeAngulos.length; j++){
                 if (ChequearOverlap(listaDeCuadros[i],listaDeAngulos[j])) {
                     anguloEnCuadro = true;
