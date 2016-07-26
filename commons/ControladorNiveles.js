@@ -1,3 +1,48 @@
+/**
+* Funcion que cierra la puerta de la salida despues de seg
+* segundos.
+*
+* @param seg: segundos para cerrar la puerta
+*
+*/
+function cierraSalida(seg){
+    actualizarTimer();
+    if (tiempo == (seg + 1)){
+        salida.animations.play('cerrar',10,false);
+        stopTimer();
+        resetTimer();
+        //gameOver();
+    }
+}
+
+function abreSalida(seg){
+
+    if (limiteDeTiempo == Infinity || (limiteDeTiempo - 2) == tiempo) {
+        salida.animations.play('accionar',10,false);
+    }
+
+}
+
+function epilogoNivel(){
+    epilogoCorriendo = true;
+    //player.kill();
+    resetTimer();
+
+    if (!tiempoStart){
+        startTimer();
+        limiteDeTiempo = 1;
+    }else {
+        if (tiempo == limiteDeTiempo){ 
+            game.state.start(niveles[nivelActual+1]);
+            nivelActual = nivelActual + 1;
+            resetVariables();
+        }
+        else {
+            actualizarTimer();
+	}
+    }
+    epilogoCorriendo = false;
+}
 
 function DetectarVictoria() {
 
@@ -5,9 +50,7 @@ function DetectarVictoria() {
     if (ChequearOverlap(player,salida)){
         if (limiteDeTiempo == Infinity || limiteDeTiempo == tiempo) {
             CloseDoor.play();
-            game.state.start(niveles[nivelActual+1]);
-            nivelActual = nivelActual + 1;
-            resetVariables();
+            epilogoNivel();
         }
     }
 }
@@ -39,7 +82,7 @@ function DetectarPerdida() {
 
 //Perder por No llegar en tiempo correspondiente
     if (limiteDeTiempo != Infinity){ 
-        if ((limiteDeTiempo == tiempo)&&(!(ChequearOverlap(player,salida)))) {
+        if (((limiteDeTiempo + 1) == tiempo)&&(!(ChequearOverlap(player,salida)))) {
 	    player.body.velocity.x = 0;
             player.animations.stop();
             player.frame = 4;
@@ -53,8 +96,10 @@ function DetectarPerdida() {
 function ControlarNivel() {
 
     if ((clicked)&&(direccion == 1)){
-        ManejarPuerta();
-        DetectarPerdida();
-        DetectarVictoria();
+        if (!(epilogoCorriendo)){
+            ManejarPuerta();
+            DetectarPerdida();
+            DetectarVictoria();
+	}
     }
 }

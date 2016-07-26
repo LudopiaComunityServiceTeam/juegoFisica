@@ -81,30 +81,7 @@ function CrearBotonDeNivel(x,y,nivel){
 }
 
 
-/**
-* Funcion que cierra la puerta de la salida despues de seg
-* segundos.
-*
-* @param seg: segundos para cerrar la puerta
-*
-*/
-function cierraSalida(seg){
-    actualizarTimer();
-    if (tiempo == (seg + 1)){
-        salida.animations.play('cerrar',10,false);
-        stopTimer();
-        resetTimer();
-        gameOver();
-    }
-}
 
-function abreSalida(seg){
-
-    if (limiteDeTiempo == Infinity || (limiteDeTiempo - 1) == tiempo) {
-        salida.animations.play('accionar',10,false);
-    }
-
-}
 
 /**
 * Funcion que agrega un texto en el juego.
@@ -229,6 +206,7 @@ function resetVariables(){
     listaDeAngulos = [];
     ListaDeDatos = [];
     salidaAbierta = false;
+    epilogoCorriendo = false;
 }
 
 /**

@@ -26,6 +26,7 @@ var gameOverText;
 var limiteDeTiempo;
 var salidaCerrandose;
 var salidaAbierta;
+var epilogoCorriendo;
 
 var SeleccionDeNivel = {
 preload: function() {
