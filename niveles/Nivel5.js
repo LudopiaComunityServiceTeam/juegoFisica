@@ -93,7 +93,7 @@ create: function() {
 
     // informacion sobre el angulo
     info = "Un vector también tiene un \nángulo que define su sentido, \nhacia donde apunta";
-    AñadirTexto(100, 40, info, colorTexto, 30);
+    AñadirTexto(100, 40, info, colorTexto, 24);
 },
 
 update: function() {

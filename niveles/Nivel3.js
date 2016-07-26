@@ -93,7 +93,7 @@ create: function() {
 
     // informacion sobre la magnitud
     info = "Un vector tiene magnitud, que\n es un valor asociado a una\n propiedad física y que cambia\n la intensidad del mismo";
-    AñadirTexto(60, 60, info, colorTexto, 30);
+    AñadirTexto(60, 60, info, colorTexto, 24);
 },
 
 update: function() {
