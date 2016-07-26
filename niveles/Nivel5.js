@@ -83,17 +83,20 @@ create: function() {
     vector = CrearVector(400,300,0,0);
     cuadro = CrearCuadroVector(550,100,vector);
     listaDeCuadros.push(cuadro); //El cuadro esta encima del vector, arreglar!
-    numeroAngulo = CrearAnguloParaVector(90,50,50,90);
+    numeroAngulo = CrearAnguloParaVector(90,250,220,90);
     listaDeAngulos.push(numeroAngulo);
-    numeroAngulo = CrearAnguloParaVector(60,150,50,60);
+    numeroAngulo = CrearAnguloParaVector(60,145,220,60);
     listaDeAngulos.push(numeroAngulo);
-    numeroMagnitud = CrearNumeroParaVector(400,50,150,4);
+    numeroMagnitud = CrearNumeroParaVector(400,60,220,4);
     listaDeNumeros.push(numeroMagnitud);
     espinas = game.add.sprite(300,440,'Espinas');
     listaDeEspinas.push(espinas);
     posInicXPlayer = 35;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
+    // informacion sobre la magnitud
+    info = "Un vector tiene angulo, que\n es un valor que define \n el sentido y la dirección \n del mismo";
+    AñadirTexto(60, 60, info, colorTexto, 30);
 },
 
 update: function() {
