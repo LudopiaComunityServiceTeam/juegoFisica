@@ -33,6 +33,7 @@ preload: function() {
     game.load.image('vector', 'assets/Vector.png');
     game.load.image('linea', 'assets/LineaDistancia.png');
     game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
+    game.load.image('mano', 'assets/hand1.png');
 
 },
 create: function() {
@@ -91,9 +92,11 @@ create: function() {
     posInicXPlayer = 35;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
-    CrearEcuacionVelocidad();
+    ecuacionVelocidad = CrearEcuacionVelocidad();
     CrearDato(9,320,400,9,"distancia");
     CrearDato(3,600,510,3,"tiempo");
+
+    CrearMano(ListaDeDatos[0].x -55 , ListaDeDatos[0].y + 25);
 },
 
 update: function() {
@@ -106,5 +109,9 @@ update: function() {
     game.physics.arcade.collide(player, platforms);
     ControlJugador();
     cierraSalida(limiteDeTiempo);
+    if (!(listaDeNumeros[0] === undefined && listaDeAngulos[0] === undefined &&
+        ListaDeDatos[0] === undefined)) {
+        AnimarMano(ListaDeDatos[0],ecuacionVelocidad,[-65,25,-50,-30]);
+    }
 }
 };
