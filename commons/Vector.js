@@ -311,6 +311,8 @@ function pegarVector(item) {
 * @param y: posicion en el eje y
 * @param vector: vector al cual esta asociado el cuadro.
 *
+* @return cuadro con las caracteristicas apropiadas
+*
 */
 function CrearCuadroVector(x,y,vector){
     cuadro = game.add.sprite(x, y, 'cuadroVector');
@@ -329,5 +331,38 @@ function CrearCuadroVector(x,y,vector){
     angulo.enCuadro = true;
     cuadro.anguloInicial = angulo;
     checkAnguloInVector(angulo);
+
+    // Ocultar cuadro del vector cuando no se necesite
+    // descomentar y cambiar el tipo de evento que activa la funcion
+    // vector.events.onInputDown.add(function(vector){ocultarCuadroVector(vector, cuadro);}, this);
+
     return cuadro;
+}
+
+/**
+* Funcion que oculta el cuadro de un vector
+*
+* @param cuadro: el cuadro a ocultar
+*
+*/
+function ocultarCuadroVector(vector, cuadro){
+    cuadro.visible = false;
+
+    for (j = 0; j < listaDeNumeros.length; j++){
+        // Devolver el angulo que estaba en el cuadro a su posicion inicial
+        if (ChequearOverlap(cuadro,listaDeNumeros[j])) {
+            listaDeNumeros[j].visible = false;
+        }
+    }
+    // Evitar que se muestre el angulo inicial del vector.
+    cuadro.magnitudInicial.visible = false;
+
+    for (j = 0; j < listaDeAngulos.length; j++){
+        // Devolver el angulo que estaba en el cuadro a su posicion inicial
+        if (ChequearOverlap(cuadro,listaDeAngulos[j])) {
+            listaDeAngulos[j].visible = false;
+        }
+    }
+    // Evitar que se muestre el angulo inicial del vector.
+    cuadro.anguloInicial.visible = false;
 }
