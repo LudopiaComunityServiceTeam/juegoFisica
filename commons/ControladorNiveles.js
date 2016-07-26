@@ -14,7 +14,7 @@ function cierraSalida(seg){
 
 function abreSalida(seg){
 
-    if (limiteDeTiempo == Infinity || (limiteDeTiempo - 2) == tiempo) {
+    if (limiteDeTiempo == Infinity || (limiteDeTiempo - 1) == tiempo) {
         salida.animations.play('accionar',10,false);
     }
 
@@ -32,7 +32,7 @@ function epilogoNivel(){
             resetVariables();
         }
         else {
-            actualizarTimer();
+            actualizarTimerSinTexto();
 	}
     }
 }
@@ -46,7 +46,7 @@ function DetectarVictoria() {
             salida.animations.play('cerrar',10,false);
             epilogoCorriendo = true;
             stopTimer();
-            resetTimer();
+            resetTimerSinTexto();
             player.kill();
 
         }
