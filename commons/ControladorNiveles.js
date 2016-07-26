@@ -19,9 +19,11 @@ function cierraSalida(seg){
 function abreSalida(seg){
 
     if (limiteDeTiempo == Infinity || (limiteDeTiempo - 1) == tiempo) {
-        salida.animations.play('accionar',10,false);
+        if (!(salidaAbierta)) {
+            salida.animations.play('accionar',10,false);            
+            salidaAbierta = true;
+        }
     }
-
 }
 
 function epilogoNivel(){
@@ -62,12 +64,8 @@ function DetectarVictoria() {
 
 function ManejarPuerta() {
 
-    if (!(salidaAbierta)) {
-        abreSalida(limiteDeTiempo);
-        salidaAbierta = true;
-    }
+    abreSalida(limiteDeTiempo);
     cierraSalida(limiteDeTiempo);
-
 }
 
 function DetectarPerdida() {
