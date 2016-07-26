@@ -50,6 +50,7 @@ function CrearSalida(x,y) {
 
 }
 
+
 /**
 * Funcion que crea el sprite del fondo.
 *
@@ -75,6 +76,7 @@ function CrearBotonDeNivel(x,y,nivel){
    button.events.onInputDown.add(SeleccionarNivel, this);
 
 }
+
 
 /**
 * Funcion que cierra la puerta de la salida despues de seg
@@ -225,10 +227,55 @@ function resetVariables(){
 * del objeto 1.
 *
 */
-
 function ChequearOverlap(Objeto1,Objeto2){
     var boundsA = Objeto1.getBounds();
     var boundsB = Objeto2.getBounds();
 
     return Phaser.Rectangle.intersects(boundsA, boundsB);
+}
+
+/**
+* Funcion que hace titilar un nuevo objeto
+*
+* @param x: posicion en el eje x
+* @param y: posicion en el eje y
+* @param scaleX: escala del objeto en coordenada x
+* @param scaleY: escala del objeto en coordenada y
+* @param sprite: clave del sprite
+*
+*/
+function resaltarSprite(x, y, scaleX, scaleY, sprite) {
+    objetoTitila = game.add.sprite(x, y, sprite);
+    objetoTitila.anchor.setTo(0.5, 0.5);
+    objetoTitila.scale.setTo(scaleX,scaleY);
+    objetoTitila.alpha = 0.8;
+    objetoTitila.frame = 4;
+    evento = game.time.events.loop(1000, titilar, this, objetoTitila);
+    return objetoTitila;
+}
+
+/**
+* Funcion que hace titilar un objeto
+*
+* @param objeto: objeto a hacer titilar
+*
+*/
+function titilar(objeto) {
+    if (objeto.visible) {
+        objeto.visible = false;
+    }
+    else {
+        objeto.visible = true;
+    }
+}
+
+/**
+* Funcion que detiene el titilar de un objeto
+*
+* @param objeto: objeto que dispara el evento de dejar titilar
+*
+*/
+function pararTitilar(objeto) {
+    game.time.events.remove(this.evento);
+    this.objeto2.destroy();
 }

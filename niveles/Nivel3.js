@@ -32,6 +32,7 @@ preload: function() {
     game.load.image('vector', 'assets/Vector.png');
     game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
     game.load.spritesheet('numeros', 'assets/numeros.png', 40, 65);
+    game.load.image('mano', 'assets/hand1.png');
 
 },
 create: function() {
@@ -76,7 +77,8 @@ create: function() {
     CrearTimer();
 
     //  Crear el boton de play
-    CrearPlay(Infinity);
+    CrearPlay();
+    limiteDeTiempo = Infinity;
     vector = CrearVector(400,300,0,0);
     cuadro = CrearCuadroVector(550,100,vector);
     listaDeCuadros.push(cuadro); //El cuadro esta encima del vector, arreglar!
@@ -93,7 +95,11 @@ create: function() {
     posInicXPlayer = 35;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
+    CrearMano(listaDeNumeros[0].x -55 , listaDeNumeros[0].y + 25);
 
+    // informacion sobre la magnitud
+    info = "Un vector tiene magnitud, que\n es un valor asociado a una\n propiedad física y que cambia\n la intensidad del mismo";
+    AñadirTexto(60, 60, info, colorTexto, 30);
 },
 
 update: function() {
@@ -106,5 +112,8 @@ update: function() {
     game.physics.arcade.collide(player, platforms);
     ControlJugador();
     cierraSalida(limiteDeTiempo);
+    if (!(listaDeNumeros[0] === undefined && listaDeNumeros[0] === undefined)) {
+        AnimarMano(listaDeNumeros[0],listaDeCuadros[0],[-55,25,-40,+60]);
+    }
 }
 };
