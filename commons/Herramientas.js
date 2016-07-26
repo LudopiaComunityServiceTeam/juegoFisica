@@ -153,6 +153,8 @@ function resetGame(){
     PlayButton.frame = 0;
     clicked = false;
     impulsado = false;
+    salidaAbierta = false;
+    epilogoCorriendo = false;
     game.add.tween(player.body).to( { x: posInicXPlayer , y:posInicYPlayer}, 1, Phaser.Easing.Linear.None, true);
     if (!player.alive){
         player.reset(posInicXPlayer,posInicYPlayer);

@@ -73,7 +73,7 @@ create: function() {
     CrearPiso();
 
     //  Crear la puerta de salida
-    CrearSalida(610,486);
+    CrearSalida(700,486);
 
     //  Crear el cuadro del vector
     CrearTimer();

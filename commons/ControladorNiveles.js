@@ -16,9 +16,16 @@ function cierraSalida(seg){
     }
 }
 
-function abreSalida(seg){
+/**
+* Funcion que abre la puerta de la salida despues de seg
+* segundos.
+*
+* @param seg: segundos para abr la puerta
+*
+*/
+function abreSalida(){
 
-    if (limiteDeTiempo == Infinity || (limiteDeTiempo - 1) == tiempo) {
+    if (limiteDeTiempo == Infinity || (limiteDeTiempo) == tiempo) {
         if (!(salidaAbierta)) {
             salida.animations.play('accionar',10,false);            
             salidaAbierta = true;
@@ -26,13 +33,17 @@ function abreSalida(seg){
     }
 }
 
+/**
+* Funcion que maneja el tiempo para permitirle al nivel 
+* terminar despues de que se haya cerrado la puerta
+*
+*/
 function epilogoNivel(){
     if (!tiempoStart){
         startTimer();
         console.log("WACHU")
-        limiteDeTiempo = 1;
     }else {
-        if (tiempo == limiteDeTiempo){ 
+        if (tiempo == 1){ 
             game.state.start(niveles[nivelActual+1]);
             nivelActual = nivelActual + 1;
             resetVariables();
@@ -43,6 +54,10 @@ function epilogoNivel(){
     }
 }
 
+/**
+* Funcion que detecta si se gano un nivel
+*
+*/
 function DetectarVictoria() {
 
     //Detectar si el personaje toca la salida
@@ -62,12 +77,21 @@ function DetectarVictoria() {
     }
 }
 
+/**
+* Funcion que en cada frame revisa si debe abrir o cerra la puerta
+*
+*/
 function ManejarPuerta() {
 
-    abreSalida(limiteDeTiempo);
+    abreSalida();
     cierraSalida(limiteDeTiempo);
 }
 
+
+/**
+* Funcion que detecta si se perdio el juego
+*
+*/
 function DetectarPerdida() {
 
 //Perder por tocar una espina
@@ -96,6 +120,11 @@ function DetectarPerdida() {
     }
 } 
 
+/**
+* Funcion que se llama en el update, y se encarga de manejar
+* lo relacionado a ganar, perder, pasar de nivel y la puerta.
+*
+*/
 function ControlarNivel() {
 
     if ((clicked)&&(direccion == 1)){
