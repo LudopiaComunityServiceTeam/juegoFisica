@@ -75,6 +75,7 @@ create: function() {
     //  Crear la puerta de salida
 
     CrearSalida(600,484);
+    salidaAbierta = false;
     CrearTimer(Infinity);
 
     //  Crear el boton de play

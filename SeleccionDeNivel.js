@@ -25,6 +25,7 @@ var postIt;
 var gameOverText;
 var limiteDeTiempo;
 var salidaCerrandose;
+var salidaAbierta;
 
 var SeleccionDeNivel = {
 preload: function() {

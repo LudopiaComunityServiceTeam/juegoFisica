@@ -8,13 +8,16 @@ function DetectarVictoria() {
             game.state.start(niveles[nivelActual+1]);
             nivelActual = nivelActual + 1;
             resetVariables();
-            }
         }
+    }
 }
 
 function ManejarPuerta() {
 
-    abreSalida(limiteDeTiempo);
+    if (!(salidaAbierta)) {
+        abreSalida(limiteDeTiempo);
+        salidaAbierta = true;
+    }
     cierraSalida(limiteDeTiempo);
 
 }
@@ -34,16 +37,17 @@ function DetectarPerdida() {
         }
     }
 
-//Perder por No llegar en tiempo correspondiente 
-    if ((limiteDeTiempo == tiempo)&&(!(ChequearOverlap(player,salida)))) {
-	player.body.velocity.x = 0;
-        player.animations.stop();
-        player.frame = 4;
-        if (!explosion){
-            gameOver();
+//Perder por No llegar en tiempo correspondiente
+    if (limiteDeTiempo != Infinity){ 
+        if ((limiteDeTiempo == tiempo)&&(!(ChequearOverlap(player,salida)))) {
+	    player.body.velocity.x = 0;
+            player.animations.stop();
+            player.frame = 4;
+            if (!explosion){
+                gameOver();
             }
+        }
     }
-
 } 
 
 function ControlarNivel() {

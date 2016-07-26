@@ -46,6 +46,7 @@ function CrearPlataformas() {
 
 function CrearSalida(x,y) {
 
+   
     salida = game.add.sprite(x,y,'salida');
     salida.animations.add('accionar',[1,2,3,4],10,false);
     salida.animations.add('cerrar',[3,2,1,0],10,false);
@@ -99,7 +100,7 @@ function cierraSalida(seg){
 
 function abreSalida(seg){
 
-    if (limiteDeTiempo == Infinity || limiteDeTiempo == tiempo) {
+    if (limiteDeTiempo == Infinity || (limiteDeTiempo - 1) == tiempo) {
         salida.animations.play('accionar',10,false);
     }
 
@@ -227,6 +228,7 @@ function resetVariables(){
     listaDeEspinas = [];
     listaDeAngulos = [];
     ListaDeDatos = [];
+    salidaAbierta = false;
 }
 
 /**
