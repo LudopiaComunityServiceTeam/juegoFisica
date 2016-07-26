@@ -349,20 +349,54 @@ function ocultarCuadroVector(vector, cuadro){
     cuadro.visible = false;
 
     for (j = 0; j < listaDeNumeros.length; j++){
-        // Devolver el angulo que estaba en el cuadro a su posicion inicial
+        // Ocultar la magnitud del cuadro
         if (ChequearOverlap(cuadro,listaDeNumeros[j])) {
             listaDeNumeros[j].visible = false;
         }
     }
-    // Evitar que se muestre el angulo inicial del vector.
+    // Evitar que se muestre la magnitud inicial del vector.
     cuadro.magnitudInicial.visible = false;
 
     for (j = 0; j < listaDeAngulos.length; j++){
-        // Devolver el angulo que estaba en el cuadro a su posicion inicial
+        // Ocultar el angulo del cuadro
         if (ChequearOverlap(cuadro,listaDeAngulos[j])) {
             listaDeAngulos[j].visible = false;
         }
     }
     // Evitar que se muestre el angulo inicial del vector.
     cuadro.anguloInicial.visible = false;
+}
+
+/**
+* Funcion que muestra el cuadro de un vector
+*
+* @param cuadro: el cuadro a ocultar
+*
+*/
+function mostrarCuadroVector(vector, cuadro){
+    cuadro.visible = true;
+
+    // Mostrar la magnitud inicial del cuadro
+    cuadro.magnitudInicial.visible = true;
+
+    for (j = 0; j < listaDeNumeros.length; j++){
+        // Mostrar la magnitud que estaba en el cuadro
+        if (ChequearOverlap(cuadro,listaDeNumeros[j])) {
+            listaDeNumeros[j].visible = true;
+            // Evitar que se muestre el angulo inicial del vector.
+            cuadro.magnitudInicial.visible = false;
+        }
+    }
+
+    // Mostrar el angulo inicial del cuadro
+    cuadro.anguloInicial.visible = true;
+
+    for (j = 0; j < listaDeAngulos.length; j++){
+        // Mostrar el angulo que estaba en el cuadro
+        if (ChequearOverlap(cuadro,listaDeAngulos[j])) {
+            listaDeAngulos[j].visible = true;
+            // Evitar que se muestre el angulo inicial del vector.
+            cuadro.anguloInicial.visible = false;
+        }
+    }
 }
