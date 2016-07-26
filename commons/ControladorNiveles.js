@@ -9,9 +9,6 @@ function cierraSalida(seg){
     actualizarTimer();
     if (tiempo == (seg + 1)){
         salida.animations.play('cerrar',10,false);
-        stopTimer();
-        resetTimer();
-        //gameOver();
     }
 }
 
@@ -24,12 +21,9 @@ function abreSalida(seg){
 }
 
 function epilogoNivel(){
-    epilogoCorriendo = true;
-    //player.kill();
-    resetTimer();
-
     if (!tiempoStart){
         startTimer();
+        console.log("WACHU")
         limiteDeTiempo = 1;
     }else {
         if (tiempo == limiteDeTiempo){ 
@@ -41,7 +35,6 @@ function epilogoNivel(){
             actualizarTimer();
 	}
     }
-    epilogoCorriendo = false;
 }
 
 function DetectarVictoria() {
@@ -50,7 +43,12 @@ function DetectarVictoria() {
     if (ChequearOverlap(player,salida)){
         if (limiteDeTiempo == Infinity || limiteDeTiempo == tiempo) {
             CloseDoor.play();
-            epilogoNivel();
+            salida.animations.play('cerrar',10,false);
+            epilogoCorriendo = true;
+            stopTimer();
+            resetTimer();
+            player.kill();
+
         }
     }
 }
@@ -101,5 +99,8 @@ function ControlarNivel() {
             DetectarPerdida();
             DetectarVictoria();
 	}
+        else{
+            epilogoNivel();
+        }
     }
 }

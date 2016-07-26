@@ -28,7 +28,7 @@ function ControlJugador(){
         player.animations.stop();
         player.frame = 4;
     }
-    if (!(player.alive))
+    if ((explosion))
     {
         game.physics.arcade.collide(cabeza, platforms);
         game.physics.arcade.collide(cuerpo, platforms);
