@@ -155,6 +155,7 @@ function gameOverDestroy(){
 *
 */
 function resetGame(){
+    Reset.play();
     //Detenemos el timer
     stopTimer();
     resetTimer();

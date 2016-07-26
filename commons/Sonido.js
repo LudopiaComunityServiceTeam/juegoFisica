@@ -12,6 +12,7 @@ function PreCargarRepertorioSonido()
     game.load.audio('legoDisarm', ['assets/legoDisarm.ogg']);
     game.load.audio('OpenDoor', ['assets/OpenDoor.ogg']);
     game.load.audio('CloseDoor', ['assets/CloseDoor.ogg']);
+    game.load.audio('Reset', ['assets/Reset.ogg']);
 }
 /* PreCarga el repertorio de musica completo (Create)*/
 function CargarRepertorioMusica() 
@@ -27,6 +28,7 @@ function CargarRepertorioSonido()
     legoDisarm = game.add.audio('legoDisarm');
     OpenDoor = game.add.audio('OpenDoor');
     CloseDoor = game.add.audio('CloseDoor');
+    Reset = game.add.audio('Reset');
 }
 /* Carga una cancion en particular */
 function CargarCancion(cancion) 
