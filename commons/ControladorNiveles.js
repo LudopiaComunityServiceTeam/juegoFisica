@@ -8,7 +8,11 @@
 function cierraSalida(seg){
     actualizarTimer();
     if (tiempo == (seg + 1)){
-        salida.animations.play('cerrar',10,false);
+	if (salidaAbierta){
+            salida.animations.play('cerrar',10,false);
+            salidaAbierta = false;
+            console.log("salidaAbierta = ",salidaAbierta);
+	}
     }
 }
 
@@ -43,7 +47,10 @@ function DetectarVictoria() {
     if (ChequearOverlap(player,salida)){
         if (limiteDeTiempo == Infinity || limiteDeTiempo == tiempo) {
             CloseDoor.play();
-            salida.animations.play('cerrar',10,false);
+	    if (salidaAbierta){
+                salida.animations.play('cerrar',10,false);
+		salidaAbierta = false;
+	    }
             epilogoCorriendo = true;
             stopTimer();
             resetTimerSinTexto();

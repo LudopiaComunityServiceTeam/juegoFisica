@@ -157,6 +157,7 @@ function resetGame(){
     if (!player.alive){
         player.reset(posInicXPlayer,posInicYPlayer);
     }
+    salida.frame = 0;
     gameOverDestroy();
     if (explosion){
         cabeza.destroy();
