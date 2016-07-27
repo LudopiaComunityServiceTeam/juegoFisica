@@ -28,12 +28,11 @@ preload: function() {
     game.load.spritesheet('simbolos','assets/Simbolos.png',28,28);
     game.load.image('cuadroVector','assets/cuadroVector.png');
     game.load.spritesheet('PlayButton','assets/play.png',50,50);
-    game.load.image('salida', 'assets/salida.png');
+    game.load.spritesheet('salida', 'assets/ptanimacion.png',30,59);
     game.load.image('piso', 'assets/suelo.png');
     game.load.image('vector', 'assets/Vector.png');
     game.load.image('linea', 'assets/LineaDistancia.png');
     game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
-    game.load.spritesheet('numeros', 'assets/numeros.png', 40, 65);
 
 },
 create: function() {
@@ -73,7 +72,7 @@ create: function() {
     CrearPiso();
 
     //  Crear la puerta de salida
-    CrearSalida(610,486);
+    CrearSalida(700,486);
 
     //  Crear el cuadro del vector
     CrearTimer();
@@ -88,9 +87,6 @@ create: function() {
     vector = CrearVector(400,300,0,0);
     cuadro = CrearCuadroVector(550,100,vector);
     listaDeCuadros.push(cuadro); //El cuadro esta encima del vector, arreglar!
-
-    // angulo inmovil
-    AñadirTexto(cuadro.x + 110, cuadro.y + 72,"0", colorAngulo, 48);
 
     posInicXPlayer = 35;
     posInicYPlayer = game.world.height - 110;
@@ -109,6 +105,6 @@ update: function() {
     //en el grupo de las plataformas
     game.physics.arcade.collide(player, platforms);
     ControlJugador();
-    cierraSalida(limiteDeTiempo);
+    ControlarNivel();
 }
 };

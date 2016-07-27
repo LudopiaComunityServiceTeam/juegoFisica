@@ -21,17 +21,14 @@ preload: function() {
     game.load.image('pierna','assets/Pierna.png');
     game.load.image('cabeza','assets/Cabeza.png');
     game.load.image('post-it-verde', 'assets/post-it-verde.png');
-//
-
     game.load.image('fondo', 'assets/fondo.png');
     game.load.spritesheet('simbolos','assets/Simbolos.png',28,28);
     game.load.image('cuadroVector','assets/cuadroVector.png');
     game.load.spritesheet('PlayButton','assets/play.png',50,50);
-    game.load.image('salida', 'assets/salida.png');
+    game.load.spritesheet('salida', 'assets/ptanimacion.png',30,59);
     game.load.image('piso', 'assets/suelo.png');
     game.load.image('vector', 'assets/Vector.png');
     game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
-    game.load.spritesheet('numeros', 'assets/numeros.png', 40, 65);
     game.load.image('mano', 'assets/hand1.png');
 
 },
@@ -83,9 +80,6 @@ create: function() {
     cuadro = CrearCuadroVector(550,100,vector);
     listaDeCuadros.push(cuadro); //El cuadro esta encima del vector, arreglar!
 
-    // angulo inmovil
-    AñadirTexto(cuadro.x + 110, cuadro.y + 72,"0", colorAngulo, 48);
-
     numeroMagnitud = CrearNumeroParaVector(500,550,300,5);
     listaDeNumeros.push(numeroMagnitud);
     numeroMagnitud = CrearNumeroParaVector(300,650,300,3);
@@ -99,7 +93,7 @@ create: function() {
 
     // informacion sobre la magnitud
     info = "Un vector tiene magnitud, que\n es un valor asociado a una\n propiedad física y que cambia\n la intensidad del mismo";
-    AñadirTexto(60, 60, info, colorTexto, 30);
+    AñadirTexto(60, 60, info, colorTexto, 24);
 },
 
 update: function() {
@@ -111,7 +105,7 @@ update: function() {
     //en el grupo de las plataformas
     game.physics.arcade.collide(player, platforms);
     ControlJugador();
-    cierraSalida(limiteDeTiempo);
+    ControlarNivel();
     if (!(listaDeNumeros[0] === undefined && listaDeNumeros[0] === undefined)) {
         AnimarMano(listaDeNumeros[0],listaDeCuadros[0],[-55,25,-40,+60]);
     }

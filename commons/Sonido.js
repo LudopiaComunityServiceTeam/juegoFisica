@@ -2,16 +2,16 @@
 function PreCargarRepertorioMusica() 
 {
     /* Repertorio De Musica */
-    game.load.audio('jazzFunkThoughts', ['assets/jazzFunkThoughts.ogg','assets/jazzFunkThoughts.mp3']);
+    game.load.audio('jazzFunkThoughts', ['assets/Music/jazzFunkThoughts.ogg','assets/jazzFunkThoughts.mp3']);
 }
 /* PreCarga el repertorio de sonidos completo (Preload)*/
 function PreCargarRepertorioSonido() 
 {
     /* Repertorio De Sonidos */
-    game.load.audio('BustedSoundEffect', ['assets/BustedSoundEffect.ogg']);
-    game.load.audio('legoDisarm', ['assets/legoDisarm.ogg']);
-    game.load.audio('OpenDoor', ['assets/OpenDoor.ogg']);
-    game.load.audio('CloseDoor', ['assets/CloseDoor.ogg']);
+    game.load.audio('legoDisarm', ['assets/Sounds/legoDisarm.ogg']);
+    game.load.audio('OpenDoor', ['assets/Sounds/OpenDoor.ogg']);
+    game.load.audio('CloseDoor', ['assets/Sounds/CloseDoor.ogg']);
+    game.load.audio('Reset', ['assets/Sounds/Reset.ogg']);
 }
 /* PreCarga el repertorio de musica completo (Create)*/
 function CargarRepertorioMusica() 
@@ -23,10 +23,10 @@ function CargarRepertorioMusica()
 function CargarRepertorioSonido() 
 {
     /* Repertorio De Sonidos */
-    BustedSoundEffect = game.add.audio('BustedSoundEffect');
     legoDisarm = game.add.audio('legoDisarm');
     OpenDoor = game.add.audio('OpenDoor');
     CloseDoor = game.add.audio('CloseDoor');
+    Reset = game.add.audio('Reset');
 }
 /* Carga una cancion en particular */
 function CargarCancion(cancion) 
