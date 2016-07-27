@@ -35,9 +35,15 @@ positivo hasta abajo.
     limiteDeTiempo = Infinity;
     vector = CrearVector(400,300,0,0);
     cuadro = CrearCuadroVector(550,100,vector);
-    numeroMagnitud = CrearNumeroParaVector(500,550,300,5);
-    numeroMagnitud = CrearNumeroParaVector(300,650,300,3);
-    numeroMagnitud = CrearNumeroParaVector(100,750,300,1);
+    numeroMagnitud = CrearNumeroParaVectorControlable(500,550,300,5);
+    //listaDeNumeros.push(numeroMagnitud);
+
+    numeroMagnitud = CrearNumeroParaVectorControlable(300,650,300,3);
+    //listaDeNumeros.push(numeroMagnitud);
+
+    numeroMagnitud = CrearNumeroParaVectorControlable(100,750,300,1);
+    //listaDeNumeros.push(numeroMagnitud);
+
     posInicXPlayer = 35;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
@@ -56,6 +62,8 @@ update: function() {
     ControlJugador();
     ControlarNivel();
     if (!(listaDeNumeros[0] === undefined && listaDeNumeros[0] === undefined)) {
+//    console.log("MAYONESA: " + listaDeNumeros)
+//    console.log("MAYONESO: " + listaDeCuadros)
         AnimarMano(listaDeNumeros[0],listaDeCuadros[0],[-55,25,-40,+60]);
     }
 }

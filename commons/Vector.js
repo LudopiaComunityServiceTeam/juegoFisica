@@ -79,6 +79,11 @@ function CrearNumeroParaVector(numero,x,y,numeroMostrado) {
     numeroMag.posXInit = x;
     numeroMag.posYInit = y;
     numeroMag.enCuadro = false;
+
+    return numeroMag;
+}
+function CrearNumeroParaVectorControlable(numero,x,y,numeroMostrado) {
+    var numeroMag = CrearNumeroParaVector(numero,x,y,numeroMostrado) 
     listaDeNumeros.push(numeroMag);
 
     return numeroMag;
@@ -199,6 +204,11 @@ function CrearAnguloParaVector(numero,x,y,numeroMostrado) {
     numeroAngulo.posXInit = x;
     numeroAngulo.posYInit = y;
     numeroAngulo.enCuadro = false;
+
+    return numeroAngulo;
+}
+function CrearAnguloParaVectorControlable(numero,x,y,numeroMostrado) {
+    var numeroAngulo = CrearAnguloParaVector(numero,x,y,numeroMostrado) 
     listaDeAngulos.push(numeroAngulo);
 
     return numeroAngulo;

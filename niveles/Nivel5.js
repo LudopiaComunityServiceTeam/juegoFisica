@@ -38,9 +38,9 @@ positivo hasta abajo.
     AñadirTexto(600,550,4,colorTiempo,35);
     vector = CrearVector(400,350,0,0);
     cuadro = CrearCuadroVector(550,100,vector);
-    numeroAngulo = CrearAnguloParaVector(90,550,300,90);  
-    numeroAngulo = CrearAnguloParaVector(60,650,300,60);
-    numeroMagnitud = CrearNumeroParaVector(400,550,250,4);
+    numeroAngulo = CrearAnguloParaVectorControlable(90,550,300,90);  
+    numeroAngulo = CrearAnguloParaVectorControlable(60,650,300,60);
+    numeroMagnitud = CrearNumeroParaVectorControlable(400,550,250,4);
     CrearEspinas(300,440)
     posInicXPlayer = 35;
     posInicYPlayer = game.world.height - 110;
@@ -58,9 +58,9 @@ update: function() {
 //Se llama sola en forma de loop infinito
 
     ControlJugador();
-    if (!(listaDeNumeros[0] === undefined && listaDeAngulos[0] === undefined)) {
+//    if (!(listaDeNumeros[0] === undefined && listaDeAngulos[0] === undefined)) {
         AnimarMano(listaDeAngulos[0],listaDeCuadros[0],[-55,40,60,65]);
-    }
+//    }
     ControlarNivel();
 }
 };

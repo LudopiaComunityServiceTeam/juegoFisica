@@ -36,9 +36,9 @@ positivo hasta abajo.
     vector = CrearVector(400,300,0,0);
     cuadro = CrearCuadroVector(550,100,vector);
     CrearEspinas(700,440)
-    numeroMagnitud = CrearNumeroParaVector(600,550,300,6);
-    numeroMagnitud = CrearNumeroParaVector(300,650,300,3);
-    numeroMagnitud = CrearNumeroParaVector(200,750,300,2);
+    numeroMagnitud = CrearNumeroParaVectorControlable(600,550,300,6);
+    numeroMagnitud = CrearNumeroParaVectorControlable(300,650,300,3);
+    numeroMagnitud = CrearNumeroParaVectorControlable(200,750,300,2);
     posInicXPlayer = 35;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
