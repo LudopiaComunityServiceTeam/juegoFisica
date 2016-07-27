@@ -28,6 +28,9 @@ var limiteDeTiempo;
 var salidaCerrandose;
 var salidaAbierta;
 var epilogoCorriendo;
+var inicio;
+var indice;
+
 
 var SeleccionDeNivel = {
 preload: function() {

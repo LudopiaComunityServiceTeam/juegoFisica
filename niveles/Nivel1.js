@@ -6,7 +6,6 @@ preload: function() {
 create: function() {
 /********************************************************************************/
 /*
-Aqui se pueden declarar variables no necesariamente globales
 
 Esta funcion dibuja objetos en pantalla en el orden en que se añadan
 
@@ -22,6 +21,7 @@ En Phaser X y Y el 0,0 está en la esquina superior izquierda y "y" se cuenta
 positivo hasta abajo.
 */
 /********************************************************************************/
+
 
     ActivarFisica();
     CrearFondo();
@@ -40,6 +40,8 @@ positivo hasta abajo.
     text.angle = -20;
     tutorial1();
     CrearMano(290, 275);
+    inicio = [vector];
+    indice = 0;
 
 },
 
@@ -56,9 +58,11 @@ update: function() {
         // PlayButton.events.onInputDown.addOnce(pararTitilar, {evento: evento, objeto2: objeto2});
     }
     //Animacion de la mano
-
-    AnimarMano(vector,player,[-100,-25,-50,0]);
- }
+    console.log("naraninuri: " + indice)
+    if (!(inicio[0] === undefined)) {
+        AnimarMano(inicio,player,[-100,-25,-50,0]);
+    }
+    }
 };
 
 function tutorial1(){

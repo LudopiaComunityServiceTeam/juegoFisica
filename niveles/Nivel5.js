@@ -6,7 +6,6 @@ preload: function() {
 create: function() {
 /********************************************************************************/
 /*
-Aqui se pueden declarar variables no necesariamente globales
 
 Esta funcion dibuja objetos en pantalla en el orden en que se añadan
 
@@ -22,6 +21,7 @@ En Phaser X y Y el 0,0 está en la esquina superior izquierda y "y" se cuenta
 positivo hasta abajo.
 */
 /********************************************************************************/
+
 
 
 /******************************************************************/
@@ -47,6 +47,8 @@ positivo hasta abajo.
     CrearJugador(posInicXPlayer, posInicYPlayer);
     CrearMano(listaDeAngulos[0].x -55 , listaDeAngulos[0].y + 25);
 
+    inicio = listaDeAngulos;
+    indice = 0;
     // informacion sobre el angulo
     //info = "Un vector también tiene un \nángulo que define su sentido, \nhacia donde apunta";
     //AñadirTexto(100, 40, info, colorTexto, 24);
@@ -59,7 +61,7 @@ update: function() {
 
     ControlJugador();
 //    if (!(listaDeNumeros[0] === undefined && listaDeAngulos[0] === undefined)) {
-        AnimarMano(listaDeAngulos[0],listaDeCuadros[0],[-55,40,60,65]);
+        AnimarMano(inicio,listaDeCuadros[0],[-55,40,60,65]);
 //    }
     ControlarNivel();
 }

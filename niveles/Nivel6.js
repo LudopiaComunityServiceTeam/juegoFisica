@@ -7,7 +7,6 @@ create: function() {
 
 /********************************************************************************/
 /*
-Aqui se pueden declarar variables no necesariamente globales
 
 Esta funcion dibuja objetos en pantalla en el orden en que se añadan
 
