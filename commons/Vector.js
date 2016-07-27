@@ -24,8 +24,9 @@ function CrearVector(x,y,magnitud,angulo) {
     vector.magnitud = magnitud;
     vector.angulo = angulo;
     vector.cargado = false;
-    //vector.anchor.setTo(0.5, 0.5);
+    vector.anchor.setTo(0.5, 0.5);
     vector.angle = ConvertirAngulo(angulo);
+    escalarVector(vector, magnitud)
     if (magnitud != 0){
         vector.cargado = true;
     }
@@ -120,7 +121,7 @@ function checkMagnitudInVector(item) {
             item.y = listaDeCuadros[i].y + 50;
             listaDeCuadros[i].vector.magnitud = item.numero;
             escalarVector(listaDeCuadros[i].vector, item.numero);
-            if (ChequearOverlap(listaDeCuadros[i].vector,player)){
+            if (ChequearOverlap(listaDeCuadros[i].vector,player)||(ChequearOverlap(player,listaDeCuadros[i].vector.cola))){
                 magnitudJugador = listaDeCuadros[i].vector.magnitud;
             }
             // Lq magnitud movida es la que se encuentra en el cuadro ahora
@@ -139,7 +140,7 @@ function checkMagnitudInVector(item) {
                     // Si el vector de dicha caja esta en contacto con el jugador
                     // entonces el jugador recibe
                     // la velocidad del numero que estaba en esa caja
-                    if (ChequearOverlap(listaDeCuadros[i].vector,player)){
+                    if (ChequearOverlap(listaDeCuadros[i].vector,player)||(ChequearOverlap(player,listaDeCuadros[i].vector.cola))){
                         magnitudJugador = listaDeCuadros[i].vector.magnitud;
                     }
                 }
@@ -153,7 +154,7 @@ function checkMagnitudInVector(item) {
                 // Si el cuadro no tiene nada adentro, pero su
                 // vector esta encima del jugador
                 // entonces la "velocidad" del jugador deberia ser 0 y la del vector tambien
-                if (ChequearOverlap(listaDeCuadros[i].vector,player)){
+                if (ChequearOverlap(listaDeCuadros[i].vector,player)||(ChequearOverlap(player,listaDeCuadros[i].vector.cola))){
                     magnitudJugador = listaDeCuadros[i].vector.magnitud;
                 }
             }
@@ -236,7 +237,7 @@ function checkAnguloInVector(item) {
             item.y = listaDeCuadros[i].y + 50;
             listaDeCuadros[i].vector.angulo = item.numero;
             listaDeCuadros[i].vector.angle = ConvertirAngulo(item.numero);
-            if (ChequearOverlap(listaDeCuadros[i].vector,player)){
+            if (ChequearOverlap(listaDeCuadros[i].vector,player)||(ChequearOverlap(player,listaDeCuadros[i].vector.cola))){
                 angulo = listaDeCuadros[i].vector.angulo;
             }
             // El angulo movido es el que se encuentra en el cuadro ahora
@@ -255,7 +256,7 @@ function checkAnguloInVector(item) {
                     //Si el vector de dicha caja esta en contacto con el jugador
                     // entonces el jugador recibe
                     //el angulo del numero que estaba en esa caja
-                    if (ChequearOverlap(listaDeCuadros[i].vector,player)){
+                    if (ChequearOverlap(listaDeCuadros[i].vector,player)||(ChequearOverlap(player,listaDeCuadros[i].vector.cola))){
                         angulo = listaDeCuadros[i].vector.angulo;
                     }
                 }
@@ -268,7 +269,7 @@ function checkAnguloInVector(item) {
                 listaDeCuadros[i].anguloInicial.visible = true;
                 //Si el cuadro no tiene nada adentro, pero su vector esta encima del jugador
                 //entonces el "angulo" del jugador deberia ser 0 y el del vector tambien
-                if (ChequearOverlap(listaDeCuadros[i].vector,player)){
+                if (ChequearOverlap(listaDeCuadros[i].vector,player)||(ChequearOverlap(player,listaDeCuadros[i].vector.cola))){
                     angulo = listaDeCuadros[i].vector.angulo;
                 }
             }
@@ -415,9 +416,14 @@ function mostrarCuadroVector(vector, cuadro){
 }
 function escalarVector(Vector, NuevoTamaño){
     var tamanoCalculado
-    var posicionHorizontal = Vector.cola.x
+    var tamañoAnterior = Vector.width + Vector.cola.width
+    var tamañoNuevo
     tamanoCalculado = 1 + ((NuevoTamaño/100)-1)
-    if (tamanoCalculado >= 7){    
+    if (tamanoCalculado == 0){
+        Vector.cola.scale.x = 0.1;
+        Vector.cola.x = 0;
+    }
+    else if (tamanoCalculado >= 7){    
         Vector.cola.scale.x = 7;        
         Vector.cola.x = -84;
     }
@@ -425,7 +431,12 @@ function escalarVector(Vector, NuevoTamaño){
         Vector.cola.scale.x = tamanoCalculado;
         Vector.cola.x = -tamanoCalculado * 12;
     }
-    Vector.anchor.setTo(0.5, 0.5);
+    if (Vector.cola.width == 0){
+        Vector.pivot.x = 0.5;
+    }
+    else{
+        Vector.pivot.x = -(Vector.cola.width)/2;
+    }
 }
 /*function actualizarColaVector(){
     
