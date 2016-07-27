@@ -5,6 +5,10 @@
 */
 function ControlJugador(){
 
+    //Permitimos que el jugador colisione con cualquier objeto
+    //en el grupo de las plataformas
+    game.physics.arcade.collide(player, platforms);
+
     if ((clicked)&&(direccion == 1))
     {
         //Moverse a la derecha

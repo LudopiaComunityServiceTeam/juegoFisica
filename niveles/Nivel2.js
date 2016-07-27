@@ -5,40 +5,32 @@ preload: function() {
 },
 create: function() {
 
-//Aqui declaramos variables que sabemos que vamos a utilizar para identificar
-//objetos en nuestro juego.
-//Cursors son las teclas arriba, abajo, izq y der, esto vino con el ejemplo
-//de la página de phaser
+/********************************************************************************/
+/*
+Aqui se pueden declarar variables no necesariamente globales
 
+Esta funcion dibuja objetos en pantalla en el orden en que se añadan
 
-//var PlayButton;
-//var simboloVector;
+Si un objeto se dibuja primero, quedara como background
 
+La funcion "create" se corre sola despues de preload, asi que no se
+preocupen en llamarla
 
-//Esta funcion dibuja objetos en pantalla en el orden en que se añadan
-//Si un objeto se dibuja primero, quedara como background
-//La funcion "create" se corre sola despues de preload, asi que no se
-//preocupen en llamarla
-//Cuando se crea un objeto se pide la ubicacion en x y y, y el nombre de la
-//imagen que tendra
-//En Phaser X y Y estan en 0,0 en la esquina superior izquierda y cuentan
-//positivo hasta abajo.
+Cuando se crea un objeto se pide la ubicacion en x y y, y el nombre de la
+imagen que tendra
 
-    //Se activa la fisica de tipo "Arcade Physics"
-    game.physics.startSystem(Phaser.Physics.ARCADE);
-    //Se agrega el background del juego
+En Phaser X y Y el 0,0 está en la esquina superior izquierda y "y" se cuenta
+positivo hasta abajo.
+*/
+/********************************************************************************/
+
+    ActivarFisica();
     CrearFondo();
-    //Se crea un grupo, este grupo se utilizara luego para agregar propiedades
-    //a las plataformas de un solo golpe
-    platforms = game.add.group();
-    //Hacemos que las plataformas esten incluidas en la fisica del juego
-    platforms.enableBody = true;
+    InicializarPlataformas();
     CrearPiso();
-    //  Crear la puerta de salida
     CrearSalida(100,486);
     salidaAbierta = false;
     CrearTimer();
-    //  Crear el boton de play
     CrearPlay();
     limiteDeTiempo = Infinity;
     vectorDer = CrearVector(450,300,300,0);
@@ -55,9 +47,6 @@ update: function() {
 //Aqui colocamos lo que es movimiento y cambios de variables
 //Se llama sola en forma de loop infinito
 
-    //Permitimos que el jugador colisione con cualquier objeto
-    //en el grupo de las plataformas
-    game.physics.arcade.collide(player, platforms);
     ControlJugador();
     ControlarNivel();
 }

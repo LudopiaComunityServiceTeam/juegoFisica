@@ -86,8 +86,20 @@ function CrearEspinas(x,y){
     listaDeEspinas.push(espinas);
 
 }
+function ActivarFisica(){
+    //Se activa la fisica de tipo "Arcade Physics"
+    game.physics.startSystem(Phaser.Physics.ARCADE);
+}
 
+function InicializarPlataformas(){
 
+    //Se crea un grupo, este grupo se utilizara luego para agregar propiedades
+    //a las plataformas de un solo golpe
+    platforms = game.add.group();
+    //Hacemos que las plataformas esten incluidas en la fisica del juego
+    platforms.enableBody = true;
+
+}
 
 /**
 * Funcion que agrega un texto en el juego.
