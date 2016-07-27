@@ -7,7 +7,6 @@ create: function() {
 
 /********************************************************************************/
 /*
-Aqui se pueden declarar variables no necesariamente globales
 
 Esta funcion dibuja objetos en pantalla en el orden en que se añadan
 
@@ -23,6 +22,7 @@ En Phaser X y Y el 0,0 está en la esquina superior izquierda y "y" se cuenta
 positivo hasta abajo.
 */
 /********************************************************************************/
+
 
 
     ActivarFisica();

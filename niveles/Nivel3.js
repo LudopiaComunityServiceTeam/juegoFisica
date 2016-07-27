@@ -7,7 +7,6 @@ create: function() {
 
 /********************************************************************************/
 /*
-Aqui se pueden declarar variables no necesariamente globales
 
 Esta funcion dibuja objetos en pantalla en el orden en que se añadan
 
@@ -23,6 +22,7 @@ En Phaser X y Y el 0,0 está en la esquina superior izquierda y "y" se cuenta
 positivo hasta abajo.
 */
 /********************************************************************************/
+
 
 
     ActivarFisica();
@@ -49,6 +49,8 @@ positivo hasta abajo.
     CrearJugador(posInicXPlayer, posInicYPlayer);
     CrearMano(listaDeNumeros[0].x -55 , listaDeNumeros[0].y + 25);
 
+    inicio = listaDeNumeros;
+    indice = 0;
     // informacion sobre la magnitud
     //info = "Un vector tiene magnitud, que\n es un valor asociado a una\n propiedad física y que cambia\n la intensidad del mismo";
     //AñadirTexto(60, 60, info, colorTexto, 24);
@@ -64,7 +66,7 @@ update: function() {
     if (!(listaDeNumeros[0] === undefined && listaDeNumeros[0] === undefined)) {
 //    console.log("MAYONESA: " + listaDeNumeros)
 //    console.log("MAYONESO: " + listaDeCuadros)
-        AnimarMano(listaDeNumeros[0],listaDeCuadros[0],[-55,25,-40,+60]);
+        AnimarMano(inicio,listaDeCuadros[0],[-55,25,-40,+60]);
     }
 }
 };
