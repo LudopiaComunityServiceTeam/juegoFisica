@@ -60,9 +60,9 @@ update: function() {
 //Se llama sola en forma de loop infinito
 
     ControlJugador();
-//    if (!(listaDeNumeros[0] === undefined && listaDeAngulos[0] === undefined)) {
+    if (!(inicio[0] === undefined)) {
         AnimarMano(inicio,listaDeCuadros[0],[-55,40,60,65]);
-//    }
+    }
     ControlarNivel();
 }
 };
