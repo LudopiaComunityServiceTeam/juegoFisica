@@ -46,6 +46,8 @@ create: function() {
     vector = CrearVector(400,350,0,0);
     cuadro = CrearCuadroVector(550,100,vector);
     listaDeCuadros.push(cuadro); //El cuadro esta encima del vector, arreglar!
+
+//meter los push dentro de las herramientas de crear
     numeroAngulo = CrearAnguloParaVector(90,550,300,90);
     listaDeAngulos.push(numeroAngulo);
     numeroAngulo = CrearAnguloParaVector(60,650,300,60);

@@ -11,6 +11,7 @@ var angulo = 0;//(3.1415)/4;
 var tieneDistancia = false;
 var tieneTiempo = false;
 var impulsado = false;
+var listaDeVectores = [];
 var listaDeCuadros = [];
 var listaDeNumeros = [];
 var listaDeEspinas = [];

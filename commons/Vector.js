@@ -1,4 +1,51 @@
 /**
+* Funcion que crea un vector con las caracteristicas
+* especificadas.
+*
+
+* @param numero: valor de la magnitud
+* @param x: posicion en el eje x
+* @param y: posicion en el eje y
+* @param numeroMostrado: valor de la magnitud (redundante)
+*
+
+* @return el vector con las caracteristicas especificadas.
+*
+*/
+function CrearVector(x,y,magnitud,angulo) {
+    //Creamos el vector
+    var vector = game.add.sprite(x, y, 'vector');
+    listaDeVectores.push(vector);
+    var cola = game.add.sprite(-36, -8.5, 'vector')
+    vector.cola = cola;
+    vector.addChild(cola);
+    escalarVector(vector, magnitud)
+    vector.frame = 3;
+    vector.magnitud = magnitud;
+    vector.angulo = angulo;
+    vector.cargado = false;
+    //vector.anchor.setTo(0.5, 0.5);
+    vector.angle = ConvertirAngulo(angulo);
+    if (magnitud != 0){
+        vector.cargado = true;
+    }
+    //Permitimos que se le pueda poner input al objeto
+    vector.inputEnabled = true;
+    vector.input.useHandCursor = true;
+    //Permite arrastrar con el mouse, el "true" hace que el centro del
+    //objeto quede en donde se tiene el mouse
+    vector.input.enableDrag(true);
+
+    //Aqui se le agrega al numero el "evento" de que cuando se suelte
+    //se corre la funcion pegarVector
+    vector.events.onDragStop.add(pegarVector);
+
+    return vector;
+
+}
+
+
+/**
 * Funcion que crea la magnitud para el vector.
 * el nivel.
 *
@@ -230,43 +277,6 @@ function checkAnguloInVector(item) {
     }
 }
 
-/**
-* Funcion que crea un vector con las caracteristicas
-* especificadas.
-*
-* @param numero: valor de la magnitud
-* @param x: posicion en el eje x
-* @param y: posicion en el eje y
-* @param numeroMostrado: valor de la magnitud (redundante)
-*
-* @return el vector con las caracteristicas especificadas.
-*
-*/
-function CrearVector(x,y,magnitud,angulo) {
-    //Creamos el vector
-    var vector = game.add.sprite(x, y, 'vector');
-    vector.magnitud = magnitud;
-    vector.angulo = angulo;
-    vector.cargado = false;
-    vector.anchor.setTo(0.5, 0.5);
-    vector.angle = ConvertirAngulo(angulo);
-    if (magnitud != 0){
-        vector.cargado = true;
-    }
-    //Permitimos que se le pueda poner input al objeto
-    vector.inputEnabled = true;
-    vector.input.useHandCursor = true;
-    //Permite arrastrar con el mouse, el "true" hace que el centro del
-    //objeto quede en donde se tiene el mouse
-    vector.input.enableDrag(true);
-
-    //Aqui se le agrega al numero el "evento" de que cuando se suelte
-    //se corre la funcion pegarVector
-    vector.events.onDragStop.add(pegarVector);
-
-    return vector;
-
-}
 
 /**
 * Funcion que convierte el angulo que ve el usuario
@@ -294,7 +304,7 @@ function pegarVector(item) {
     //Chequea si el vector esta fuera de un rango y si no es asi,
     //lo lleva a dicho rango
 
-    if (ChequearOverlap(player,item)) {
+    if (ChequearOverlap(player,item)||ChequearOverlap(player,item.cola)) {
         item.x = (player.x+(player.width/2));
         item.y = (player.y+(player.height/2));
         magnitudJugador = item.magnitud;
@@ -405,11 +415,24 @@ function mostrarCuadroVector(vector, cuadro){
 }
 function escalarVector(Vector, NuevoTamaño){
     var tamanoCalculado
-    tamanoCalculado = 1 + ((NuevoTamaño/1000)-0.1)
-    if (tamanoCalculado >= 2){    
-        Vector.scale.x = 2;
+    var posicionHorizontal = Vector.cola.x
+    tamanoCalculado = 1 + ((NuevoTamaño/100)-1)
+    if (tamanoCalculado >= 7){    
+        Vector.cola.scale.x = 7;        
+        Vector.cola.x = -84;
     }
     else{
-        Vector.scale.x = tamanoCalculado;
+        Vector.cola.scale.x = tamanoCalculado;
+        Vector.cola.x = -tamanoCalculado * 12;
     }
+    Vector.anchor.setTo(0.5, 0.5);
 }
+/*function actualizarColaVector(){
+    
+    for (i = 0; i < listaDeVectores.length; i++){
+        // Ocultar la magnitud del cuadro
+            listaDeVectores[i].cola.x = listaDeVectores[i].x - 18;
+            listaDeVectores[i].cola.y = listaDeVectores[i].y - 8.5;
+    }
+
+}*/

@@ -30,7 +30,7 @@ function loadAll(){
 
     game.load.spritesheet('PlayButton','assets/play.png',50,50);
 
-    game.load.spritesheet('vector', 'assets/Vector.png');
+    game.load.spritesheet('vector', 'assets/Vector.png',12,17);
     game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
     game.load.spritesheet('salida', 'assets/ptanimacion.png',30,59);
     game.load.image('mano', 'assets/hand1.png');
