@@ -46,7 +46,10 @@ function CrearPlataformas() {
 
 function CrearSalida(x,y) {
 
+   
     salida = game.add.sprite(x,y,'salida');
+    salida.animations.add('accionar',[1,2,3,4],10,false);
+    salida.animations.add('cerrar',[3,2,1,0],10,false);
 
 }
 
@@ -77,21 +80,25 @@ function CrearBotonDeNivel(x,y,nivel){
 
 }
 
+function CrearEspinas(x,y){
 
-/**
-* Funcion que cierra la puerta de la salida despues de seg
-* segundos.
-*
-* @param seg: segundos para cerrar la puerta
-*
-*/
-function cierraSalida(seg){
-    actualizarTimer();
-    if (tiempo == (seg + 1)){
-        stopTimer();
-        resetTimer();
-        gameOver();
-    }
+    espinas = game.add.sprite(x,y,'Espinas');
+    listaDeEspinas.push(espinas);
+
+}
+function ActivarFisica(){
+    //Se activa la fisica de tipo "Arcade Physics"
+    game.physics.startSystem(Phaser.Physics.ARCADE);
+}
+
+function InicializarPlataformas(){
+
+    //Se crea un grupo, este grupo se utilizara luego para agregar propiedades
+    //a las plataformas de un solo golpe
+    platforms = game.add.group();
+    //Hacemos que las plataformas esten incluidas en la fisica del juego
+    platforms.enableBody = true;
+
 }
 
 /**
@@ -165,10 +172,17 @@ function resetGame(){
     PlayButton.frame = 0;
     clicked = false;
     impulsado = false;
+    salidaAbierta = false;
+    epilogoCorriendo = false;
     game.add.tween(player.body).to( { x: posInicXPlayer , y:posInicYPlayer}, 1, Phaser.Easing.Linear.None, true);
     if (!player.alive){
         player.reset(posInicXPlayer,posInicYPlayer);
     }
+    else{
+        player.body.velocity.y = 0;
+        player.body.velocity.x = 0;
+    }
+    salida.frame = 0;
     gameOverDestroy();
     if (explosion){
         cabeza.destroy();
@@ -212,11 +226,14 @@ function resetVariables(){
     tieneTiempo = false;
     postIt = null;
     gameOverText = null;
+    listaDeVectores = [];
     listaDeCuadros = [];
     listaDeNumeros = [];
     listaDeEspinas = [];
     listaDeAngulos = [];
     ListaDeDatos = [];
+    salidaAbierta = false;
+    epilogoCorriendo = false;
 }
 
 /**
