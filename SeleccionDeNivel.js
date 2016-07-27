@@ -44,13 +44,7 @@ preload: function() {
 //a la izq, luego al frente y luego a la derecha, tienes que ver que tan ancha
 //es cada imagen del muñequito y que tan alta es, pones el ancho en el primer
 //numero y la altura en el segundo
-    /* Repertorio De Sprites */
-    game.load.spritesheet('PlayButton','assets/play.png',50,50);
-    /* Repertorio De Fondos */
-    game.load.image('fondo', 'assets/fondo.png');
-    PreCargarRepertorioMusica();
-    /* Repertorio De Sonidos */
-    PreCargarRepertorioSonido();
+    loadAll();
 },
 create: function()
 {

@@ -58,7 +58,7 @@ function checkMagnitudInVector(item) {
 
             for (j = 0; j < listaDeNumeros.length; j++){
 
-                // Devolver el angulo que estaba en el cuadro a su posicion inicial
+                // Devolver la magnitud que estaba en el cuadro a su posicion inicial
                 if (listaDeNumeros[j].enCuadro) {
                     listaDeNumeros[j].enCuadro = false;
                     listaDeNumeros[j].x = listaDeNumeros[j].posXInit;
@@ -66,27 +66,29 @@ function checkMagnitudInVector(item) {
                 }
             }
 
-            // Evitar que se muestre el angulo inicial del vector.
+            // Evitar que se muestre la magnitud inicial del vector.
             listaDeCuadros[i].magnitudInicial.visible = false;
             magnitudEnCuadro = true;
             item.x = listaDeCuadros[i].x + 30;
             item.y = listaDeCuadros[i].y + 50;
             listaDeCuadros[i].vector.magnitud = item.numero;
+            escalarVector(listaDeCuadros[i].vector, item.numero);
             if (ChequearOverlap(listaDeCuadros[i].vector,player)){
                 magnitudJugador = listaDeCuadros[i].vector.magnitud;
             }
-            // El angulo movido es el que se encuentra en el cuadro ahora
+            // Lq magnitud movida es la que se encuentra en el cuadro ahora
             item.enCuadro = true;
         }
 
         else {
-            //Se revisan todos los numeros para ver si hay alguno ademas del que se
+            //Se revisan todas las magnitudes para ver si hay alguno ademas del que se
             //arrastro.
             item.enCuadro = false;
             for (j = 0; j < listaDeNumeros.length; j++){
                 if (ChequearOverlap(listaDeCuadros[i],listaDeNumeros[j])) {
                     magnitudEnCuadro = true;
                     listaDeCuadros[i].vector.magnitud = listaDeNumeros[j].numero;
+                    escalarVector(listaDeCuadros[i].vector, listaDeNumeros[j].numero);
                     // Si el vector de dicha caja esta en contacto con el jugador
                     // entonces el jugador recibe
                     // la velocidad del numero que estaba en esa caja
@@ -99,6 +101,7 @@ function checkMagnitudInVector(item) {
                 // El cuadro no tiene una magnitud de las dispoibles
                 // asi que se coloca el inicial.
                 listaDeCuadros[i].vector.magnitud = 0;
+                escalarVector(listaDeCuadros[i].vector, 1);
                 listaDeCuadros[i].magnitudInicial.visible = true;
                 // Si el cuadro no tiene nada adentro, pero su
                 // vector esta encima del jugador
@@ -398,5 +401,15 @@ function mostrarCuadroVector(vector, cuadro){
             // Evitar que se muestre el angulo inicial del vector.
             cuadro.anguloInicial.visible = false;
         }
+    }
+}
+function escalarVector(Vector, NuevoTamaño){
+    var tamanoCalculado
+    tamanoCalculado = 1 + ((NuevoTamaño/1000)-0.1)
+    if (tamanoCalculado >= 2){    
+        Vector.scale.x = 2;
+    }
+    else{
+        Vector.scale.x = tamanoCalculado;
     }
 }
