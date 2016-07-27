@@ -46,6 +46,8 @@ positivo hasta abajo.
     CrearDato(3,600,510,3,"tiempo");
 
     CrearMano(ListaDeDatos[0].x -55 , ListaDeDatos[0].y + 25);
+    inicio = ListaDeDatos;
+    indice = 0;
 },
 
 update: function() {
@@ -55,9 +57,8 @@ update: function() {
 
     ControlJugador();
     ControlarNivel();
-    if (!(listaDeNumeros[0] === undefined && listaDeAngulos[0] === undefined &&
-        ListaDeDatos[0] === undefined)) {
-        AnimarMano(ListaDeDatos[0],ecuacionVelocidad,[-65,25,-50,-30]);
+    if (!(inicio[0] === undefined)) {
+        AnimarMano(inicio,ecuacionVelocidad,[-65,25,-50,-30]);
     }
 }
 };
