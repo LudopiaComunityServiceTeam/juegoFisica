@@ -49,14 +49,9 @@ create: function() {
     limiteDeTiempo = Infinity;
     vector = CrearVector(400,300,0,0);
     cuadro = CrearCuadroVector(550,100,vector);
-    listaDeCuadros.push(cuadro); //El cuadro esta encima del vector, arreglar!
-
     numeroMagnitud = CrearNumeroParaVector(500,550,300,5);
-    listaDeNumeros.push(numeroMagnitud);
     numeroMagnitud = CrearNumeroParaVector(300,650,300,3);
-    listaDeNumeros.push(numeroMagnitud);
     numeroMagnitud = CrearNumeroParaVector(100,750,300,1);
-    listaDeNumeros.push(numeroMagnitud);
     posInicXPlayer = 35;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);

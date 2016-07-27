@@ -26,19 +26,14 @@ create: function() {
 
     //Se activa la fisica de tipo "Arcade Physics"
     game.physics.startSystem(Phaser.Physics.ARCADE);
-
     //Se agrega el background del juego
     CrearFondo();
-
     //Se crea un grupo, este grupo se utilizara luego para agregar propiedades
     //a las plataformas de un solo golpe
     platforms = game.add.group();
-
     //Hacemos que las plataformas esten incluidas en la fisica del juego
     platforms.enableBody = true;
-
     CrearPiso();
-
     //  Crear la puerta de salida
     CrearSalida(100,486);
     salidaAbierta = false;
@@ -51,8 +46,7 @@ create: function() {
     posInicXPlayer = 400;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
-    espinas = game.add.sprite(600,440,'Espinas');
-    listaDeEspinas.push(espinas);
+    CrearEspinas(600,440)
 
 },
 

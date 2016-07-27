@@ -54,8 +54,6 @@ create: function() {
     lineader.scale.setTo(20, 1);
     vector = CrearVector(400,300,0,0);
     cuadro = CrearCuadroVector(550,100,vector);
-    listaDeCuadros.push(cuadro); //El cuadro esta encima del vector, arreglar!
-
     posInicXPlayer = 35;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);

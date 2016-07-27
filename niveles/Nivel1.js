@@ -26,21 +26,16 @@ create: function() {
 
     //Se activa la fisica de tipo "Arcade Physics"
     game.physics.startSystem(Phaser.Physics.ARCADE);
-
     //Se agrega el background del juego
     CrearFondo();
 
     //Se crea un grupo, este grupo se utilizara luego para agregar propiedades
     //a las plataformas de un solo golpe
     platforms = game.add.group();
-
     //Hacemos que las plataformas esten incluidas en la fisica del juego
     platforms.enableBody = true;
 
     CrearPiso();
-
-    //  Crear la puerta de salida
-
     CrearSalida(600,484);
     salidaAbierta = false;
     CrearTimer(Infinity);

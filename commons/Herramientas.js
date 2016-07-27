@@ -80,6 +80,12 @@ function CrearBotonDeNivel(x,y,nivel){
 
 }
 
+function CrearEspinas(x,y){
+
+    espinas = game.add.sprite(x,y,'Espinas');
+    listaDeEspinas.push(espinas);
+
+}
 
 
 

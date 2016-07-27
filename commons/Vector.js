@@ -79,6 +79,7 @@ function CrearNumeroParaVector(numero,x,y,numeroMostrado) {
     numeroMag.posXInit = x;
     numeroMag.posYInit = y;
     numeroMag.enCuadro = false;
+    listaDeNumeros.push(numeroMag);
 
     return numeroMag;
 }
@@ -198,6 +199,7 @@ function CrearAnguloParaVector(numero,x,y,numeroMostrado) {
     numeroAngulo.posXInit = x;
     numeroAngulo.posYInit = y;
     numeroAngulo.enCuadro = false;
+    listaDeAngulos.push(numeroAngulo);
 
     return numeroAngulo;
 }
@@ -349,7 +351,7 @@ function CrearCuadroVector(x,y,vector){
     // Ocultar cuadro del vector cuando no se necesite
     // descomentar y cambiar el tipo de evento que activa la funcion
     // vector.events.onInputDown.add(function(vector){ocultarCuadroVector(vector, cuadro);}, this);
-
+    listaDeCuadros.push(cuadro);
     return cuadro;
 }
 
