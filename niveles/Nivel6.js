@@ -28,7 +28,7 @@ preload: function() {
     game.load.spritesheet('simbolos','assets/Simbolos.png',28,28);
     game.load.image('cuadroVector','assets/cuadroVector.png');
     game.load.spritesheet('PlayButton','assets/play.png',50,50);
-    game.load.image('salida', 'assets/salida.png');
+    game.load.spritesheet('salida', 'assets/ptanimacion.png',30,59);
     game.load.image('piso', 'assets/suelo.png');
     game.load.image('vector', 'assets/Vector.png');
     game.load.image('linea', 'assets/LineaDistancia.png');
@@ -72,7 +72,7 @@ create: function() {
     CrearPiso();
 
     //  Crear la puerta de salida
-    CrearSalida(610,486);
+    CrearSalida(700,486);
 
     //  Crear el cuadro del vector
     CrearTimer();
@@ -105,6 +105,6 @@ update: function() {
     //en el grupo de las plataformas
     game.physics.arcade.collide(player, platforms);
     ControlJugador();
-    cierraSalida(limiteDeTiempo);
+    ControlarNivel();
 }
 };

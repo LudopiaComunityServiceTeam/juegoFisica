@@ -28,7 +28,7 @@ preload: function() {
     game.load.spritesheet('simbolos','assets/Simbolos.png',28,28);
     game.load.image('cuadroVector','assets/cuadroVector.png');
     game.load.spritesheet('PlayButton','assets/play.png',50,50);
-    game.load.image('salida', 'assets/salida.png');
+    game.load.spritesheet('salida', 'assets/ptanimacion.png',30,59);
     game.load.image('piso', 'assets/suelo.png');
     game.load.image('vector', 'assets/Vector.png');
     game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
@@ -109,5 +109,6 @@ update: function() {
     if (!(listaDeNumeros[0] === undefined && listaDeAngulos[0] === undefined)) {
         AnimarMano(listaDeAngulos[0],listaDeCuadros[0],[-55,40,60,65]);
     }
+    ControlarNivel();
 }
 };

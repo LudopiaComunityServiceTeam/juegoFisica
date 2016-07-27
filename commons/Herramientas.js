@@ -46,7 +46,10 @@ function CrearPlataformas() {
 
 function CrearSalida(x,y) {
 
+   
     salida = game.add.sprite(x,y,'salida');
+    salida.animations.add('accionar',[1,2,3,4],10,false);
+    salida.animations.add('cerrar',[3,2,1,0],10,false);
 
 }
 
@@ -78,21 +81,7 @@ function CrearBotonDeNivel(x,y,nivel){
 }
 
 
-/**
-* Funcion que cierra la puerta de la salida despues de seg
-* segundos.
-*
-* @param seg: segundos para cerrar la puerta
-*
-*/
-function cierraSalida(seg){
-    actualizarTimer();
-    if (tiempo == (seg + 1)){
-        stopTimer();
-        resetTimer();
-        gameOver();
-    }
-}
+
 
 /**
 * Funcion que agrega un texto en el juego.
@@ -165,10 +154,13 @@ function resetGame(){
     PlayButton.frame = 0;
     clicked = false;
     impulsado = false;
+    salidaAbierta = false;
+    epilogoCorriendo = false;
     game.add.tween(player.body).to( { x: posInicXPlayer , y:posInicYPlayer}, 1, Phaser.Easing.Linear.None, true);
     if (!player.alive){
         player.reset(posInicXPlayer,posInicYPlayer);
     }
+    salida.frame = 0;
     gameOverDestroy();
     if (explosion){
         cabeza.destroy();
@@ -217,6 +209,8 @@ function resetVariables(){
     listaDeEspinas = [];
     listaDeAngulos = [];
     ListaDeDatos = [];
+    salidaAbierta = false;
+    epilogoCorriendo = false;
 }
 
 /**

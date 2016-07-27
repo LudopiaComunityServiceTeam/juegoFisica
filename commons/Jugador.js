@@ -19,27 +19,6 @@ function ControlJugador(){
         else{
             player.animations.play('left');
         }
-        //Detectar si el personaje toca la salida
-        if (ChequearOverlap(player,salida)){
-            if (limiteDeTiempo == Infinity || limiteDeTiempo == tiempo) {
-                CloseDoor.play();
-                game.state.start(niveles[nivelActual+1]);
-                nivelActual = nivelActual + 1;
-                resetVariables();
-            }
-        }
-        //Detectar si el personaje toca una espina
-        for (i = 0; i < listaDeEspinas.length; i++){
-            if (ChequearOverlap(player,listaDeEspinas[i])) {
-                player.body.velocity.x = 0;
-                player.animations.stop();
-                player.frame = 4;
-                if (!explosion){
-                    gameOver();
-                }
-            //matar
-            }
-        }
 
     }
     else
@@ -49,7 +28,7 @@ function ControlJugador(){
         player.animations.stop();
         player.frame = 4;
     }
-    if (!(player.alive))
+    if ((explosion))
     {
         game.physics.arcade.collide(cabeza, platforms);
         game.physics.arcade.collide(cuerpo, platforms);
