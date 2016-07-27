@@ -160,6 +160,10 @@ function resetGame(){
     if (!player.alive){
         player.reset(posInicXPlayer,posInicYPlayer);
     }
+    else{
+        player.body.velocity.y = 0;
+        player.body.velocity.x = 0;
+    }
     salida.frame = 0;
     gameOverDestroy();
     if (explosion){
