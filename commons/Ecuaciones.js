@@ -107,5 +107,5 @@ function CheckTiempoOnVelocidad(item){
 */
 function CrearVelocidad(){
     resultado = Math.floor(EcuacionVelocidad.distancia/EcuacionVelocidad.tiempo);
-    CrearNumeroParaVectorControlable((resultado*100),(EcuacionVelocidad.x+80),EcuacionVelocidad.y+25,resultado);
+    CrearNumeroParaVector((resultado*100),(EcuacionVelocidad.x+80),EcuacionVelocidad.y+25,resultado);
 }

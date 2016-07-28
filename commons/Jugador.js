@@ -5,10 +5,6 @@
 */
 function ControlJugador(){
 
-    //Permitimos que el jugador colisione con cualquier objeto
-    //en el grupo de las plataformas
-    game.physics.arcade.collide(player, platforms);
-
     if ((clicked)&&(direccion == 1))
     {
         //Moverse a la derecha
@@ -54,14 +50,14 @@ function Explotar(){
     legoDisarm.volume = 1;
     legoDisarm.play();
     cabeza = game.add.sprite(player.x, player.y, 'cabeza');
-    cuerpo = game.add.sprite(player.x + 10, player.y+20, 'cuerpo');
-    brazoI = game.add.sprite(player.x + 13, player.y+20, 'brazo');
+    cuerpo = game.add.sprite(player.x, player.y, 'cuerpo');
+    brazoI = game.add.sprite(player.x, player.y, 'brazo');
     brazoI.angle = -20;
-    brazoD = game.add.sprite(player.x + 7, player.y+20, 'brazo');
+    brazoD = game.add.sprite(player.x, player.y, 'brazo');
     brazoD.angle = 20;
-    piernaI = game.add.sprite(player.x + 13, player.y+28, 'pierna');
+    piernaI = game.add.sprite(player.x, player.y, 'pierna');
     piernaI.angle = -20;
-    piernaD = game.add.sprite(player.x + 7, player.y+28, 'pierna');
+    piernaD = game.add.sprite(player.x, player.y, 'pierna');
     piernaD.angle = 20;
     game.physics.arcade.enable(cabeza);
     game.physics.arcade.enable(cuerpo);
@@ -73,14 +69,14 @@ function Explotar(){
     cabeza.body.bounce.y = 0.2;
     cabeza.body.gravity.y = 300;
     cabeza.body.collideWorldBounds = true;
-    cabeza.body.velocity.y = -100;
+    cabeza.body.velocity.y = -5;
 //
 //explosion cuerpo
     cuerpo.body.bounce.y = 0.2;
     cuerpo.body.bounce.x = 10;
     cuerpo.body.gravity.y = 300;
     cuerpo.body.collideWorldBounds = true;
-    cuerpo.body.velocity.y = -70 + game.rnd.integerInRange(0, 70);
+    cuerpo.body.velocity.y = -3;
     cuerpo.body.velocity.x = game.rnd.integerInRange(-0, 0);
     cuerpo.body.angularVelocity = game.rnd.integerInRange(-0, 0);
 //
@@ -89,7 +85,7 @@ function Explotar(){
     brazoI.body.bounce.x = 10;
     brazoI.body.gravity.y = 300;
     brazoI.body.collideWorldBounds = true;
-    brazoI.body.velocity.y = -70 + game.rnd.integerInRange(0, 70);
+    brazoI.body.velocity.y = -4;
     brazoI.body.velocity.x = -game.rnd.integerInRange(0, 0);
     brazoI.body.angularVelocity = game.rnd.integerInRange(-0, 0);
 //
@@ -98,7 +94,7 @@ function Explotar(){
     brazoD.body.bounce.x = 10;
     brazoD.body.gravity.y = 300;
     brazoD.body.collideWorldBounds = true;
-    brazoD.body.velocity.y = -70 + game.rnd.integerInRange(0, 70);
+    brazoD.body.velocity.y = -4;
     brazoD.body.velocity.x = game.rnd.integerInRange(0, 0);
     brazoD.body.angularVelocity = game.rnd.integerInRange(-0, 0);
 //
@@ -107,7 +103,7 @@ function Explotar(){
     piernaI.body.bounce.x = 10;
     piernaI.body.gravity.y = 300;
     piernaI.body.collideWorldBounds = true;
-    piernaI.body.velocity.y = -40 + game.rnd.integerInRange(0, 70);
+    piernaI.body.velocity.y = -2;
     piernaI.body.velocity.x = -game.rnd.integerInRange(0, 0);
     piernaI.body.angularVelocity = game.rnd.integerInRange(-0, 0);
 //
@@ -116,7 +112,7 @@ function Explotar(){
     piernaD.body.bounce.x = 10;
     piernaD.body.gravity.y = 300;
     piernaD.body.collideWorldBounds = true;
-    piernaD.body.velocity.y = -40 + game.rnd.integerInRange(0, 50);
+    piernaD.body.velocity.y = -2;
     piernaD.body.velocity.x = game.rnd.integerInRange(0, 0);
     piernaD.body.angularVelocity = game.rnd.integerInRange(-0, 0);
 

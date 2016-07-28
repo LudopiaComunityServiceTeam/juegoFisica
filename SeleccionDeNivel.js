@@ -11,7 +11,6 @@ var angulo = 0;//(3.1415)/4;
 var tieneDistancia = false;
 var tieneTiempo = false;
 var impulsado = false;
-var listaDeVectores = [];
 var listaDeCuadros = [];
 var listaDeNumeros = [];
 var listaDeEspinas = [];
@@ -28,9 +27,6 @@ var limiteDeTiempo;
 var salidaCerrandose;
 var salidaAbierta;
 var epilogoCorriendo;
-var inicio;
-var indice;
-
 
 var SeleccionDeNivel = {
 preload: function() {
@@ -48,7 +44,13 @@ preload: function() {
 //a la izq, luego al frente y luego a la derecha, tienes que ver que tan ancha
 //es cada imagen del muñequito y que tan alta es, pones el ancho en el primer
 //numero y la altura en el segundo
-    loadAll();
+    /* Repertorio De Sprites */
+    game.load.spritesheet('PlayButton','assets/play.png',50,50);
+    /* Repertorio De Fondos */
+    game.load.image('fondo', 'assets/fondo.png');
+    PreCargarRepertorioMusica();
+    /* Repertorio De Sonidos */
+    PreCargarRepertorioSonido();
 },
 create: function()
 {

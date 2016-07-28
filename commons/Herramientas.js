@@ -80,26 +80,8 @@ function CrearBotonDeNivel(x,y,nivel){
 
 }
 
-function CrearEspinas(x,y){
 
-    espinas = game.add.sprite(x,y,'Espinas');
-    listaDeEspinas.push(espinas);
 
-}
-function ActivarFisica(){
-    //Se activa la fisica de tipo "Arcade Physics"
-    game.physics.startSystem(Phaser.Physics.ARCADE);
-}
-
-function InicializarPlataformas(){
-
-    //Se crea un grupo, este grupo se utilizara luego para agregar propiedades
-    //a las plataformas de un solo golpe
-    platforms = game.add.group();
-    //Hacemos que las plataformas esten incluidas en la fisica del juego
-    platforms.enableBody = true;
-
-}
 
 /**
 * Funcion que agrega un texto en el juego.
@@ -178,10 +160,6 @@ function resetGame(){
     if (!player.alive){
         player.reset(posInicXPlayer,posInicYPlayer);
     }
-    else{
-        player.body.velocity.y = 0;
-        player.body.velocity.x = 0;
-    }
     salida.frame = 0;
     gameOverDestroy();
     if (explosion){
@@ -226,15 +204,11 @@ function resetVariables(){
     tieneTiempo = false;
     postIt = null;
     gameOverText = null;
-    listaDeVectores = [];
     listaDeCuadros = [];
     listaDeNumeros = [];
     listaDeEspinas = [];
     listaDeAngulos = [];
     ListaDeDatos = [];
-    inicio = [];
-    indice = 0;
-
     salidaAbierta = false;
     epilogoCorriendo = false;
 }
@@ -254,4 +228,48 @@ function ChequearOverlap(Objeto1,Objeto2){
     return Phaser.Rectangle.intersects(boundsA, boundsB);
 }
 
+/**
+* Funcion que hace titilar un nuevo objeto
+*
+* @param x: posicion en el eje x
+* @param y: posicion en el eje y
+* @param scaleX: escala del objeto en coordenada x
+* @param scaleY: escala del objeto en coordenada y
+* @param sprite: clave del sprite
+*
+*/
+function resaltarSprite(x, y, scaleX, scaleY, sprite) {
+    objetoTitila = game.add.sprite(x, y, sprite);
+    objetoTitila.anchor.setTo(0.5, 0.5);
+    objetoTitila.scale.setTo(scaleX,scaleY);
+    objetoTitila.alpha = 0.8;
+    objetoTitila.frame = 4;
+    evento = game.time.events.loop(1000, titilar, this, objetoTitila);
+    return objetoTitila;
+}
 
+/**
+* Funcion que hace titilar un objeto
+*
+* @param objeto: objeto a hacer titilar
+*
+*/
+function titilar(objeto) {
+    if (objeto.visible) {
+        objeto.visible = false;
+    }
+    else {
+        objeto.visible = true;
+    }
+}
+
+/**
+* Funcion que detiene el titilar de un objeto
+*
+* @param objeto: objeto que dispara el evento de dejar titilar
+*
+*/
+function pararTitilar(objeto) {
+    game.time.events.remove(this.evento);
+    this.objeto2.destroy();
+}

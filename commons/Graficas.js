@@ -27,9 +27,9 @@ function CrearMano(x,y){
 function AnimarMano(inicio,objetivo,offsets){
     //Nota: esta funcion debe ir entre un if que asegure que los
     //objetos que seran verificados por colision estan definidos
-    if (!ChequearOverlap(inicio[indice],objetivo)&&(!clicked)){
+    if (!ChequearOverlap(inicio,objetivo)&&(!clicked)){
         if (!mano.alive){
-            mano.reset(inicio[indice].x + offsets[0], inicio[indice].y + offsets[1])
+            mano.reset(inicio.x + offsets[0], inicio.y + offsets[1])
         }
         var distanciaObjX = objetivo.x + offsets[2]
         var distanciaObjY = objetivo.y + offsets[3]
@@ -73,63 +73,13 @@ function AnimarMano(inicio,objetivo,offsets){
         }
 
         if (((mano.x <= distanciaObjX + 10) && (mano.x >= distanciaObjX-10))&&((mano.y<=distanciaObjY + 10) && (mano.y >= distanciaObjY-10))){
-            indice = indice + 1
-            if (indice == inicio.length){
-               indice = 0;
-            }
+
             console.log(movEnY)
-            mano.x = inicio[indice].x + offsets[0];
-            mano.y = inicio[indice].y + offsets[1];
+            mano.x = inicio.x + offsets[0];
+            mano.y = inicio.y + offsets[1];
         }
     }
-    else if (((mano.alive)&&(ChequearOverlap(inicio[indice],objetivo)))||clicked){
-        
+    else if (((mano.alive)&&(ChequearOverlap(inicio,objetivo)))||clicked){
         mano.kill();
     }
-}
-
-/**
-* Funcion que hace titilar un nuevo objeto
-*
-* @param x: posicion en el eje x
-* @param y: posicion en el eje y
-* @param scaleX: escala del objeto en coordenada x
-* @param scaleY: escala del objeto en coordenada y
-* @param sprite: clave del sprite
-*
-*/
-function resaltarSprite(x, y, scaleX, scaleY, sprite) {
-    objetoTitila = game.add.sprite(x, y, sprite);
-    objetoTitila.anchor.setTo(0.5, 0.5);
-    objetoTitila.scale.setTo(scaleX,scaleY);
-    objetoTitila.alpha = 0.8;
-    objetoTitila.frame = 4;
-    evento = game.time.events.loop(1000, titilar, this, objetoTitila);
-    return objetoTitila;
-}
-
-/**
-* Funcion que hace titilar un objeto
-*
-* @param objeto: objeto a hacer titilar
-*
-*/
-function titilar(objeto) {
-    if (objeto.visible) {
-        objeto.visible = false;
-    }
-    else {
-        objeto.visible = true;
-    }
-}
-
-/**
-* Funcion que detiene el titilar de un objeto
-*
-* @param objeto: objeto que dispara el evento de dejar titilar
-*
-*/
-function pararTitilar(objeto) {
-    game.time.events.remove(this.evento);
-    this.objeto2.destroy();
 }
