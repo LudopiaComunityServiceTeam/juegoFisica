@@ -32,6 +32,24 @@ function actualizarTimer() {
 }
 
 /**
+* Funcion para actualizar el tiempo sin
+*mostrarlo en pantalla. 
+*
+*/
+function actualizarTimerSinTexto() {
+
+    if (tiempoStart){
+        fpscont++;
+
+        if (fpscont == 40) {
+            tiempo++;
+            fpscont = 0;
+        }
+    }
+}
+
+
+/**
 * Funcion que inicia el tiempo mostrado.
 *
 */
@@ -45,7 +63,17 @@ function startTimer() {
 */
 function resetTimer() {
     tiempo = 0;
+    fpscont = 0;
     timerText.setText(tiempo);
+}
+
+/**
+* Funcion que reinicia el tiempo sin  mostrarlo.
+*
+*/
+function resetTimerSinTexto() {
+    tiempo = 0;
+    fpscont = 0;
 }
 
 /**

@@ -11,13 +11,14 @@ var angulo = 0;//(3.1415)/4;
 var tieneDistancia = false;
 var tieneTiempo = false;
 var impulsado = false;
+var listaDeVectores = [];
 var listaDeCuadros = [];
 var listaDeNumeros = [];
 var listaDeEspinas = [];
 var listaDeAngulos = [];
 var ListaDeDatos = [];
 var numeroMagnitud;
-var niveles = ['SeleccionDeNivel','Nivel1','Nivel2','Nivel3','Nivel4','Nivel5', 'Nivel6' ,'Nivel6','Main_game'];
+var niveles = ['SeleccionDeNivel','Nivel1','Nivel2','Nivel3','Nivel4','Nivel5', 'Nivel6','Main_game'];
 var nivelActual = 0;
 var explosion = false;
 var music1;
@@ -25,6 +26,11 @@ var postIt;
 var gameOverText;
 var limiteDeTiempo;
 var salidaCerrandose;
+var salidaAbierta;
+var epilogoCorriendo;
+var inicio;
+var indice;
+
 
 var SeleccionDeNivel = {
 preload: function() {
@@ -42,15 +48,9 @@ preload: function() {
 //a la izq, luego al frente y luego a la derecha, tienes que ver que tan ancha
 //es cada imagen del muñequito y que tan alta es, pones el ancho en el primer
 //numero y la altura en el segundo
-    /* Repertorio De Sprites */
-    game.load.spritesheet('PlayButton','assets/play.png',50,50);
-    /* Repertorio De Fondos */
-    game.load.image('fondo', 'assets/fondo.png');
-    PreCargarRepertorioMusica();
-    /* Repertorio De Sonidos */
-    PreCargarRepertorioSonido();
+    loadAll();
 },
-create: function() 
+create: function()
 {
 //Esta funcion dibuja objetos en pantalla en el orden en que se añadan
 //Si un objeto se dibuja primero, quedara como background
@@ -78,7 +78,7 @@ update: function() {
 }
 }
 function escribir(){
-    
+
     var text = AñadirTexto(60,10,"Escoge un nivel:",colorTexto,50);
     var text = AñadirTexto(312,150,"1",colorTexto,35);
     CrearBotonDeNivel(300, 200, 1);
@@ -92,5 +92,5 @@ function escribir(){
     CrearBotonDeNivel(400, 300, 5);
     var text = AñadirTexto(515,375,"6",colorTexto,35);
     CrearBotonDeNivel(500, 300, 6);
-    
-} 
+
+}
