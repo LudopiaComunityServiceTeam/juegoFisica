@@ -127,7 +127,7 @@ function DetectarPerdida() {
 *
 */
 function ControlarNivel() {
-
+    //actualizarColaVector();
     if ((clicked)&&(direccion == 1)){
         if (!(epilogoCorriendo)){
             ManejarPuerta();
