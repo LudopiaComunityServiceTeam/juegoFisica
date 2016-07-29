@@ -43,7 +43,10 @@ positivo hasta abajo.
     CrearJugador(posInicXPlayer, posInicYPlayer);
     ecuacionVelocidad = CrearEcuacionVelocidad();
     CrearDato(9,320,400,9,"distancia");
-    CrearDato(3,600,510,3,"tiempo");
+    CrearDato(3,700,510,3,"tiempo");
+
+    tiempoFantasma = AñadirTexto(700,535,3,colorTiempo,48);
+    tiempoFantasma.alpha = 0.7;
 
     CrearMano(ListaDeDatos[0].x -55 , ListaDeDatos[0].y + 25);
     inicio = ListaDeDatos;
