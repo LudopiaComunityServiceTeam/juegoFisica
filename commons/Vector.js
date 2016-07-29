@@ -343,7 +343,7 @@ function CrearCuadroVector(x,y,vector){
     cuadro.vector = vector;
 
     //inicializacion de la magnitud del vector
-    magnitud = CrearNumeroParaVector(vector.magnitud, x + 30,y + 50, vector.magnitud);
+    magnitud = CrearNumeroParaVector(vector.magnitud, x + 30,y + 50, Math.floor(vector.magnitud/100));
     magnitud.input.draggable = false;
     magnitud.enCuadro = true;
     cuadro.magnitudInicial = magnitud;
@@ -425,9 +425,9 @@ function mostrarCuadroVector(vector, cuadro){
     }
 }
 function escalarVector(Vector, NuevoTamaño){
-    var tamanoCalculado
-    var tamañoAnterior = Vector.width + Vector.cola.width
-    var tamañoNuevo
+    var tamanoCalculado;
+    var tamañoAnterior = Vector.width + Vector.cola.width;
+    var tamañoNuevo;
     tamanoCalculado = 1 + ((NuevoTamaño/100)-1)
     if (tamanoCalculado == 0){
         Vector.cola.scale.x = 0.1;
