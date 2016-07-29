@@ -60,7 +60,7 @@ update: function() {
     if (!overlap && ChequearOverlap(player, vector)) {
         overlap = true;
         pararTitilar(titilarPlayer, evento);
-        titilarplay = resaltarSprite(435, 575, 1.2, 1, 'rectangulo');
+        titilarplay = resaltarSprite(425, 575, 1.3, 1, 'rectangulo');
         PlayButton.events.onInputDown.addOnce(function(vector){pararTitilar(titilarVector, evento);}, this);
     }
 
