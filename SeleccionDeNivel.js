@@ -18,7 +18,7 @@ var listaDeEspinas = [];
 var listaDeAngulos = [];
 var ListaDeDatos = [];
 var numeroMagnitud;
-var niveles = ['SeleccionDeNivel','Nivel1','Nivel2','Nivel3','Nivel4','Nivel5', 'Nivel6','Main_game'];
+var niveles = ['SeleccionDeNivel','Nivel1','Nivel2','Nivel3','Nivel4','Nivel5', 'Nivel6', 'Nivel7'];
 var nivelActual = 0;
 var explosion = false;
 var music1;
