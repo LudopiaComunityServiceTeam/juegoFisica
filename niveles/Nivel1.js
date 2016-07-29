@@ -1,7 +1,7 @@
 var Nivel1 = {
 preload: function() {
 
-
+    game.load.image('rectangulo','assets/rectangulo.png');
 },
 create: function() {
 /********************************************************************************/
@@ -36,12 +36,15 @@ positivo hasta abajo.
     posInicXPlayer = 35;
     posInicYPlayer = game.world.height - 110;
     jugador = CrearJugador(posInicXPlayer, posInicYPlayer);
-    text = AñadirTexto(200,200,"Esto es un \nvector",colorTexto,48);
+    text = AñadirTexto(110,240,"Este es un vector\n de velocidad",colorTexto,45);
     text.angle = -20;
     tutorial1();
     CrearMano(290, 275);
     inicio = [vector];
     indice = 0;
+
+    //Variable para controlar el titilar del boton play
+    overlap = false;
 
 },
 
@@ -52,13 +55,17 @@ update: function() {
 
     ControlJugador();
     ControlarNivel();
-    if (ChequearOverlap(player, vector)) {
-        pararTitilar(jugador, {evento: evento, objeto2: objeto2});
-        // objeto2 = resaltarSprite(400, 550, 1.2, 1.2, 'PlayButton');
-        // PlayButton.events.onInputDown.addOnce(pararTitilar, {evento: evento, objeto2: objeto2});
+
+    //Parte del tutorial
+    if (!overlap && ChequearOverlap(player, vector)) {
+        overlap = true;
+        pararTitilar(titilarPlayer, evento);
+        titilarplay = resaltarSprite(435, 575, 1.2, 1, 'rectangulo');
+        PlayButton.events.onInputDown.addOnce(function(vector){pararTitilar(titilarVector, evento);}, this);
     }
+
     //Animacion de la mano
-    console.log("naraninuri: " + indice)
+    console.log("naraninuri: " + indice);
     if (!(inicio[0] === undefined)) {
         AnimarMano(inicio,player,[-100,-25,-50,0]);
     }
@@ -66,11 +73,11 @@ update: function() {
 };
 
 function tutorial1(){
-    resaltarSprite(397,300, 1.2, 1.7, 'vector');
-    vector.events.onInputDown.add(pararTitilar, {evento: evento, objeto2: objetoTitila});
+    titilarVector = resaltarSprite(400,300, 1.6, 0.8, 'rectangulo');
+    vector.events.onInputDown.addOnce(function(vector){pararTitilar(titilarVector, evento);}, this);
     vector.events.onDragStart.addOnce(resaltarPlayerTutorial, this);
 }
 
 function resaltarPlayerTutorial(objeto) {
-    objeto2 = resaltarSprite(posInicXPlayer+16, posInicYPlayer+23, 1.2, 1.2, 'dude');
+    titilarPlayer = resaltarSprite(posInicXPlayer+15, posInicYPlayer+23, 1.2, 1.2, 'rectangulo');
 }
