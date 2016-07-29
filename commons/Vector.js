@@ -2,13 +2,11 @@
 * Funcion que crea un vector con las caracteristicas
 * especificadas.
 *
-
-* @param numero: valor de la magnitud
 * @param x: posicion en el eje x
 * @param y: posicion en el eje y
-* @param numeroMostrado: valor de la magnitud (redundante)
+* @param magnitud: valor de la magnitud
+* @param angulo: valor del angulo
 *
-
 * @return el vector con las caracteristicas especificadas.
 *
 */
@@ -19,7 +17,7 @@ function CrearVector(x,y,magnitud,angulo) {
     var cola = game.add.sprite(-36, -8.5, 'vector');
     vector.cola = cola;
     vector.addChild(cola);
-    escalarVector(vector, magnitud);
+    // escalarVector(vector, magnitud);
     vector.frame = 3;
     vector.magnitud = magnitud;
     vector.angulo = angulo;
@@ -349,14 +347,14 @@ function CrearCuadroVector(x,y,vector){
     magnitud.input.draggable = false;
     magnitud.enCuadro = true;
     cuadro.magnitudInicial = magnitud;
-    checkMagnitudInVector(magnitud);
+    // checkMagnitudInVector(magnitud);
 
     // inicializacion del angulo del vector
     angulo = CrearAnguloParaVector(vector.angulo, x + 105,y + 50, vector.angulo);
     angulo.input.draggable = false;
     angulo.enCuadro = true;
     cuadro.anguloInicial = angulo;
-    checkAnguloInVector(angulo);
+    // checkAnguloInVector(angulo);
 
     // Ocultar cuadro del vector cuando no se necesite
     // descomentar y cambiar el tipo de evento que activa la funcion

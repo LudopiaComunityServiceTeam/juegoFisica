@@ -36,10 +36,11 @@ positivo hasta abajo.
     CrearPlay();
     limiteDeTiempo = 4;
     AñadirTexto(600,550,4,colorTiempo,35);
-    vector = CrearVector(400,350,0,0);
+    vector = CrearVector(400,350,4,0);
     cuadro = CrearCuadroVector(550,100,vector);
-    numeroAngulo = CrearAnguloParaVectorControlable(90,550,300,90);
-    numeroAngulo = CrearAnguloParaVectorControlable(60,650,300,60);
+    numeroAngulo = CrearAnguloParaVectorControlable(90,500,300,90);
+    numeroAngulo = CrearAnguloParaVectorControlable(30,600,300,30);
+    numeroAngulo = CrearAnguloParaVectorControlable(60,700,300,60);
     numeroMagnitud = CrearNumeroParaVectorControlable(400,550,250,4);
     CrearEspinas(300,440);
     posInicXPlayer = 35;

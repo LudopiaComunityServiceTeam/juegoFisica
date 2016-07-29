@@ -35,13 +35,14 @@ positivo hasta abajo.
     limiteDeTiempo = Infinity;
     vector = CrearVector(400,300,0,0);
     cuadro = CrearCuadroVector(550,100,vector);
-    numeroMagnitud = CrearNumeroParaVectorControlable(500,750,300,5);
+
+    numeroMagnitud = CrearNumeroParaVectorControlable(100,550,300,1);
     //listaDeNumeros.push(numeroMagnitud);
 
     numeroMagnitud = CrearNumeroParaVectorControlable(300,650,300,3);
     //listaDeNumeros.push(numeroMagnitud);
 
-    numeroMagnitud = CrearNumeroParaVectorControlable(100,550,300,1);
+    numeroMagnitud = CrearNumeroParaVectorControlable(500,750,300,5);
     //listaDeNumeros.push(numeroMagnitud);
 
     posInicXPlayer = 35;
