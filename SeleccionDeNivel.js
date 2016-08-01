@@ -18,7 +18,7 @@ var listaDeEspinas = [];
 var listaDeAngulos = [];
 var ListaDeDatos = [];
 var numeroMagnitud;
-var niveles = ['SeleccionDeNivel','Nivel1','Nivel2','Nivel3','Nivel4','Nivel5', 'Nivel6', 'Nivel7'];
+var niveles = ['SeleccionDeNivel','Nivel1','Nivel2','Nivel3','Nivel4','Nivel5', 'Nivel6', 'Nivel7', 'Nivel8'];
 var nivelActual = 0;
 var explosion = false;
 var music1;
@@ -76,21 +76,25 @@ update: function() {
     //en el grupo de las plataformas
 
 }
-}
+};
 function escribir(){
 
     var text = AñadirTexto(60,10,"Escoge un nivel:",colorTexto,50);
-    var text = AñadirTexto(312,150,"1",colorTexto,35);
+    text = AñadirTexto(312,150,"1",colorTexto,35);
     CrearBotonDeNivel(300, 200, 1);
-    var text = AñadirTexto(415,150,"2",colorTexto,35);
+    text = AñadirTexto(415,150,"2",colorTexto,35);
     CrearBotonDeNivel(400, 200, 2);
-    var text = AñadirTexto(515,150,"3",colorTexto,35);
+    text = AñadirTexto(515,150,"3",colorTexto,35);
     CrearBotonDeNivel(500, 200, 3);
-    var text = AñadirTexto(315,375,"4",colorTexto,35);
+    text = AñadirTexto(315,250,"4",colorTexto,35);
     CrearBotonDeNivel(300, 300, 4);
-    var text = AñadirTexto(415,375,"5",colorTexto,35);
+    text = AñadirTexto(415,250,"5",colorTexto,35);
     CrearBotonDeNivel(400, 300, 5);
-    var text = AñadirTexto(515,375,"6",colorTexto,35);
+    text = AñadirTexto(515,250,"6",colorTexto,35);
     CrearBotonDeNivel(500, 300, 6);
+    text = AñadirTexto(315,350,"7",colorTexto,35);
+    CrearBotonDeNivel(300, 400, 7);
+    text = AñadirTexto(415,350,"8",colorTexto,35);
+    CrearBotonDeNivel(400, 400, 8);
 
 }
