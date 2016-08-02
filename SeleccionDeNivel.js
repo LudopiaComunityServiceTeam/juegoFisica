@@ -17,6 +17,8 @@ var listaDeNumeros = [];
 var listaDeEspinas = [];
 var listaDeAngulos = [];
 var ListaDeDatos = [];
+var cuadroPista = [];
+var cuadroVictoria = [];
 var numeroMagnitud;
 var niveles = ['SeleccionDeNivel','Nivel1','Nivel2','Nivel3','Nivel4','Nivel5', 'Nivel6', 'Nivel7', 'Nivel8'];
 var nivelActual = 0;
@@ -31,6 +33,7 @@ var epilogoCorriendo;
 var inicio;
 var indice;
 var juegoInicializado = false;
+var pistaEnPantalla;
 
 
 var SeleccionDeNivel = {

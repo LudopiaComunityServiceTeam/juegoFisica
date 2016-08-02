@@ -23,17 +23,26 @@ function loadAll(){
     game.load.image('fondo', 'assets/fondo.png');
     game.load.image('piso', 'assets/suelo.png');
     game.load.image('platform', 'assets/plataforma.png');
+    game.load.image('mano', 'assets/hand1.png');
+    game.load.image('EcuacionVelocidadCamuflada', 'assets/EcuacionVelocidadCamuflada.png');
+    game.load.image('linea', 'assets/LineaDistancia.png');
+    game.load.image('ecuacionVelocidad','assets/Ecuacion velocidad.png');
+    game.load.image('ecuacionAceleracion','assets/Ecuacion aceleracion.png');
+    game.load.image('lienzoPista','assets/LienzoPista.png');
+    game.load.image('sello','assets/NivelPasado.png');
+
+
     game.load.spritesheet('simbolos','assets/Simbolos.png',28,28);
     game.load.spritesheet('PlayButton','assets/play.png',50,50);
     game.load.spritesheet('vector', 'assets/Vector.png',12,17);
     game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
     game.load.spritesheet('salida', 'assets/ptanimacion.png',30,59);
     game.load.spritesheet('botonMenu','assets/BotonMenu.png',50,50);
-    game.load.image('mano', 'assets/hand1.png');
-    game.load.image('EcuacionVelocidadCamuflada', 'assets/EcuacionVelocidadCamuflada.png');
-    game.load.image('linea', 'assets/LineaDistancia.png');
-    game.load.image('ecuacionVelocidad','assets/Ecuacion velocidad.png');
-    game.load.image('ecuacionAceleracion','assets/Ecuacion aceleracion.png');
+    game.load.spritesheet('botonPista','assets/BotonPista.png',50,50);
+    game.load.spritesheet('botonClose','assets/BotonClose.png',50,50);
+    game.load.spritesheet('botonResetNivel','assets/Reset.png',50,50);
+    game.load.spritesheet('botonSigNivel','assets/BotonSigNivel.png',50,50);
+
 
     PreCargarRepertorioSonido();
     PreCargarRepertorioMusica();

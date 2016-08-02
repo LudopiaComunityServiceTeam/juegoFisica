@@ -23,6 +23,7 @@ positivo hasta abajo.
 /********************************************************************************/
 
     CrearBasico();
+    CrearBotonPista("Pos, agarras el vector, se lo pegas \n al muñequito y le das a play, dud");
     CrearSalida(600,484);
     salidaAbierta = false;
     limiteDeTiempo = Infinity;
@@ -54,7 +55,7 @@ update: function() {
     if (!overlap && ChequearOverlap(player, vector)) {
         overlap = true;
         pararTitilar(titilarPlayer, evento);
-        titilarplay = resaltarSprite(425, 575, 1.3, 1, 'rectangulo');
+        titilarplay = resaltarSprite(400, 570, 1.3, 1, 'rectangulo');
         PlayButton.events.onInputDown.addOnce(function(vector){pararTitilar(titilarVector, evento);}, this);
     }
 

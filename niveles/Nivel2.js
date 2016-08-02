@@ -24,6 +24,7 @@ positivo hasta abajo.
 /********************************************************************************/
 
     CrearBasico();
+    CrearBotonPista("Izquierda o derecha?");
     CrearSalida(100,486);
     salidaAbierta = false;
     limiteDeTiempo = Infinity;

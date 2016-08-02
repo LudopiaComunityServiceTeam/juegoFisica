@@ -24,7 +24,7 @@ positivo hasta abajo.
 /********************************************************************************/
 
     CrearBasico();
-
+    CrearBotonPista("Pues que miedo! \n espinas, numeros, lineas.\n Por lo menos tenemos el resolvedor \n no parece ser posible llegar \n a la segunda puerta \n Quizá sea mejor usar \n los datos que estan relacionados \n con la primera");
     // Puerta falsa
     CrearSalida(700,486);
     lineaizq = game.add.sprite(52, 450, 'linea');

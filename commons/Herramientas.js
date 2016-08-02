@@ -71,25 +71,7 @@ function CrearFondo(){
     game.add.sprite(0, 0, 'fondo');
 }
 
-/**
-* Funcion que crea el sprite del boton para inicial
-* el nivel.
-*
-* @param x: posicion en el eje x
-* @param y: posicion en el eje y
-* @param nivel: nivel al que pertenece el boton
-*
-*/
-function CrearBotonDeNivel(x,y,nivel){
 
-    button = game.add.sprite(x, y, 'PlayButton');
-    button.i = nivel;
-    button.inputEnabled = true;
-    button.events.onInputDown.add(SeleccionarNivel, this);
-    button.events.onInputOver.add(overButton, this);
-    button.events.onInputOut.add(outButton, this);
-
-}
 
 function CrearEspinas(x,y){
 
@@ -206,19 +188,7 @@ function resetGame(){
     }
 }
 
-/**
-* Funcion que inicia el nivel escogido.
-*
-* @param item: nivel seleccionado
-*
-*/
 
-function SeleccionarNivel(item){
-    //Determina que pasa cuando se hace click en el boton de play
-    game.state.start(niveles[item.i]);
-    nivelActual = item.i;
-    resetVariables();
-}
 
 /**
 * Funcion reinicia todas la variables involucradas
@@ -243,7 +213,9 @@ function resetVariables(){
     listaDeEspinas = [];
     listaDeAngulos = [];
     ListaDeDatos = [];
+    cuadroVictoria = [];
     inicio = [];
+    cuadroPista = [];
     indice = 0;
 
     salidaAbierta = false;

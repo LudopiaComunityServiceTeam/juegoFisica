@@ -25,6 +25,7 @@ positivo hasta abajo.
 
 
     CrearBasico();
+    CrearBotonPista("La puerta tiene un número ahora,\n y es del mismo color que el tiempo, \n que podrá significar?.\n Quizá ir rapido no sea la mejor opcion,\n hay espinas cerca de la puerta");
     CrearSalida(600,484);
     limiteDeTiempo = 2;
     vector = CrearVector(400,300,0,0);

@@ -24,6 +24,7 @@ positivo hasta abajo.
 
 
     CrearBasico();
+    CrearBotonPista("Numeros morados, estos numeros cambian\n el ángulo del vector, ahora puedes saltar,\n ten cuidado de no saltar muy bajo");
     CrearSalida(600,486);
     limiteDeTiempo = 4;
     AñadirTexto(600,550,4,colorTiempo,35);

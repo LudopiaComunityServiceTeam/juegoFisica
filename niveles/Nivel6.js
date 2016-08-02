@@ -24,6 +24,7 @@ positivo hasta abajo.
 
 
     CrearBasico();
+    CrearBotonPista("Angulos, de nuevo, pero tambien\n hay magnitudes, trata de \n predecir el resultado, el \n monigote lo agraderá");
     CrearSalida(725,486);
     limiteDeTiempo = 2;
     AñadirTexto(725,550,2,colorTiempo,48);
