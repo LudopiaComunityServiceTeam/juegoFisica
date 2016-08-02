@@ -1,4 +1,4 @@
-var Nivel7 = {
+var Nivel8 = {
 preload: function() {
 
 
@@ -23,29 +23,45 @@ positivo hasta abajo.
 */
 /********************************************************************************/
 
-    CrearBasico();
-    CrearBotonPista("Ah, el resolvedor, este aparato \n toma numeros del ambiente \n y los convierte en una magnitud. \n Ya que no hay magnitudes \n a simple vista, intenta usarlo, \n arrastra un numero naranja (distancia) \n y un numero rojo(tiempo) hasta él");
+
+    ActivarFisica();
+    CrearFondo();
+    InicializarPlataformas();
+    CrearPiso();
+
+    // Puerta falsa
+    salidaFalsa = game.add.sprite(20,486, 'salida');
+    salidaFalsa.tint = 0xff9999;
+    lineaizq = game.add.sprite(20, 470, 'linea');
+    lineaizq.scale.setTo(5, 1);
+    lineader = game.add.sprite(150, 470, 'linea');
+    lineader.scale.setTo(5, 1);
+
     CrearSalida(700,486);
+    CrearTimer();
+    CrearPlay();
     limiteDeTiempo = 3;
-    lineaizq = game.add.sprite(52, 450, 'linea');
-    lineaizq.scale.setTo(28, 1);
-    lineader = game.add.sprite(425, 450, 'linea');
-    lineader.scale.setTo(28, 1);
+    lineaizq = game.add.sprite(230, 430, 'linea');
+    lineaizq.scale.setTo(20, 1);
+    lineader = game.add.sprite(500, 430, 'linea');
+    lineader.scale.setTo(20, 1);
     vector = CrearVector(400,300,0,0);
     cuadro = CrearCuadroVector(550,100,vector);
-    posInicXPlayer = 35;
+    posInicXPlayer = 200;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
     ecuacionVelocidad = CrearEcuacionVelocidad();
-    CrearDato(9,370,400,9,"distancia");
+    CrearDato(6,455,380,6,"distancia");
     CrearDato(3,700,510,3,"tiempo");
-
     tiempoFantasma = AñadirTexto(700,535,3,colorTiempo,48);
     tiempoFantasma.alpha = 0.7;
 
-    CrearMano(ListaDeDatos[0].x -55 , ListaDeDatos[0].y + 25);
-    inicio = ListaDeDatos;
-    indice = 0;
+    //Datos falsos
+    CrearDato(3,100,430,3,"distancia");
+    CrearDato(1,20,510,1,"tiempo");
+    tiempoFantasma = AñadirTexto(20,535,1,colorTiempo,48);
+    tiempoFantasma.alpha = 0.7;
+
 },
 
 update: function() {
@@ -55,8 +71,5 @@ update: function() {
 
     ControlJugador();
     ControlarNivel();
-    if (!(inicio[0] === undefined)) {
-        AnimarMano(inicio,ecuacionVelocidad,[-65,25,-40,50]);
-    }
 }
 };

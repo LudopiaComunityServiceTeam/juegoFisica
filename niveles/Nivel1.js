@@ -22,15 +22,10 @@ positivo hasta abajo.
 */
 /********************************************************************************/
 
-
-    ActivarFisica();
-    CrearFondo();
-    InicializarPlataformas();
-    CrearPiso();
+    CrearBasico();
+    CrearBotonPista("Pos, agarras el vector, se lo pegas \n al muñequito y le das a play, dud");
     CrearSalida(600,484);
     salidaAbierta = false;
-    CrearTimer(Infinity);
-    CrearPlay();
     limiteDeTiempo = Infinity;
     vector = CrearVector(400,300,300,0);
     posInicXPlayer = 35;
@@ -60,12 +55,11 @@ update: function() {
     if (!overlap && ChequearOverlap(player, vector)) {
         overlap = true;
         pararTitilar(titilarPlayer, evento);
-        titilarplay = resaltarSprite(425, 575, 1.3, 1, 'rectangulo');
+        titilarplay = resaltarSprite(400, 570, 1.3, 1, 'rectangulo');
         PlayButton.events.onInputDown.addOnce(function(vector){pararTitilar(titilarVector, evento);}, this);
     }
 
     //Animacion de la mano
-    console.log("naraninuri: " + indice);
     if (!(inicio[0] === undefined)) {
         AnimarMano(inicio,player,[-100,-25,-50,0]);
     }

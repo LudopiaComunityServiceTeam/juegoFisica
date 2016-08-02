@@ -23,14 +23,9 @@ positivo hasta abajo.
 /********************************************************************************/
 
 
-
-    ActivarFisica();
-    CrearFondo();
-    InicializarPlataformas();
-    CrearPiso();
+    CrearBasico();
+    CrearBotonPista("Angulos, de nuevo, pero tambien\n hay magnitudes, trata de \n predecir el resultado, el \n monigote lo agraderá");
     CrearSalida(725,486);
-    CrearTimer();
-    CrearPlay();
     limiteDeTiempo = 2;
     AñadirTexto(725,550,2,colorTiempo,48);
     vector = CrearVector(400,350,0,0);

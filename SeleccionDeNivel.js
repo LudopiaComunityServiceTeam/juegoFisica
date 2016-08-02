@@ -17,6 +17,8 @@ var listaDeNumeros = [];
 var listaDeEspinas = [];
 var listaDeAngulos = [];
 var ListaDeDatos = [];
+var cuadroPista = [];
+var cuadroVictoria = [];
 var numeroMagnitud;
 var niveles = ['SeleccionDeNivel','Nivel1','Nivel2','Nivel3','Nivel4','Nivel5', 'Nivel6', 'Nivel7', 'Nivel8'];
 var nivelActual = 0;
@@ -30,6 +32,8 @@ var salidaAbierta;
 var epilogoCorriendo;
 var inicio;
 var indice;
+var juegoInicializado = false;
+var pistaEnPantalla;
 
 
 var SeleccionDeNivel = {
@@ -48,7 +52,9 @@ preload: function() {
 //a la izq, luego al frente y luego a la derecha, tienes que ver que tan ancha
 //es cada imagen del muñequito y que tan alta es, pones el ancho en el primer
 //numero y la altura en el segundo
+    if (!juegoInicializado){
     loadAll();
+    }
 },
 create: function()
 {
@@ -63,8 +69,14 @@ create: function()
     CrearFondo();
     CargarRepertorioMusica();
     CargarRepertorioSonido();
-    ReproducirLoopAudio(jazzFunkThoughts,0.3);
-    game.time.events.add(Phaser.Timer.SECOND/2, escribir, this);
+    if (!juegoInicializado){
+        ReproducirLoopAudio(jazzFunkThoughts,0.3);
+        game.time.events.add(Phaser.Timer.SECOND/2, escribir, this);
+    }
+    else{
+        escribir();
+    }    
+    juegoInicializado = true
 },
 
 update: function() {

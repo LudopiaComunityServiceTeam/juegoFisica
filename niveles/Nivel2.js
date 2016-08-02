@@ -23,15 +23,10 @@ positivo hasta abajo.
 */
 /********************************************************************************/
 
-
-    ActivarFisica();
-    CrearFondo();
-    InicializarPlataformas();
-    CrearPiso();
+    CrearBasico();
+    CrearBotonPista("Izquierda o derecha?");
     CrearSalida(100,486);
     salidaAbierta = false;
-    CrearTimer();
-    CrearPlay();
     limiteDeTiempo = Infinity;
     vectorDer = CrearVector(450,300,300,0);
     vectorIzq = CrearVector(350,300,300,180);

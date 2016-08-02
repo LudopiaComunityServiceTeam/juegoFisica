@@ -23,14 +23,9 @@ positivo hasta abajo.
 /********************************************************************************/
 
 
-
-    ActivarFisica();
-    CrearFondo();
-    InicializarPlataformas();
-    CrearPiso();
+    CrearBasico();
+    CrearBotonPista("Numeros morados, estos numeros cambian\n el ángulo del vector, ahora puedes saltar,\n ten cuidado de no saltar muy bajo");
     CrearSalida(600,486);
-    CrearTimer();
-    CrearPlay();
     limiteDeTiempo = 4;
     AñadirTexto(600,550,4,colorTiempo,35);
     vector = CrearVector(400,350,400,0);
