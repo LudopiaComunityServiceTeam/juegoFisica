@@ -22,15 +22,9 @@ positivo hasta abajo.
 */
 /********************************************************************************/
 
-
-    ActivarFisica();
-    CrearFondo();
-    InicializarPlataformas();
-    CrearPiso();
+    CrearBasico();
     CrearSalida(600,484);
     salidaAbierta = false;
-    CrearTimer(Infinity);
-    CrearPlay();
     limiteDeTiempo = Infinity;
     vector = CrearVector(400,300,300,0);
     posInicXPlayer = 35;
@@ -65,7 +59,6 @@ update: function() {
     }
 
     //Animacion de la mano
-    console.log("naraninuri: " + indice);
     if (!(inicio[0] === undefined)) {
         AnimarMano(inicio,player,[-100,-25,-50,0]);
     }

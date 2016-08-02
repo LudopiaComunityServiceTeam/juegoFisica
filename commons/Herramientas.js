@@ -9,6 +9,15 @@ colorAngulo = "#9900cc";
 /**
 * Funcion que crea todo el piso del juego.
 */
+function CrearBasico(){
+    ActivarFisica();
+    CrearFondo();
+    InicializarPlataformas();
+    CrearPiso();
+    CrearPlay();
+    CrearBotonMenu();
+    CrearTimer();
+}
 function CrearPiso() {
 
     var piso = platforms.create(0, game.world.height - 64, 'piso');
@@ -73,10 +82,12 @@ function CrearFondo(){
 */
 function CrearBotonDeNivel(x,y,nivel){
 
-   button = game.add.sprite(x, y, 'PlayButton');
-   button.i = nivel;
-   button.inputEnabled = true;
-   button.events.onInputDown.add(SeleccionarNivel, this);
+    button = game.add.sprite(x, y, 'PlayButton');
+    button.i = nivel;
+    button.inputEnabled = true;
+    button.events.onInputDown.add(SeleccionarNivel, this);
+    button.events.onInputOver.add(overButton, this);
+    button.events.onInputOut.add(outButton, this);
 
 }
 

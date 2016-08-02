@@ -23,11 +23,7 @@ positivo hasta abajo.
 */
 /********************************************************************************/
 
-
-    ActivarFisica();
-    CrearFondo();
-    InicializarPlataformas();
-    CrearPiso();
+    CrearBasico();
 
     // Puerta falsa
     CrearSalida(570,486);
@@ -37,8 +33,6 @@ positivo hasta abajo.
     lineader.scale.setTo(20, 1);
 
     CrearSalida(700,486);
-    CrearTimer();
-    CrearPlay();
     limiteDeTiempo = 3;
     lineaizq = game.add.sprite(52, 430, 'linea');
     lineaizq.scale.setTo(30, 1);

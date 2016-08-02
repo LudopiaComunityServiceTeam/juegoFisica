@@ -23,14 +23,8 @@ positivo hasta abajo.
 */
 /********************************************************************************/
 
-
-    ActivarFisica();
-    CrearFondo();
-    InicializarPlataformas();
-    CrearPiso();
+    CrearBasico();
     CrearSalida(700,486);
-    CrearTimer();
-    CrearPlay();
     limiteDeTiempo = 3;
     lineaizq = game.add.sprite(52, 450, 'linea');
     lineaizq.scale.setTo(20, 1);

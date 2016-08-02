@@ -23,14 +23,8 @@ positivo hasta abajo.
 /********************************************************************************/
 
 
-
-    ActivarFisica();
-    CrearFondo();
-    InicializarPlataformas();
-    CrearPiso();
+    CrearBasico();
     CrearSalida(725,486);
-    CrearTimer();
-    CrearPlay();
     limiteDeTiempo = 2;
     AñadirTexto(725,550,2,colorTiempo,48);
     vector = CrearVector(400,350,0,0);

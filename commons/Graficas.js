@@ -77,7 +77,6 @@ function AnimarMano(inicio,objetivo,offsets){
             if (indice == inicio.length){
                indice = 0;
             }
-            console.log(movEnY)
             mano.x = inicio[indice].x + offsets[0];
             mano.y = inicio[indice].y + offsets[1];
         }
