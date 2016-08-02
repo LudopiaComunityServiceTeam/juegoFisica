@@ -27,16 +27,16 @@ positivo hasta abajo.
     CrearSalida(700,486);
     limiteDeTiempo = 3;
     lineaizq = game.add.sprite(52, 450, 'linea');
-    lineaizq.scale.setTo(20, 1);
-    lineader = game.add.sprite(405, 450, 'linea');
-    lineader.scale.setTo(20, 1);
+    lineaizq.scale.setTo(28, 1);
+    lineader = game.add.sprite(425, 450, 'linea');
+    lineader.scale.setTo(28, 1);
     vector = CrearVector(400,300,0,0);
     cuadro = CrearCuadroVector(550,100,vector);
     posInicXPlayer = 35;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
     ecuacionVelocidad = CrearEcuacionVelocidad();
-    CrearDato(9,320,400,9,"distancia");
+    CrearDato(9,370,400,9,"distancia");
     CrearDato(3,700,510,3,"tiempo");
 
     tiempoFantasma = AñadirTexto(700,535,3,colorTiempo,48);
@@ -55,7 +55,7 @@ update: function() {
     ControlJugador();
     ControlarNivel();
     if (!(inicio[0] === undefined)) {
-        AnimarMano(inicio,ecuacionVelocidad,[-65,25,-50,-30]);
+        AnimarMano(inicio,ecuacionVelocidad,[-65,25,-40,50]);
     }
 }
 };
