@@ -27,32 +27,32 @@ positivo hasta abajo.
     CrearBotonPista("Pues que miedo! \n espinas, numeros, lineas.\n Por lo menos tenemos el resolvedor \n no parece ser posible llegar \n a la segunda puerta \n Quizá sea mejor usar \n los datos que estan relacionados \n con la primera");
     // Puerta falsa
     CrearSalida(700,486);
-    lineaizq = game.add.sprite(52, 450, 'linea');
-    lineaizq.scale.setTo(20, 1);
-    lineader = game.add.sprite(370, 450, 'linea');
-    lineader.scale.setTo(20, 1);
+    lineaizq = game.add.sprite(215, 450, 'linea');
+    lineaizq.scale.setTo(15, 1);
+    lineader = game.add.sprite(435, 450, 'linea');
+    lineader.scale.setTo(15, 1);
 
     CrearEspinas(630,440);
 
     CrearSalida(570,486);
-    limiteDeTiempo = 3;
-    lineaizq = game.add.sprite(52, 380, 'linea');
-    lineaizq.scale.setTo(30, 1);
-    lineader = game.add.sprite(400, 380, 'linea');
-    lineader.scale.setTo(30, 1);
+    limiteDeTiempo = 2;
+    lineaizq = game.add.sprite(215, 380, 'linea');
+    lineaizq.scale.setTo(22, 1);
+    lineader = game.add.sprite(490, 380, 'linea');
+    lineader.scale.setTo(22, 1);
     vector = CrearVector(400,300,0,0);
     cuadro = CrearCuadroVector(550,100,vector);
     posInicXPlayer = 200;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
     ecuacionVelocidad = CrearEcuacionVelocidad();
-    CrearDato(9,370,330,9,"distancia");
+    CrearDato(9,455,330,9,"distancia");
     CrearDato(3,700,510,3,"tiempo");
     tiempoFantasma = AñadirTexto(700,535,3,colorTiempo,48);
     tiempoFantasma.alpha = 0.7;
 
     //Datos falsos
-    CrearDato(5,300,400,5,"distancia");
+    CrearDato(5,385,400,5,"distancia");
     CrearDato(2,570,510,2,"tiempo");
     tiempoFantasma = AñadirTexto(570,535,2,colorTiempo,48);
     tiempoFantasma.alpha = 0.7;
