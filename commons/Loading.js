@@ -44,7 +44,7 @@ function loadAll(){
     game.load.spritesheet('botonClose','assets/BotonClose.png',50,50);
     game.load.spritesheet('botonResetNivel','assets/Reset.png',50,50);
     //game.load.spritesheet('botonSigNivel','assets/BotonSigNivel.png',50,50);
-    game.load.spritesheet('botonSigNivel','assets/flechaverdetitila.png',209,56);
+    game.load.spritesheet('botonSigNivel','assets/flechaverdetitila.png',208,55);
     
 
     PreCargarRepertorioSonido();

@@ -45,7 +45,10 @@ function epilogoNivel(){
         console.log("WACHU")
     }else {
         if (tiempo == 1){ 
-            MenuFinalNivel()
+            if(!menuFinalNivelDesplegado){
+                MenuFinalNivel();
+                menuFinalNivelDesplegado = true;
+            }
         }
         else {
             actualizarTimerSinTexto();
@@ -150,7 +153,7 @@ function MenuFinalNivel() {
     
 }
 function ReiniciarNivel() {
-    console.log("estoy reiniciando")
+    menuFinalNivelDesplegado = false;
     for (i = 0; i < cuadroVictoria.length; i++){
         cuadroVictoria[i].destroy();
     }
