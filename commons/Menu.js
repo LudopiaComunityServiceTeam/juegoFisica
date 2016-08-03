@@ -54,7 +54,8 @@ function CrearBotonReset(){
 }
 function CrearBotonContinuar(){
 
-    botonMenu = game.add.sprite(600, 275, 'botonSigNivel');
+    botonMenu = game.add.sprite(300, 350, 'botonSigNivel');
+    AñadirTexto(300,400,'Siguiente Nivel',colorTexto,35);
     botonMenu.frame = 0;
     botonMenu.i = 0;
     botonMenu.inputEnabled = true;

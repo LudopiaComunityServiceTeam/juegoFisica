@@ -30,6 +30,8 @@ function loadAll(){
     game.load.image('ecuacionAceleracion','assets/Ecuacion aceleracion.png');
     game.load.image('lienzoPista','assets/LienzoPista.png');
     game.load.image('sello','assets/NivelPasado.png');
+    //game.load.image('botonSigNivel','assets/flechaverde.png');
+    game.load.image('pedazoHoja','assets/pedazohoja.png');
 
 
     game.load.spritesheet('simbolos','assets/Simbolos.png',28,28);
@@ -41,8 +43,9 @@ function loadAll(){
     game.load.spritesheet('botonPista','assets/BotonPista.png',50,50);
     game.load.spritesheet('botonClose','assets/BotonClose.png',50,50);
     game.load.spritesheet('botonResetNivel','assets/Reset.png',50,50);
-    game.load.spritesheet('botonSigNivel','assets/BotonSigNivel.png',50,50);
-
+    //game.load.spritesheet('botonSigNivel','assets/BotonSigNivel.png',50,50);
+    game.load.spritesheet('botonSigNivel','assets/flechaverdetitila.png',209,56);
+    
 
     PreCargarRepertorioSonido();
     PreCargarRepertorioMusica();
