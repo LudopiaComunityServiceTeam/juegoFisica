@@ -140,11 +140,13 @@ function ControlarNivel() {
 function MenuFinalNivel() {
     hoja = game.add.sprite(200,100,'pedazoHoja');
     hoja.scale.setTo(0.6,0.6);
+    cuadroVictoria.push(hoja);
     sello = game.add.sprite(300,150, 'sello');
     sello.scale.setTo(0.5, 0.5);
     cuadroVictoria.push(sello);
     //cuadroVictoria.push(CrearBotonReset());
     cuadroVictoria.push(CrearBotonContinuar());
+    
     
 }
 function ReiniciarNivel() {
