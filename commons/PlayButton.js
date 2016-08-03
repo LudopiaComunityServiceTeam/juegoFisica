@@ -28,7 +28,7 @@ function clickPlay(){
         // cierraSalida(limiteDeTiempo);
     }
     else{
-        resetGame();
+        ReiniciarNivel();
     }
 }
 
