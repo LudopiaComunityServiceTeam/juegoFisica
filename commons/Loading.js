@@ -28,7 +28,7 @@ function loadAll(){
     game.load.image('linea', 'assets/LineaDistancia.png');
     game.load.image('ecuacionVelocidad','assets/Ecuacion velocidad.png');
     game.load.image('ecuacionAceleracion','assets/Ecuacion aceleracion.png');
-    game.load.image('lienzoPista','assets/LienzoPista.png');
+    game.load.image('lienzoPista','assets/libreta.png');
     game.load.image('sello','assets/NivelPasado.png');
     //game.load.image('botonSigNivel','assets/flechaverde.png');
     game.load.image('pedazoHoja','assets/pedazohoja.png');

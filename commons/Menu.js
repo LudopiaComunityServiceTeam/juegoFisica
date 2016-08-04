@@ -68,6 +68,7 @@ function CrearBotonContinuar(){
 function CrearBotonPista(pista){
 
     botonPista = game.add.sprite(0, 545, 'botonPista');
+    pista.width = 1;
     botonPista.informacion = pista;
     botonPista.frame = 0;
     botonPista.i = 0;
@@ -97,7 +98,7 @@ function MostrarPista(item){
     }
 }
 function AbrirPista(boton){
-        cuadroPista.push(game.add.sprite(250, 100, 'lienzoPista'));
+        cuadroPista.push(game.add.sprite(250, 50, 'lienzoPista'));
         cuadroPista.push(AñadirTexto(300,150,"Pista",colorTexto,25));
         cuadroPista.push(AñadirTexto(300,200,boton.informacion,colorTexto,20));
         cuadroPista.push(CrearBotonClose());
