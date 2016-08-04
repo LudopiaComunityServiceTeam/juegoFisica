@@ -217,6 +217,7 @@ function resetVariables(){
     inicio = [];
     cuadroPista = [];
     indice = 0;
+    menuFinalNivelDesplegado = false;
 
     salidaAbierta = false;
     epilogoCorriendo = false;

@@ -34,7 +34,7 @@ var inicio;
 var indice;
 var juegoInicializado = false;
 var pistaEnPantalla;
-
+var lel = 0;
 
 var SeleccionDeNivel = {
 preload: function() {

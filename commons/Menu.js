@@ -43,29 +43,32 @@ function CrearBotonMenu(){
 }
 function CrearBotonReset(){
 
-    botonMenu = game.add.sprite(150, 275, 'botonResetNivel');
-    botonMenu.frame = 0;
-    botonMenu.i = 0;
-    botonMenu.inputEnabled = true;
-    botonMenu.events.onInputDown.add(ReiniciarNivel, this);
-    botonMenu.events.onInputOver.add(overButton, this);
-    botonMenu.events.onInputOut.add(outButton, this);
-    return botonMenu
+    botonReset = game.add.sprite(150, 275, 'botonResetNivel');
+    botonReset.frame = 0;
+    botonReset.i = 0;
+    botonReset.inputEnabled = true;
+    botonReset.events.onInputDown.add(ReiniciarNivel, this);
+    botonReset.events.onInputOver.add(overButton, this);
+    botonReset.events.onInputOut.add(outButton, this);
+    return botonReset
 }
 function CrearBotonContinuar(){
 
-    botonMenu = game.add.sprite(600, 275, 'botonSigNivel');
-    botonMenu.frame = 0;
-    botonMenu.i = 0;
-    botonMenu.inputEnabled = true;
-    botonMenu.events.onInputDown.add(TerminarNivel, this);
-    botonMenu.events.onInputOver.add(overButton, this);
-    botonMenu.events.onInputOut.add(outButton, this);
-    return botonMenu
+    texto = AñadirTexto(300,400,'Siguiente Nivel',colorTexto,35);
+    cuadroVictoria.push(texto)
+    botonContinuar = game.add.sprite(300, 350, 'botonSigNivel');
+    botonContinuar.frame = 0;
+    botonContinuar.i = 0;
+    botonContinuar.inputEnabled = true;
+    botonContinuar.events.onInputDown.add(TerminarNivel, this);
+    botonContinuar.events.onInputOver.add(overButton, this);
+    botonContinuar.events.onInputOut.add(outButton, this);
+    return botonContinuar
 }
 function CrearBotonPista(pista){
 
     botonPista = game.add.sprite(0, 545, 'botonPista');
+    pista.width = 1;
     botonPista.informacion = pista;
     botonPista.frame = 0;
     botonPista.i = 0;
@@ -95,7 +98,7 @@ function MostrarPista(item){
     }
 }
 function AbrirPista(boton){
-        cuadroPista.push(game.add.sprite(250, 100, 'lienzoPista'));
+        cuadroPista.push(game.add.sprite(250, 50, 'lienzoPista'));
         cuadroPista.push(AñadirTexto(300,150,"Pista",colorTexto,25));
         cuadroPista.push(AñadirTexto(300,200,boton.informacion,colorTexto,20));
         cuadroPista.push(CrearBotonClose());
@@ -110,9 +113,13 @@ function CerrarPista(){
 }
 
 function overButton(item){
+    console.log("HEYO")
     item.frame = 1;
 }
 function outButton(item){
+    console.log("NuNu")
+    console.log(lel)
+    lel = lel +1
     item.frame = 0;
 }
 
