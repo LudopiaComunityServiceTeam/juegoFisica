@@ -2,13 +2,11 @@
 * Funcion que crea un vector con las caracteristicas
 * especificadas.
 *
-
-* @param numero: valor de la magnitud
 * @param x: posicion en el eje x
 * @param y: posicion en el eje y
-* @param numeroMostrado: valor de la magnitud (redundante)
+* @param magnitud: valor de la magnitud
+* @param angulo: valor del angulo
 *
-
 * @return el vector con las caracteristicas especificadas.
 *
 */
@@ -19,7 +17,7 @@ function CrearVector(x,y,magnitud,angulo) {
     var cola = game.add.sprite(-36, -8.5, 'vector');
     vector.cola = cola;
     vector.addChild(cola);
-    escalarVector(vector, magnitud);
+    // escalarVector(vector, magnitud);
     vector.frame = 3;
     vector.magnitud = magnitud;
     vector.angulo = angulo;
@@ -126,6 +124,7 @@ function checkMagnitudInVector(item) {
             item.x = listaDeCuadros[i].x + 30;
             item.y = listaDeCuadros[i].y + 50;
             listaDeCuadros[i].vector.magnitud = item.numero;
+            VectorFit.play();
             escalarVector(listaDeCuadros[i].vector, item.numero);
             if (ChequearOverlap(listaDeCuadros[i].vector,player)||(ChequearOverlap(player,listaDeCuadros[i].vector.cola))){
                 magnitudJugador = listaDeCuadros[i].vector.magnitud;
@@ -248,6 +247,7 @@ function checkAnguloInVector(item) {
             item.x = listaDeCuadros[i].x + 90;
             item.y = listaDeCuadros[i].y + 50;
             listaDeCuadros[i].vector.angulo = item.numero;
+            VectorFit.play();
             listaDeCuadros[i].vector.angle = ConvertirAngulo(item.numero);
             if (ChequearOverlap(listaDeCuadros[i].vector,player)||(ChequearOverlap(player,listaDeCuadros[i].vector.cola))){
                 angulo = listaDeCuadros[i].vector.angulo;
@@ -318,6 +318,7 @@ function pegarVector(item) {
     //lo lleva a dicho rango
 
     if (ChequearOverlap(player,item)||ChequearOverlap(player,item.cola)) {
+        VectorFit.play();
         item.x = (player.x+(player.width/2));
         item.y = (player.y+(player.height/2));
         magnitudJugador = item.magnitud;
@@ -345,18 +346,18 @@ function CrearCuadroVector(x,y,vector){
     cuadro.vector = vector;
 
     //inicializacion de la magnitud del vector
-    magnitud = CrearNumeroParaVector(vector.magnitud, x + 30,y + 50, vector.magnitud);
+    magnitud = CrearNumeroParaVector(vector.magnitud, x + 30,y + 50, Math.floor(vector.magnitud/100));
     magnitud.input.draggable = false;
     magnitud.enCuadro = true;
     cuadro.magnitudInicial = magnitud;
-    checkMagnitudInVector(magnitud);
+    // checkMagnitudInVector(magnitud);
 
     // inicializacion del angulo del vector
     angulo = CrearAnguloParaVector(vector.angulo, x + 105,y + 50, vector.angulo);
     angulo.input.draggable = false;
     angulo.enCuadro = true;
     cuadro.anguloInicial = angulo;
-    checkAnguloInVector(angulo);
+    // checkAnguloInVector(angulo);
 
     // Ocultar cuadro del vector cuando no se necesite
     // descomentar y cambiar el tipo de evento que activa la funcion
@@ -427,9 +428,9 @@ function mostrarCuadroVector(vector, cuadro){
     }
 }
 function escalarVector(Vector, NuevoTamaño){
-    var tamanoCalculado
-    var tamañoAnterior = Vector.width + Vector.cola.width
-    var tamañoNuevo
+    var tamanoCalculado;
+    var tamañoAnterior = Vector.width + Vector.cola.width;
+    var tamañoNuevo;
     tamanoCalculado = 1 + ((NuevoTamaño/100)-1)
     if (tamanoCalculado == 0){
         Vector.cola.scale.x = 0.1;

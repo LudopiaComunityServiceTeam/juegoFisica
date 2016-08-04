@@ -25,6 +25,14 @@ function actualizarTimer() {
 
         if (fpscont == 40) {
             tiempo++;
+            if (tiempo % 2 != 0)
+            {
+                Tick.play();
+            }
+            else
+            {
+                Tock.play();
+            }
             timerText.setText(tiempo);
             fpscont = 0;
         }

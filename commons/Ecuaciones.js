@@ -60,12 +60,14 @@ function CrearDato(valor,x,y,numeroMostrado,tipoDeDato) {
     ListaDeDatos.push(dato);
 }
 function CheckEncimaEcuacion(item){
+    VectorFit.play();
     if (item.tipo == "distancia"){
         CheckDistanciaOnVelocidad(item);
     }
     else if (item.tipo == "tiempo"){
         CheckTiempoOnVelocidad(item);
     }
+
 }
 function CheckDistanciaOnVelocidad(item){
 //Requiere booleanos "tieneDistancia" y "tieneTiempo"
@@ -73,8 +75,8 @@ function CheckDistanciaOnVelocidad(item){
     if (ChequearOverlap(item,EcuacionVelocidad)){
         tieneDistancia = true;
         EcuacionVelocidad.distancia = item.valor;
-        item.x = EcuacionVelocidad.x + 15;
-        item.y = EcuacionVelocidad.y - 25;
+        item.x = EcuacionVelocidad.x + 30;
+        item.y = EcuacionVelocidad.y + 8;
         if (tieneTiempo){
             CrearVelocidad();
         }
@@ -90,8 +92,8 @@ function CheckTiempoOnVelocidad(item){
     if (ChequearOverlap(item,EcuacionVelocidad)){
         tieneTiempo = true;
         EcuacionVelocidad.tiempo = item.valor;
-        item.x = EcuacionVelocidad.x + 15;
-        item.y = (EcuacionVelocidad.y + 25);
+        item.x = EcuacionVelocidad.x + 30;
+        item.y = (EcuacionVelocidad.y + 48);
         if (tieneDistancia){
             CrearVelocidad();
         }

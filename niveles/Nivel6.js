@@ -4,7 +4,6 @@ preload: function() {
 
 },
 create: function() {
-
 /********************************************************************************/
 /*
 
@@ -24,30 +23,24 @@ positivo hasta abajo.
 /********************************************************************************/
 
 
-    ActivarFisica();
-    CrearFondo();
-    InicializarPlataformas();
-    CrearPiso();
-    CrearSalida(700,486);
-    CrearTimer();
-    CrearPlay();
-    limiteDeTiempo = 3;
-    lineaizq = game.add.sprite(52, 450, 'linea');
-    lineaizq.scale.setTo(20, 1);
-    lineader = game.add.sprite(405, 450, 'linea');
-    lineader.scale.setTo(20, 1);
-    vector = CrearVector(400,300,0,0);
+    CrearBasico();
+    CrearBotonPista("Angulos, de nuevo, pero tambien\n hay magnitudes, trata de \n predecir el resultado, el \n monigote lo agraderá");
+    CrearSalida(725,486);
+    limiteDeTiempo = 2;
+    AñadirTexto(725,550,2,colorTiempo,48);
+    vector = CrearVector(400,350,0,0);
     cuadro = CrearCuadroVector(550,100,vector);
+    numeroAngulo = CrearAnguloParaVectorControlable(30,550,250,30);
+    numeroAngulo = CrearAnguloParaVectorControlable(40,650,250,40);
+    numeroMagnitud = CrearNumeroParaVectorControlable(420,450,100,4);
+    numeroMagnitud = CrearNumeroParaVectorControlable(500,450,200,5);
+    CrearEspinas(400,440);
     posInicXPlayer = 35;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
-    ecuacionVelocidad = CrearEcuacionVelocidad();
-    CrearDato(9,320,400,9,"distancia");
-    CrearDato(3,600,510,3,"tiempo");
-
-    CrearMano(ListaDeDatos[0].x -55 , ListaDeDatos[0].y + 25);
-    inicio = ListaDeDatos;
-    indice = 0;
+    // informacion sobre el angulo
+    //info = "Un vector también tiene un \nángulo que define su sentido, \nhacia donde apunta";
+    //AñadirTexto(100, 40, info, colorTexto, 24);
 },
 
 update: function() {
@@ -57,8 +50,5 @@ update: function() {
 
     ControlJugador();
     ControlarNivel();
-    if (!(inicio[0] === undefined)) {
-        AnimarMano(inicio,ecuacionVelocidad,[-65,25,-50,-30]);
-    }
 }
 };

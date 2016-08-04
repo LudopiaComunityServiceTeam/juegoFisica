@@ -24,24 +24,20 @@ positivo hasta abajo.
 /********************************************************************************/
 
 
-
-    ActivarFisica();
-    CrearFondo();
-    InicializarPlataformas();
-    CrearPiso();
+    CrearBasico();
+    CrearBotonPista("La caja controla al vector. \n Hey, hay magnitudes azules por aqui sueltas. \n Intenta ponerlas en la caja ver que pasa");
     CrearSalida(600,486);
-    CrearTimer();
-    CrearPlay();
     limiteDeTiempo = Infinity;
     vector = CrearVector(400,300,0,0);
     cuadro = CrearCuadroVector(550,100,vector);
-    numeroMagnitud = CrearNumeroParaVectorControlable(500,550,300,5);
+
+    numeroMagnitud = CrearNumeroParaVectorControlable(100,550,300,1);
     //listaDeNumeros.push(numeroMagnitud);
 
     numeroMagnitud = CrearNumeroParaVectorControlable(300,650,300,3);
     //listaDeNumeros.push(numeroMagnitud);
 
-    numeroMagnitud = CrearNumeroParaVectorControlable(100,750,300,1);
+    numeroMagnitud = CrearNumeroParaVectorControlable(500,750,300,5);
     //listaDeNumeros.push(numeroMagnitud);
 
     posInicXPlayer = 35;

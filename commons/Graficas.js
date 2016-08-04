@@ -77,13 +77,12 @@ function AnimarMano(inicio,objetivo,offsets){
             if (indice == inicio.length){
                indice = 0;
             }
-            console.log(movEnY)
             mano.x = inicio[indice].x + offsets[0];
             mano.y = inicio[indice].y + offsets[1];
         }
     }
     else if (((mano.alive)&&(ChequearOverlap(inicio[indice],objetivo)))||clicked){
-        
+
         mano.kill();
     }
 }
@@ -99,7 +98,7 @@ function AnimarMano(inicio,objetivo,offsets){
 *
 */
 function resaltarSprite(x, y, scaleX, scaleY, sprite) {
-    objetoTitila = game.add.sprite(x, y, sprite);
+    var objetoTitila = game.add.sprite(x, y, sprite);
     objetoTitila.anchor.setTo(0.5, 0.5);
     objetoTitila.scale.setTo(scaleX,scaleY);
     objetoTitila.alpha = 0.8;
@@ -129,7 +128,7 @@ function titilar(objeto) {
 * @param objeto: objeto que dispara el evento de dejar titilar
 *
 */
-function pararTitilar(objeto) {
-    game.time.events.remove(this.evento);
-    this.objeto2.destroy();
+function pararTitilar(objeto, evento) {
+    game.time.events.remove(evento);
+    objeto.destroy();
 }

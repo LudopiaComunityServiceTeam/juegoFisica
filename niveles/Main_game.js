@@ -27,7 +27,7 @@ create: function() {
 
     //Se activa la fisica de tipo "Arcade Physics"
     game.physics.startSystem(Phaser.Physics.ARCADE);
-
+    
     //Se agrega el background del juego
 
     CrearFondo()

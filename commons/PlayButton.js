@@ -4,7 +4,7 @@
 */
 function CrearPlay() {
     //  Crear el boton de play
-    PlayButton = game.add.button(400, 550, 'PlayButton', clickPlay, this);
+    PlayButton = game.add.button(375, 545, 'PlayButton', clickPlay, this);
     PlayButton.frame = 0;
     PlayButton.onInputOver.add(overPlayButton, this);
     PlayButton.onInputOut.add(outPlayButton, this);
@@ -28,7 +28,7 @@ function clickPlay(){
         // cierraSalida(limiteDeTiempo);
     }
     else{
-        resetGame();
+        ReiniciarNivel();
     }
 }
 

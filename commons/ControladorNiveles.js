@@ -45,9 +45,10 @@ function epilogoNivel(){
         console.log("WACHU")
     }else {
         if (tiempo == 1){ 
-            game.state.start(niveles[nivelActual+1]);
-            nivelActual = nivelActual + 1;
-            resetVariables();
+            if(!menuFinalNivelDesplegado){
+                MenuFinalNivel();
+                menuFinalNivelDesplegado = true;
+            }
         }
         else {
             actualizarTimerSinTexto();
@@ -139,3 +140,30 @@ function ControlarNivel() {
         }
     }
 }
+function MenuFinalNivel() {
+    hoja = game.add.sprite(200,100,'pedazoHoja');
+    hoja.scale.setTo(0.6,0.6);
+    cuadroVictoria.push(hoja);
+    sello = game.add.sprite(300,150, 'sello');
+    sello.scale.setTo(0.5, 0.5);
+    cuadroVictoria.push(sello);
+    //cuadroVictoria.push(CrearBotonReset());
+    cuadroVictoria.push(CrearBotonContinuar());
+    
+    
+}
+function ReiniciarNivel() {
+    menuFinalNivelDesplegado = false;
+    for (i = 0; i < cuadroVictoria.length; i++){
+        cuadroVictoria[i].destroy();
+    }
+    resetGame();
+}
+
+function TerminarNivel() {
+    game.state.start(niveles[nivelActual+1]);
+    nivelActual = nivelActual + 1;
+    resetVariables();
+}
+
+

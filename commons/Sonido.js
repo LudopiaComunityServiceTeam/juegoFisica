@@ -3,6 +3,8 @@ function PreCargarRepertorioMusica()
 {
     /* Repertorio De Musica */
     game.load.audio('jazzFunkThoughts', ['assets/Music/jazzFunkThoughts.ogg','assets/jazzFunkThoughts.mp3']);
+    game.load.audio('AnAmazingStart', ['assets/Music/AnAmazingStart.ogg']);
+    game.load.audio('Stop_And_Think', ['assets/Music/Stop_And_Think.ogg']);
 }
 /* PreCarga el repertorio de sonidos completo (Preload)*/
 function PreCargarRepertorioSonido() 
@@ -12,12 +14,18 @@ function PreCargarRepertorioSonido()
     game.load.audio('OpenDoor', ['assets/Sounds/OpenDoor.ogg']);
     game.load.audio('CloseDoor', ['assets/Sounds/CloseDoor.ogg']);
     game.load.audio('Reset', ['assets/Sounds/Reset.ogg']);
+    game.load.audio('VectorFit', ['assets/Sounds/VectorFit.ogg']);
+    game.load.audio('Tick', ['assets/Sounds/Tick.ogg']);
+    game.load.audio('Tock', ['assets/Sounds/Tock.ogg']);
+    
 }
 /* PreCarga el repertorio de musica completo (Create)*/
 function CargarRepertorioMusica() 
 {
     /* Repertorio De musica */
     jazzFunkThoughts = game.add.audio('jazzFunkThoughts');
+    AnAmazingStart = game.add.audio('AnAmazingStart');
+    Stop_And_Think = game.add.audio('Stop_And_Think');
 }
 /* PreCarga el repertorio de sonidos completo (Create)*/
 function CargarRepertorioSonido() 
@@ -27,6 +35,9 @@ function CargarRepertorioSonido()
     OpenDoor = game.add.audio('OpenDoor');
     CloseDoor = game.add.audio('CloseDoor');
     Reset = game.add.audio('Reset');
+    VectorFit = game.add.audio('VectorFit');
+    Tick = game.add.audio('Tick');
+    Tock = game.add.audio('Tock');
 }
 /* Carga una cancion en particular */
 function CargarCancion(cancion) 
@@ -45,4 +56,11 @@ function ReproducirLoopAudio(cancion,volumen)
     cancion.volume = volumen;
     /* Reproducimos el audio */
     cancion.play();
+}
+
+/* Pausa la cancion de la intro y coloca una nueva cancion para el nivel */
+function ReproducirMusicaNivel(cancion) 
+{
+    AnAmazingStart.pause();
+    ReproducirLoopAudio(cancion,0.3);
 }

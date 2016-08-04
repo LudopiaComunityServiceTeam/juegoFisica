@@ -17,8 +17,10 @@ var listaDeNumeros = [];
 var listaDeEspinas = [];
 var listaDeAngulos = [];
 var ListaDeDatos = [];
+var cuadroPista = [];
+var cuadroVictoria = [];
 var numeroMagnitud;
-var niveles = ['SeleccionDeNivel','Nivel1','Nivel2','Nivel3','Nivel4','Nivel5', 'Nivel6','Main_game'];
+var niveles = ['SeleccionDeNivel','Nivel1','Nivel2','Nivel3','Nivel4','Nivel5', 'Nivel6', 'Nivel7', 'Nivel8', 'Nivel9'];
 var nivelActual = 0;
 var explosion = false;
 var music1;
@@ -30,7 +32,9 @@ var salidaAbierta;
 var epilogoCorriendo;
 var inicio;
 var indice;
-
+var juegoInicializado = false;
+var pistaEnPantalla;
+var lel = 0;
 
 var SeleccionDeNivel = {
 preload: function() {
@@ -48,7 +52,9 @@ preload: function() {
 //a la izq, luego al frente y luego a la derecha, tienes que ver que tan ancha
 //es cada imagen del muñequito y que tan alta es, pones el ancho en el primer
 //numero y la altura en el segundo
+    if (!juegoInicializado){
     loadAll();
+    }
 },
 create: function()
 {
@@ -63,8 +69,14 @@ create: function()
     CrearFondo();
     CargarRepertorioMusica();
     CargarRepertorioSonido();
-    ReproducirLoopAudio(jazzFunkThoughts,0.3);
-    game.time.events.add(Phaser.Timer.SECOND/2, escribir, this);
+    if (!juegoInicializado){
+        ReproducirLoopAudio(jazzFunkThoughts,0.3);
+        game.time.events.add(Phaser.Timer.SECOND/2, escribir, this);
+    }
+    else{
+        escribir();
+    }
+    juegoInicializado = true;
 },
 
 update: function() {
@@ -74,23 +86,28 @@ update: function() {
 
     //Permitimos que el jugador colisione con cualquier objeto
     //en el grupo de las plataformas
-
 }
-}
+};
 function escribir(){
 
     var text = AñadirTexto(60,10,"Escoge un nivel:",colorTexto,50);
-    var text = AñadirTexto(312,150,"1",colorTexto,35);
+    text = AñadirTexto(312,150,"1",colorTexto,35);
     CrearBotonDeNivel(300, 200, 1);
-    var text = AñadirTexto(415,150,"2",colorTexto,35);
+    text = AñadirTexto(415,150,"2",colorTexto,35);
     CrearBotonDeNivel(400, 200, 2);
-    var text = AñadirTexto(515,150,"3",colorTexto,35);
+    text = AñadirTexto(515,150,"3",colorTexto,35);
     CrearBotonDeNivel(500, 200, 3);
-    var text = AñadirTexto(315,375,"4",colorTexto,35);
+    text = AñadirTexto(315,250,"4",colorTexto,35);
     CrearBotonDeNivel(300, 300, 4);
-    var text = AñadirTexto(415,375,"5",colorTexto,35);
+    text = AñadirTexto(415,250,"5",colorTexto,35);
     CrearBotonDeNivel(400, 300, 5);
-    var text = AñadirTexto(515,375,"6",colorTexto,35);
+    text = AñadirTexto(515,250,"6",colorTexto,35);
     CrearBotonDeNivel(500, 300, 6);
+    text = AñadirTexto(315,350,"7",colorTexto,35);
+    CrearBotonDeNivel(300, 400, 7);
+    text = AñadirTexto(415,350,"8",colorTexto,35);
+    CrearBotonDeNivel(400, 400, 8);
+    text = AñadirTexto(515,350,"9",colorTexto,35);
+    CrearBotonDeNivel(500, 400, 9);
 
 }
