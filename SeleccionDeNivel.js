@@ -86,7 +86,6 @@ update: function() {
 
     //Permitimos que el jugador colisione con cualquier objeto
     //en el grupo de las plataformas
-
 }
 };
 function escribir(){

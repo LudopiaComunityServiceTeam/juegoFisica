@@ -124,6 +124,7 @@ function checkMagnitudInVector(item) {
             item.x = listaDeCuadros[i].x + 30;
             item.y = listaDeCuadros[i].y + 50;
             listaDeCuadros[i].vector.magnitud = item.numero;
+            VectorFit.play();
             escalarVector(listaDeCuadros[i].vector, item.numero);
             if (ChequearOverlap(listaDeCuadros[i].vector,player)||(ChequearOverlap(player,listaDeCuadros[i].vector.cola))){
                 magnitudJugador = listaDeCuadros[i].vector.magnitud;
@@ -246,6 +247,7 @@ function checkAnguloInVector(item) {
             item.x = listaDeCuadros[i].x + 90;
             item.y = listaDeCuadros[i].y + 50;
             listaDeCuadros[i].vector.angulo = item.numero;
+            VectorFit.play();
             listaDeCuadros[i].vector.angle = ConvertirAngulo(item.numero);
             if (ChequearOverlap(listaDeCuadros[i].vector,player)||(ChequearOverlap(player,listaDeCuadros[i].vector.cola))){
                 angulo = listaDeCuadros[i].vector.angulo;
@@ -316,6 +318,7 @@ function pegarVector(item) {
     //lo lleva a dicho rango
 
     if (ChequearOverlap(player,item)||ChequearOverlap(player,item.cola)) {
+        VectorFit.play();
         item.x = (player.x+(player.width/2));
         item.y = (player.y+(player.height/2));
         magnitudJugador = item.magnitud;
