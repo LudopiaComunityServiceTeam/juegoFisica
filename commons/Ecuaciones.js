@@ -60,12 +60,14 @@ function CrearDato(valor,x,y,numeroMostrado,tipoDeDato) {
     ListaDeDatos.push(dato);
 }
 function CheckEncimaEcuacion(item){
+    VectorFit.play();
     if (item.tipo == "distancia"){
         CheckDistanciaOnVelocidad(item);
     }
     else if (item.tipo == "tiempo"){
         CheckTiempoOnVelocidad(item);
     }
+
 }
 function CheckDistanciaOnVelocidad(item){
 //Requiere booleanos "tieneDistancia" y "tieneTiempo"
