@@ -1,8 +1,8 @@
 /**
 * Funcion que crea el sprite de la ecuacion
 */
-function CrearEcuacionVelocidad(){
-    EcuacionVelocidad = game.add.sprite(100, 100, 'EcuacionVelocidadCamuflada');
+function CrearEcuacionVelocidad(x,y){
+    EcuacionVelocidad = game.add.sprite(x, y, 'EcuacionVelocidadCamuflada');
     return EcuacionVelocidad;
 }
 

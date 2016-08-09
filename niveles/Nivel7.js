@@ -36,7 +36,7 @@ positivo hasta abajo.
     posInicXPlayer = 35;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
-    ecuacionVelocidad = CrearEcuacionVelocidad();
+    ecuacionVelocidad = CrearEcuacionVelocidad(100,100);
     CrearDato(9,370,400,9,"distancia");
     CrearDato(3,700,510,3,"tiempo");
 

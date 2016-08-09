@@ -37,12 +37,23 @@ function CrearPiso() {
 
 function CrearPlataformas() {
 
-    var ledge = platforms.create(400, 400, 'platform');
-    ledge.body.immovable = true;
+    CrearPlataforma(400,400)
 
-    ledge = platforms.create(-150, 250, 'platform');
-    ledge.body.immovable = true;
+    CrearPlataforma(-150,200)
 }
+
+/**
+* Funcion que crea dos plataformas flotantes.
+*/
+
+function CrearPlataforma(x,y,escalax,escalay) {
+
+    var ledge = platforms.create(x, y, 'platform');
+    ledge.body.immovable = true;
+    ledge.scale.setTo(escalax, escalay);
+
+}
+
 
 /**
 * Funcion que crea el sprite de la salida en la posicion
@@ -73,7 +84,7 @@ function CrearFondo(){
 
 
 
-function CrearEspinas(x,y){
+function CrearEspinas(x,y,rotacion){
 
     espinas = game.add.sprite(x,y,'Espinas');
     listaDeEspinas.push(espinas);

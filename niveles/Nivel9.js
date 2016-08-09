@@ -40,7 +40,7 @@ positivo hasta abajo.
     posInicXPlayer = 250;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
-    ecuacionVelocidad = CrearEcuacionVelocidad();
+    ecuacionVelocidad = CrearEcuacionVelocidad(100,100);
     CrearDato(2,135,420,2,"distancia");
     CrearDato(1,50,510,1,"tiempo");
     tiempoFantasma = AñadirTexto(50,535,1,colorTiempo,48);
