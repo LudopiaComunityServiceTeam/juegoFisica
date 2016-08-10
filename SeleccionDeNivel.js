@@ -20,7 +20,7 @@ var ListaDeDatos = [];
 var cuadroPista = [];
 var cuadroVictoria = [];
 var numeroMagnitud;
-var niveles = ['SeleccionDeNivel','Nivel1','Nivel2','Nivel3','Nivel4','Nivel5', 'Nivel6', 'Nivel7', 'Nivel8', 'Nivel9', 'Nivel10'];
+var niveles = ['SeleccionDeNivel','Nivel1','Nivel2','Nivel3','Nivel4','Nivel5', 'Nivel6', 'Nivel7', 'Nivel8', 'Nivel9', 'Nivel10', 'Nivel11'];
 var nivelActual = 0;
 var explosion = false;
 var music1;
@@ -111,5 +111,7 @@ function escribir(){
     CrearBotonDeNivel(500, 400, 9);
     text = AñadirTexto(312,450,"10",colorTexto,35);
     CrearBotonDeNivel(300, 500, 10);
+    text = AñadirTexto(414,450,"11",colorTexto,35);
+    CrearBotonDeNivel(400, 500, 11);
 
 }
