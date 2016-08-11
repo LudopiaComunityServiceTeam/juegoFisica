@@ -48,7 +48,7 @@ positivo hasta abajo.
 
     // Puerta falsa
     salidaFalsa = game.add.sprite(700,486, 'salida');
-    salidaFalsa.tint = 0xff9999;
+    // salidaFalsa.tint = 0xff9999;
     lineaizq = game.add.sprite(280, 430, 'linea');
     lineaizq.scale.setTo(18, 1);
     lineader = game.add.sprite(520, 430, 'linea');
