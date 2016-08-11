@@ -43,8 +43,6 @@ positivo hasta abajo.
     ecuacionVelocidad = CrearEcuacionVelocidad(100,100);
     CrearDato(2,135,420,2,"distancia");
     CrearDato(1,50,510,1,"tiempo");
-    tiempoFantasma = AñadirTexto(50,535,1,colorTiempo,48);
-    tiempoFantasma.alpha = 0.7;
 
     // Puerta falsa
     salidaFalsa = game.add.sprite(700,486, 'salida');
@@ -57,8 +55,6 @@ positivo hasta abajo.
     //Datos falsos
     CrearDato(8,480,380,8,"distancia");
     CrearDato(2,700,510,2,"tiempo");
-    tiempoFantasma = AñadirTexto(700,535,2,colorTiempo,48);
-    tiempoFantasma.alpha = 0.7;
 
 },
 

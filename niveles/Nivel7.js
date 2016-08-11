@@ -40,9 +40,6 @@ positivo hasta abajo.
     CrearDato(9,370,400,9,"distancia");
     CrearDato(3,700,510,3,"tiempo");
 
-    tiempoFantasma = AñadirTexto(700,535,3,colorTiempo,48);
-    tiempoFantasma.alpha = 0.7;
-
     CrearMano(ListaDeDatos[0].x -55 , ListaDeDatos[0].y + 25);
     inicio = ListaDeDatos;
     indice = 0;

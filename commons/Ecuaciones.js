@@ -52,12 +52,18 @@ function CrearDato(valor,x,y,numeroMostrado,tipoDeDato) {
     //Permite arrastrar con el mouse, el "true" hace que el centro del
     //objeto quede en donde se tiene el mouse
     dato.input.enableDrag(true);
+    dato.input.useHandCursor = true;
     //Aqui se le agrega al numero el "evento" de que cuando se suelte
     //se corre la funcion checkMagnitudInVector
     dato.events.onDragStop.add(CheckEncimaEcuacion);
 
     dato.valor = valor;
     ListaDeDatos.push(dato);
+
+    //Creamos el dato fantasma
+    datoFantasma = AñadirTexto(x,y,numeroMostrado, color, 48);
+    datoFantasma.anchor.y = -0.4;
+    datoFantasma.alpha = 0.7;
 }
 function CheckEncimaEcuacion(item){
     VectorFit.play();

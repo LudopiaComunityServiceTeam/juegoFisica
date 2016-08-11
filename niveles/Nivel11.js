@@ -59,9 +59,6 @@ positivo hasta abajo.
     posInicYPlayer = 450;
     CrearJugador(posInicXPlayer, posInicYPlayer);
     CrearDato(3,400,225,3,"tiempo");
-    tiempoFantasma = AñadirTexto(400,250,3,colorTiempo,48);
-
-    tiempoFantasma.alpha = 0.7;
     numeroAngulo = CrearAnguloParaVectorControlable(90,600,250,90);
 
     //Datos falsos

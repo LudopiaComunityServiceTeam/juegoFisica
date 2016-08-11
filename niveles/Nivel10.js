@@ -70,8 +70,6 @@ positivo hasta abajo.
     ecuacionVelocidad = CrearEcuacionVelocidad(50,50);
     CrearDato(6,250,380,6,"distancia");
     CrearDato(3,550,510,3,"tiempo");
-    tiempoFantasma = AñadirTexto(550,535,3,colorTiempo,48);
-    tiempoFantasma.alpha = 0.7;
 
     //Datos falsos
     CrearDato(3,250,330,3,"distancia");
