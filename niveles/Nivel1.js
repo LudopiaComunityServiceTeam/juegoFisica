@@ -55,15 +55,15 @@ update: function() {
     if (!overlap && ChequearOverlap(player, vector)) {
         overlap = true;
         pararTitilar(titilarPlayer, evento);
-        titilarplay = resaltarSprite(400, 570, 1.3, 1, 'rectangulo');
-        PlayButton.events.onInputDown.addOnce(function(vector){pararTitilar(titilarVector, evento);}, this);
+        titilarplay = resaltarSprite(400, 568, 1.4, 1.1, 'rectangulo');
+        PlayButton.events.onInputDown.addOnce(function(PlayButton){pararTitilar(titilarplay, evento);}, this);
     }
 
     //Animacion de la mano
     if (!(inicio[0] === undefined)) {
         AnimarMano(inicio,player,[-100,-25,-50,0]);
     }
-    }
+}
 };
 
 function tutorial1(){

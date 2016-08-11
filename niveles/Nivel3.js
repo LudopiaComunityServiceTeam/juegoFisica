@@ -1,7 +1,7 @@
 var Nivel3 = {
 preload: function() {
 
-
+    game.load.image('rectangulo','assets/rectangulo.png');
 },
 create: function() {
 
@@ -50,6 +50,10 @@ positivo hasta abajo.
     // informacion sobre la magnitud
     //info = "Un vector tiene magnitud, que\n es un valor asociado a una\n propiedad física y que cambia\n la intensidad del mismo";
     //AñadirTexto(60, 60, info, colorTexto, 24);
+
+    tutorial3();
+    //Variable para controlar el titilar del boton play
+    overlap = false;
 },
 
 update: function() {
@@ -64,5 +68,23 @@ update: function() {
 //    console.log("MAYONESO: " + listaDeCuadros)
         AnimarMano(inicio,listaDeCuadros[0],[-55,25,-40,+60]);
     }
+
+    //Parte del tutorial
+    if (!overlap && ChequearOverlap(player, vector)) {
+        overlap = true;
+        pararTitilar(titilarPlayer, evento);
+        titilarplay = resaltarSprite(400, 568, 1.4, 1.1, 'rectangulo');
+        PlayButton.events.onInputDown.addOnce(function(PlayButton){pararTitilar(titilarplay, evento);}, this);
+    }
 }
 };
+
+function tutorial3(){
+    titilarVector = resaltarSprite(400,300, 1.6, 0.8, 'rectangulo');
+    vector.events.onInputDown.addOnce(function(vector){pararTitilar(titilarVector, evento);}, this);
+    vector.events.onDragStart.addOnce(resaltarPlayerTutorial, this);
+}
+
+function resaltarPlayerTutorial(objeto) {
+    titilarPlayer = resaltarSprite(posInicXPlayer+15, posInicYPlayer+23, 1.2, 1.2, 'rectangulo');
+}
