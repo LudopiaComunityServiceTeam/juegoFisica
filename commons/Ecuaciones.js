@@ -58,6 +58,11 @@ function CrearDato(valor,x,y,numeroMostrado,tipoDeDato) {
     dato.events.onDragStop.add(CheckEncimaEcuacion);
 
     dato.valor = valor;
+
+    // posicion inicial del dato
+    dato.posXInit = x;
+    dato.posYInit = y;
+
     ListaDeDatos.push(dato);
 
     //Creamos el dato fantasma
@@ -79,15 +84,21 @@ function CheckDistanciaOnVelocidad(item){
 //Requiere booleanos "tieneDistancia" y "tieneTiempo"
 
     if (ChequearOverlap(item,EcuacionVelocidad)){
-        tieneDistancia = true;
-        EcuacionVelocidad.distancia = item.valor;
+        if (tieneDistancia) {
+            EcuacionVelocidad.distancia.x = EcuacionVelocidad.distancia.posXInit;
+            EcuacionVelocidad.distancia.y = EcuacionVelocidad.distancia.posYInit;
+        }
+        else {
+            tieneDistancia = true;
+        }
+        EcuacionVelocidad.distancia = item;
         item.x = EcuacionVelocidad.x + 30;
-        item.y = EcuacionVelocidad.y + 8;
+        item.y = EcuacionVelocidad.y + 5;
         if (tieneTiempo){
             CrearVelocidad();
         }
     }
-    else {
+    else if (!ChequearOverlap(EcuacionVelocidad.distancia, EcuacionVelocidad)) {
         tieneDistancia = false;
     }
 
@@ -96,15 +107,21 @@ function CheckTiempoOnVelocidad(item){
 //Requiere booleanos "tieneVelocidad" y "tieneTiempo"
 
     if (ChequearOverlap(item,EcuacionVelocidad)){
-        tieneTiempo = true;
-        EcuacionVelocidad.tiempo = item.valor;
+        if (tieneTiempo) {
+            EcuacionVelocidad.tiempo.x = EcuacionVelocidad.tiempo.posXInit;
+            EcuacionVelocidad.tiempo.y = EcuacionVelocidad.tiempo.posYInit;
+        }
+        else {
+            tieneTiempo = true;
+        }
+        EcuacionVelocidad.tiempo = item;
         item.x = EcuacionVelocidad.x + 30;
         item.y = (EcuacionVelocidad.y + 48);
         if (tieneDistancia){
             CrearVelocidad();
         }
     }
-    else {
+    else if (!ChequearOverlap(EcuacionVelocidad.tiempo, EcuacionVelocidad)) {
         tieneTiempo = false;
     }
 }
@@ -114,6 +131,6 @@ function CheckTiempoOnVelocidad(item){
 * la distancia y el tiempo
 */
 function CrearVelocidad(){
-    resultado = Math.floor(EcuacionVelocidad.distancia/EcuacionVelocidad.tiempo);
+    resultado = Math.floor(EcuacionVelocidad.distancia.valor/EcuacionVelocidad.tiempo.valor);
     CrearNumeroParaVectorControlable((resultado*100),(EcuacionVelocidad.x+80),EcuacionVelocidad.y+25,resultado);
 }
