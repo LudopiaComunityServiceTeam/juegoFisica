@@ -3,6 +3,7 @@
 */
 function CrearEcuacionVelocidad(x,y){
     EcuacionVelocidad = game.add.sprite(x, y, 'EcuacionVelocidadCamuflada');
+    EcuacionVelocidad.resultado = undefined;
     return EcuacionVelocidad;
 }
 
@@ -131,6 +132,18 @@ function CheckTiempoOnVelocidad(item){
 * la distancia y el tiempo
 */
 function CrearVelocidad(){
-    resultado = Math.floor(EcuacionVelocidad.distancia.valor/EcuacionVelocidad.tiempo.valor);
-    CrearNumeroParaVectorControlable((resultado*100),(EcuacionVelocidad.x+80),EcuacionVelocidad.y+25,resultado);
+    var resultado = Math.floor(EcuacionVelocidad.distancia.valor/EcuacionVelocidad.tiempo.valor);
+
+    // eliminar el resultado anterior
+    if (EcuacionVelocidad.resultado !== undefined){
+        //eliminar el resultado anterior de la lista de numeros
+        var index = listaDeNumeros.indexOf(EcuacionVelocidad.resultado);
+        listaDeNumeros.splice(index, 1);
+        EcuacionVelocidad.resultado.destroy();
+    }
+
+    EcuacionVelocidad.resultado =  CrearNumeroParaVectorControlable(resultado*100,
+                                                                    EcuacionVelocidad.x + 80,
+                                                                    EcuacionVelocidad.y + 25,
+                                                                    resultado);
 }
