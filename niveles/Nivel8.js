@@ -24,10 +24,9 @@ positivo hasta abajo.
 /********************************************************************************/
 
     CrearBasico();
-    CrearBotonPista("Pues que miedo! \n espinas, numeros, lineas.\n Por lo menos tenemos el resolvedor \n no parece ser posible llegar \n a la segunda puerta \n Quizá sea mejor usar \n los datos que estan relacionados \n con la primera");
+    CrearBotonPista("¡Wow! Espinas, distancias y tiempos...\nEl resolvedor nos ayudará en este\ndilema, piensa bien que distancia y\ntiempo usar agregarás en él, hay\nuna puerta a la que no puedes\nllegar.");
 
     CrearEspinas(630,440);
-
     CrearSalida(550,486);
     limiteDeTiempo = 2;
     lineaizq = game.add.sprite(215, 380, 'linea');

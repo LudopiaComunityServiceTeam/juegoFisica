@@ -24,7 +24,7 @@ positivo hasta abajo.
 /********************************************************************************/
 
     CrearBasico();
-    CrearBotonPista("Ah, el resolvedor, este aparato \n toma numeros del ambiente \n y los convierte en una magnitud. \n Ya que no hay magnitudes \n a simple vista, intenta usarlo, \n arrastra un numero naranja (distancia) \n y un numero rojo(tiempo) hasta él");
+    CrearBotonPista("Con la magnitud cero no te puedes\nmover... Trata de crear una nueva\nmagnitud con el resolvedor. Usa la\ndistancia (número naranja) y el tiempo\n(número rojo), te ayudarán.");
     CrearSalida(700,486);
     limiteDeTiempo = 3;
     lineaizq = game.add.sprite(52, 450, 'linea');

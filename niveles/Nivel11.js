@@ -24,7 +24,7 @@ positivo hasta abajo.
 /********************************************************************************/
 
     CrearBasico();
-    CrearBotonPista("La caida no cambiara tu velocidad horizontal");
+    CrearBotonPista("Todo lo que sube tiene que caer...\n¡Escoge la rapidez correcta!");
     CrearSalida(400,300);
     salidaAbierta = false;
     limiteDeTiempo = 2;

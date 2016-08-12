@@ -23,7 +23,7 @@ positivo hasta abajo.
 /********************************************************************************/
 
     CrearBasico();
-    CrearBotonPista("Pos, agarras el vector, se lo pegas \n al muñequito y le das a play, dud");
+    CrearBotonPista("Observa bien lo que indican los cuadros\nverdes, esa es la secuencia de juego.\nArrastra el vector, déjalo caer sobre el\nmonigote y le das a \"play \"");
     CrearSalida(600,484);
     salidaAbierta = false;
     limiteDeTiempo = Infinity;

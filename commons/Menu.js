@@ -50,12 +50,12 @@ function CrearBotonReset(){
     botonReset.events.onInputDown.add(ReiniciarNivel, this);
     botonReset.events.onInputOver.add(overButton, this);
     botonReset.events.onInputOut.add(outButton, this);
-    return botonReset
+    return botonReset;
 }
 function CrearBotonContinuar(){
 
     texto = AñadirTexto(300,400,'Siguiente Nivel',colorTexto,35);
-    cuadroVictoria.push(texto)
+    cuadroVictoria.push(texto);
     botonContinuar = game.add.sprite(300, 350, 'botonSigNivel');
     botonContinuar.frame = 0;
     botonContinuar.i = 0;
@@ -63,7 +63,7 @@ function CrearBotonContinuar(){
     botonContinuar.events.onInputDown.add(TerminarNivel, this);
     botonContinuar.events.onInputOver.add(overButton, this);
     botonContinuar.events.onInputOut.add(outButton, this);
-    return botonContinuar
+    return botonContinuar;
 }
 function CrearBotonPista(pista){
 
@@ -87,11 +87,11 @@ function CrearBotonClose(){
     botonClose.events.onInputDown.add(CerrarPista, this);
     botonClose.events.onInputOver.add(overButton, this);
     botonClose.events.onInputOut.add(outButton, this);
-    return botonClose
+    return botonClose;
 }
 function MostrarPista(item){
     if (!pistaEnPantalla){
-        AbrirPista(item);    
+        AbrirPista(item);
     }
     else{
         CerrarPista();
@@ -100,9 +100,11 @@ function MostrarPista(item){
 function AbrirPista(boton){
         cuadroPista.push(game.add.sprite(250, 50, 'lienzoPista'));
         cuadroPista.push(AñadirTexto(300,150,"Pista",colorTexto,25));
-        cuadroPista.push(AñadirTexto(300,200,boton.informacion,colorTexto,20));
+        var info = AñadirTexto(300,200,boton.informacion,colorTexto,20);
+        info.align = 'justify';
+        cuadroPista.push(info);
         cuadroPista.push(CrearBotonClose());
-        pistaEnPantalla = true
+        pistaEnPantalla = true;
 }
 
 function CerrarPista(){
@@ -113,13 +115,12 @@ function CerrarPista(){
 }
 
 function overButton(item){
-    console.log("HEYO")
+    console.log("HEYO");
     item.frame = 1;
 }
 function outButton(item){
-    console.log("NuNu")
-    console.log(lel)
-    lel = lel +1
+    console.log("NuNu");
+    console.log(lel);
+    lel = lel +1;
     item.frame = 0;
 }
-

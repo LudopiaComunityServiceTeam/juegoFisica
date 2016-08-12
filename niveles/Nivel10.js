@@ -24,7 +24,7 @@ positivo hasta abajo.
 /********************************************************************************/
 
     CrearBasico();
-    CrearBotonPista("La caida no cambiara tu velocidad horizontal");
+    CrearBotonPista("La velocidad que tienes depende\nla distancia (y el tiempo) que elijas.\nEscoge sabiamente y llega a la puerta.");
     CrearSalida(550,486);
     salidaAbierta = false;
     CrearPlataforma(0,300,1,1);

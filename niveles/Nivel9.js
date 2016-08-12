@@ -24,7 +24,7 @@ positivo hasta abajo.
 /********************************************************************************/
 
     CrearBasico();
-    CrearBotonPista("Las puertas rojas no funcionan! :(");
+    CrearBotonPista("Y ahora hay ángulos... \n¿Cuál puerta será la correcta?\n¿Derecha o izquierda?");
     CrearSalida(50,486);
     salidaAbierta = false;
     limiteDeTiempo = 1;

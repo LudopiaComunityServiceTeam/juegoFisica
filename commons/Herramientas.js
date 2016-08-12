@@ -37,9 +37,9 @@ function CrearPiso() {
 
 function CrearPlataformas() {
 
-    CrearPlataforma(400,400)
+    CrearPlataforma(400,400);
 
-    CrearPlataforma(-150,200)
+    CrearPlataforma(-150,200);
 }
 
 /**
@@ -66,7 +66,6 @@ function CrearPlataforma(x,y,escalax,escalay) {
 
 function CrearSalida(x,y) {
 
-   
     salida = game.add.sprite(x,y,'salida');
     salida.animations.add('accionar',[1,2,3,4],10,false);
     salida.animations.add('cerrar',[3,2,1,0],10,false);
@@ -248,5 +247,3 @@ function ChequearOverlap(Objeto1,Objeto2){
 
     return Phaser.Rectangle.intersects(boundsA, boundsB);
 }
-
-

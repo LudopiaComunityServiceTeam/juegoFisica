@@ -25,7 +25,7 @@ positivo hasta abajo.
 
 
     CrearBasico();
-    CrearBotonPista("La caja controla al vector. \n Hey, hay magnitudes azules por aqui sueltas. \n Intenta ponerlas en la caja ver que pasa");
+    CrearBotonPista("Los vectores tienen magnitud (azul) que\ncambian su tamaño y rapidez.\n¿Qué sucederá si colocas una magnitud \nen el cuadro del mismo color?.\n¡ Inténtalo !");
     CrearSalida(600,486);
     limiteDeTiempo = Infinity;
     vector = CrearVector(400,300,0,0);
