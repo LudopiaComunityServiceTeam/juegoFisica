@@ -33,11 +33,11 @@ positivo hasta abajo.
     jugador = CrearJugador(posInicXPlayer, posInicYPlayer);
     text = AñadirTexto(110,240,"Este es un vector\n de velocidad",colorTexto,45);
     text.angle = -20;
-    tutorial1();
     CrearMano(290, 275);
     inicio = [vector];
     indice = 0;
 
+    tutorial();
     //Variable para controlar el titilar del boton play
     overlap = false;
 
@@ -52,12 +52,7 @@ update: function() {
     ControlarNivel();
 
     //Parte del tutorial
-    if (!overlap && ChequearOverlap(player, vector)) {
-        overlap = true;
-        pararTitilar(titilarPlayer, evento);
-        titilarplay = resaltarSprite(400, 568, 1.4, 1.1, 'rectangulo');
-        PlayButton.events.onInputDown.addOnce(function(PlayButton){pararTitilar(titilarplay, evento);}, this);
-    }
+    resaltarPlayButtonTutorial();
 
     //Animacion de la mano
     if (!(inicio[0] === undefined)) {
@@ -65,13 +60,3 @@ update: function() {
     }
 }
 };
-
-function tutorial1(){
-    titilarVector = resaltarSprite(400,300, 1.6, 0.8, 'rectangulo');
-    vector.events.onInputDown.addOnce(function(vector){pararTitilar(titilarVector, evento);}, this);
-    vector.events.onDragStart.addOnce(resaltarPlayerTutorial, this);
-}
-
-function resaltarPlayerTutorial(objeto) {
-    titilarPlayer = resaltarSprite(posInicXPlayer+15, posInicYPlayer+23, 1.2, 1.2, 'rectangulo');
-}

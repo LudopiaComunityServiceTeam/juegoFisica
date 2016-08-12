@@ -34,7 +34,7 @@ positivo hasta abajo.
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
     CrearEspinas(600,440);
-    tutorial2();
+    tutorial();
     //Variable para controlar el titilar del boton play
     overlap = false;
 
@@ -49,12 +49,7 @@ update: function() {
     ControlarNivel();
 
     //Parte del tutorial
-    if (!overlap && (ChequearOverlap(player, vectorDer) || ChequearOverlap(player, vectorIzq))) {
-        overlap = true;
-        pararTitilar(titilarPlayer, evento);
-        titilarplay = resaltarSprite(400, 568, 1.4, 1.1, 'rectangulo');
-        PlayButton.events.onInputDown.addOnce(function(PlayButton){pararTitilar(titilarplay, evento);}, this);
-    }
+    resaltarPlayButtonTutorial();
 }
 };
 

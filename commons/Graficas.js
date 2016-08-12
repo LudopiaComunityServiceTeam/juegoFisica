@@ -132,3 +132,49 @@ function pararTitilar(objeto, evento) {
     game.time.events.remove(evento);
     objeto.destroy();
 }
+
+/**
+* Funcion realiza la animacion del tutorial para un nivel.
+* hace uso de la funciones auxiliares pararTitilarTutorial y
+* resaltarPlayerTutorial y en el update del nivel se debe
+* colocar la funcion resaltarPlayButtonTutorial
+*
+*/
+function tutorial(){
+    titilarVectores = [];
+    for (var i = 0; i <  listaDeVectores.length; i++) {
+        var titilarVector = resaltarSprite(listaDeVectores[i].x,listaDeVectores[i].y, 1.6, 0.8, 'rectangulo');
+        titilarVectores.push(titilarVector);
+        listaDeVectores[i].events.onInputDown.addOnce(pararTitilarTutorial, this);
+        listaDeVectores[i].events.onDragStart.addOnce(resaltarPlayerTutorial, this);
+
+    }
+}
+
+// funcion auxiliar del tutorial que para el titilar de los vectores
+function pararTitilarTutorial(objeto) {
+    for (var i = 0; i < titilarVectores.length; i++) {
+        pararTitilar(titilarVectores[i], evento);
+    }
+}
+
+// funcion auxiliar del tutorial que resalta al jugador
+function resaltarPlayerTutorial(objeto) {
+    titilarPlayer = resaltarSprite(posInicXPlayer+15, posInicYPlayer+23, 1.2, 1.2, 'rectangulo');
+}
+
+function resaltarPlayButtonTutorial(){
+    //poner esta funcion en el update del nivel.
+    var overlapAlgunVector;
+    for (var i = 0; i < listaDeVectores.length; i++) {
+        if (ChequearOverlap(player, listaDeVectores[i])){
+            overlapAlgunVector = true;
+        }
+    }
+    if (!overlap && overlapAlgunVector) {
+        overlap = true;
+        pararTitilar(titilarPlayer, evento);
+        titilarplay = resaltarSprite(400, 568, 1.4, 1.1, 'rectangulo');
+        PlayButton.events.onInputDown.addOnce(function(PlayButton){pararTitilar(titilarplay, evento);}, this);
+    }
+}
