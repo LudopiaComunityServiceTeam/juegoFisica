@@ -27,7 +27,7 @@ positivo hasta abajo.
     CrearBotonPista("Los vectores tienen ángulo (morado) que\ncambian su inclinación. ¡Ahora puedes\nsaltar! Ten cuidado de no saltar muy\n bajo...");
     CrearSalida(600,486);
     limiteDeTiempo = 4;
-    AñadirTexto(600,550,4,colorTiempo,35);
+    CrearDato(3,600,510,3,"tiempo");
     vector = CrearVector(400,350,400,0);
     cuadro = CrearCuadroVector(550,100,vector);
     numeroAngulo = CrearAnguloParaVectorControlable(90,500,300,90);

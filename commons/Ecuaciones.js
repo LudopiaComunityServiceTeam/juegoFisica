@@ -64,12 +64,14 @@ function CrearDato(valor,x,y,numeroMostrado,tipoDeDato) {
     dato.posXInit = x;
     dato.posYInit = y;
 
-    ListaDeDatos.push(dato);
-
     //Creamos el dato fantasma
     datoFantasma = AñadirTexto(x,y,numeroMostrado, color, 48);
     datoFantasma.anchor.y = -0.4;
     datoFantasma.alpha = 0.7;
+
+    dato.fantasma = datoFantasma;
+    ListaDeDatos.push(dato);
+
 }
 function CheckEncimaEcuacion(item){
     VectorFit.play();

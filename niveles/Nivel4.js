@@ -37,7 +37,7 @@ positivo hasta abajo.
     posInicXPlayer = 35;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
-    AñadirTexto(600,550,2,colorTiempo,48);
+    CrearDato(3,600,510,3,"tiempo");
 },
 
 update: function() {

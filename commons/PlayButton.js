@@ -21,6 +21,7 @@ function clickPlay(){
     if (!clicked){
         //Iniciamos el timer
         startTimer();
+        startTimerPuerta();
         //y apretamos el boton
         PlayButton.frame = 3;
         clicked = true;

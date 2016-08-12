@@ -7,6 +7,7 @@
 */
 function cierraSalida(seg){
     actualizarTimer();
+    actualizarTimerPuerta();
     if (tiempo == (seg + 1)){
 	if (salidaAbierta){
             salida.animations.play('cerrar',10,false);
@@ -28,23 +29,24 @@ function abreSalida(){
     if (limiteDeTiempo == Infinity || (limiteDeTiempo) == tiempo) {
         if (!(salidaAbierta)) {
             OpenDoor.play();
-            salida.animations.play('accionar',10,false);            
+            salida.animations.play('accionar',10,false);
             salidaAbierta = true;
         }
     }
 }
 
 /**
-* Funcion que maneja el tiempo para permitirle al nivel 
+* Funcion que maneja el tiempo para permitirle al nivel
 * terminar despues de que se haya cerrado la puerta
 *
 */
 function epilogoNivel(){
     if (!tiempoStart){
         startTimer();
+        startTimerPuerta();
         console.log("WACHU")
     }else {
-        if (tiempo == 1){ 
+        if (tiempo == 1){
             if(!menuFinalNivelDesplegado){
                 MenuFinalNivel();
                 menuFinalNivelDesplegado = true;
@@ -72,6 +74,7 @@ function DetectarVictoria() {
 	    }
             epilogoCorriendo = true;
             stopTimer();
+            stopTimerPuerta();
             resetTimerSinTexto();
             player.kill();
 
@@ -105,12 +108,11 @@ function DetectarPerdida() {
             if (!explosion){
                 gameOver();
             }
-    
         }
     }
 
 //Perder por No llegar en tiempo correspondiente
-    if (limiteDeTiempo != Infinity){ 
+    if (limiteDeTiempo != Infinity){
         if (((limiteDeTiempo + 1) == tiempo)&&(!(ChequearOverlap(player,salida)))) {
 	    player.body.velocity.x = 0;
             player.animations.stop();
@@ -120,7 +122,7 @@ function DetectarPerdida() {
             }
         }
     }
-} 
+}
 
 /**
 * Funcion que se llama en el update, y se encarga de manejar
@@ -149,8 +151,8 @@ function MenuFinalNivel() {
     cuadroVictoria.push(sello);
     //cuadroVictoria.push(CrearBotonReset());
     cuadroVictoria.push(CrearBotonContinuar());
-    
-    
+
+
 }
 function ReiniciarNivel() {
     menuFinalNivelDesplegado = false;
@@ -165,5 +167,3 @@ function TerminarNivel() {
     nivelActual = nivelActual + 1;
     resetVariables();
 }
-
-
