@@ -132,6 +132,7 @@ function CheckTiempoOnVelocidad(item){
 * la distancia y el tiempo
 */
 function CrearVelocidad(){
+    animacionDivisionIniciada = true;
     var resultado = Math.floor(EcuacionVelocidad.distancia.valor/EcuacionVelocidad.tiempo.valor);
 
     // eliminar el resultado anterior
@@ -143,7 +144,7 @@ function CrearVelocidad(){
     }
 
     EcuacionVelocidad.resultado =  CrearNumeroParaVectorControlable(resultado*100,
-                                                                    EcuacionVelocidad.x + 80,
+                                                                    EcuacionVelocidad.x + 140,
                                                                     EcuacionVelocidad.y + 25,
                                                                     resultado);
 }
