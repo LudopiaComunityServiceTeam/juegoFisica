@@ -6,6 +6,7 @@ var postIt;
 var gameOverText;
 var music1;
 var ImagenDivision;
+var ImagenCirculo;
 
 var magnitudJugador;
 var direccion = 1;
@@ -22,6 +23,8 @@ var tieneTiempo = false;
 var impulsado = false;
 var animacionDivisionIniciada = false;
 var animacionDivisionCreada = false;
+var animacionCirculoIniciada = false;
+var animacionCirculoCreada = false;
 var juegoInicializado = false;
 var salidaCerrandose;
 var salidaAbierta;

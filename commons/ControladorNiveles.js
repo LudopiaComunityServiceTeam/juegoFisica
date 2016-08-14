@@ -87,8 +87,10 @@ function DetectarAnimaciones() {
 
     //Detectar si el personaje toca la salida
     if (animacionDivisionIniciada){
-        console.log("Zuchu =c");
         AnimarDivision(); 
+    }
+    if (animacionCirculoIniciada){
+        AnimarCirculo();
     }
 }
 
@@ -128,6 +130,7 @@ function DetectarPerdida() {
 	    player.body.velocity.x = 0;
             player.animations.stop();
             player.frame = 4;
+            animacionCirculoIniciada = true;
             if (!explosion){
                 gameOver();
             }
