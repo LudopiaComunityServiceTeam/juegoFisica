@@ -27,7 +27,7 @@ positivo hasta abajo.
     CrearBotonPista("¡Wow! Espinas, distancias y tiempos...\nEl resolvedor nos ayudará en este\ndilema, piensa bien que distancia y\ntiempo usar agregarás en él, hay\nuna puerta a la que no puedes\nllegar.");
 
     CrearEspinas(630,440);
-    CrearSalida(550,486);
+    CrearSalida(550,484);
     limiteDeTiempo = 2;
     lineaizq = game.add.sprite(215, 380, 'linea');
     lineaizq.scale.setTo(22, 1);

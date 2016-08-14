@@ -25,7 +25,7 @@ positivo hasta abajo.
 
     CrearBasico();
     CrearBotonPista("¡Magnitudes y ángulos! Calcula la\ncombinación correcta de ellos para\nllegar a tiempo a la puerta;\nel monigote lo agradecerá.");
-    CrearSalida(725,486);
+    CrearSalida(725,484);
     limiteDeTiempo = 2;
     CrearDato(3,725,510,3,"tiempo");
     vector = CrearVector(400,350,0,0);

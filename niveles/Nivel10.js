@@ -25,7 +25,7 @@ positivo hasta abajo.
 
     CrearBasico();
     CrearBotonPista("La velocidad que tienes depende\nla distancia (y el tiempo) que elijas.\nEscoge sabiamente y llega a la puerta.");
-    CrearSalida(550,486);
+    CrearSalida(550,484);
     salidaAbierta = false;
     CrearPlataforma(0,300,1,1);
     CrearPlataforma(100,300,1,1);

@@ -115,12 +115,9 @@ function CerrarPista(){
 }
 
 function overButton(item){
-    console.log("HEYO");
+
     item.frame = 1;
 }
 function outButton(item){
-    console.log("NuNu");
-    console.log(lel);
-    lel = lel +1;
     item.frame = 0;
 }

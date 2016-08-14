@@ -83,6 +83,21 @@ function DetectarVictoria() {
 }
 
 /**
+* Funcion que detecta si se gano un nivel
+*
+*/
+function DetectarAnimaciones() {
+
+    //Detectar si el personaje toca la salida
+    if (animacionDivisionIniciada){
+        AnimarDivision(); 
+    }
+    if (animacionCirculoIniciada){
+        AnimarCirculo();
+    }
+}
+
+/**
 * Funcion que en cada frame revisa si debe abrir o cerra la puerta
 *
 */
@@ -117,6 +132,7 @@ function DetectarPerdida() {
 	    player.body.velocity.x = 0;
             player.animations.stop();
             player.frame = 4;
+            animacionCirculoIniciada = true;
             if (!explosion){
                 gameOver();
             }
@@ -130,7 +146,7 @@ function DetectarPerdida() {
 *
 */
 function ControlarNivel() {
-    //actualizarColaVector();
+    DetectarAnimaciones();
     if ((clicked)&&(direccion == 1)){
         if (!(epilogoCorriendo)){
             ManejarPuerta();

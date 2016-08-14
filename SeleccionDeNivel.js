@@ -1,16 +1,37 @@
 var player;
-var posInicXPlayer;
-var posInicYPlayer;
 var salida;
 var platforms;
 var cursors;
-var clicked = false;
+var postIt;
+var gameOverText;
+var music1;
+var ImagenDivision;
+var ImagenCirculo;
+
 var magnitudJugador;
 var direccion = 1;
+var numeroMagnitud;
 var angulo = 0;//(3.1415)/4;
+var posInicXPlayer;
+var posInicYPlayer;
+var limiteDeTiempo;
+var nivelActual = 0;
+
+var clicked = false;
 var tieneDistancia = false;
 var tieneTiempo = false;
 var impulsado = false;
+var animacionDivisionIniciada = false;
+var animacionDivisionCreada = false;
+var animacionCirculoIniciada = false;
+var animacionCirculoCreada = false;
+var juegoInicializado = false;
+var salidaCerrandose;
+var salidaAbierta;
+var epilogoCorriendo;
+var explosion = false;
+var pistaEnPantalla;
+
 var listaDeVectores = [];
 var listaDeCuadros = [];
 var listaDeNumeros = [];
@@ -19,22 +40,14 @@ var listaDeAngulos = [];
 var ListaDeDatos = [];
 var cuadroPista = [];
 var cuadroVictoria = [];
-var numeroMagnitud;
 var niveles = ['SeleccionDeNivel','Nivel1','Nivel2','Nivel3','Nivel4','Nivel5', 'Nivel6', 'Nivel7', 'Nivel8', 'Nivel9', 'Nivel10', 'Nivel11'];
-var nivelActual = 0;
-var explosion = false;
-var music1;
-var postIt;
-var gameOverText;
-var limiteDeTiempo;
-var salidaCerrandose;
-var salidaAbierta;
-var epilogoCorriendo;
+
+
 var inicio;
 var indice;
-var juegoInicializado = false;
-var pistaEnPantalla;
-var lel = 0;
+
+
+
 
 var SeleccionDeNivel = {
 preload: function() {

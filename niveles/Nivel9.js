@@ -25,7 +25,7 @@ positivo hasta abajo.
 
     CrearBasico();
     CrearBotonPista("Y ahora hay ángulos... \n¿Cuál puerta será la correcta?\n¿Derecha o izquierda?");
-    CrearSalida(50,486);
+    CrearSalida(50,484);
     salidaAbierta = false;
     limiteDeTiempo = 1;
     lineaizq = game.add.sprite(50, 470, 'linea');

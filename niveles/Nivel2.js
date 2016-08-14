@@ -25,7 +25,7 @@ positivo hasta abajo.
 
     CrearBasico();
     CrearBotonPista("¿Izquierda o derecha?");
-    CrearSalida(100,486);
+    CrearSalida(100,484);
     salidaAbierta = false;
     limiteDeTiempo = Infinity;
     vectorDer = CrearVector(450,300,300,0);
