@@ -68,6 +68,7 @@ function CrearNumeroParaVector(numero,x,y,numeroMostrado) {
     //Permite arrastrar con el mouse, el "true" hace que el centro del
     //objeto quede en donde se tiene el mouse
     numeroMag.input.enableDrag(true);
+    numeroMag.input.useHandCursor = true;
 
     //Aqui se le agrega al numero el "evento" de que cuando se suelte
     //se corre la funcion checkMagnitudInVector
@@ -194,7 +195,8 @@ function CrearAnguloParaVector(numero,x,y,numeroMostrado) {
     //Permite arrastrar con el mouse, el "true" hace que el centro del
     //objeto quede en donde se tiene el mouse
     numeroAngulo.input.enableDrag(true);
-
+    numeroAngulo.input.useHandCursor = true;
+    
     //Aqui se le agrega al numero el "evento" de que cuando se suelte
     //se corre la funcion checkMagnitudInVector
     numeroAngulo.events.onDragStop.add(checkAnguloInVector);

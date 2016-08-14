@@ -25,17 +25,17 @@ positivo hasta abajo.
 
     CrearBasico();
     CrearBotonPista("¡Magnitudes y ángulos! Calcula la\ncombinación correcta de ellos para\nllegar a tiempo a la puerta;\nel monigote lo agradecerá.");
-    CrearSalida(725,484);
-    limiteDeTiempo = 2;
-    CrearDato(3,725,510,3,"tiempo");
+    CrearSalida(660,484);
+    limiteDeTiempo = 3;
+    CrearDato(3,660,510,3,"tiempo");
     vector = CrearVector(400,350,0,0);
     cuadro = CrearCuadroVector(550,100,vector);
     numeroAngulo = CrearAnguloParaVectorControlable(30,550,250,30);
     numeroAngulo = CrearAnguloParaVectorControlable(40,650,250,40);
-    numeroMagnitud = CrearNumeroParaVectorControlable(420,450,100,4);
+    numeroMagnitud = CrearNumeroParaVectorControlable(400,450,100,4);
     numeroMagnitud = CrearNumeroParaVectorControlable(500,450,200,5);
-    CrearEspinas(400,440);
-    posInicXPlayer = 35;
+    CrearEspinas(300,436);
+    posInicXPlayer = 50;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
     // informacion sobre el angulo

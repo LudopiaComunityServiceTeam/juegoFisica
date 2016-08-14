@@ -39,11 +39,11 @@ positivo hasta abajo.
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
     ecuacionVelocidad = CrearEcuacionVelocidad(100,100);
-    CrearDato(4,380,400,4,"distancia");
+    CrearDato(6,380,400,6,"distancia");
     CrearDato(2,550,510,2,"tiempo");
 
     // Puerta falsa
-    salidaFalsa = game.add.sprite(700,486, 'salida');
+    salidaFalsa = game.add.sprite(710,484, 'salida');
     // salidaFalsa.tint = 0xff9999;
     lineaizq = game.add.sprite(215, 450, 'linea');
     lineaizq.scale.setTo(13, 1);
@@ -51,8 +51,8 @@ positivo hasta abajo.
     lineader.scale.setTo(13, 1);
 
     //Datos falsos
-    CrearDato(9,455,330,9,"distancia");
-    CrearDato(3,700,510,3,"tiempo");
+    CrearDato(8,455,330,8,"distancia");
+    CrearDato(4,700,510,4,"tiempo");
 
 },
 

@@ -23,7 +23,7 @@ function actualizarTimer() {
     if (tiempoStart){
         fpscont++;
 
-        if (fpscont == 40) {
+        if (fpscont == 30) {
             tiempo++;
             if (tiempo % 2 != 0)
             {
@@ -49,7 +49,7 @@ function actualizarTimerSinTexto() {
     if (tiempoStart){
         fpscont++;
 
-        if (fpscont == 40) {
+        if (fpscont == 30) {
             tiempo++;
             fpscont = 0;
         }
@@ -111,7 +111,7 @@ function actualizarTimerPuerta() {
     if (tiempoStartR){
         fpscontR++;
 
-        if (fpscontR == 40) {
+        if (fpscontR == 30) {
             var tiempoR;
             for (var i = 0; i < ListaDeDatos.length; i++) {
                 if (ListaDeDatos[i].tipo == "tiempo"){

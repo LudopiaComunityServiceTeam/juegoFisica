@@ -27,7 +27,7 @@ positivo hasta abajo.
     CrearBotonPista("Todo lo que sube tiene que caer...\n¡Escoge la rapidez correcta!");
     CrearSalida(400,300);
     salidaAbierta = false;
-    limiteDeTiempo = 2;
+    limiteDeTiempo = 3;
 
     CrearEspinas(450,440);
     CrearEspinas(450,340);

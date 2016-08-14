@@ -26,18 +26,18 @@ positivo hasta abajo.
 
     CrearBasico();
     CrearBotonPista("La puerta tiene un número ahora\ny es del mismo color que el tiempo,\n¿Qué podrá significar?.\nPiensa bien que velocidad usar o la\n puerta se cerrará...");
-    CrearSalida(600,484);
-    limiteDeTiempo = 2;
+    CrearSalida(610,484);
+    limiteDeTiempo = 3;
     vector = CrearVector(400,300,0,0);
     cuadro = CrearCuadroVector(550,100,vector);
-    CrearEspinas(700,440);
+    CrearEspinas(710,440);
     numeroMagnitud = CrearNumeroParaVectorControlable(600,550,300,6);
     numeroMagnitud = CrearNumeroParaVectorControlable(300,650,300,3);
     numeroMagnitud = CrearNumeroParaVectorControlable(200,750,300,2);
-    posInicXPlayer = 35;
+    posInicXPlayer = 50;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
-    CrearDato(3,600,510,3,"tiempo");
+    CrearDato(3,610,510,3,"tiempo");
 },
 
 update: function() {

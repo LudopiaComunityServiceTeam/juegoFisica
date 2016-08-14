@@ -25,16 +25,16 @@ positivo hasta abajo.
 
     CrearBasico();
     CrearBotonPista("Los vectores tienen ángulo (morado) que\ncambian su inclinación. ¡Ahora puedes\nsaltar! Ten cuidado de no saltar muy\n bajo...");
-    CrearSalida(600,484);
-    limiteDeTiempo = 4;
-    CrearDato(3,600,510,3,"tiempo");
+    CrearSalida(610,484);
+    limiteDeTiempo = 5;
+    CrearDato(5,610,510,5,"tiempo");
     vector = CrearVector(400,350,400,0);
     cuadro = CrearCuadroVector(550,100,vector);
     numeroAngulo = CrearAnguloParaVectorControlable(90,500,300,90);
     numeroAngulo = CrearAnguloParaVectorControlable(30,600,300,30);
     numeroAngulo = CrearAnguloParaVectorControlable(60,700,300,60);
     CrearEspinas(300,440);
-    posInicXPlayer = 35;
+    posInicXPlayer = 50;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
     CrearMano(listaDeAngulos[0].x -55 , listaDeAngulos[0].y + 25);

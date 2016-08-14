@@ -26,21 +26,14 @@ positivo hasta abajo.
 
     CrearBasico();
     CrearBotonPista("Los vectores tienen magnitud (azul) que\ncambian su tamaño y rapidez.\n¿Qué sucederá si colocas una magnitud \nen el cuadro del mismo color?.\n¡ Inténtalo !");
-    CrearSalida(600,484);
+    CrearSalida(610,484);
     limiteDeTiempo = Infinity;
     vector = CrearVector(400,300,0,0);
     cuadro = CrearCuadroVector(550,100,vector);
-
     numeroMagnitud = CrearNumeroParaVectorControlable(100,550,300,1);
-    //listaDeNumeros.push(numeroMagnitud);
-
     numeroMagnitud = CrearNumeroParaVectorControlable(300,650,300,3);
-    //listaDeNumeros.push(numeroMagnitud);
-
     numeroMagnitud = CrearNumeroParaVectorControlable(500,750,300,5);
-    //listaDeNumeros.push(numeroMagnitud);
-
-    posInicXPlayer = 35;
+    posInicXPlayer = 50;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
     CrearMano(listaDeNumeros[0].x -55 , listaDeNumeros[0].y + 25);

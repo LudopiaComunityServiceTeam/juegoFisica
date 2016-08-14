@@ -25,20 +25,20 @@ positivo hasta abajo.
 
     CrearBasico();
     CrearBotonPista("Con la magnitud cero no te puedes\nmover... Trata de crear una nueva\nmagnitud con el resolvedor. Usa la\ndistancia (número naranja) y el tiempo\n(número rojo), te ayudarán.");
-    CrearSalida(700,484);
-    limiteDeTiempo = 3;
-    lineaizq = game.add.sprite(52, 450, 'linea');
-    lineaizq.scale.setTo(28, 1);
-    lineader = game.add.sprite(425, 450, 'linea');
-    lineader.scale.setTo(28, 1);
+    CrearSalida(660,484);
+    limiteDeTiempo = 4;
+    lineaizq = game.add.sprite(51, 450, 'linea');
+    lineaizq.scale.setTo(25, 1);
+    lineader = game.add.sprite(401, 450, 'linea');
+    lineader.scale.setTo(26, 1);
     vector = CrearVector(400,300,0,0);
     cuadro = CrearCuadroVector(550,100,vector);
-    posInicXPlayer = 35;
+    posInicXPlayer = 50;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
     ecuacionVelocidad = CrearEcuacionVelocidad(100,100);
-    CrearDato(9,370,400,9,"distancia");
-    CrearDato(3,700,510,3,"tiempo");
+    CrearDato(12,330,400,12,"distancia");
+    CrearDato(4,660,510,4,"tiempo");
 
     CrearMano(ListaDeDatos[0].x -55 , ListaDeDatos[0].y + 25);
     inicio = ListaDeDatos;

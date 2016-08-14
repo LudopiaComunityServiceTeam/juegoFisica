@@ -24,11 +24,11 @@ positivo hasta abajo.
 
     CrearBasico();
     CrearBotonPista("Observa bien lo que indican los cuadros\nverdes, esa es la secuencia de juego.\nArrastra el vector, déjalo caer sobre el\nmonigote y le das a \"play \"");
-    CrearSalida(600,484);
+    CrearSalida(610,484);
     salidaAbierta = false;
     limiteDeTiempo = Infinity;
     vector = CrearVector(400,300,300,0);
-    posInicXPlayer = 35;
+    posInicXPlayer = 50;
     posInicYPlayer = game.world.height - 110;
     jugador = CrearJugador(posInicXPlayer, posInicYPlayer);
     text = AñadirTexto(110,240,"Este es un vector\n de velocidad",colorTexto,45);
