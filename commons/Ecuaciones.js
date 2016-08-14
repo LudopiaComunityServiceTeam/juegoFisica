@@ -101,7 +101,7 @@ function CheckDistanciaOnVelocidad(item){
             CrearVelocidad();
         }
     }
-    else if (!ChequearOverlap(EcuacionVelocidad.distancia, EcuacionVelocidad)) {
+    else if (tieneDistancia && !ChequearOverlap(EcuacionVelocidad.distancia, EcuacionVelocidad)) {
         tieneDistancia = false;
     }
 
@@ -124,7 +124,7 @@ function CheckTiempoOnVelocidad(item){
             CrearVelocidad();
         }
     }
-    else if (!ChequearOverlap(EcuacionVelocidad.tiempo, EcuacionVelocidad)) {
+    else if (tieneTiempo && !ChequearOverlap(EcuacionVelocidad.tiempo, EcuacionVelocidad)) {
         tieneTiempo = false;
     }
 }
