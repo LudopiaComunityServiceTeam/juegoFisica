@@ -17,7 +17,6 @@ function CrearVector(x,y,magnitud,angulo) {
     var cola = game.add.sprite(-36, -8.5, 'vector');
     vector.cola = cola;
     vector.addChild(cola);
-    // escalarVector(vector, magnitud);
     vector.frame = 3;
     vector.magnitud = magnitud;
     vector.angulo = angulo;
@@ -38,6 +37,9 @@ function CrearVector(x,y,magnitud,angulo) {
     //Aqui se le agrega al numero el "evento" de que cuando se suelte
     //se corre la funcion pegarVector
     vector.events.onDragStop.add(pegarVector);
+
+    vector.cuadro = CrearCuadroVector(0, 0, vector);
+    ocultarCuadroVector(vector, vector.cuadro);
 
     return vector;
 
@@ -196,7 +198,7 @@ function CrearAnguloParaVector(numero,x,y,numeroMostrado) {
     //objeto quede en donde se tiene el mouse
     numeroAngulo.input.enableDrag(true);
     numeroAngulo.input.useHandCursor = true;
-    
+
     //Aqui se le agrega al numero el "evento" de que cuando se suelte
     //se corre la funcion checkMagnitudInVector
     numeroAngulo.events.onDragStop.add(checkAnguloInVector);
@@ -344,26 +346,33 @@ function pegarVector(item) {
 *
 */
 function CrearCuadroVector(x,y,vector){
-    cuadro = game.add.sprite(x, y, 'cuadroVector');
+
+    var cuadro = game.add.sprite(x, y, 'cuadroVector');
+
+    var cerrar = game.add.sprite(140, 0, 'BotonCerrar');
+    cerrar.scale.setTo(0.5, 0.5);
+    cerrar.inputEnabled = true;
+    cerrar.events.onInputDown.add(function(cerrar){ocultarCuadroVector(vector, cuadro);}, this);
+    cuadro.addChild(cerrar);
     cuadro.vector = vector;
 
     //inicializacion de la magnitud del vector
-    magnitud = CrearNumeroParaVector(vector.magnitud, x + 30,y + 50, Math.floor(vector.magnitud/100));
+    var magnitud = CrearNumeroParaVector(vector.magnitud, 30, 50, Math.floor(vector.magnitud/100));
     magnitud.input.draggable = false;
     magnitud.enCuadro = true;
     cuadro.magnitudInicial = magnitud;
-    // checkMagnitudInVector(magnitud);
+    cuadro.addChild(magnitud);
 
     // inicializacion del angulo del vector
-    angulo = CrearAnguloParaVector(vector.angulo, x + 105,y + 50, vector.angulo);
+    var angulo = CrearAnguloParaVector(vector.angulo, 105, 50, vector.angulo);
     angulo.input.draggable = false;
     angulo.enCuadro = true;
     cuadro.anguloInicial = angulo;
-    // checkAnguloInVector(angulo);
+    cuadro.addChild(angulo)
 
     // Ocultar cuadro del vector cuando no se necesite
     // descomentar y cambiar el tipo de evento que activa la funcion
-    // vector.events.onInputDown.add(function(vector){ocultarCuadroVector(vector, cuadro);}, this);
+    vector.events.onInputDown.add(function(vector){mostrarCuadroVector(vector, cuadro);}, this);
     listaDeCuadros.push(cuadro);
     return cuadro;
 }

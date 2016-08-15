@@ -42,9 +42,10 @@ function loadAll(){
     game.load.spritesheet('botonMenu','assets/BotonMenu.png',50,50);
     game.load.spritesheet('botonPista','assets/BotonPista.png',50,50);
     game.load.spritesheet('botonClose','assets/BotonClose.png',50,50);
+    game.load.spritesheet('BotonCerrar','assets/BotonCerrar.png',50,50);
     game.load.spritesheet('botonResetNivel','assets/Reset.png',50,50);
     game.load.spritesheet('botonSigNivel','assets/flechaverdetitila.png',209,55);
-    
+
 
     PreCargarRepertorioSonido();
     PreCargarRepertorioMusica();
