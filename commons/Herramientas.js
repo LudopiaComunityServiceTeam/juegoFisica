@@ -18,6 +18,7 @@ function CrearBasico(){
     CrearBotonMenu();
     CrearTimer();
     CrearTimerPuerta();
+    CrearSilenciarSonido();
 }
 function CrearPiso() {
 
