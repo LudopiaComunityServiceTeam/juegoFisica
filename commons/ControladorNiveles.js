@@ -143,7 +143,6 @@ function DetectarPerdida() {
 */
 function ControlarNivel() {
     DetectarAnimaciones();
-    ControladorCuadrosVectores();
     if ((clicked)&&(direccion == 1)){
         if (!(epilogoCorriendo)){
             ManejarPuerta();
@@ -179,11 +178,4 @@ function TerminarNivel() {
     game.state.start(niveles[nivelActual+1]);
     nivelActual = nivelActual + 1;
     resetVariables();
-}
-
-function ControladorCuadrosVectores() {
-    for (var i = 0; i < listaDeVectores.length; i++) {
-        listaDeVectores[i].cuadro.x = listaDeVectores[i].x - 80;
-        listaDeVectores[i].cuadro.y = listaDeVectores[i].y - 180;
-    }
 }

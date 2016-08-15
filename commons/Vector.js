@@ -37,6 +37,7 @@ function CrearVector(x,y,magnitud,angulo) {
     //Aqui se le agrega al numero el "evento" de que cuando se suelte
     //se corre la funcion pegarVector
     vector.events.onDragStop.add(pegarVector);
+    vector.events.onDragUpdate.add(controlarCuadrosVectores);
 
     vector.cuadro = CrearCuadroVector(0, 0, vector);
     ocultarCuadroVector(vector, vector.cuadro);
@@ -102,72 +103,44 @@ function CrearNumeroParaVectorControlable(numero,x,y,numeroMostrado) {
 */
 function checkMagnitudInVector(item) {
 
-    magnitudEnCuadro = false;
-    //Se revisan todos los cuadros para ver si el objeto cayó en alguno
-    for (i = 0; i < listaDeCuadros.length; i++) {
-        magnitudEnCuadro = false;
-        //Si se arrastra el objeto tipo velocidad a un cuadro, la velocidad del vector
-        //debe cambiar, y si el vector ya estaba encima del jugador la velocidad del
-        //jugador tambien debe cambiar
-        if (ChequearOverlap(item,listaDeCuadros[i])) {
+    for (var i = 0; i < listaDeVectores.length; i++) {
+        // Si la magnitud esta en el cuadro del vector i
+        if (ChequearOverlap(item,listaDeVectores[i].cuadro)) {
+            // Ocultar la magnitud inicial
+            listaDeVectores[i].cuadro.magnitudInicial.visible = false;
 
-            for (j = 0; j < listaDeNumeros.length; j++){
+            item.x = listaDeVectores[i].cuadro.x + 30;
+            item.y = listaDeVectores[i].cuadro.y + 50;
 
-                // Devolver la magnitud que estaba en el cuadro a su posicion inicial
-                if (listaDeNumeros[j].enCuadro) {
-                    listaDeNumeros[j].enCuadro = false;
-                    listaDeNumeros[j].x = listaDeNumeros[j].posXInit;
-                    listaDeNumeros[j].y = listaDeNumeros[j].posYInit;
-                }
-            }
-
-            // Evitar que se muestre la magnitud inicial del vector.
-            listaDeCuadros[i].magnitudInicial.visible = false;
-            magnitudEnCuadro = true;
-            item.x = listaDeCuadros[i].x + 30;
-            item.y = listaDeCuadros[i].y + 50;
-            listaDeCuadros[i].vector.magnitud = item.numero;
+            // Actualizar vector y jugador
+            listaDeVectores[i].magnitud = item.numero;
             VectorFit.play();
-            escalarVector(listaDeCuadros[i].vector, item.numero);
-            if (ChequearOverlap(listaDeCuadros[i].vector,player)||(ChequearOverlap(player,listaDeCuadros[i].vector.cola))){
-                magnitudJugador = listaDeCuadros[i].vector.magnitud;
+            escalarVector(listaDeVectores[i], item.numero);
+            if (ChequearOverlap(listaDeVectores[i],player)||(ChequearOverlap(player,listaDeVectores[i].cola))){
+                magnitudJugador = listaDeVectores[i].magnitud;
             }
-            // Lq magnitud movida es la que se encuentra en el cuadro ahora
-            item.enCuadro = true;
-        }
 
-        else {
-            //Se revisan todas las magnitudes para ver si hay alguno ademas del que se
-            //arrastro.
-            item.enCuadro = false;
-            for (j = 0; j < listaDeNumeros.length; j++){
-                if (ChequearOverlap(listaDeCuadros[i],listaDeNumeros[j])) {
-                    magnitudEnCuadro = true;
-                    listaDeCuadros[i].vector.magnitud = listaDeNumeros[j].numero;
-                    escalarVector(listaDeCuadros[i].vector, listaDeNumeros[j].numero);
-                    // Si el vector de dicha caja esta en contacto con el jugador
-                    // entonces el jugador recibe
-                    // la velocidad del numero que estaba en esa caja
-                    if (ChequearOverlap(listaDeCuadros[i].vector,player)||(ChequearOverlap(player,listaDeCuadros[i].vector.cola))){
-                        magnitudJugador = listaDeCuadros[i].vector.magnitud;
-                    }
-                }
-            }
-            if (!magnitudEnCuadro){
-                // El cuadro no tiene una magnitud de las dispoibles
-                // asi que se coloca el inicial.
-                listaDeCuadros[i].vector.magnitud = 0;
-                escalarVector(listaDeCuadros[i].vector, 1);
-                listaDeCuadros[i].magnitudInicial.visible = true;
-                // Si el cuadro no tiene nada adentro, pero su
-                // vector esta encima del jugador
-                // entonces la "velocidad" del jugador deberia ser 0 y la del vector tambien
-                if (ChequearOverlap(listaDeCuadros[i].vector,player)||(ChequearOverlap(player,listaDeCuadros[i].vector.cola))){
-                    magnitudJugador = listaDeCuadros[i].vector.magnitud;
-                }
+            // Devolver la magnitud que estaba en el cuadro a su posicion inicial
+            // si la magnitud que colisiono es diferente a la que estaba en cuadro
+            if (item != listaDeVectores[i].cuadro.magnitudEnCuadro) {
+                listaDeVectores[i].cuadro.magnitudEnCuadro.x = listaDeVectores[i].cuadro.magnitudEnCuadro.posXInit;
+                listaDeVectores[i].cuadro.magnitudEnCuadro.y = listaDeVectores[i].cuadro.magnitudEnCuadro.posYInit;
+                // La magnitud movida se encuentra en cuadro
+                listaDeVectores[i].cuadro.magnitudEnCuadro = item;
             }
         }
+        // Si la magnitud que se movio era la que estaba en el cuadro y se movio fuera de el
+        else if (item == listaDeVectores[i].cuadro.magnitudEnCuadro) {
+            // La magnitud es la inicial del vector
+            listaDeVectores[i].cuadro.magnitudInicial.visible = true;
+            listaDeVectores[i].cuadro.magnitudEnCuadro = listaDeVectores[i].cuadro.magnitudInicial;
 
+            // Actualizar vector y jugador
+            listaDeVectores[i].magnitud = listaDeVectores[i].cuadro.magnitudInicial.valor;
+            if (ChequearOverlap(listaDeVectores[i],player)||(ChequearOverlap(player,listaDeVectores[i].cola))){
+                magnitudJugador = listaDeVectores[i].magnitud;
+            }
+        }
     }
 }
 
@@ -221,76 +194,53 @@ function CrearAnguloParaVectorControlable(numero,x,y,numeroMostrado) {
 * Funcion que revisa si el objeto esta en el rango de la
 * caja de angulo del vector. Si es asi, ajusta el objeto
 * para que quede justo en el centro de la caja y cambia
-* el valor de magnitud al valor que cargaba el objeto.
+* el valor de angulo  al valor que cargaba el objeto.
 * el nivel.
 *
-* @param item: valor de la magnitud
+* @param item: valor de la angulo
 *
 */
 function checkAnguloInVector(item) {
-    anguloEnCuadro = false;
-    //Se revisan todos los cuadros para ver si el objeto cayó en alguno
-    for (i = 0; i < listaDeCuadros.length; i++) {
-        anguloEnCuadro = false;
-        //Si se arrastra el objeto tipo angulo a un cuadro, el angulo del vector
-        //debe cambiar, y si el vector ya estaba encima del jugador el angulo del
-        //jugador tambien debe cambiar
-        if (ChequearOverlap(item,listaDeCuadros[i])) {
 
-            for (j = 0; j < listaDeAngulos.length; j++){
-                // Devolver el angulo que estaba en el cuadro a su posicion inicial
-                if (listaDeAngulos[j].enCuadro){
-                    listaDeAngulos[j].enCuadro = false;
-                    listaDeAngulos[j].x = listaDeAngulos[j].posXInit;
-                    listaDeAngulos[j].y = listaDeAngulos[j].posYInit;
-                }
-            }
-            // Evitar que se muestre el angulo inicial del vector.
-            listaDeCuadros[i].anguloInicial.visible = false;
-            anguloEnCuadro = true;
+    for (var i = 0; i < listaDeVectores.length; i++) {
+        // Si el angulo  esta en el cuadro del vector i
+        if (ChequearOverlap(item,listaDeVectores[i].cuadro)) {
+            // Ocultar el angulo inicial
+            listaDeVectores[i].cuadro.anguloInicial.visible = false;
+
             item.x = listaDeCuadros[i].x + 90;
             item.y = listaDeCuadros[i].y + 50;
-            listaDeCuadros[i].vector.angulo = item.numero;
+
+            // Actualizar vector y jugador
+            listaDeVectores[i].angulo = item.numero;
             VectorFit.play();
-            listaDeCuadros[i].vector.angle = ConvertirAngulo(item.numero);
-            if (ChequearOverlap(listaDeCuadros[i].vector,player)||(ChequearOverlap(player,listaDeCuadros[i].vector.cola))){
-                angulo = listaDeCuadros[i].vector.angulo;
+            listaDeVectores[i].angle = ConvertirAngulo(item.numero);
+            if (ChequearOverlap(listaDeVectores[i],player)||(ChequearOverlap(player,listaDeVectores[i].cola))){
+                angulo = listaDeVectores[i].angulo;
             }
-            // El angulo movido es el que se encuentra en el cuadro ahora
-            item.enCuadro = true;
-        }
 
-        else {
-            //Se revisan todos los numeros para ver si hay alguno ademas del que se
-            //arrastro dentro de la caja
-            item.enCuadro = false;
-            for (j = 0; j < listaDeAngulos.length; j++){
-                if (ChequearOverlap(listaDeCuadros[i],listaDeAngulos[j])) {
-                    anguloEnCuadro = true;
-                    listaDeCuadros[i].vector.angulo = listaDeAngulos[j].numero;
-                    listaDeCuadros[i].vector.angle = ConvertirAngulo(listaDeAngulos[j].numero);
-                    //Si el vector de dicha caja esta en contacto con el jugador
-                    // entonces el jugador recibe
-                    //el angulo del numero que estaba en esa caja
-                    if (ChequearOverlap(listaDeCuadros[i].vector,player)||(ChequearOverlap(player,listaDeCuadros[i].vector.cola))){
-                        angulo = listaDeCuadros[i].vector.angulo;
-                    }
-                }
-            }
-            if (!anguloEnCuadro){
-                // El cuadro no tiene una magnitud de las dispoibles
-                // asi que se coloca el inicial.
-                listaDeCuadros[i].vector.angulo = 0;
-                listaDeCuadros[i].vector.angle = ConvertirAngulo(0);
-                listaDeCuadros[i].anguloInicial.visible = true;
-                //Si el cuadro no tiene nada adentro, pero su vector esta encima del jugador
-                //entonces el "angulo" del jugador deberia ser 0 y el del vector tambien
-                if (ChequearOverlap(listaDeCuadros[i].vector,player)||(ChequearOverlap(player,listaDeCuadros[i].vector.cola))){
-                    angulo = listaDeCuadros[i].vector.angulo;
-                }
+            // Devolver el angulo que estaba en el cuadro a su posicion inicial
+            // si el angulo que colisiono es diferente a la que estaba en cuadro
+            if (item != listaDeVectores[i].cuadro.anguloEnCuadro) {
+                listaDeVectores[i].cuadro.anguloEnCuadro.x = listaDeVectores[i].cuadro.anguloEnCuadro.posXInit;
+                listaDeVectores[i].cuadro.anguloEnCuadro.y = listaDeVectores[i].cuadro.anguloEnCuadro.posYInit;
+                // El angulo movida se encuentra en cuadro
+                listaDeVectores[i].cuadro.anguloEnCuadro = item;
             }
         }
+        // Si el angulo que se movio era la que estaba en el cuadro y se movio fuera de el
+        else if (item == listaDeVectores[i].cuadro.anguloEnCuadro) {
+            // El angulo es la inicial del vector
+            listaDeVectores[i].cuadro.anguloInicial.visible = true;
+            listaDeVectores[i].cuadro.anguloEnCuadro = listaDeVectores[i].cuadro.anguloInicial;
 
+            // Actualizar vector y jugador
+            listaDeVectores[i].angulo = listaDeVectores[i].cuadro.anguloInicial;
+            listaDeVectores[i].angle = ConvertirAngulo(listaDeVectores[i].angulo);
+            if (ChequearOverlap(listaDeVectores[i],player)||(ChequearOverlap(player,listaDeVectores[i].cola))){
+                angulo = listaDeVectores[i].angulo;
+            }
+        }
     }
 }
 
@@ -354,24 +304,22 @@ function CrearCuadroVector(x,y,vector){
     cerrar.inputEnabled = true;
     cerrar.events.onInputDown.add(function(cerrar){ocultarCuadroVector(vector, cuadro);}, this);
     cuadro.addChild(cerrar);
-    cuadro.vector = vector;
 
     //inicializacion de la magnitud del vector
     var magnitud = CrearNumeroParaVector(vector.magnitud, 30, 50, Math.floor(vector.magnitud/100));
     magnitud.input.draggable = false;
     magnitud.enCuadro = true;
+    cuadro.magnitudEnCuadro = magnitud;
     cuadro.magnitudInicial = magnitud;
-    cuadro.addChild(magnitud);
 
     // inicializacion del angulo del vector
-    var angulo = CrearAnguloParaVector(vector.angulo, 105, 50, vector.angulo);
+    var angulo = CrearAnguloParaVector(vector.angulo, 90, 50, vector.angulo);
     angulo.input.draggable = false;
     angulo.enCuadro = true;
+    cuadro.anguloEnCuadro = angulo;
     cuadro.anguloInicial = angulo;
-    cuadro.addChild(angulo)
 
     // Ocultar cuadro del vector cuando no se necesite
-    // descomentar y cambiar el tipo de evento que activa la funcion
     vector.events.onInputDown.add(function(vector){mostrarCuadroVector(vector, cuadro);}, this);
     listaDeCuadros.push(cuadro);
     return cuadro;
@@ -385,24 +333,8 @@ function CrearCuadroVector(x,y,vector){
 */
 function ocultarCuadroVector(vector, cuadro){
     cuadro.visible = false;
-
-    for (j = 0; j < listaDeNumeros.length; j++){
-        // Ocultar la magnitud del cuadro
-        if (ChequearOverlap(cuadro,listaDeNumeros[j])) {
-            listaDeNumeros[j].visible = false;
-        }
-    }
-    // Evitar que se muestre la magnitud inicial del vector.
-    cuadro.magnitudInicial.visible = false;
-
-    for (j = 0; j < listaDeAngulos.length; j++){
-        // Ocultar el angulo del cuadro
-        if (ChequearOverlap(cuadro,listaDeAngulos[j])) {
-            listaDeAngulos[j].visible = false;
-        }
-    }
-    // Evitar que se muestre el angulo inicial del vector.
-    cuadro.anguloInicial.visible = false;
+    cuadro.magnitudEnCuadro.visible = false;
+    cuadro.anguloEnCuadro.visible = false;
 }
 
 /**
@@ -413,31 +345,26 @@ function ocultarCuadroVector(vector, cuadro){
 */
 function mostrarCuadroVector(vector, cuadro){
     cuadro.visible = true;
-
-    // Mostrar la magnitud inicial del cuadro
-    cuadro.magnitudInicial.visible = true;
-
-    for (j = 0; j < listaDeNumeros.length; j++){
-        // Mostrar la magnitud que estaba en el cuadro
-        if (ChequearOverlap(cuadro,listaDeNumeros[j])) {
-            listaDeNumeros[j].visible = true;
-            // Evitar que se muestre el angulo inicial del vector.
-            cuadro.magnitudInicial.visible = false;
-        }
-    }
-
-    // Mostrar el angulo inicial del cuadro
-    cuadro.anguloInicial.visible = true;
-
-    for (j = 0; j < listaDeAngulos.length; j++){
-        // Mostrar el angulo que estaba en el cuadro
-        if (ChequearOverlap(cuadro,listaDeAngulos[j])) {
-            listaDeAngulos[j].visible = true;
-            // Evitar que se muestre el angulo inicial del vector.
-            cuadro.anguloInicial.visible = false;
-        }
-    }
+    cuadro.magnitudEnCuadro.visible = true;
+    cuadro.anguloEnCuadro.visible = true;
 }
+
+/**
+* Funcion que controla el update de un vector que esta siendo
+* arrastrado
+*
+* @param vector: vector que esta siendo arrastrado
+*
+*/
+function controlarCuadrosVectores(vector) {
+    vector.cuadro.x = vector.x - 80;
+    vector.cuadro.y = vector.y - 180;
+    vector.cuadro.magnitudEnCuadro.x = vector.cuadro.x + 30;
+    vector.cuadro.magnitudEnCuadro.y = vector.cuadro.y + 50;
+    vector.cuadro.anguloEnCuadro.x = vector.cuadro.x + 90;
+    vector.cuadro.anguloEnCuadro.y = vector.cuadro.y + 50;
+}
+
 function escalarVector(Vector, NuevoTamaño){
     var tamanoCalculado;
     var tamañoAnterior = Vector.width + Vector.cola.width;
