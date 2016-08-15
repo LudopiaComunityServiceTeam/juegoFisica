@@ -5,15 +5,12 @@
 * @param seg: segundos para cerrar la puerta
 *
 */
-function cierraSalida(seg){
-    actualizarTimerSinTexto();
-    actualizarTimerPuerta();
-    if (tiempo == (seg + 1)){
-	if (salidaAbierta){
-            salida.animations.play('cerrar',10,false);
-            salidaAbierta = false;
-            console.log("salidaAbierta = ",salidaAbierta);
-	}
+function cierraSalida(){
+
+    if (tiempo == (limiteDeTiempo + 1) && salidaAbierta){
+        salida.animations.play('cerrar',10,false);
+        salidaAbierta = false;
+        console.log("salidaAbierta = ",salidaAbierta);
     }
 }
 
@@ -21,11 +18,11 @@ function cierraSalida(seg){
 * Funcion que abre la puerta de la salida despues de seg
 * segundos.
 *
-* @param seg: segundos para abr la puerta
-*
 */
 function abreSalida(){
 
+    actualizarTimerSinTexto();
+    actualizarTimerPuerta();
     if (limiteDeTiempo == Infinity || limiteDeTiempo == tiempo) {
         if (!(salidaAbierta)) {
             OpenDoor.play();
@@ -68,16 +65,15 @@ function DetectarVictoria() {
     if (ChequearOverlap(player,salida)){
         if (limiteDeTiempo == Infinity || limiteDeTiempo == tiempo) {
             CloseDoor.play();
-	    if (salidaAbierta){
+            if (salidaAbierta){
                 salida.animations.play('cerrar',10,false);
-		salidaAbierta = false;
-	    }
+                salidaAbierta = false;
+            }
             epilogoCorriendo = true;
             stopTimer();
             stopTimerPuerta();
             resetTimerSinTexto();
             player.kill();
-
         }
     }
 }
@@ -104,7 +100,7 @@ function DetectarAnimaciones() {
 function ManejarPuerta() {
 
     abreSalida();
-    cierraSalida(limiteDeTiempo);
+    cierraSalida();
 }
 
 
@@ -152,7 +148,7 @@ function ControlarNivel() {
             ManejarPuerta();
             DetectarPerdida();
             DetectarVictoria();
-	}
+        }
         else{
             epilogoNivel();
         }
