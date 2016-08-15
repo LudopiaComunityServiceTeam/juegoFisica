@@ -40,7 +40,7 @@ positivo hasta abajo.
     CrearJugador(posInicXPlayer, posInicYPlayer);
     ecuacionVelocidad = CrearEcuacionVelocidad(100,100);
     CrearDato(6,380,400,6,"distancia");
-    CrearDato(2,550,510,2,"tiempo");
+    CrearDato(2,560,510,2,"tiempo");
 
     // Puerta falsa
     salidaFalsa = game.add.sprite(710,484, 'salida');
@@ -52,7 +52,7 @@ positivo hasta abajo.
 
     //Datos falsos
     CrearDato(8,450,330,8,"distancia");
-    CrearDato(4,700,510,4,"tiempo");
+    CrearDato(4,710,510,4,"tiempo");
 
 },
 
