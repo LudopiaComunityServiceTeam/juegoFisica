@@ -6,7 +6,7 @@
 *
 */
 function cierraSalida(seg){
-    actualizarTimer();
+    actualizarTimerSinTexto();
     actualizarTimerPuerta();
     if (tiempo == (seg + 1)){
 	if (salidaAbierta){
@@ -26,7 +26,7 @@ function cierraSalida(seg){
 */
 function abreSalida(){
 
-    if (limiteDeTiempo == Infinity || (limiteDeTiempo) == tiempo) {
+    if (limiteDeTiempo == Infinity || limiteDeTiempo == tiempo) {
         if (!(salidaAbierta)) {
             OpenDoor.play();
             salida.animations.play('accionar',10,false);
@@ -44,7 +44,7 @@ function epilogoNivel(){
     if (!tiempoStart){
         startTimer();
         startTimerPuerta();
-        console.log("WACHU")
+        console.log("WACHU");
     }else {
         if (tiempo == 1){
             if(!menuFinalNivelDesplegado){
@@ -90,7 +90,7 @@ function DetectarAnimaciones() {
 
     //Detectar si el personaje toca la salida
     if (animacionDivisionIniciada){
-        AnimarDivision(); 
+        AnimarDivision();
     }
     if (animacionCirculoIniciada){
         AnimarCirculo();

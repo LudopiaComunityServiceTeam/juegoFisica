@@ -17,7 +17,7 @@ function CrearBasico(){
     CrearPlay();
     CrearBotonMenu();
     CrearTimer();
-    CrearTimerPuerta(); 
+    CrearTimerPuerta();
 }
 function CrearPiso() {
 
@@ -171,7 +171,7 @@ function resetGame(){
     Reset.play();
     //Detenemos el timer
     stopTimer();
-    resetTimer();
+    resetTimerSinTexto();
     stopTimerPuerta();
     resetTimerPuerta();
     //y soltamos el boton

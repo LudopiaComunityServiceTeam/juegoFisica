@@ -25,10 +25,10 @@ positivo hasta abajo.
 
     CrearBasico();
     CrearBotonPista("Con la magnitud cero no te puedes\nmover... Trata de crear una nueva\nmagnitud con el resolvedor. Usa la\ndistancia (número naranja) y el tiempo\n(número rojo), te ayudarán.");
-    CrearSalida(660,484);
+    CrearSalida(660,483);
     limiteDeTiempo = 4;
-    lineaizq = game.add.sprite(51, 450, 'linea');
-    lineaizq.scale.setTo(25, 1);
+    lineaizq = game.add.sprite(70, 450, 'linea');
+    lineaizq.scale.setTo(23, 1);
     lineader = game.add.sprite(401, 450, 'linea');
     lineader.scale.setTo(26, 1);
     vector = CrearVector(400,300,0,0);

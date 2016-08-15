@@ -27,12 +27,12 @@ positivo hasta abajo.
     CrearBotonPista("¡Wow! Espinas, distancias y tiempos...\nEl resolvedor nos ayudará en este\ndilema, piensa bien que distancia y\ntiempo usar agregarás en él, hay\nuna puerta a la que no puedes\nllegar.");
 
     CrearEspinas(630,440);
-    CrearSalida(550,484);
+    CrearSalida(560,484);
     limiteDeTiempo = 2;
-    lineaizq = game.add.sprite(215, 380, 'linea');
-    lineaizq.scale.setTo(22, 1);
-    lineader = game.add.sprite(490, 380, 'linea');
-    lineader.scale.setTo(22, 1);
+    lineaizq = game.add.sprite(220, 380, 'linea');
+    lineaizq.scale.setTo(20, 1);
+    lineader = game.add.sprite(500, 380, 'linea');
+    lineader.scale.setTo(20, 1);
     vector = CrearVector(400,300,0,0);
     cuadro = CrearCuadroVector(550,100,vector);
     posInicXPlayer = 200;
@@ -45,13 +45,13 @@ positivo hasta abajo.
     // Puerta falsa
     salidaFalsa = game.add.sprite(710,484, 'salida');
     // salidaFalsa.tint = 0xff9999;
-    lineaizq = game.add.sprite(215, 450, 'linea');
+    lineaizq = game.add.sprite(220, 450, 'linea');
     lineaizq.scale.setTo(13, 1);
     lineader = game.add.sprite(430, 450, 'linea');
-    lineader.scale.setTo(13, 1);
+    lineader.scale.setTo(12, 1);
 
     //Datos falsos
-    CrearDato(8,455,330,8,"distancia");
+    CrearDato(8,450,330,8,"distancia");
     CrearDato(4,700,510,4,"tiempo");
 
 },

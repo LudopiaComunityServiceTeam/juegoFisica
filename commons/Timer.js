@@ -8,8 +8,8 @@ function CrearTimer() {
     tiempoStart = false;
     var x = 560;
     var y = 20;
-    var text = AñadirTexto(x,y,"Tiempo: ",colorTexto,35);
-    timerText = AñadirTexto(x+ 140,y-10,"0",colorTiempo,50);
+    // var text = AñadirTexto(x,y,"Tiempo: ",colorTexto,35);
+    // timerText = AñadirTexto(x+ 140,y-10,"0",colorTiempo,50);
 
 }
 
