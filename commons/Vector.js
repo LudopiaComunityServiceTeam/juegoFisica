@@ -324,7 +324,6 @@ function CrearCuadroVector(x,y,vector){
     cuadro.anguloInicial = angulo;
     ocultarCuadroVector(vector, cuadro);
 
-    listaDeCuadros.push(cuadro);
     return cuadro;
 }
 

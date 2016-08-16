@@ -52,7 +52,7 @@ update: function() {
 
     ControlJugador();
     if (!(inicio[0] === undefined)) {
-        AnimarMano(inicio,listaDeCuadros[0],[-55,40,60,65]);
+        AnimarMano(inicio,listaDeVectores[0].cuadro,[-55,40,60,65]);
     }
     ControlarNivel();
 }

@@ -57,8 +57,7 @@ update: function() {
     ControlarNivel();
     if (!(listaDeNumeros[0] === undefined && listaDeNumeros[0] === undefined)) {
 //    console.log("MAYONESA: " + listaDeNumeros)
-//    console.log("MAYONESO: " + listaDeCuadros)
-        AnimarMano(inicio,listaDeCuadros[0],[-55,25,-40,+60]);
+        AnimarMano(inicio,listaDeVectores[0].cuadro,[-55,25,-40,+60]);
     }
 
     //Parte del tutorial

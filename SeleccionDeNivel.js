@@ -33,7 +33,6 @@ var explosion = false;
 var pistaEnPantalla;
 
 var listaDeVectores = [];
-var listaDeCuadros = [];
 var listaDeNumeros = [];
 var listaDeEspinas = [];
 var listaDeAngulos = [];

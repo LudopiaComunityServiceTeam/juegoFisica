@@ -221,7 +221,6 @@ function resetVariables(){
     postIt = null;
     gameOverText = null;
     listaDeVectores = [];
-    listaDeCuadros = [];
     listaDeNumeros = [];
     listaDeEspinas = [];
     listaDeAngulos = [];
