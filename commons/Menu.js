@@ -92,13 +92,13 @@ function CrearBotonClose(){
 
 function CrearSilenciarSonido(){
 
-    botonClose = game.add.sprite(750, 20, 'botonClose');
+    botonClose = game.add.sprite(750, 20, 'botonMute');
     botonClose.frame = 0;
     botonClose.i = 0;
     botonClose.inputEnabled = true;
     botonClose.events.onInputDown.add(silenciarSonido, this);
-    botonClose.events.onInputOver.add(overButton, this);
-    botonClose.events.onInputOut.add(outButton, this);
+    botonClose.events.onInputOver.add(overMuteButton, this);
+    botonClose.events.onInputOut.add(outMuteButton, this);
     return botonClose;
 }
 
@@ -134,6 +134,22 @@ function overButton(item){
 function outButton(item){
     item.frame = 0;
 }
+function overMuteButton(item){
+    if (game.sound.mute){
+        item.frame = 2;
+    }
+    else{
+        item.frame = 1;
+    }
+}
+function outMuteButton(item){
+    if (game.sound.mute){
+        item.frame = 3;
+    }
+    else{
+        item.frame = 0;
+    }
+}
 
 function silenciarSonido(item){
     if (game.sound.mute)
@@ -143,7 +159,7 @@ function silenciarSonido(item){
     }
     else
     {
-        item.frame = 1;
+        item.frame = 3;
         game.sound.mute = true;
     }
     
