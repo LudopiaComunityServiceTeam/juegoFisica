@@ -31,11 +31,11 @@ positivo hasta abajo.
     lineaizq.scale.setTo(23, 1);
     lineader = game.add.sprite(401, 450, 'linea');
     lineader.scale.setTo(26, 1);
+    ecuacionVelocidad = CrearEcuacionVelocidad(100,100);
     vector = CrearVector(400,300,0,0, true);
     posInicXPlayer = 50;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
-    ecuacionVelocidad = CrearEcuacionVelocidad(100,100);
     CrearDato(12,330,400,12,"distancia");
     CrearDato(4,670,510,4,"tiempo");
 

@@ -26,22 +26,13 @@ positivo hasta abajo.
     CrearBasico();
     CrearBotonPista("Y ahora hay ángulos... \n¿Cuál puerta será la correcta?\n¿Derecha o izquierda?");
     CrearSalida(110,484);
+    CrearEspinas(600,440);
     salidaAbierta = false;
     limiteDeTiempo = 1;
     lineaizq = game.add.sprite(110, 470, 'linea');
     lineaizq.scale.setTo(5, 1);
     lineader = game.add.sprite(200, 470, 'linea');
     lineader.scale.setTo(5, 1);
-    vector = CrearVector(400,300,0,0, true);
-    numeroAngulo = CrearAnguloParaVectorControlable(180,550,250,180);
-    numeroAngulo = CrearAnguloParaVectorControlable(30,650,250,30);
-    CrearEspinas(600,440);
-    posInicXPlayer = 250;
-    posInicYPlayer = game.world.height - 110;
-    CrearJugador(posInicXPlayer, posInicYPlayer);
-    ecuacionVelocidad = CrearEcuacionVelocidad(100,100);
-    CrearDato(2,165,420,2,"distancia");
-    CrearDato(1,110,510,1,"tiempo");
 
     // Puerta falsa
     salidaFalsa = game.add.sprite(710,484, 'salida');
@@ -50,6 +41,16 @@ positivo hasta abajo.
     lineaizq.scale.setTo(18, 1);
     lineader = game.add.sprite(520, 430, 'linea');
     lineader.scale.setTo(18, 1);
+
+    ecuacionVelocidad = CrearEcuacionVelocidad(100,100);
+    vector = CrearVector(400,300,0,0, true);
+    posInicXPlayer = 250;
+    posInicYPlayer = game.world.height - 110;
+    CrearJugador(posInicXPlayer, posInicYPlayer);
+    numeroAngulo = CrearAnguloParaVectorControlable(180,550,250,180);
+    numeroAngulo = CrearAnguloParaVectorControlable(30,650,250,30);
+    CrearDato(2,165,420,2,"distancia");
+    CrearDato(1,110,510,1,"tiempo");
 
     //Datos falsos
     CrearDato(8,480,380,8,"distancia");

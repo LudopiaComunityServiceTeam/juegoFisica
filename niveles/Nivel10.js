@@ -61,11 +61,11 @@ positivo hasta abajo.
     CrearEspinas(350,537);
     listaDeEspinas[1].angle = 180;
 
+    ecuacionVelocidad = CrearEcuacionVelocidad(100,50);
     vector = CrearVector(400,300,0,0, true);
     posInicXPlayer = 100;
     posInicYPlayer = 270;
     CrearJugador(posInicXPlayer, posInicYPlayer);
-    ecuacionVelocidad = CrearEcuacionVelocidad(100,50);
     CrearDato(6,215,380,6,"distancia");
     CrearDato(3,470,510,3,"tiempo");
 

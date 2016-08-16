@@ -29,14 +29,13 @@ positivo hasta abajo.
     CrearSalida(610,484);
     limiteDeTiempo = Infinity;
     vector = CrearVector(400,300,0,0, true);
-    numeroMagnitud = CrearNumeroParaVectorControlable(100,550,300,1);
-    numeroMagnitud = CrearNumeroParaVectorControlable(300,650,300,3);
-    numeroMagnitud = CrearNumeroParaVectorControlable(500,750,300,5);
     posInicXPlayer = 50;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
+    numeroMagnitud = CrearNumeroParaVectorControlable(100,550,300,1);
+    numeroMagnitud = CrearNumeroParaVectorControlable(300,650,300,3);
+    numeroMagnitud = CrearNumeroParaVectorControlable(500,750,300,5);
     CrearMano(listaDeNumeros[0].x -55 , listaDeNumeros[0].y + 25);
-
     inicio = listaDeNumeros;
     indice = 0;
     // informacion sobre la magnitud

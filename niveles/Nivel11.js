@@ -58,7 +58,7 @@ positivo hasta abajo.
     posInicYPlayer = 450;
     CrearJugador(posInicXPlayer, posInicYPlayer);
     CrearDato(3,400,225,3,"tiempo");
-    numeroAngulo = CrearAnguloParaVectorControlable(90,600,250,90);
+    numeroAngulo = CrearAnguloParaVectorControlable(90,550,200,90);
 
     //Datos falsos
     numeroMagnitud = CrearNumeroParaVectorControlable(600,550,300,6);

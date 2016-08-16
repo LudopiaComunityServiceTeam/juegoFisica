@@ -29,13 +29,13 @@ positivo hasta abajo.
     limiteDeTiempo = 5;
     CrearDato(5,610,510,5,"tiempo");
     vector = CrearVector(400,350,400,0, true);
-    numeroAngulo = CrearAnguloParaVectorControlable(90,500,300,90);
-    numeroAngulo = CrearAnguloParaVectorControlable(30,600,300,30);
-    numeroAngulo = CrearAnguloParaVectorControlable(60,700,300,60);
     CrearEspinas(300,440);
     posInicXPlayer = 50;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
+    numeroAngulo = CrearAnguloParaVectorControlable(90,500,300,90);
+    numeroAngulo = CrearAnguloParaVectorControlable(30,600,300,30);
+    numeroAngulo = CrearAnguloParaVectorControlable(60,700,300,60);
     CrearMano(listaDeAngulos[0].x -55 , listaDeAngulos[0].y + 25);
 
     inicio = listaDeAngulos;
