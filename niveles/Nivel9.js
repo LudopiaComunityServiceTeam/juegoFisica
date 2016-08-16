@@ -24,37 +24,35 @@ positivo hasta abajo.
 /********************************************************************************/
 
     CrearBasico();
-    CrearBotonPista("Y ahora hay ángulos... \n¿Cuál puerta será la correcta?\n¿Derecha o izquierda?");
-    CrearSalida(110,484);
-    CrearEspinas(600,440);
-    salidaAbierta = false;
-    limiteDeTiempo = 1;
-    lineaizq = game.add.sprite(110, 470, 'linea');
-    lineaizq.scale.setTo(5, 1);
-    lineader = game.add.sprite(200, 470, 'linea');
-    lineader.scale.setTo(5, 1);
+    CrearBotonPista("¡Wow! Espinas, distancias y tiempos...\nEl resolvedor nos ayudará en este\ndilema, piensa bien que distancia y\ntiempo usar agregarás en él, hay\nuna puerta a la que no puedes\nllegar.");
+
+    CrearEspinas(630,440);
+    CrearSalida(560,484);
+    limiteDeTiempo = 2;
+    lineaizq = game.add.sprite(220, 380, 'linea');
+    lineaizq.scale.setTo(20, 1);
+    lineader = game.add.sprite(500, 380, 'linea');
+    lineader.scale.setTo(20, 1);
 
     // Puerta falsa
     salidaFalsa = game.add.sprite(710,484, 'salida');
     // salidaFalsa.tint = 0xff9999;
-    lineaizq = game.add.sprite(280, 430, 'linea');
-    lineaizq.scale.setTo(18, 1);
-    lineader = game.add.sprite(520, 430, 'linea');
-    lineader.scale.setTo(18, 1);
+    lineaizq = game.add.sprite(220, 450, 'linea');
+    lineaizq.scale.setTo(13, 1);
+    lineader = game.add.sprite(430, 450, 'linea');
+    lineader.scale.setTo(12, 1);
 
     ecuacionVelocidad = CrearEcuacionVelocidad(100,100);
     vector = CrearVector(400,300,0,0, true);
-    posInicXPlayer = 250;
+    posInicXPlayer = 200;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
-    numeroAngulo = CrearAnguloParaVectorControlable(180,550,250,180);
-    numeroAngulo = CrearAnguloParaVectorControlable(30,650,250,30);
-    CrearDato(2,165,420,2,"distancia");
-    CrearDato(1,110,510,1,"tiempo");
+    CrearDato(6,380,400,6,"distancia");
+    CrearDato(2,560,510,2,"tiempo");
 
     //Datos falsos
-    CrearDato(8,480,380,8,"distancia");
-    CrearDato(2,710,510,2,"tiempo");
+    CrearDato(8,450,330,8,"distancia");
+    CrearDato(4,710,510,4,"tiempo");
 
 },
 

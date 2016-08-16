@@ -4,6 +4,7 @@ preload: function() {
 
 },
 create: function() {
+
 /********************************************************************************/
 /*
 
@@ -22,24 +23,50 @@ positivo hasta abajo.
 */
 /********************************************************************************/
 
-
     CrearBasico();
-    CrearBotonPista("¡Magnitudes y ángulos! Calcula la\ncombinación correcta de ellos para\nllegar a tiempo a la puerta;\nel monigote lo agradecerá.");
-    CrearSalida(660,484);
+    CrearBotonPista("Todo lo que sube tiene que caer...\n¡Escoge la rapidez correcta!");
+    CrearSalida(400,300);
+    salidaAbierta = false;
     limiteDeTiempo = 3;
-    CrearDato(3,660,510,3,"tiempo");
-    vector = CrearVector(400,350,0,0, true);
-    numeroAngulo = CrearAnguloParaVectorControlable(30,550,140,30);
-    numeroAngulo = CrearAnguloParaVectorControlable(40,550,240,40);
-    numeroMagnitud = CrearNumeroParaVectorControlable(400,200,140,4);
-    numeroMagnitud = CrearNumeroParaVectorControlable(500,200,240,5);
-    CrearEspinas(300,436);
-    posInicXPlayer = 50;
-    posInicYPlayer = game.world.height - 110;
+
+    CrearEspinas(450,440);
+    CrearEspinas(450,340);
+    CrearEspinas(450,240);
+    CrearEspinas(450,140);
+    CrearEspinas(450,40);
+    CrearEspinas(350,490);
+    CrearEspinas(350,390);
+    CrearEspinas(350,290);
+    CrearEspinas(350,190);
+    CrearEspinas(350,90);
+    listaDeEspinas[5].anchor.setTo(0.5, 0.5);
+    listaDeEspinas[5].angle = 180;
+    listaDeEspinas[6].anchor.setTo(0.5, 0.5);
+    listaDeEspinas[6].angle = 180;
+    listaDeEspinas[7].anchor.setTo(0.5, 0.5);
+    listaDeEspinas[7].angle = 180;
+    listaDeEspinas[8].anchor.setTo(0.5, 0.5);
+    listaDeEspinas[8].angle = 180;
+    listaDeEspinas[9].anchor.setTo(0.5, 0.5);
+    listaDeEspinas[9].angle = 180;
+    CrearEspinas(415,25);
+    listaDeEspinas[10].anchor.setTo(0.5, 0.5);
+    listaDeEspinas[10].angle = 270;
+
+    vector = CrearVector(150,300,0,0, true);
+    posInicXPlayer = 400;
+    posInicYPlayer = 450;
     CrearJugador(posInicXPlayer, posInicYPlayer);
-    // informacion sobre el angulo
-    //info = "Un vector también tiene un \nángulo que define su sentido, \nhacia donde apunta";
-    //AñadirTexto(100, 40, info, colorTexto, 24);
+    CrearDato(3,400,225,3,"tiempo");
+    numeroAngulo = CrearAnguloParaVectorControlable(90,550,200,90);
+
+    //Datos falsos
+    numeroMagnitud = CrearNumeroParaVectorControlable(600,550,300,6);
+    numeroMagnitud = CrearNumeroParaVectorControlable(500,550,400,5);
+
+    numeroMagnitud = CrearNumeroParaVectorControlable(400,250,300,4);
+    numeroMagnitud = CrearNumeroParaVectorControlable(200,250,400,2);
+
 },
 
 update: function() {

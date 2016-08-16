@@ -24,48 +24,54 @@ positivo hasta abajo.
 /********************************************************************************/
 
     CrearBasico();
-    CrearBotonPista("Todo lo que sube tiene que caer...\n¡Escoge la rapidez correcta!");
-    CrearSalida(400,300);
+    CrearBotonPista("La velocidad que tienes depende\nla distancia (y el tiempo) que elijas.\nEscoge sabiamente y llega a la puerta.");
+    CrearSalida(470,483);
     salidaAbierta = false;
+    // CrearPlataforma(0,300,1,1);
+    CrearPlataforma(50,320,1,1);
+    CrearPlataforma(150,320,1,1);
     limiteDeTiempo = 3;
 
-    CrearEspinas(450,440);
-    CrearEspinas(450,340);
-    CrearEspinas(450,240);
-    CrearEspinas(450,140);
-    CrearEspinas(450,40);
-    CrearEspinas(350,490);
-    CrearEspinas(350,390);
-    CrearEspinas(350,290);
-    CrearEspinas(350,190);
-    CrearEspinas(350,90);
-    listaDeEspinas[5].anchor.setTo(0.5, 0.5);
-    listaDeEspinas[5].angle = 180;
-    listaDeEspinas[6].anchor.setTo(0.5, 0.5);
-    listaDeEspinas[6].angle = 180;
-    listaDeEspinas[7].anchor.setTo(0.5, 0.5);
-    listaDeEspinas[7].angle = 180;
-    listaDeEspinas[8].anchor.setTo(0.5, 0.5);
-    listaDeEspinas[8].angle = 180;
-    listaDeEspinas[9].anchor.setTo(0.5, 0.5);
-    listaDeEspinas[9].angle = 180;
-    CrearEspinas(415,25);
-    listaDeEspinas[10].anchor.setTo(0.5, 0.5);
-    listaDeEspinas[10].angle = 270;
+    lineaizq = game.add.sprite(150, 380, 'linea');
+    lineaizq.scale.setTo(5, 1);
+    lineader = game.add.sprite(250, 380, 'linea');
+    lineader.scale.setTo(5, 1);
 
-    vector = CrearVector(150,300,0,0, true);
-    posInicXPlayer = 400;
-    posInicYPlayer = 450;
+    lineaizq = game.add.sprite(150, 430, 'linea');
+    lineaizq.scale.setTo(5, 1);
+    lineader = game.add.sprite(250, 430, 'linea');
+    lineader.scale.setTo(2.5, 1);
+    lineader = game.add.sprite(270, 435, 'linea');
+    lineader.scale.setTo(2.5, 1);
+    lineader.angle = 270;
+    lineader = game.add.sprite(270, 405, 'linea');
+    lineader.scale.setTo(18, 1);
+
+    lineaizq = game.add.sprite(150, 480, 'linea');
+    lineaizq.scale.setTo(5, 1);
+    lineader = game.add.sprite(250, 480, 'linea');
+    lineader.scale.setTo(4.5, 1);
+    lineader = game.add.sprite(290, 485, 'linea');
+    lineader.scale.setTo(5, 1);
+    lineader.angle = 270;
+    lineader = game.add.sprite(290, 430, 'linea');
+    lineader.scale.setTo(31, 1);
+
+    CrearEspinas(600,437);
+    CrearEspinas(350,537);
+    listaDeEspinas[1].angle = 180;
+
+    ecuacionVelocidad = CrearEcuacionVelocidad(100,50);
+    vector = CrearVector(400,300,0,0, true);
+    posInicXPlayer = 100;
+    posInicYPlayer = 270;
     CrearJugador(posInicXPlayer, posInicYPlayer);
-    CrearDato(3,400,225,3,"tiempo");
-    numeroAngulo = CrearAnguloParaVectorControlable(90,550,200,90);
+    CrearDato(6,215,380,6,"distancia");
+    CrearDato(3,470,510,3,"tiempo");
 
     //Datos falsos
-    numeroMagnitud = CrearNumeroParaVectorControlable(600,550,300,6);
-    numeroMagnitud = CrearNumeroParaVectorControlable(500,550,400,5);
-
-    numeroMagnitud = CrearNumeroParaVectorControlable(400,250,300,4);
-    numeroMagnitud = CrearNumeroParaVectorControlable(200,250,400,2);
+    CrearDato(3,215,330,3,"distancia");
+    CrearDato(9,215,430,9,"distancia");
 
 },
 

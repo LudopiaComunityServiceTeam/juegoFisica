@@ -24,36 +24,24 @@ positivo hasta abajo.
 /********************************************************************************/
 
     CrearBasico();
-    CrearBotonPista("¡Wow! Espinas, distancias y tiempos...\nEl resolvedor nos ayudará en este\ndilema, piensa bien que distancia y\ntiempo usar agregarás en él, hay\nuna puerta a la que no puedes\nllegar.");
-
-    CrearEspinas(630,440);
-    CrearSalida(560,484);
-    limiteDeTiempo = 2;
-    lineaizq = game.add.sprite(220, 380, 'linea');
-    lineaizq.scale.setTo(20, 1);
-    lineader = game.add.sprite(500, 380, 'linea');
-    lineader.scale.setTo(20, 1);
-
-    // Puerta falsa
-    salidaFalsa = game.add.sprite(710,484, 'salida');
-    // salidaFalsa.tint = 0xff9999;
-    lineaizq = game.add.sprite(220, 450, 'linea');
-    lineaizq.scale.setTo(13, 1);
-    lineader = game.add.sprite(430, 450, 'linea');
-    lineader.scale.setTo(12, 1);
-
+    CrearBotonPista("Con la magnitud cero no te puedes\nmover... Trata de crear una nueva\nmagnitud con el resolvedor. Usa la\ndistancia (número naranja) y el tiempo\n(número rojo), te ayudarán.");
+    CrearSalida(670,483);
+    limiteDeTiempo = 4;
+    lineaizq = game.add.sprite(70, 450, 'linea');
+    lineaizq.scale.setTo(23, 1);
+    lineader = game.add.sprite(401, 450, 'linea');
+    lineader.scale.setTo(26, 1);
     ecuacionVelocidad = CrearEcuacionVelocidad(100,100);
     vector = CrearVector(400,300,0,0, true);
-    posInicXPlayer = 200;
+    posInicXPlayer = 50;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
-    CrearDato(6,380,400,6,"distancia");
-    CrearDato(2,560,510,2,"tiempo");
+    CrearDato(12,330,400,12,"distancia");
+    CrearDato(4,670,510,4,"tiempo");
 
-    //Datos falsos
-    CrearDato(8,450,330,8,"distancia");
-    CrearDato(4,710,510,4,"tiempo");
-
+    CrearMano(ListaDeDatos[0].x -55 , ListaDeDatos[0].y + 25);
+    inicio = ListaDeDatos;
+    indice = 0;
 },
 
 update: function() {
@@ -63,5 +51,8 @@ update: function() {
 
     ControlJugador();
     ControlarNivel();
+    if (!(inicio[0] === undefined)) {
+        AnimarMano(inicio,ecuacionVelocidad,[-65,25,-40,50]);
+    }
 }
 };
