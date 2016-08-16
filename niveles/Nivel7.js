@@ -31,8 +31,7 @@ positivo hasta abajo.
     lineaizq.scale.setTo(23, 1);
     lineader = game.add.sprite(401, 450, 'linea');
     lineader.scale.setTo(26, 1);
-    vector = CrearVector(400,300,0,0);
-    cuadro = CrearCuadroVector(550,100,vector);
+    vector = CrearVector(400,300,0,0, true);
     posInicXPlayer = 50;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);

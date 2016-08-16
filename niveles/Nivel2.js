@@ -28,7 +28,7 @@ positivo hasta abajo.
     CrearSalida(100,484);
     salidaAbierta = false;
     limiteDeTiempo = Infinity;
-    vectorDer = CrearVector(450,300,300,0);
+    vectorDer = CrearVector(450,300,300,0, false);
     vectorIzq = CrearVector(350,300,300,180);
     posInicXPlayer = 400;
     posInicYPlayer = game.world.height - 110;

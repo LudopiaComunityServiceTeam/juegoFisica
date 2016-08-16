@@ -10,7 +10,7 @@
 * @return el vector con las caracteristicas especificadas.
 *
 */
-function CrearVector(x,y,magnitud,angulo) {
+function CrearVector(x, y, magnitud, angulo, mostrarCuadro) {
     //Creamos el vector
     var vector = game.add.sprite(x, y, 'vector');
     listaDeVectores.push(vector);
@@ -37,11 +37,15 @@ function CrearVector(x,y,magnitud,angulo) {
     //Aqui se le agrega al numero el "evento" de que cuando se suelte
     //se corre la funcion pegarVector
     vector.events.onDragStop.add(pegarVector);
+    ;
+    // Cuadro del vector
+    vector.cuadro = CrearCuadroVector(x - 80, y - 180, vector);
     vector.events.onDragUpdate.add(controlarCuadrosVectores);
-
-    vector.cuadro = CrearCuadroVector(0, 0, vector);
-    ocultarCuadroVector(vector, vector.cuadro);
-
+    // Ocultar cuadro del vector cuando no se necesite
+    if (mostrarCuadro){
+        mostrarCuadroVector(vector, vector.cuadro);
+        vector.events.onInputDown.add(function(vector){mostrarCuadroVector(vector, vector.cuadro);}, this);
+    }
     return vector;
 
 }
@@ -68,6 +72,16 @@ function CrearNumeroParaVector(numero,x,y,numeroMostrado) {
     //Permitimos que se le pueda poner input al objeto
     numeroMag.inputEnabled = true;
 
+    numeroMag.numero = numero;
+    numeroMag.posXInit = x;
+    numeroMag.posYInit = y;
+
+    return numeroMag;
+}
+
+function CrearNumeroParaVectorControlable(numero,x,y,numeroMostrado) {
+    var numeroMag = CrearNumeroParaVector(numero,x,y,numeroMostrado);
+
     //Permite arrastrar con el mouse, el "true" hace que el centro del
     //objeto quede en donde se tiene el mouse
     numeroMag.input.enableDrag(true);
@@ -76,16 +90,6 @@ function CrearNumeroParaVector(numero,x,y,numeroMostrado) {
     //Aqui se le agrega al numero el "evento" de que cuando se suelte
     //se corre la funcion checkMagnitudInVector
     numeroMag.events.onDragStop.add(checkMagnitudInVector);
-
-    numeroMag.numero = numero;
-    numeroMag.posXInit = x;
-    numeroMag.posYInit = y;
-    numeroMag.enCuadro = false;
-
-    return numeroMag;
-}
-function CrearNumeroParaVectorControlable(numero,x,y,numeroMostrado) {
-    var numeroMag = CrearNumeroParaVector(numero,x,y,numeroMostrado)
     listaDeNumeros.push(numeroMag);
 
     return numeroMag;
@@ -136,7 +140,8 @@ function checkMagnitudInVector(item) {
             listaDeVectores[i].cuadro.magnitudEnCuadro = listaDeVectores[i].cuadro.magnitudInicial;
 
             // Actualizar vector y jugador
-            listaDeVectores[i].magnitud = listaDeVectores[i].cuadro.magnitudInicial.valor;
+            listaDeVectores[i].magnitud = listaDeVectores[i].cuadro.magnitudInicial.numero;
+            escalarVector(listaDeVectores[i], listaDeVectores[i].magnitud);
             if (ChequearOverlap(listaDeVectores[i],player)||(ChequearOverlap(player,listaDeVectores[i].cola))){
                 magnitudJugador = listaDeVectores[i].magnitud;
             }
@@ -167,6 +172,15 @@ function CrearAnguloParaVector(numero,x,y,numeroMostrado) {
     //Permitimos que se le pueda poner input al objeto
     numeroAngulo.inputEnabled = true;
 
+    numeroAngulo.numero = numero;
+    numeroAngulo.posXInit = x;
+    numeroAngulo.posYInit = y;
+
+    return numeroAngulo;
+}
+function CrearAnguloParaVectorControlable(numero,x,y,numeroMostrado) {
+    var numeroAngulo = CrearAnguloParaVector(numero,x,y,numeroMostrado);
+
     //Permite arrastrar con el mouse, el "true" hace que el centro del
     //objeto quede en donde se tiene el mouse
     numeroAngulo.input.enableDrag(true);
@@ -175,16 +189,6 @@ function CrearAnguloParaVector(numero,x,y,numeroMostrado) {
     //Aqui se le agrega al numero el "evento" de que cuando se suelte
     //se corre la funcion checkMagnitudInVector
     numeroAngulo.events.onDragStop.add(checkAnguloInVector);
-
-    numeroAngulo.numero = numero;
-    numeroAngulo.posXInit = x;
-    numeroAngulo.posYInit = y;
-    numeroAngulo.enCuadro = false;
-
-    return numeroAngulo;
-}
-function CrearAnguloParaVectorControlable(numero,x,y,numeroMostrado) {
-    var numeroAngulo = CrearAnguloParaVector(numero,x,y,numeroMostrado)
     listaDeAngulos.push(numeroAngulo);
 
     return numeroAngulo;
@@ -306,21 +310,16 @@ function CrearCuadroVector(x,y,vector){
     cuadro.addChild(cerrar);
 
     //inicializacion de la magnitud del vector
-    var magnitud = CrearNumeroParaVector(vector.magnitud, 30, 50, Math.floor(vector.magnitud/100));
-    magnitud.input.draggable = false;
-    magnitud.enCuadro = true;
+    var magnitud = CrearNumeroParaVector(vector.magnitud, x + 30, y + 50, Math.floor(vector.magnitud/100));
     cuadro.magnitudEnCuadro = magnitud;
     cuadro.magnitudInicial = magnitud;
 
     // inicializacion del angulo del vector
-    var angulo = CrearAnguloParaVector(vector.angulo, 90, 50, vector.angulo);
-    angulo.input.draggable = false;
-    angulo.enCuadro = true;
+    var angulo = CrearAnguloParaVector(vector.angulo, x + 90, y + 50, vector.angulo);
     cuadro.anguloEnCuadro = angulo;
     cuadro.anguloInicial = angulo;
+    ocultarCuadroVector(vector, cuadro);
 
-    // Ocultar cuadro del vector cuando no se necesite
-    vector.events.onInputDown.add(function(vector){mostrarCuadroVector(vector, cuadro);}, this);
     listaDeCuadros.push(cuadro);
     return cuadro;
 }

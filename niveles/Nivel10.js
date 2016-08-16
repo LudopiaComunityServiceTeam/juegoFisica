@@ -61,8 +61,7 @@ positivo hasta abajo.
     CrearEspinas(350,537);
     listaDeEspinas[1].angle = 180;
 
-    vector = CrearVector(400,300,0,0);
-    cuadro = CrearCuadroVector(550,100,vector);
+    vector = CrearVector(400,300,0,0, true);
     posInicXPlayer = 100;
     posInicYPlayer = 270;
     CrearJugador(posInicXPlayer, posInicYPlayer);

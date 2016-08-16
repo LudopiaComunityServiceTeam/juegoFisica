@@ -32,8 +32,7 @@ positivo hasta abajo.
     lineaizq.scale.setTo(5, 1);
     lineader = game.add.sprite(200, 470, 'linea');
     lineader.scale.setTo(5, 1);
-    vector = CrearVector(400,300,0,0);
-    cuadro = CrearCuadroVector(550,100,vector);
+    vector = CrearVector(400,300,0,0, true);
     numeroAngulo = CrearAnguloParaVectorControlable(180,550,250,180);
     numeroAngulo = CrearAnguloParaVectorControlable(30,650,250,30);
     CrearEspinas(600,440);

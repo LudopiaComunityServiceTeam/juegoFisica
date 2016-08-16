@@ -28,8 +28,7 @@ positivo hasta abajo.
     CrearSalida(660,484);
     limiteDeTiempo = 3;
     CrearDato(3,660,510,3,"tiempo");
-    vector = CrearVector(400,350,0,0);
-    cuadro = CrearCuadroVector(550,100,vector);
+    vector = CrearVector(400,350,0,0, true);
     numeroAngulo = CrearAnguloParaVectorControlable(30,550,250,30);
     numeroAngulo = CrearAnguloParaVectorControlable(40,650,250,40);
     numeroMagnitud = CrearNumeroParaVectorControlable(400,450,100,4);

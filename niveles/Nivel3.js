@@ -28,8 +28,7 @@ positivo hasta abajo.
     CrearBotonPista("Los vectores tienen magnitud (azul) que\ncambian su tamaño y rapidez.\n¿Qué sucederá si colocas una magnitud \nen el cuadro del mismo color?.\n¡ Inténtalo !");
     CrearSalida(610,484);
     limiteDeTiempo = Infinity;
-    vector = CrearVector(400,300,0,0);
-    cuadro = CrearCuadroVector(550,100,vector);
+    vector = CrearVector(400,300,0,0, true);
     numeroMagnitud = CrearNumeroParaVectorControlable(100,550,300,1);
     numeroMagnitud = CrearNumeroParaVectorControlable(300,650,300,3);
     numeroMagnitud = CrearNumeroParaVectorControlable(500,750,300,5);

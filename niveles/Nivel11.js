@@ -53,8 +53,7 @@ positivo hasta abajo.
     listaDeEspinas[10].anchor.setTo(0.5, 0.5);
     listaDeEspinas[10].angle = 270;
 
-    vector = CrearVector(150,300,0,0);
-    cuadro = CrearCuadroVector(550,100,vector);
+    vector = CrearVector(150,300,0,0, true);
     posInicXPlayer = 400;
     posInicYPlayer = 450;
     CrearJugador(posInicXPlayer, posInicYPlayer);
