@@ -89,6 +89,19 @@ function CrearBotonClose(){
     botonClose.events.onInputOut.add(outButton, this);
     return botonClose;
 }
+
+function CrearSilenciarSonido(){
+
+    botonClose = game.add.sprite(750, 20, 'botonClose');
+    botonClose.frame = 0;
+    botonClose.i = 0;
+    botonClose.inputEnabled = true;
+    botonClose.events.onInputDown.add(silenciarSonido, this);
+    botonClose.events.onInputOver.add(overButton, this);
+    botonClose.events.onInputOut.add(outButton, this);
+    return botonClose;
+}
+
 function MostrarPista(item){
     if (!pistaEnPantalla){
         AbrirPista(item);
@@ -120,4 +133,22 @@ function overButton(item){
 }
 function outButton(item){
     item.frame = 0;
+}
+
+function silenciarSonido(item){
+    if (game.sound.mute)
+    {
+        item.frame = 0;
+        game.sound.mute = false;
+    }
+    else
+    {
+        item.frame = 1;
+        game.sound.mute = true;
+    }
+    
+}
+
+function reanudarSonido(){
+    game.sound.mute = false;
 }
