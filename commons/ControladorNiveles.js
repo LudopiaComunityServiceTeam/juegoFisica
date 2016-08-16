@@ -117,7 +117,7 @@ function DetectarPerdida() {
             player.animations.stop();
             player.frame = 4;
             if (!explosion){
-                gameOver();
+                gameOver("Auch!\nHaz click para\nreintentar");
             }
         }
     }
@@ -130,7 +130,7 @@ function DetectarPerdida() {
             player.frame = 4;
             animacionCirculoIniciada = true;
             if (!explosion){
-                gameOver();
+                gameOver("Tiempo!\nHaz click para\nreintentar");
             }
         }
     }

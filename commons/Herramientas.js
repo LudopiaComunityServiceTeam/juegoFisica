@@ -134,15 +134,14 @@ function AñadirTexto(x,y,texto,color,tamanno){
 * y reproduce el sonido correspondiente.
 *
 */
-function gameOver(){
+function gameOver(texto){
 
     Explotar();
     if((postIt==null)||(gameOverText==null)){
         postIt = game.add.sprite(300, 200, 'post-it-verde');
         postIt.inputEnabled = true;
         postIt.events.onInputDown.add(resetGame, this);
-        var perder = "Perdiste!\nHaz click para\nreintentar";
-        gameOverText = AñadirTexto(320,230,perder,colorTexto,32);
+        gameOverText = AñadirTexto(320,230,texto,colorTexto,32);
 
     }
     else{
