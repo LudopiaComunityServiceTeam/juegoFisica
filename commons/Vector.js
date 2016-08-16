@@ -137,6 +137,8 @@ function checkMagnitudInVector(item) {
         else if (item == listaDeVectores[i].cuadro.magnitudEnCuadro) {
             // La magnitud es la inicial del vector
             listaDeVectores[i].cuadro.magnitudInicial.visible = true;
+            listaDeVectores[i].cuadro.magnitudInicial.x = listaDeVectores[i].cuadro.x + 30;
+            listaDeVectores[i].cuadro.magnitudInicial.y = listaDeVectores[i].cuadro.y + 50;
             listaDeVectores[i].cuadro.magnitudEnCuadro = listaDeVectores[i].cuadro.magnitudInicial;
 
             // Actualizar vector y jugador
@@ -212,8 +214,8 @@ function checkAnguloInVector(item) {
             // Ocultar el angulo inicial
             listaDeVectores[i].cuadro.anguloInicial.visible = false;
 
-            item.x = listaDeCuadros[i].x + 90;
-            item.y = listaDeCuadros[i].y + 50;
+            item.x = listaDeVectores[i].cuadro.x + 90;
+            item.y = listaDeVectores[i].cuadro.y + 50;
 
             // Actualizar vector y jugador
             listaDeVectores[i].angulo = item.numero;
@@ -236,6 +238,8 @@ function checkAnguloInVector(item) {
         else if (item == listaDeVectores[i].cuadro.anguloEnCuadro) {
             // El angulo es la inicial del vector
             listaDeVectores[i].cuadro.anguloInicial.visible = true;
+            listaDeVectores[i].cuadro.anguloInicial.x = listaDeVectores[i].cuadro.x + 90;
+            listaDeVectores[i].cuadro.anguloInicial.y = listaDeVectores[i].cuadro.y + 50;
             listaDeVectores[i].cuadro.anguloEnCuadro = listaDeVectores[i].cuadro.anguloInicial;
 
             // Actualizar vector y jugador
