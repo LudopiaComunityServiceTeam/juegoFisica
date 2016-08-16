@@ -40,6 +40,7 @@ var ListaDeDatos = [];
 var cuadroPista = [];
 var cuadroVictoria = [];
 var niveles = ['SeleccionDeNivel','Nivel1','Nivel2','Nivel3','Nivel4','Nivel5', 'Nivel6', 'Nivel7', 'Nivel8', 'Nivel9', 'Nivel10', 'Nivel11'];
+var resaltadores = [];
 
 
 var inicio;

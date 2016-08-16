@@ -49,7 +49,7 @@ update: function() {
     ControlarNivel();
 
     //Parte del tutorial
-    resaltarPlayButtonTutorial();
+    resaltarPlay();
 }
 };
 

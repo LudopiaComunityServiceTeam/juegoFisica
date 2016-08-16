@@ -47,3 +47,17 @@ function AnimarCirculo(){
     }
 
 }
+function AnimarResaltador(){
+    for (var i = 0; i <  resaltadores.length; i++){
+        var transparencia = resaltadores[i].alpha;
+        var Escalax = resaltadores[i].scale.x;
+        var Escalay = resaltadores[i].scale.y;
+        resaltadores[i].scale.setTo(Escalax + 0.01,Escalay + 0.01);
+        resaltadores[i].alpha = transparencia - 0.01;
+        if (resaltadores[i].alpha <= 0){
+            console.log("quedan " + resaltadores.length)
+            resaltadores[i].alpha = 1;
+            resaltadores[i].scale.setTo( resaltadores[i].escalax, resaltadores[i].escalay);
+        }
+    }
+}

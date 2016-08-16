@@ -10,7 +10,6 @@ function cierraSalida(){
     if (tiempo == (limiteDeTiempo + 1) && salidaAbierta){
         salida.animations.play('cerrar',10,false);
         salidaAbierta = false;
-        console.log("salidaAbierta = ",salidaAbierta);
     }
 }
 
@@ -90,6 +89,9 @@ function DetectarAnimaciones() {
     }
     if (animacionCirculoIniciada){
         AnimarCirculo();
+    }
+    if (!(resaltadores == [])){
+        AnimarResaltador();
     }
 }
 

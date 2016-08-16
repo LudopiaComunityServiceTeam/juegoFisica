@@ -228,6 +228,7 @@ function resetVariables(){
     cuadroVictoria = [];
     inicio = [];
     cuadroPista = [];
+    resaltadores = [];
     indice = 0;
     menuFinalNivelDesplegado = false;
 

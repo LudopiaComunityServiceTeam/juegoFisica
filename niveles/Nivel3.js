@@ -60,6 +60,6 @@ update: function() {
     }
 
     //Parte del tutorial
-    resaltarPlayButtonTutorial();
+    resaltarPlay();
 }
 };
