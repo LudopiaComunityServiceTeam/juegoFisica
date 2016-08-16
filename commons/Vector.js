@@ -6,6 +6,7 @@
 * @param y: posicion en el eje y
 * @param magnitud: valor de la magnitud
 * @param angulo: valor del angulo
+* @param mostrarCuadro: booleano para controlar si se muestra el cuadro o no
 *
 * @return el vector con las caracteristicas especificadas.
 *
@@ -37,7 +38,7 @@ function CrearVector(x, y, magnitud, angulo, mostrarCuadro) {
     //Aqui se le agrega al numero el "evento" de que cuando se suelte
     //se corre la funcion pegarVector
     vector.events.onDragStop.add(pegarVector);
-    ;
+
     // Cuadro del vector
     vector.cuadro = CrearCuadroVector(x - 80, y - 180, vector);
     vector.events.onDragUpdate.add(controlarCuadrosVectores);
@@ -113,8 +114,7 @@ function checkMagnitudInVector(item) {
             // Ocultar la magnitud inicial
             listaDeVectores[i].cuadro.magnitudInicial.visible = false;
 
-            item.x = listaDeVectores[i].cuadro.x + 30;
-            item.y = listaDeVectores[i].cuadro.y + 50;
+            centrarValorCuadro(listaDeVectores[i].cuadro, item, "magnitud");
 
             // Actualizar vector y jugador
             listaDeVectores[i].magnitud = item.numero;
@@ -137,8 +137,7 @@ function checkMagnitudInVector(item) {
         else if (item == listaDeVectores[i].cuadro.magnitudEnCuadro) {
             // La magnitud es la inicial del vector
             listaDeVectores[i].cuadro.magnitudInicial.visible = true;
-            listaDeVectores[i].cuadro.magnitudInicial.x = listaDeVectores[i].cuadro.x + 30;
-            listaDeVectores[i].cuadro.magnitudInicial.y = listaDeVectores[i].cuadro.y + 50;
+            centrarValorCuadro(listaDeVectores[i].cuadro, listaDeVectores[i].cuadro.magnitudInicial, "magnitud");
             listaDeVectores[i].cuadro.magnitudEnCuadro = listaDeVectores[i].cuadro.magnitudInicial;
 
             // Actualizar vector y jugador
@@ -214,8 +213,7 @@ function checkAnguloInVector(item) {
             // Ocultar el angulo inicial
             listaDeVectores[i].cuadro.anguloInicial.visible = false;
 
-            item.x = listaDeVectores[i].cuadro.x + 90;
-            item.y = listaDeVectores[i].cuadro.y + 50;
+            centrarValorCuadro(listaDeVectores[i].cuadro, item, "angulo");
 
             // Actualizar vector y jugador
             listaDeVectores[i].angulo = item.numero;
@@ -238,8 +236,7 @@ function checkAnguloInVector(item) {
         else if (item == listaDeVectores[i].cuadro.anguloEnCuadro) {
             // El angulo es la inicial del vector
             listaDeVectores[i].cuadro.anguloInicial.visible = true;
-            listaDeVectores[i].cuadro.anguloInicial.x = listaDeVectores[i].cuadro.x + 90;
-            listaDeVectores[i].cuadro.anguloInicial.y = listaDeVectores[i].cuadro.y + 50;
+            centrarValorCuadro(listaDeVectores[i].cuadro, listaDeVectores[i].cuadro.anguloInicial, "angulo");
             listaDeVectores[i].cuadro.anguloEnCuadro = listaDeVectores[i].cuadro.anguloInicial;
 
             // Actualizar vector y jugador
@@ -314,12 +311,14 @@ function CrearCuadroVector(x,y,vector){
     cuadro.addChild(cerrar);
 
     //inicializacion de la magnitud del vector
-    var magnitud = CrearNumeroParaVector(vector.magnitud, x + 30, y + 50, Math.floor(vector.magnitud/100));
+    var magnitud = CrearNumeroParaVector(vector.magnitud, 0, 0, Math.floor(vector.magnitud/100));
+    centrarValorCuadro(cuadro, magnitud, "magnitud");
     cuadro.magnitudEnCuadro = magnitud;
     cuadro.magnitudInicial = magnitud;
 
     // inicializacion del angulo del vector
-    var angulo = CrearAnguloParaVector(vector.angulo, x + 90, y + 50, vector.angulo);
+    var angulo = CrearAnguloParaVector(vector.angulo, 90, 50, vector.angulo);
+    centrarValorCuadro(cuadro, angulo, "angulo");
     cuadro.anguloEnCuadro = angulo;
     cuadro.anguloInicial = angulo;
     ocultarCuadroVector(vector, cuadro);
@@ -361,17 +360,15 @@ function mostrarCuadroVector(vector, cuadro){
 function controlarCuadrosVectores(vector) {
     vector.cuadro.x = vector.x - 80;
     vector.cuadro.y = vector.y - 180;
-    vector.cuadro.magnitudEnCuadro.x = vector.cuadro.x + 30;
-    vector.cuadro.magnitudEnCuadro.y = vector.cuadro.y + 50;
-    vector.cuadro.anguloEnCuadro.x = vector.cuadro.x + 90;
-    vector.cuadro.anguloEnCuadro.y = vector.cuadro.y + 50;
+    centrarValorCuadro(vector.cuadro, vector.cuadro.magnitudEnCuadro, "magnitud");
+    centrarValorCuadro(vector.cuadro, vector.cuadro.anguloEnCuadro, "angulo");
 }
 
 function escalarVector(Vector, NuevoTamaño){
     var tamanoCalculado;
     var tamañoAnterior = Vector.width + Vector.cola.width;
     var tamañoNuevo;
-    tamanoCalculado = 1 + ((NuevoTamaño/100)-1)
+    tamanoCalculado = 1 + ((NuevoTamaño/100)-1);
     if (tamanoCalculado == 0){
         Vector.cola.scale.x = 0.1;
         Vector.cola.x = 0;
@@ -390,6 +387,41 @@ function escalarVector(Vector, NuevoTamaño){
     else{
         Vector.pivot.x = -(Vector.cola.width)/2;
     }
+}
+
+/**
+* Funcion que centra en el cuadro un valor segun su tipo de dato
+*
+* @param cuadro: cuadro en el que se centrara
+* @param valor: numero que sera centrado
+* @param tipoDeDato: tipo de dato a ser centrado
+*
+*/
+function centrarValorCuadro(cuadro, valor, tipoDeDato){
+
+    switch (tipoDeDato) {
+        case "magnitud":
+                if (valor.text < 10){
+                    valor.x = cuadro.x + 30;
+                }
+                else if (valor.text >= 10 && valor.text < 100){
+                    valor.x = cuadro.x + 25;
+                }
+            break;
+        case "angulo":
+                if (valor.text < 10){
+                    valor.x = cuadro.x + 105;
+                }
+                else if (valor.text >= 10 && valor.text < 100){
+                    valor.x = cuadro.x + 90;
+                }
+                else {
+                    valor.x = cuadro.x + 80;
+                }
+            break;
+
+    }
+    valor.y = cuadro.y + 50;
 }
 /*function actualizarColaVector(){
 
