@@ -24,6 +24,7 @@ positivo hasta abajo.
 /********************************************************************************/
 
     CrearBasico();
+    game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     CrearBotonPista("Y ahora hay ángulos... \n¿Cuál puerta será la correcta?\n¿Derecha o izquierda?");
     CrearSalida(110,484);
     CrearEspinas(600,440);

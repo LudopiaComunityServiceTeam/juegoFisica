@@ -119,6 +119,13 @@ function InicializarPlataformas(){
 * argumentos.
 *
 */
+
+function ResaltarDudas(){
+    ResaltadorPista = game.add.sprite(botonPistas.x+25, botonPistas.y+25, 'rectanguloPista');
+    ResaltadorPista.anchor.setTo(0.5,0.5)
+    dudas = true;
+    textoDuda = AñadirTexto(100,560,"Dudas?",colorTexto,30)
+}
 function AñadirTexto(x,y,texto,color,tamanno){
     var text = game.add.text(x, y, texto);
     text.fill = color;

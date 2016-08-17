@@ -25,6 +25,7 @@ positivo hasta abajo.
 
 
     CrearBasico();
+    game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     CrearBotonPista("Los vectores tienen magnitud (azul) que\ncambian su tamaño y rapidez.\n¿Qué sucederá si colocas una magnitud \nen el cuadro del mismo color?.\n¡ Inténtalo !");
     CrearSalida(610,484);
     limiteDeTiempo = Infinity;

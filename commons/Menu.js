@@ -78,6 +78,7 @@ function CrearBotonPista(pista){
     botonPista.events.onInputDown.add(MostrarPista, this);
     botonPista.events.onInputOver.add(overButton, this);
     botonPista.events.onInputOut.add(outButton, this);
+    return botonPista;
 
 }
 function CrearBotonClose(){
@@ -106,6 +107,9 @@ function CrearSilenciarSonido(){
 
 function MostrarPista(item){
     if (!pistaEnPantalla){
+        dudas = false;
+        ResaltadorPista.destroy();
+        textoDuda.destroy();
         AbrirPista(item);
     }
     else{

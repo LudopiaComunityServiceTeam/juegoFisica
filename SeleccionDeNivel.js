@@ -8,6 +8,9 @@ var reintentarText;
 var music1;
 var ImagenDivision;
 var ImagenCirculo;
+var botonPistas;
+var ResaltadorPista;
+var textoDuda;
 
 var magnitudJugador;
 var direccion = 1;
@@ -31,6 +34,7 @@ var salidaCerrandose;
 var salidaAbierta;
 var epilogoCorriendo;
 var explosion = false;
+var dudas = false;
 var pistaEnPantalla;
 
 var listaDeVectores = [];

@@ -61,3 +61,16 @@ function AnimarResaltador(){
         }
     }
 }
+function AnimarPista(){
+        var transparencia = ResaltadorPista.alpha;
+        var Escalax = ResaltadorPista.scale.x;
+        var Escalay = ResaltadorPista.scale.y;
+        ResaltadorPista.scale.setTo(Escalax + 0.02,Escalay + 0.02);
+        ResaltadorPista.alpha = transparencia - 0.01;
+        if (ResaltadorPista.alpha <= 0){
+            console.log("quedan " + resaltadores.length)
+            ResaltadorPista.alpha = 1;
+            ResaltadorPista.scale.setTo(1,1);
+        }
+
+}

@@ -33,6 +33,7 @@ function loadAll(){
     game.load.image('pedazoHoja','assets/pedazohoja.png');
     game.load.image('division','assets/SimboloDivision.png');
     game.load.image('circulo','assets/circuloExplosion.png');
+    game.load.image('rectanguloPista','assets/rectanguloPista.png');
 
     game.load.spritesheet('simbolos','assets/Simbolos.png',28,28);
     game.load.spritesheet('PlayButton','assets/play.png',50,50);

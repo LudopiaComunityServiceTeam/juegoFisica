@@ -93,6 +93,9 @@ function DetectarAnimaciones() {
     if (!(resaltadores == [])){
         AnimarResaltador();
     }
+    if (dudas){
+        AnimarPista();
+    }
 }
 
 /**
