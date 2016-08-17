@@ -55,6 +55,8 @@ function CrearBotonReset(){
 function CrearBotonContinuar(){
 
     texto = AñadirTexto(300,400,'Siguiente Nivel',colorTexto,35);
+    texto.inputEnabled = true;
+    texto.events.onInputDown.add(TerminarNivel, this);
     cuadroVictoria.push(texto);
     botonContinuar = game.add.sprite(300, 350, 'botonSigNivel');
     botonContinuar.frame = 0;

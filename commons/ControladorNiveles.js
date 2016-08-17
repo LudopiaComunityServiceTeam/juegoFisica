@@ -119,7 +119,7 @@ function DetectarPerdida() {
             player.animations.stop();
             player.frame = 4;
             if (!explosion){
-                gameOver("Auch!\nHaz click para\nreintentar");
+                gameOver("Auch!");
             }
         }
     }
@@ -132,7 +132,7 @@ function DetectarPerdida() {
             player.frame = 4;
             animacionCirculoIniciada = true;
             if (!explosion){
-                gameOver("Tiempo!\nHaz click para\nreintentar");
+                gameOver("Tiempo!");
             }
         }
     }
@@ -163,7 +163,6 @@ function MenuFinalNivel() {
     sello = game.add.sprite(300,150, 'sello');
     sello.scale.setTo(0.5, 0.5);
     cuadroVictoria.push(sello);
-    //cuadroVictoria.push(CrearBotonReset());
     cuadroVictoria.push(CrearBotonContinuar());
 
 

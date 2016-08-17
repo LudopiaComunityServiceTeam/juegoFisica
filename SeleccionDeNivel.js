@@ -4,6 +4,7 @@ var platforms;
 var cursors;
 var postIt;
 var gameOverText;
+var reintentarText;
 var music1;
 var ImagenDivision;
 var ImagenCirculo;

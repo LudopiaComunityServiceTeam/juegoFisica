@@ -141,12 +141,25 @@ function gameOver(texto){
         postIt = game.add.sprite(300, 200, 'post-it-verde');
         postIt.inputEnabled = true;
         postIt.events.onInputDown.add(resetGame, this);
-        gameOverText = AñadirTexto(320,230,texto,colorTexto,32);
+        if (texto == "Auch!"){
+            gameOverText = AñadirTexto(365,280,texto,colorTexto,45);
+        }
+        else{
+            gameOverText = AñadirTexto(340,280,texto,colorTexto,45);
+        }
+        reintentarText = AñadirTexto(345,340,"Haz click para\nreintentar",colorTexto,22);
 
     }
     else{
+
         postIt.reset(300,200);
-        gameOverText.reset(320,230);
+        reintentarText.reset(340,340);
+        if (texto == "Auch!"){
+            gameOverText = AñadirTexto(365,280,texto,colorTexto,45);
+        }
+        else{
+            gameOverText = AñadirTexto(340,280,texto,colorTexto,45);
+        }
     }
 }
 
@@ -158,7 +171,8 @@ function gameOverDestroy(){
     if (!(postIt==null)&&!(gameOverText==null)){
         if((postIt.alive)||(gameOverText.alive)){
             postIt.kill();
-            gameOverText.kill();
+            reintentarText.kill();
+            gameOverText.destroy();
         }
     }
 }
