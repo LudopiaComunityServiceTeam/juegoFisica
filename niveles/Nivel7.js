@@ -4,7 +4,6 @@ preload: function() {
 
 },
 create: function() {
-
 /********************************************************************************/
 /*
 
@@ -23,29 +22,25 @@ positivo hasta abajo.
 */
 /********************************************************************************/
 
+
     CrearBasico();
-    CrearBotonPista("Ah, el resolvedor, este aparato \n toma numeros del ambiente \n y los convierte en una magnitud. \n Ya que no hay magnitudes \n a simple vista, intenta usarlo, \n arrastra un numero naranja (distancia) \n y un numero rojo(tiempo) hasta él");
-    CrearSalida(700,486);
+    game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
+    CrearBotonPista("¡Magnitudes y ángulos! Calcula la\ncombinación correcta de ellos para\nllegar a tiempo a la puerta;\nel monigote lo agradecerá.");
+    CrearSalida(660,484);
     limiteDeTiempo = 3;
-    lineaizq = game.add.sprite(52, 450, 'linea');
-    lineaizq.scale.setTo(28, 1);
-    lineader = game.add.sprite(425, 450, 'linea');
-    lineader.scale.setTo(28, 1);
-    vector = CrearVector(400,300,0,0);
-    cuadro = CrearCuadroVector(550,100,vector);
-    posInicXPlayer = 35;
+    CrearDato(3,660,510,3,"tiempo");
+    vector = CrearVector(400,350,0,0, true);
+    numeroAngulo = CrearAnguloParaVectorControlable(30,550,140,30);
+    numeroAngulo = CrearAnguloParaVectorControlable(40,550,240,40);
+    numeroMagnitud = CrearNumeroParaVectorControlable(400,200,140,4);
+    numeroMagnitud = CrearNumeroParaVectorControlable(500,200,240,5);
+    CrearEspinas(300,436);
+    posInicXPlayer = 50;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
-    ecuacionVelocidad = CrearEcuacionVelocidad();
-    CrearDato(9,370,400,9,"distancia");
-    CrearDato(3,700,510,3,"tiempo");
-
-    tiempoFantasma = AñadirTexto(700,535,3,colorTiempo,48);
-    tiempoFantasma.alpha = 0.7;
-
-    CrearMano(ListaDeDatos[0].x -55 , ListaDeDatos[0].y + 25);
-    inicio = ListaDeDatos;
-    indice = 0;
+    // informacion sobre el angulo
+    //info = "Un vector también tiene un \nángulo que define su sentido, \nhacia donde apunta";
+    //AñadirTexto(100, 40, info, colorTexto, 24);
 },
 
 update: function() {
@@ -55,8 +50,5 @@ update: function() {
 
     ControlJugador();
     ControlarNivel();
-    if (!(inicio[0] === undefined)) {
-        AnimarMano(inicio,ecuacionVelocidad,[-65,25,-40,50]);
-    }
 }
 };

@@ -40,7 +40,7 @@ function ControlJugador(){
         game.physics.arcade.collide(brazoD, platforms);
         game.physics.arcade.collide(piernaI, platforms);
         game.physics.arcade.collide(piernaD, platforms);
-    }  
+    }
 }
 
 /**

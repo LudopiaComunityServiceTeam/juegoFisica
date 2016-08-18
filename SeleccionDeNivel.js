@@ -1,40 +1,58 @@
 var player;
-var posInicXPlayer;
-var posInicYPlayer;
 var salida;
 var platforms;
 var cursors;
-var clicked = false;
+var postIt;
+var gameOverText;
+var reintentarText;
+var music1;
+var ImagenDivision;
+var ImagenCirculo;
+var botonPistas;
+var ResaltadorPista;
+var textoDuda;
+
 var magnitudJugador;
 var direccion = 1;
+var numeroMagnitud;
 var angulo = 0;//(3.1415)/4;
+var posInicXPlayer;
+var posInicYPlayer;
+var limiteDeTiempo;
+var nivelActual = 0;
+
+var clicked = false;
 var tieneDistancia = false;
 var tieneTiempo = false;
 var impulsado = false;
+var animacionDivisionIniciada = false;
+var animacionDivisionCreada = false;
+var animacionCirculoIniciada = false;
+var animacionCirculoCreada = false;
+var juegoInicializado = false;
+var salidaCerrandose;
+var salidaAbierta;
+var epilogoCorriendo;
+var explosion = false;
+var dudas = false;
+var pistaEnPantalla;
+
 var listaDeVectores = [];
-var listaDeCuadros = [];
 var listaDeNumeros = [];
 var listaDeEspinas = [];
 var listaDeAngulos = [];
 var ListaDeDatos = [];
 var cuadroPista = [];
 var cuadroVictoria = [];
-var numeroMagnitud;
-var niveles = ['SeleccionDeNivel','Nivel1','Nivel2','Nivel3','Nivel4','Nivel5', 'Nivel6', 'Nivel7', 'Nivel8', 'Nivel9'];
-var nivelActual = 0;
-var explosion = false;
-var music1;
-var postIt;
-var gameOverText;
-var limiteDeTiempo;
-var salidaCerrandose;
-var salidaAbierta;
-var epilogoCorriendo;
+var niveles = ['SeleccionDeNivel','Nivel1','Nivel2','Nivel3','Nivel4','Nivel5', 'Nivel6', 'Nivel7', 'Nivel8', 'Nivel9', 'Nivel10', 'Nivel11'];
+var resaltadores = [];
+
+
 var inicio;
 var indice;
-var juegoInicializado = false;
-var pistaEnPantalla;
-var lel = 0;
+
+
+
 
 var SeleccionDeNivel = {
 preload: function() {
@@ -67,6 +85,7 @@ create: function()
 //En Phaser X y Y estan en 0,0 en la esquina superior izquierda y cuentan
 //positivo hasta abajo.
     CrearFondo();
+    CrearSilenciarSonido();
     CargarRepertorioMusica();
     CargarRepertorioSonido();
     if (!juegoInicializado){
@@ -109,5 +128,9 @@ function escribir(){
     CrearBotonDeNivel(400, 400, 8);
     text = AñadirTexto(515,350,"9",colorTexto,35);
     CrearBotonDeNivel(500, 400, 9);
+    text = AñadirTexto(312,450,"10",colorTexto,35);
+    CrearBotonDeNivel(300, 500, 10);
+    text = AñadirTexto(414,450,"11",colorTexto,35);
+    CrearBotonDeNivel(400, 500, 11);
 
 }

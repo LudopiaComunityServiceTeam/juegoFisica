@@ -1,6 +1,6 @@
 var Nivel2 = {
 preload: function() {
-
+    game.load.image('rectangulo','assets/rectangulo.png');
 
 },
 create: function() {
@@ -24,16 +24,20 @@ positivo hasta abajo.
 /********************************************************************************/
 
     CrearBasico();
-    CrearBotonPista("Izquierda o derecha?");
-    CrearSalida(100,486);
+    game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
+    CrearBotonPista("¿Izquierda o derecha?");
+    CrearSalida(100,484);
     salidaAbierta = false;
     limiteDeTiempo = Infinity;
-    vectorDer = CrearVector(450,300,300,0);
+    vectorDer = CrearVector(450,300,300,0, false);
     vectorIzq = CrearVector(350,300,300,180);
     posInicXPlayer = 400;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
-    CrearEspinas(600,440)
+    CrearEspinas(600,440);
+    tutorial();
+    //Variable para controlar el titilar del boton play
+    overlap = false;
 
 },
 
@@ -44,5 +48,26 @@ update: function() {
 
     ControlJugador();
     ControlarNivel();
+
+    //Parte del tutorial
+    resaltarPlay();
 }
 };
+
+function tutorial2(){
+    //titilar vector derecha
+    titilarVectorDer = resaltarSprite(350,300, 1.5, 0.8, 'rectangulo');
+    vectorDer.events.onInputDown.addOnce(function(vectorDer){pararTitilar(titilarVectorDer, evento);}, this);
+    vectorDer.events.onInputDown.addOnce(function(vectorIzq){pararTitilar(titilarVectorIzq, evento);}, this);
+    vectorDer.events.onDragStart.addOnce(resaltarPlayerTutorial, this);
+
+    //titilar vector izquierda
+    titilarVectorIzq = resaltarSprite(450,300, 1.5, 0.8, 'rectangulo');
+    vectorIzq.events.onInputDown.addOnce(function(vectorIzq){pararTitilar(titilarVectorIzq, evento);}, this);
+    vectorIzq.events.onInputDown.addOnce(function(vectorDer){pararTitilar(titilarVectorDer, evento);}, this);
+    vectorIzq.events.onDragStart.addOnce(resaltarPlayerTutorial, this);
+}
+
+function resaltarPlayerTutorial(objeto) {
+    titilarPlayer = resaltarSprite(posInicXPlayer+15, posInicYPlayer+23, 1.2, 1.2, 'rectangulo');
+}

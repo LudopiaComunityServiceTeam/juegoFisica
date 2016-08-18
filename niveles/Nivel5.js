@@ -24,19 +24,19 @@ positivo hasta abajo.
 
 
     CrearBasico();
-    CrearBotonPista("Numeros morados, estos numeros cambian\n el ángulo del vector, ahora puedes saltar,\n ten cuidado de no saltar muy bajo");
-    CrearSalida(600,486);
-    limiteDeTiempo = 4;
-    AñadirTexto(600,550,4,colorTiempo,35);
-    vector = CrearVector(400,350,400,0);
-    cuadro = CrearCuadroVector(550,100,vector);
+    game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
+    CrearBotonPista("Los vectores tienen ángulo (morado) que\ncambian su inclinación. ¡Ahora puedes\nsaltar! Ten cuidado de no saltar muy\n bajo...");
+    CrearSalida(610,484);
+    limiteDeTiempo = 5;
+    CrearDato(5,610,510,5,"tiempo");
+    vector = CrearVector(400,350,400,0, true);
+    CrearEspinas(300,440);
+    posInicXPlayer = 50;
+    posInicYPlayer = game.world.height - 110;
+    CrearJugador(posInicXPlayer, posInicYPlayer);
     numeroAngulo = CrearAnguloParaVectorControlable(90,500,300,90);
     numeroAngulo = CrearAnguloParaVectorControlable(30,600,300,30);
     numeroAngulo = CrearAnguloParaVectorControlable(60,700,300,60);
-    CrearEspinas(300,440);
-    posInicXPlayer = 35;
-    posInicYPlayer = game.world.height - 110;
-    CrearJugador(posInicXPlayer, posInicYPlayer);
     CrearMano(listaDeAngulos[0].x -55 , listaDeAngulos[0].y + 25);
 
     inicio = listaDeAngulos;
@@ -53,7 +53,7 @@ update: function() {
 
     ControlJugador();
     if (!(inicio[0] === undefined)) {
-        AnimarMano(inicio,listaDeCuadros[0],[-55,40,60,65]);
+        AnimarMano(inicio,listaDeVectores[0].cuadro,[-55,40,60,65]);
     }
     ControlarNivel();
 }

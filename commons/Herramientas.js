@@ -17,6 +17,8 @@ function CrearBasico(){
     CrearPlay();
     CrearBotonMenu();
     CrearTimer();
+    CrearTimerPuerta();
+    CrearSilenciarSonido();
 }
 function CrearPiso() {
 
@@ -37,12 +39,23 @@ function CrearPiso() {
 
 function CrearPlataformas() {
 
-    var ledge = platforms.create(400, 400, 'platform');
-    ledge.body.immovable = true;
+    CrearPlataforma(400,400);
 
-    ledge = platforms.create(-150, 250, 'platform');
-    ledge.body.immovable = true;
+    CrearPlataforma(-150,200);
 }
+
+/**
+* Funcion que crea dos plataformas flotantes.
+*/
+
+function CrearPlataforma(x,y,escalax,escalay) {
+
+    var ledge = platforms.create(x, y, 'platform');
+    ledge.body.immovable = true;
+    ledge.scale.setTo(escalax, escalay);
+
+}
+
 
 /**
 * Funcion que crea el sprite de la salida en la posicion
@@ -55,7 +68,6 @@ function CrearPlataformas() {
 
 function CrearSalida(x,y) {
 
-   
     salida = game.add.sprite(x,y,'salida');
     salida.animations.add('accionar',[1,2,3,4],10,false);
     salida.animations.add('cerrar',[3,2,1,0],10,false);
@@ -73,7 +85,7 @@ function CrearFondo(){
 
 
 
-function CrearEspinas(x,y){
+function CrearEspinas(x,y,rotacion){
 
     espinas = game.add.sprite(x,y,'Espinas');
     listaDeEspinas.push(espinas);
@@ -107,6 +119,13 @@ function InicializarPlataformas(){
 * argumentos.
 *
 */
+
+function ResaltarDudas(){
+    ResaltadorPista = game.add.sprite(botonPistas.x+25, botonPistas.y+25, 'rectanguloPista');
+    ResaltadorPista.anchor.setTo(0.5,0.5)
+    dudas = true;
+    textoDuda = AñadirTexto(100,560,"Dudas?",colorTexto,30)
+}
 function AñadirTexto(x,y,texto,color,tamanno){
     var text = game.add.text(x, y, texto);
     text.fill = color;
@@ -122,20 +141,32 @@ function AñadirTexto(x,y,texto,color,tamanno){
 * y reproduce el sonido correspondiente.
 *
 */
-function gameOver(){
+function gameOver(texto){
 
     Explotar();
     if((postIt==null)||(gameOverText==null)){
         postIt = game.add.sprite(300, 200, 'post-it-verde');
         postIt.inputEnabled = true;
         postIt.events.onInputDown.add(resetGame, this);
-        var perder = "Perdiste!\nHaz click para\nreintentar";
-        gameOverText = AñadirTexto(320,230,perder,colorTexto,32);
+        if (texto == "Auch!"){
+            gameOverText = AñadirTexto(365,280,texto,colorTexto,45);
+        }
+        else{
+            gameOverText = AñadirTexto(340,280,texto,colorTexto,45);
+        }
+        reintentarText = AñadirTexto(345,340,"Haz click para\nreintentar",colorTexto,22);
 
     }
     else{
+
         postIt.reset(300,200);
-        gameOverText.reset(320,230);
+        reintentarText.reset(340,340);
+        if (texto == "Auch!"){
+            gameOverText = AñadirTexto(365,280,texto,colorTexto,45);
+        }
+        else{
+            gameOverText = AñadirTexto(340,280,texto,colorTexto,45);
+        }
     }
 }
 
@@ -147,7 +178,8 @@ function gameOverDestroy(){
     if (!(postIt==null)&&!(gameOverText==null)){
         if((postIt.alive)||(gameOverText.alive)){
             postIt.kill();
-            gameOverText.kill();
+            reintentarText.kill();
+            gameOverText.destroy();
         }
     }
 }
@@ -160,7 +192,9 @@ function resetGame(){
     Reset.play();
     //Detenemos el timer
     stopTimer();
-    resetTimer();
+    resetTimerSinTexto();
+    stopTimerPuerta();
+    resetTimerPuerta();
     //y soltamos el boton
     PlayButton.frame = 0;
     clicked = false;
@@ -208,7 +242,6 @@ function resetVariables(){
     postIt = null;
     gameOverText = null;
     listaDeVectores = [];
-    listaDeCuadros = [];
     listaDeNumeros = [];
     listaDeEspinas = [];
     listaDeAngulos = [];
@@ -216,6 +249,7 @@ function resetVariables(){
     cuadroVictoria = [];
     inicio = [];
     cuadroPista = [];
+    resaltadores = [];
     indice = 0;
     menuFinalNivelDesplegado = false;
 
@@ -237,5 +271,3 @@ function ChequearOverlap(Objeto1,Objeto2){
 
     return Phaser.Rectangle.intersects(boundsA, boundsB);
 }
-
-
