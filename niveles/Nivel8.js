@@ -25,24 +25,49 @@ positivo hasta abajo.
 
     CrearBasico();
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
-    botonPistas = CrearBotonPista("Con la magnitud cero no te puedes\nmover... Trata de crear una nueva\nmagnitud con el resolvedor. Usa la\ndistancia (número naranja) y el tiempo\n(número rojo), te ayudarán.");
-    CrearSalida(670,483);
-    limiteDeTiempo = 4;
-    lineaizq = game.add.sprite(70, 450, 'linea');
-    lineaizq.scale.setTo(23, 1);
-    lineader = game.add.sprite(401, 450, 'linea');
-    lineader.scale.setTo(26, 1);
-    ecuacionVelocidad = CrearEcuacionVelocidad(100,100);
-    vector = CrearVector(400,300,0,0, true);
-    posInicXPlayer = 50;
-    posInicYPlayer = game.world.height - 110;
-    CrearJugador(posInicXPlayer, posInicYPlayer);
-    CrearDato(12,330,400,12,"distancia");
-    CrearDato(4,670,510,4,"tiempo");
+    botonPistas = CrearBotonPista("Todo lo que sube tiene que caer...\n¡Escoge la rapidez correcta!");
+    CrearSalida(400,300);
+    salidaAbierta = false;
+    limiteDeTiempo = 3;
 
-    CrearMano(ListaDeDatos[0].x -55 , ListaDeDatos[0].y + 25);
-    inicio = ListaDeDatos;
-    indice = 0;
+    CrearEspinas(450,440);
+    CrearEspinas(450,340);
+    CrearEspinas(450,240);
+    CrearEspinas(450,140);
+    CrearEspinas(450,40);
+    CrearEspinas(350,490);
+    CrearEspinas(350,390);
+    CrearEspinas(350,290);
+    CrearEspinas(350,190);
+    CrearEspinas(350,90);
+    listaDeEspinas[5][0].anchor.setTo(0.5, 0.5);
+    listaDeEspinas[5][0].angle = 180;
+    listaDeEspinas[6][0].anchor.setTo(0.5, 0.5);
+    listaDeEspinas[6][0].angle = 180;
+    listaDeEspinas[7][0].anchor.setTo(0.5, 0.5);
+    listaDeEspinas[7][0].angle = 180;
+    listaDeEspinas[8][0].anchor.setTo(0.5, 0.5);
+    listaDeEspinas[8][0].angle = 180;
+    listaDeEspinas[9][0].anchor.setTo(0.5, 0.5);
+    listaDeEspinas[9][0].angle = 180;
+    CrearEspinas(415,25);
+    listaDeEspinas[10][0].anchor.setTo(0.5, 0.5);
+    listaDeEspinas[10][0].angle = 270;
+
+    vector = CrearVector(150,300,0,0, true);
+    posInicXPlayer = 400;
+    posInicYPlayer = 450;
+    CrearJugador(posInicXPlayer, posInicYPlayer);
+    CrearDato(3,400,225,3,"tiempo");
+    numeroAngulo = CrearAnguloParaVectorControlable(90,550,200,90);
+
+    //Datos falsos
+    numeroMagnitud = CrearNumeroParaVectorControlable(600,550,300,6);
+    numeroMagnitud = CrearNumeroParaVectorControlable(500,550,400,5);
+
+    numeroMagnitud = CrearNumeroParaVectorControlable(400,250,300,4);
+    numeroMagnitud = CrearNumeroParaVectorControlable(200,250,400,2);
+
 },
 
 update: function() {
@@ -52,8 +77,5 @@ update: function() {
 
     ControlJugador();
     ControlarNivel();
-    if (!(inicio[0] === undefined)) {
-        AnimarMano(inicio,ecuacionVelocidad,[-65,25,-40,50]);
-    }
 }
 };

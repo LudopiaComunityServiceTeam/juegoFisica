@@ -4,7 +4,6 @@ preload: function() {
 
 },
 create: function() {
-
 /********************************************************************************/
 /*
 
@@ -23,51 +22,28 @@ positivo hasta abajo.
 */
 /********************************************************************************/
 
+
     CrearBasico();
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
-    botonPistas = CrearBotonPista("Todo lo que sube tiene que caer...\n¡Escoge la rapidez correcta!");
-    CrearSalida(400,300);
-    salidaAbierta = false;
-    limiteDeTiempo = 3;
-
-    CrearEspinas(450,440);
-    CrearEspinas(450,340);
-    CrearEspinas(450,240);
-    CrearEspinas(450,140);
-    CrearEspinas(450,40);
-    CrearEspinas(350,490);
-    CrearEspinas(350,390);
-    CrearEspinas(350,290);
-    CrearEspinas(350,190);
-    CrearEspinas(350,90);
-    listaDeEspinas[5][0].anchor.setTo(0.5, 0.5);
-    listaDeEspinas[5][0].angle = 180;
-    listaDeEspinas[6][0].anchor.setTo(0.5, 0.5);
-    listaDeEspinas[6][0].angle = 180;
-    listaDeEspinas[7][0].anchor.setTo(0.5, 0.5);
-    listaDeEspinas[7][0].angle = 180;
-    listaDeEspinas[8][0].anchor.setTo(0.5, 0.5);
-    listaDeEspinas[8][0].angle = 180;
-    listaDeEspinas[9][0].anchor.setTo(0.5, 0.5);
-    listaDeEspinas[9][0].angle = 180;
-    CrearEspinas(415,25);
-    listaDeEspinas[10][0].anchor.setTo(0.5, 0.5);
-    listaDeEspinas[10][0].angle = 270;
-
-    vector = CrearVector(150,300,0,0, true);
-    posInicXPlayer = 400;
-    posInicYPlayer = 450;
+    botonPistas = CrearBotonPista("Los vectores tienen ángulo (morado) que\ncambian su inclinación. ¡Ahora puedes\nsaltar! Ten cuidado de no saltar muy\n bajo...");
+    CrearSalida(610,484);
+    limiteDeTiempo = 5;
+    CrearDato(5,610,510,5,"tiempo");
+    vector = CrearVector(400,350,400,0, true);
+    CrearEspinas(300,440);
+    posInicXPlayer = 50;
+    posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
-    CrearDato(3,400,225,3,"tiempo");
-    numeroAngulo = CrearAnguloParaVectorControlable(90,550,200,90);
+    numeroAngulo = CrearAnguloParaVectorControlable(90,500,300,90);
+    numeroAngulo = CrearAnguloParaVectorControlable(30,600,300,30);
+    numeroAngulo = CrearAnguloParaVectorControlable(60,700,300,60);
+    CrearMano(listaDeAngulos[0].x -55 , listaDeAngulos[0].y + 25);
 
-    //Datos falsos
-    numeroMagnitud = CrearNumeroParaVectorControlable(600,550,300,6);
-    numeroMagnitud = CrearNumeroParaVectorControlable(500,550,400,5);
-
-    numeroMagnitud = CrearNumeroParaVectorControlable(400,250,300,4);
-    numeroMagnitud = CrearNumeroParaVectorControlable(200,250,400,2);
-
+    inicio = listaDeAngulos;
+    indice = 0;
+    // informacion sobre el angulo
+    //info = "Un vector también tiene un \nángulo que define su sentido, \nhacia donde apunta";
+    //AñadirTexto(100, 40, info, colorTexto, 24);
 },
 
 update: function() {
@@ -76,6 +52,9 @@ update: function() {
 //Se llama sola en forma de loop infinito
 
     ControlJugador();
+    if (!(inicio[0] === undefined)) {
+        AnimarMano(inicio,listaDeVectores[0].cuadro,[-55,40,60,65]);
+    }
     ControlarNivel();
 }
 };

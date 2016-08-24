@@ -22,37 +22,40 @@ En Phaser X y Y el 0,0 está en la esquina superior izquierda y "y" se cuenta
 positivo hasta abajo.
 */
 /********************************************************************************/
+
     CrearBasico();
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
-    botonPistas = CrearBotonPista("Rapido o lento?");
-    CrearSalida(700,483);
+    botonPistas = CrearBotonPista("Y ahora hay ángulos... \n¿Cuál puerta será la correcta?\n¿Derecha o izquierda?");
+    CrearSalida(110,484);
+    CrearEspinas(600,440);
     salidaAbierta = false;
-    CrearPlataforma(50,320,1,1);
-    limiteDeTiempo = Infinity;
-    vectorPequenno = CrearVector(700,150,300,0, false);
-    vectorMediano = CrearVector(700,250,400,0);
-    vectorGrande = CrearVector(700,350,500,0);
-    posInicXPlayer = 100;
-    posInicYPlayer = 270;
+    limiteDeTiempo = 1;
+    lineaizq = game.add.sprite(110, 470, 'linea');
+    lineaizq.scale.setTo(5, 1);
+    lineader = game.add.sprite(200, 470, 'linea');
+    lineader.scale.setTo(5, 1);
+
+    // Puerta falsa
+    salidaFalsa = game.add.sprite(710,484, 'salida');
+    // salidaFalsa.tint = 0xff9999;
+    lineaizq = game.add.sprite(280, 430, 'linea');
+    lineaizq.scale.setTo(18, 1);
+    lineader = game.add.sprite(520, 430, 'linea');
+    lineader.scale.setTo(18, 1);
+
+    ecuacionVelocidad = CrearEcuacionVelocidad(100,100);
+    vector = CrearVector(400,300,0,0, true);
+    posInicXPlayer = 250;
+    posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
-    CrearEspinas(200,360);
-    listaDeEspinas[0][0].anchor.setTo(0.5, 0.5);
-    listaDeEspinas[0][0].angle = 90;
-    CrearEspinas(300,400);
-    listaDeEspinas[1][0].anchor.setTo(0.5, 0.5);
-    listaDeEspinas[1][0].angle = 90;
-    CrearEspinas(400,440);
-    listaDeEspinas[2][0].anchor.setTo(0.5, 0.5);
-    listaDeEspinas[2][0].angle = 90;
-    CrearEspinas(500,480);
-    listaDeEspinas[3][0].anchor.setTo(0.5, 0.5);
-    listaDeEspinas[3][0].angle = 90;
-    CrearEspinas(600,520);
-    listaDeEspinas[4][0].anchor.setTo(0.5, 0.5);
-    listaDeEspinas[4][0].angle = 90;
-    tutorial();
-    //Variable para controlar el titilar del boton play
-    overlap = false;
+    numeroAngulo = CrearAnguloParaVectorControlable(180,550,250,180);
+    numeroAngulo = CrearAnguloParaVectorControlable(30,650,250,30);
+    CrearDato(2,165,420,2,"distancia");
+    CrearDato(1,110,510,1,"tiempo");
+
+    //Datos falsos
+    CrearDato(8,480,380,8,"distancia");
+    CrearDato(2,710,510,2,"tiempo");
 
 },
 
