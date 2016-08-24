@@ -60,7 +60,7 @@ positivo hasta abajo.
 
     CrearEspinas(600,437);
     CrearEspinas(350,537);
-    listaDeEspinas[1].angle = 180;
+    listaDeEspinas[1][0].angle = 180;
 
     ecuacionVelocidad = CrearEcuacionVelocidad(100,50);
     vector = CrearVector(400,300,0,0, true);

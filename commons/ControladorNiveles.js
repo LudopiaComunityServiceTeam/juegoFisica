@@ -81,6 +81,29 @@ function DetectarVictoria() {
 * Funcion que detecta si se gano un nivel
 *
 */
+function ManejarObstaculos() {
+
+    //Detectar si el personaje toca la salida
+    if (ListaDeCiclos.length != 0){
+        for (i = 0; i < ListaDeCiclos.length; i++){
+            var ciclo = ListaDeCiclos[i];
+            CicloMovimientoSimple(ciclo[0][0],ciclo[1],ciclo[2],ciclo[3]);
+            if (ciclo[5]== null){
+                ciclo[5] = 0;
+            }
+            if (((tiempo % ciclo[4] ) == 0)&&(ciclo[5]!=tiempo)){
+                var faseCiclo = ciclo[1]
+                ciclo[1] = !(faseCiclo)
+                ciclo[5] = tiempo;
+            }
+        }
+    }
+}
+
+/**
+* Funcion que detecta si se gano un nivel
+*
+*/
 function DetectarAnimaciones() {
 
     //Detectar si el personaje toca la salida
@@ -117,7 +140,7 @@ function DetectarPerdida() {
 
 //Perder por tocar una espina
     for (i = 0; i < listaDeEspinas.length; i++){
-        if (ChequearOverlap(player,listaDeEspinas[i])) {
+        if (ChequearOverlap(player,listaDeEspinas[i][0])) {
             player.body.velocity.x = 0;
             player.animations.stop();
             player.frame = 4;
@@ -153,6 +176,7 @@ function ControlarNivel() {
             ManejarPuerta();
             DetectarPerdida();
             DetectarVictoria();
+            ManejarObstaculos();
         }
         else{
             epilogoNivel();

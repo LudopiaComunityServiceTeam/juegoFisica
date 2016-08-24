@@ -56,6 +56,36 @@ function CrearPlataforma(x,y,escalax,escalay) {
     return ledge
 }
 
+function MoverObjeto(plataforma,velocidadX,velocidadY) {
+
+    var platX = plataforma.x;
+    var platY = plataforma.y;
+    plataforma.x = platX + velocidadX;
+    plataforma.y = platY + velocidadY;
+}
+function RestaurarObstaculos(){
+    if (listaDeEspinas.length != 0){
+        for (i = 0; i < listaDeEspinas.length; i++){
+            listaDeEspinas[i][0].x = listaDeEspinas[i][1];
+            listaDeEspinas[i][0].y = listaDeEspinas[i][2];        
+        }
+    }
+    if (ListaDeCiclos.length != 0){
+        for (i = 0; i < ListaDeCiclos.length; i++){
+            ListaDeCiclos[i][1] = false;  
+            ListaDeCiclos[i][5] = 0;
+        }
+    }
+}
+function CicloMovimientoSimple(plataforma,regresando,velX,velY) {
+    if (!regresando){
+        MoverObjeto(plataforma,velX,velY)
+    }
+    else{
+        MoverObjeto(plataforma,-(velX),-(velY))
+    }
+}
+
 function CrearPared(x,y) {
 
     var pared = platforms.create(x, y, 'pared');
@@ -91,10 +121,10 @@ function CrearFondo(){
 
 
 
-function CrearEspinas(x,y,rotacion){
+function CrearEspinas(x,y){
 
     espinas = game.add.sprite(x,y,'Espinas');
-    listaDeEspinas.push(espinas);
+    listaDeEspinas.push([espinas,x,y]);
 
 }
 function ActivarFisica(){
@@ -202,6 +232,7 @@ function resetGame(){
     stopTimerPuerta();
     resetTimerPuerta();
     //y soltamos el boton
+    RestaurarObstaculos();
     PlayButton.frame = 0;
     clicked = false;
     impulsado = false;
@@ -252,6 +283,7 @@ function resetVariables(){
     listaDeEspinas = [];
     listaDeAngulos = [];
     ListaDeDatos = [];
+    ListaDeCiclos = []
     cuadroVictoria = [];
     inicio = [];
     cuadroPista = [];
