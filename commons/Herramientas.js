@@ -53,9 +53,15 @@ function CrearPlataforma(x,y,escalax,escalay) {
     var ledge = platforms.create(x, y, 'platform');
     ledge.body.immovable = true;
     ledge.scale.setTo(escalax, escalay);
-
+    return ledge
 }
 
+function CrearPared(x,y) {
+
+    var pared = platforms.create(x, y, 'pared');
+    pared.body.immovable = true;
+    return pared
+}
 
 /**
 * Funcion que crea el sprite de la salida en la posicion

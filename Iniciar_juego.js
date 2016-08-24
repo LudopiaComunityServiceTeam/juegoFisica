@@ -11,6 +11,8 @@ game.state.add('Nivel8', Nivel8);
 game.state.add('Nivel9', Nivel9);
 game.state.add('Nivel10', Nivel10);
 game.state.add('Nivel11', Nivel11);
+game.state.add('Nivel12', Nivel12);
+game.state.add('Nivel13', Nivel13);
 game.state.add('Main_game', MainGame);
 game.state.add('SeleccionDeNivel', SeleccionDeNivel);
 

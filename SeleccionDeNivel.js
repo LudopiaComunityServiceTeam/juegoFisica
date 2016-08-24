@@ -1,6 +1,7 @@
 var player;
 var salida;
 var platforms;
+var plataforma;
 var cursors;
 var postIt;
 var gameOverText;
@@ -44,7 +45,7 @@ var listaDeAngulos = [];
 var ListaDeDatos = [];
 var cuadroPista = [];
 var cuadroVictoria = [];
-var niveles = ['SeleccionDeNivel','Nivel1','Nivel2','Nivel3','Nivel4','Nivel5', 'Nivel6', 'Nivel7', 'Nivel8', 'Nivel9', 'Nivel10', 'Nivel11'];
+var niveles = ['SeleccionDeNivel','Nivel1','Nivel2','Nivel3','Nivel4','Nivel5', 'Nivel6', 'Nivel7', 'Nivel8', 'Nivel9', 'Nivel10', 'Nivel11', 'Nivel12', 'Nivel13'];
 var resaltadores = [];
 
 
@@ -110,27 +111,31 @@ update: function() {
 function escribir(){
 
     var text = AñadirTexto(60,10,"Escoge un nivel:",colorTexto,50);
-    text = AñadirTexto(312,150,"1",colorTexto,35);
-    CrearBotonDeNivel(300, 200, 1);
-    text = AñadirTexto(415,150,"2",colorTexto,35);
-    CrearBotonDeNivel(400, 200, 2);
-    text = AñadirTexto(515,150,"3",colorTexto,35);
-    CrearBotonDeNivel(500, 200, 3);
-    text = AñadirTexto(315,250,"4",colorTexto,35);
-    CrearBotonDeNivel(300, 300, 4);
-    text = AñadirTexto(415,250,"5",colorTexto,35);
-    CrearBotonDeNivel(400, 300, 5);
-    text = AñadirTexto(515,250,"6",colorTexto,35);
-    CrearBotonDeNivel(500, 300, 6);
-    text = AñadirTexto(315,350,"7",colorTexto,35);
-    CrearBotonDeNivel(300, 400, 7);
-    text = AñadirTexto(415,350,"8",colorTexto,35);
-    CrearBotonDeNivel(400, 400, 8);
-    text = AñadirTexto(515,350,"9",colorTexto,35);
-    CrearBotonDeNivel(500, 400, 9);
-    text = AñadirTexto(312,450,"10",colorTexto,35);
-    CrearBotonDeNivel(300, 500, 10);
-    text = AñadirTexto(414,450,"11",colorTexto,35);
-    CrearBotonDeNivel(400, 500, 11);
+    text = AñadirTexto(312,60,"1",colorTexto,35);
+    CrearBotonDeNivel(300, 100, 1);
+    text = AñadirTexto(415,60,"2",colorTexto,35);
+    CrearBotonDeNivel(400, 100, 2);
+    text = AñadirTexto(515,60,"3",colorTexto,35);
+    CrearBotonDeNivel(500, 100, 3);
+    text = AñadirTexto(315,165,"4",colorTexto,35);
+    CrearBotonDeNivel(300, 200, 4);
+    text = AñadirTexto(415,165,"5",colorTexto,35);
+    CrearBotonDeNivel(400, 200, 5);
+    text = AñadirTexto(515,165,"6",colorTexto,35);
+    CrearBotonDeNivel(500, 200, 6);
+    text = AñadirTexto(315,265,"7",colorTexto,35);
+    CrearBotonDeNivel(300, 300, 7);
+    text = AñadirTexto(415,265,"8",colorTexto,35);
+    CrearBotonDeNivel(400, 300, 8);
+    text = AñadirTexto(515,265,"9",colorTexto,35);
+    CrearBotonDeNivel(500, 300, 9);
+    text = AñadirTexto(312,365,"10",colorTexto,35);
+    CrearBotonDeNivel(300, 400, 10);
+    text = AñadirTexto(414,365,"11",colorTexto,35);
+    CrearBotonDeNivel(400, 400, 11);
+    text = AñadirTexto(515,365,"12",colorTexto,35);
+    CrearBotonDeNivel(500, 400, 12);
+    text = AñadirTexto(312,465,"13",colorTexto,35);
+    CrearBotonDeNivel(300, 500, 13);
 
 }

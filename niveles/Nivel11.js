@@ -25,7 +25,7 @@ positivo hasta abajo.
 
     CrearBasico();
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
-    CrearBotonPista("La velocidad que tienes depende\nla distancia (y el tiempo) que elijas.\nEscoge sabiamente y llega a la puerta.");
+    botonPistas = CrearBotonPista("La velocidad que tienes depende\nla distancia (y el tiempo) que elijas.\nEscoge sabiamente y llega a la puerta.");
     CrearSalida(470,483);
     salidaAbierta = false;
     // CrearPlataforma(0,300,1,1);

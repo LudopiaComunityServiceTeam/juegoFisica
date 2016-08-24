@@ -1,4 +1,4 @@
-var Nivel8 = {
+var Nivel13 = {
 preload: function() {
 
 
@@ -22,27 +22,32 @@ En Phaser X y Y el 0,0 está en la esquina superior izquierda y "y" se cuenta
 positivo hasta abajo.
 */
 /********************************************************************************/
-
     CrearBasico();
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
-    botonPistas = CrearBotonPista("Con la magnitud cero no te puedes\nmover... Trata de crear una nueva\nmagnitud con el resolvedor. Usa la\ndistancia (número naranja) y el tiempo\n(número rojo), te ayudarán.");
-    CrearSalida(670,483);
-    limiteDeTiempo = 4;
-    lineaizq = game.add.sprite(70, 450, 'linea');
-    lineaizq.scale.setTo(23, 1);
-    lineader = game.add.sprite(401, 450, 'linea');
-    lineader.scale.setTo(26, 1);
-    ecuacionVelocidad = CrearEcuacionVelocidad(100,100);
-    vector = CrearVector(400,300,0,0, true);
+    botonPistas = CrearBotonPista("¡Magnitudes y ángulos! Calcula la\ncombinación correcta de ellos para\nllegar a tiempo a la puerta;\nel monigote lo agradecerá.");
+    CrearSalida(660,484);
+    salidaAbierta = false;
+    limiteDeTiempo = Infinity;
+    CrearEspinas(450,440);
+    CrearEspinas(450,340);
+    CrearEspinas(450,240);
+    CrearEspinas(450,140);
+    plataforma = CrearPared(700,37);
+    plataforma = CrearPared(700,137);
+    plataforma = CrearPared(700,237);
+    plataforma = CrearPared(700,337);
+    plataforma = CrearPared(700,437);
+    vector = CrearVector(320,350,0,0, true);
+
+    numeroAngulo = CrearAnguloParaVectorControlable(80,150,140,80);
+    numeroAngulo = CrearAnguloParaVectorControlable(60,150,240,70);
+    numeroMagnitud = CrearNumeroParaVectorControlable(400,100,140,4);
+    numeroMagnitud = CrearNumeroParaVectorControlable(500,100,240,5);
+    numeroMagnitud = CrearNumeroParaVectorControlable(600,100,340,6);
     posInicXPlayer = 50;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
-    CrearDato(12,330,400,12,"distancia");
-    CrearDato(4,670,510,4,"tiempo");
 
-    CrearMano(ListaDeDatos[0].x -55 , ListaDeDatos[0].y + 25);
-    inicio = ListaDeDatos;
-    indice = 0;
 },
 
 update: function() {
@@ -52,8 +57,7 @@ update: function() {
 
     ControlJugador();
     ControlarNivel();
-    if (!(inicio[0] === undefined)) {
-        AnimarMano(inicio,ecuacionVelocidad,[-65,25,-40,50]);
-    }
+    game.debug.bodyInfo(player);
 }
 };
+
