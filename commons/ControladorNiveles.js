@@ -192,7 +192,7 @@ function MenuFinalNivel() {
     cuadroVictoria.push(sello);
     cuadroVictoria.push(CrearBotonContinuar());
     cuadroVictoria.push(CrearBotonRepetirNivel());
-    victoria = game.add.sprite(200,120,'victoria');
+    victoria = game.add.sprite(235,120,'victoria');
     victoria.scale.setTo(0.5,0.5)
     cuadroVictoria.push(victoria);
 
