@@ -304,8 +304,23 @@ function resetVariables(){
 *
 */
 function ChequearOverlap(Objeto1,Objeto2){
-    var boundsA = Objeto1.getBounds();
-    var boundsB = Objeto2.getBounds();
 
-    return Phaser.Rectangle.intersects(boundsA, boundsB);
+    if((Objeto1.cola == null)) {
+        var boundsA = Objeto1.getBounds();
+        var boundsB = Objeto2.getBounds();
+
+        return Phaser.Rectangle.intersects(boundsA, boundsB);
+    }
+    else {
+        var boundsA = Objeto1.getBounds();
+        var boundsB = Objeto2.getBounds();
+        if (Phaser.Rectangle.intersects(boundsA, boundsB) == true){
+            return true;
+        }
+        boundsA = Objeto1.cola.getBounds();
+        if (Phaser.Rectangle.intersects(boundsA, boundsB) == true){
+            return true;
+        }
+        return false;
+    }
 }

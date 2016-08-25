@@ -60,7 +60,8 @@ update: function() {
 //La función update es la responsable de los "frames"
 //Aqui colocamos lo que es movimiento y cambios de variables
 //Se llama sola en forma de loop infinito
-
+    //Parte del tutorial
+    resaltarPlay();
     ControlJugador();
     ControlarNivel();
 }

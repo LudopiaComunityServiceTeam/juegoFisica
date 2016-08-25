@@ -37,7 +37,6 @@ positivo hasta abajo.
     CrearMano(290, 275);
     inicio = [vector];
     indice = 0;
-
     tutorial();
     //Variable para controlar el titilar del boton play
     overlap = false;
