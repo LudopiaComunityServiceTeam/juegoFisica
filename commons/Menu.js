@@ -52,13 +52,31 @@ function CrearBotonReset(){
     botonReset.events.onInputOut.add(outButton, this);
     return botonReset;
 }
+function CrearBotonRepetirNivel(){
+
+    texto = AñadirTexto(180,200,'Repetir Nivel',colorTexto,35);
+    texto.inputEnabled = true;
+    texto.events.onInputDown.add(ReiniciarNivel, this);
+    cuadroVictoria.push(texto);
+
+    botonRepetir = game.add.sprite(230, 260, 'botonRepetirNivel');
+    botonRepetir.scale.setTo(0.7, 0.7)
+    botonRepetir.frame = 0;
+    botonRepetir.i = 0;
+    botonRepetir.inputEnabled = true;
+    botonRepetir.events.onInputDown.add(ReiniciarNivel, this);
+    botonRepetir.events.onInputOver.add(overButton, this);
+    botonRepetir.events.onInputOut.add(outButton, this);
+    return botonRepetir;
+}
 function CrearBotonContinuar(){
 
-    texto = AñadirTexto(300,400,'Siguiente Nivel',colorTexto,35);
+    texto = AñadirTexto(410,200,'Siguiente Nivel',colorTexto,35);
     texto.inputEnabled = true;
     texto.events.onInputDown.add(TerminarNivel, this);
     cuadroVictoria.push(texto);
-    botonContinuar = game.add.sprite(300, 350, 'botonSigNivel');
+
+    botonContinuar = game.add.sprite(425, 245, 'botonSigNivel');
     botonContinuar.frame = 0;
     botonContinuar.i = 0;
     botonContinuar.inputEnabled = true;

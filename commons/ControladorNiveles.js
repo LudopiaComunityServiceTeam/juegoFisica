@@ -184,13 +184,17 @@ function ControlarNivel() {
     }
 }
 function MenuFinalNivel() {
-    hoja = game.add.sprite(200,100,'pedazoHoja');
+    hoja = game.add.sprite(100,50,'pedazoHoja');
     hoja.scale.setTo(0.6,0.6);
     cuadroVictoria.push(hoja);
-    sello = game.add.sprite(300,150, 'sello');
+    sello = game.add.sprite(370,295, 'sello');
     sello.scale.setTo(0.5, 0.5);
     cuadroVictoria.push(sello);
     cuadroVictoria.push(CrearBotonContinuar());
+    cuadroVictoria.push(CrearBotonRepetirNivel());
+    victoria = game.add.sprite(200,120,'victoria');
+    victoria.scale.setTo(0.5,0.5)
+    cuadroVictoria.push(victoria);
 
 
 }

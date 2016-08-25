@@ -30,7 +30,10 @@ function loadAll(){
     game.load.image('ecuacionAceleracion','assets/Ecuacion aceleracion.png');
     game.load.image('lienzoPista','assets/libreta.png');
     game.load.image('sello','assets/NivelPasado.png');
-    game.load.image('pedazoHoja','assets/pedazohoja.png');
+
+    game.load.image('pedazoHoja','assets/pedazohojaancha.png');
+    game.load.image('victoria','assets/victoria.png');
+
     game.load.image('division','assets/SimboloDivision.png');
     game.load.image('circulo','assets/circuloExplosion.png');
     game.load.image('rectanguloPista','assets/rectanguloPista.png');
@@ -48,6 +51,9 @@ function loadAll(){
     game.load.spritesheet('BotonCerrar','assets/BotonCerrar.png',50,50);
     game.load.spritesheet('botonResetNivel','assets/Reset.png',50,50);
     game.load.spritesheet('botonSigNivel','assets/flechaverdetitila.png',209,55);
+
+    game.load.spritesheet('botonRepetirNivel','assets/retry.png',154,115);
+
     game.load.spritesheet('botonMute','assets/Mute.png',50,50);
 
 
