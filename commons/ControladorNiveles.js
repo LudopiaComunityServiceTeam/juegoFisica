@@ -50,6 +50,12 @@ function epilogoNivel(){
         }
         else {
             actualizarTimerSinTexto();
+            console.log(salida.animations.currentAnim.currentFrame);
+
+            if (salida.animations.currentAnim.currentFrame.index == 2){
+                player.kill();
+            }
+
 	}
     }
 }
@@ -72,7 +78,7 @@ function DetectarVictoria() {
             stopTimer();
             stopTimerPuerta();
             resetTimerSinTexto();
-            player.kill();
+            //player.kill();
         }
     }
 }
