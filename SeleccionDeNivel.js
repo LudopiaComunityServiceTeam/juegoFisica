@@ -37,6 +37,7 @@ var epilogoCorriendo;
 var explosion = false;
 var dudas = false;
 var pistaEnPantalla;
+var clickedPista = false;
 
 var listaDeVectores = [];
 var listaDeNumeros = [];

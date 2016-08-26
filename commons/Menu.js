@@ -124,6 +124,9 @@ function CrearSilenciarSonido(){
 }
 
 function MostrarPista(item){
+    if (!clickedPista){
+        clickedPista = true;
+    }
     if (!pistaEnPantalla){
         dudas = false;
         ResaltadorPista.destroy();
