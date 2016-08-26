@@ -105,6 +105,7 @@ function CrearPared(x,y) {
 function CrearSalida(x,y) {
 
     salida = game.add.sprite(x,y,'salida');
+    salida.scale.setTo(1, 1.1);
     salida.animations.add('accionar',[1,2,3,4],10,false);
     salida.animations.add('cerrar',[3,2,1,0],10,false);
 

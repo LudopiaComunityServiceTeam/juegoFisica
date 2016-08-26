@@ -25,7 +25,7 @@ positivo hasta abajo.
     CrearBasico();
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     botonPistas = CrearBotonPista("Rapido o lento?");
-    CrearSalida(700,483);
+    CrearSalida(700,481);
     salidaAbierta = false;
     CrearPlataforma(50,320,1,1);
     limiteDeTiempo = Infinity;

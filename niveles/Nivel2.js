@@ -26,7 +26,7 @@ positivo hasta abajo.
     CrearBasico();
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     botonPistas = CrearBotonPista("¿Izquierda o derecha?");
-    CrearSalida(100,484);
+    CrearSalida(100,481);
     salidaAbierta = false;
     limiteDeTiempo = Infinity;
     vectorDer = CrearVector(450,300,300,0, false);
