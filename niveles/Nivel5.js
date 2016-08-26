@@ -27,7 +27,7 @@ positivo hasta abajo.
     CrearBasico();
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     botonPistas = CrearBotonPista("La puerta tiene un número ahora\ny es del mismo color que el tiempo,\n¿Qué podrá significar?.\nPiensa bien que velocidad usar o la\n puerta se cerrará...");
-    CrearSalida(610,481);
+    CrearSalida(610,479);
     limiteDeTiempo = 3;
     CrearEspinas(710,440);
     vector = CrearVector(400,300,0,0, true);
