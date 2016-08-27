@@ -1,3 +1,10 @@
+function loadPantallaDeInicio(){
+    game.load.image('titulo','assets/Titulo.png');
+    game.load.image('fondoTitulo','assets/FondoTitleScreen.png');
+    game.load.image('huellas','assets/huellas.png');
+    game.load.spritesheet('PlayButton','assets/play.png',50,50);
+    game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
+}
 function loadAll(){
 //Esta funcion carga todas las imagenes que vamos a utilizar para el juego
 //Se usa load.spritesheet cuando se quiere usar para una animación

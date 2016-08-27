@@ -17,5 +17,6 @@ game.state.add('Nivel14', Nivel14);
 game.state.add('Nivel15', Nivel15);
 game.state.add('Main_game', MainGame);
 game.state.add('SeleccionDeNivel', SeleccionDeNivel);
+game.state.add('PantallaDeInicio', PantallaDeInicio);
 
-game.state.start('SeleccionDeNivel');
+game.state.start('PantallaDeInicio');
