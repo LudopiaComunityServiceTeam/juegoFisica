@@ -196,9 +196,11 @@ function resaltarPlay(){
 */
 function CrearNube(x,y){
     nube = game.add.sprite(x,y,'nube');
-    origen1 = game.add.sprite(x+5,y-4,'nubeOrigen');
-    //origen2 = game.add.sprite(x-2,y-4,'nubeOrigen');
-    
+    origen = game.add.sprite(x+5,y-4,'nubeOrigen');
+    xnube = x;
+    ynube = y;
+    nubeCreada = true;
+        
 }
 
 /**
@@ -207,45 +209,38 @@ function CrearNube(x,y){
 * x: posición original de la nube en x
 * y: posición original de la nube en y
 */
-function AnimarNube(x,y){
+function AnimarNube(){
 
-    if (moverse==7){
-	if ((!goleft) && (origen1.x < x+6)){
-	    origen1.x = origen1.x +0.5;
-	}else if ((!goleft) && (origen1.x == x+6)){
+        //Movimiento correspondiente al circulito arriba de la nube
+	if ((!goleft) && (origen.x <= xnube+6)){
+	    origen.x = origen.x +0.03;
+	}else if ((!goleft) && (origen.x > xnube+6)){
 	    goleft = true;
-	}else if ((goleft) && (origen1.x > x+4)){
-	    origen1.x = origen1.x -0.5;
-	}else if ((goleft) && (origen1.x == x+4)){
+	}else if ((goleft) && (origen.x >= xnube+4)){
+	    origen.x = origen.x -0.03;
+	}else if ((goleft) && (origen.x < xnube+4)){
 	    goleft = false;
 	}
 
-	if ((goright) && (nube.x < x+3)){
-	    nube.x = nube.x +0.5;
-	}else if ((goright) && (nube.x == x+3)){
+	//Movimiento de la nube
+	if ((goright) && (nube.x <= xnube+3)){
+	    nube.x = nube.x +0.03;
+	}else if ((goright) && (nube.x > xnube+3)){
 	    goright = false;
-	}else if ((!goright) && (nube.x > x-3)){
-	    nube.x = nube.x -0.5;
-	}else if ((!goright) && (nube.x == x-3)){
+	}else if ((!goright) && (nube.x >= xnube-3)){
+	    nube.x = nube.x -0.03;
+	}else if ((!goright) && (nube.x < xnube-3)){
 	    goright = true;
 	}
 
-	if ((godown) && (nube.y < y+1)){
-	    nube.y = nube.y +0.5;
-	}else if ((godown) && (nube.y == y+1)){
+	if ((godown) && (nube.y <= ynube+1)){
+	    nube.y = nube.y +0.03;
+	}else if ((godown) && (nube.y > ynube+1)){
 	    godown = false;
-	}else if ((!godown) && (nube.y > y-1)){
-	    nube.y = nube.y -0.5;
-	}else if ((!godown) && (nube.y == y-1)){
+	}else if ((!godown) && (nube.y >= ynube-1)){
+	    nube.y = nube.y -0.03;
+	}else if ((!godown) && (nube.y < ynube-1)){
 	    godown = true;
 	}
-
-	moverse = 0;
-			
-    }else{
-
-	moverse = moverse +1;
-
-    }
 }
 

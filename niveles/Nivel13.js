@@ -27,6 +27,7 @@ positivo hasta abajo.
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     botonPistas = CrearBotonPista("La velocidad que tienes depende\nla distancia (y el tiempo) que elijas.\nEscoge sabiamente y llega a la puerta.");
     CrearSalida(470,479);
+    CrearNube(470,545);
     salidaAbierta = false;
     // CrearPlataforma(0,300,1,1);
     CrearPlataforma(50,320,1,1);
@@ -68,7 +69,7 @@ positivo hasta abajo.
     posInicYPlayer = 270;
     CrearJugador(posInicXPlayer, posInicYPlayer);
     CrearDato(6,215,380,6,"distancia");
-    CrearDato(3,470,510,3,"tiempo");
+    CrearDato(3,480,510,3,"tiempo");
 
     //Datos falsos
     CrearDato(3,215,330,3,"distancia");

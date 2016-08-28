@@ -27,6 +27,7 @@ positivo hasta abajo.
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     botonPistas = CrearBotonPista("Todo lo que sube tiene que caer...\n¡Escoge la rapidez correcta!");
     CrearSalida(400,300);
+    CrearNube(400,366);
     salidaAbierta = false;
     limiteDeTiempo = 3;
 
@@ -58,7 +59,7 @@ positivo hasta abajo.
     posInicXPlayer = 400;
     posInicYPlayer = 450;
     CrearJugador(posInicXPlayer, posInicYPlayer);
-    CrearDato(3,400,225,3,"tiempo");
+    CrearDato(3,415,336,3,"tiempo");
     numeroAngulo = CrearAnguloParaVectorControlable(90,550,200,90);
 
     //Datos falsos

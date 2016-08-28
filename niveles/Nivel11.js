@@ -29,6 +29,7 @@ positivo hasta abajo.
 
     CrearEspinas(630,440);
     CrearSalida(560,479);
+    CrearNube(560,545);
     limiteDeTiempo = 2;
     lineaizq = game.add.sprite(220, 380, 'linea');
     lineaizq.scale.setTo(20, 1);
@@ -37,6 +38,7 @@ positivo hasta abajo.
 
     // Puerta falsa
     salidaFalsa = game.add.sprite(710,484, 'salida');
+    CrearNube(710,545);
     // salidaFalsa.tint = 0xff9999;
     lineaizq = game.add.sprite(220, 450, 'linea');
     lineaizq.scale.setTo(13, 1);
@@ -49,11 +51,11 @@ positivo hasta abajo.
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
     CrearDato(6,380,400,6,"distancia");
-    CrearDato(2,560,510,2,"tiempo");
+    CrearDato(2,575,515,2,"tiempo");
 
     //Datos falsos
     CrearDato(8,450,330,8,"distancia");
-    CrearDato(4,710,510,4,"tiempo");
+    CrearDato(4,725,515,4,"tiempo");
 
 },
 

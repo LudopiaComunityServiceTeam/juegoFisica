@@ -27,8 +27,9 @@ positivo hasta abajo.
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     botonPistas = CrearBotonPista("Los vectores tienen ángulo (morado) que\ncambian su inclinación. ¡Ahora puedes\nsaltar! Ten cuidado de no saltar muy\n bajo...");
     CrearSalida(610,479);
+    CrearNube(610,545);
     limiteDeTiempo = 5;
-    CrearDato(5,610,510,5,"tiempo");
+    CrearDato(5,620,518,5,"tiempo");
     vector = CrearVector(400,350,400,0, true);
     CrearEspinas(300,440);
     posInicXPlayer = 50;

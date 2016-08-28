@@ -14,6 +14,8 @@ var ResaltadorPista;
 var textoDuda;
 
 var magnitudJugador;
+var xnube;
+var ynube;
 var direccion = 1;
 var numeroMagnitud;
 var angulo = 0;//(3.1415)/4;
@@ -21,7 +23,6 @@ var posInicXPlayer;
 var posInicYPlayer;
 var limiteDeTiempo;
 var nivelActual = 0;
-var moverse = 0;
 var vertical = 0;
 
 var clicked = false;
@@ -43,6 +44,7 @@ var clickedPista = false;
 var goleft = false;
 var goright = true;
 var godown = false;
+var nubeCreada = false;
 
 var listaDeVectores = [];
 var listaDeNumeros = [];

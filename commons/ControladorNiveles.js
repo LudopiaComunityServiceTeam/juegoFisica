@@ -125,6 +125,9 @@ function DetectarAnimaciones() {
     if (dudas){
         AnimarPista();
     }
+    if (nubeCreada){
+	AnimarNube();
+    }
 }
 
 /**

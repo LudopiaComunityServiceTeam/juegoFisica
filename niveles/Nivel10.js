@@ -27,6 +27,7 @@ positivo hasta abajo.
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     botonPistas = CrearBotonPista("Con la magnitud cero no te puedes\nmover... Trata de crear una nueva\nmagnitud con el resolvedor. Usa la\ndistancia (número naranja) y el tiempo\n(número rojo), te ayudarán.");
     CrearSalida(670,479);
+    CrearNube(670,545);
     limiteDeTiempo = 4;
     lineaizq = game.add.sprite(70, 450, 'linea');
     lineaizq.scale.setTo(23, 1);
@@ -38,7 +39,7 @@ positivo hasta abajo.
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
     CrearDato(12,330,400,12,"distancia");
-    CrearDato(4,670,510,4,"tiempo");
+    CrearDato(4,685,518,4,"tiempo");
 
     CrearMano(ListaDeDatos[0].x -55 , ListaDeDatos[0].y + 25);
     inicio = ListaDeDatos;

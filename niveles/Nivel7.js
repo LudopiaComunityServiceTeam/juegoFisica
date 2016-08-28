@@ -27,8 +27,9 @@ positivo hasta abajo.
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     botonPistas = CrearBotonPista("¡Magnitudes y ángulos! Calcula la\ncombinación correcta de ellos para\nllegar a tiempo a la puerta;\nel monigote lo agradecerá.");
     CrearSalida(660,479);
+    CrearNube(660,545);
     limiteDeTiempo = 3;
-    CrearDato(3,660,510,3,"tiempo");
+    CrearDato(3,675,515,3,"tiempo");
     vector = CrearVector(400,350,0,0, true);
     numeroAngulo = CrearAnguloParaVectorControlable(30,550,140,30);
     numeroAngulo = CrearAnguloParaVectorControlable(40,550,240,40);

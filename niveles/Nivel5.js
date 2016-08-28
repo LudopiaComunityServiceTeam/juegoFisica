@@ -48,7 +48,6 @@ update: function() {
 //Aqui colocamos lo que es movimiento y cambios de variables
 //Se llama sola en forma de loop infinito
 
-    AnimarNube(610,545);
     ControlJugador();
     ControlarNivel();
 }
