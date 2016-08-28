@@ -1,7 +1,10 @@
 function loadPantallaDeInicio(){
     game.load.image('titulo','assets/Titulo.png');
     game.load.image('fondoTitulo','assets/FondoTitleScreen.png');
+    game.load.image('capaIzq','assets/CapaIzq.png');
+    game.load.image('capaDer','assets/CapaDer.png');
     game.load.image('huellas','assets/huellas.png');
+    game.load.image('linea','assets/LaLinea.png');
     game.load.spritesheet('PlayButton','assets/play.png',50,50);
     game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
 }

@@ -1,6 +1,7 @@
 var titulo;
 var borrando = true;
 var huellas = [];
+var lineas = [];
 var arriba = false;
 var frames = 0;
 var Sam;
@@ -13,7 +14,10 @@ preload: function() {
 create: function()
 {
     game.add.sprite(0,0,'fondoTitulo');
-    titulo = game.add.sprite(100,50,'titulo');
+    lineas.push(game.add.sprite(0,400,'linea'))
+    game.add.sprite(0,0,'capaIzq')
+    game.add.sprite(615,0,'capaDer')
+    titulo = game.add.sprite(100,100,'titulo');
     titulo.scale.setTo(1.5,1.5);
     crearBotonDeInicio(375,500);
     Sam = game.add.sprite(200,400, 'dude');
@@ -28,6 +32,8 @@ update: function()
     animarTitulo();
     animarHuellas();
     animarPersonaje();
+    SueloMovil();
+    console.log(huellas.length);
 }
 };
 function crearBotonDeInicio(x,y,nivel){
@@ -89,6 +95,7 @@ function borrar(objeto){
     }
     else {
        objeto.destroy();
+       huellas.shift();
     }
 }
 
@@ -135,4 +142,25 @@ function animarPersonaje(){
         }
 
     }
+}
+function SueloMovil(){
+    for (i = 0; i < lineas.length; i++){
+        posx = lineas[i].x 
+        lineas[i].x = posx - 2;
+        if (posx < -700){
+            lineas[i].destroy();
+            lineas[i] = null;
+        }
+    }
+    if (lineas[0] == null){
+        lineas[0] = game.add.sprite(lineas[1].x + 800,400,'linea')
+        lineas[0].sendToBack();
+        lineas[0].moveUp()
+    }
+    if (lineas[1] == null){
+        lineas[1] = game.add.sprite(lineas[0].x + 800,400,'linea')
+        lineas[1].sendToBack();
+        lineas[1].moveUp()
+    }
+  
 }
