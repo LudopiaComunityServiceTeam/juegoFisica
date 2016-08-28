@@ -43,6 +43,8 @@ function loadAll(){
 
     game.load.image('pedazoHoja','assets/pedazohojaancha.png');
     game.load.image('victoria','assets/victoria.png');
+    game.load.image('nube','assets/nube.png');
+    game.load.image('nubeOrigen','assets/nubeorigen.png');
 
     game.load.image('division','assets/SimboloDivision.png');
     game.load.image('circulo','assets/circuloExplosion.png');

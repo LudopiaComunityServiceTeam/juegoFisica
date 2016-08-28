@@ -21,6 +21,8 @@ var posInicXPlayer;
 var posInicYPlayer;
 var limiteDeTiempo;
 var nivelActual = 0;
+var moverse = 0;
+var vertical = 0;
 
 var clicked = false;
 var tieneDistancia = false;
@@ -38,6 +40,9 @@ var explosion = false;
 var dudas = false;
 var pistaEnPantalla;
 var clickedPista = false;
+var goleft = false;
+var goright = true;
+var godown = false;
 
 var listaDeVectores = [];
 var listaDeNumeros = [];

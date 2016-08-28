@@ -190,3 +190,62 @@ function resaltarPlay(){
     }
 }
 
+/**
+* Funcion que crea una nube de pensamiento 
+*
+*/
+function CrearNube(x,y){
+    nube = game.add.sprite(x,y,'nube');
+    origen1 = game.add.sprite(x+5,y-4,'nubeOrigen');
+    //origen2 = game.add.sprite(x-2,y-4,'nubeOrigen');
+    
+}
+
+/**
+* Funcion que anima la nube de pensamiento para que flote suavemente 
+* Parámetros:
+* x: posición original de la nube en x
+* y: posición original de la nube en y
+*/
+function AnimarNube(x,y){
+
+    if (moverse==7){
+	if ((!goleft) && (origen1.x < x+6)){
+	    origen1.x = origen1.x +0.5;
+	}else if ((!goleft) && (origen1.x == x+6)){
+	    goleft = true;
+	}else if ((goleft) && (origen1.x > x+4)){
+	    origen1.x = origen1.x -0.5;
+	}else if ((goleft) && (origen1.x == x+4)){
+	    goleft = false;
+	}
+
+	if ((goright) && (nube.x < x+3)){
+	    nube.x = nube.x +0.5;
+	}else if ((goright) && (nube.x == x+3)){
+	    goright = false;
+	}else if ((!goright) && (nube.x > x-3)){
+	    nube.x = nube.x -0.5;
+	}else if ((!goright) && (nube.x == x-3)){
+	    goright = true;
+	}
+
+	if ((godown) && (nube.y < y+1)){
+	    nube.y = nube.y +0.5;
+	}else if ((godown) && (nube.y == y+1)){
+	    godown = false;
+	}else if ((!godown) && (nube.y > y-1)){
+	    nube.y = nube.y -0.5;
+	}else if ((!godown) && (nube.y == y-1)){
+	    godown = true;
+	}
+
+	moverse = 0;
+			
+    }else{
+
+	moverse = moverse +1;
+
+    }
+}
+
