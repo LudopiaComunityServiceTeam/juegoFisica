@@ -55,7 +55,9 @@ var ListaDeTiempos = [];
 var inicio;
 var indice;
 
-
+var ArchivoDeGuardado;
+var NivelMaximo;
+var Nota;
 
 
 var SeleccionDeNivel = {
@@ -75,7 +77,8 @@ preload: function() {
 //es cada imagen del muñequito y que tan alta es, pones el ancho en el primer
 //numero y la altura en el segundo
     if (!juegoInicializado){
-    loadAll();
+        loadAll();
+        loadArchivoGuardado();
     }
 },
 create: function()
@@ -100,6 +103,7 @@ create: function()
         escribir();
     }
     juegoInicializado = true;
+    console.log(NivelMaximo); 
 },
 
 update: function() {

@@ -8,6 +8,50 @@ function loadPantallaDeInicio(){
     game.load.spritesheet('PlayButton','assets/play.png',50,50);
     game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
 }
+function loadArchivoGuardado(){
+    ArchivoDeGuardado = JSON.parse(localStorage.getItem('Guardado'));
+    console.log("Cargando archivo");
+    console.log(ArchivoDeGuardado)
+    //localStorage.removeItem('Guardado'); //se usa para borrar un guardado en particular
+    //localStorage.clear(); //se usa para borrar todos los guardados    
+    if (ArchivoDeGuardado != null){
+        console.log("Cargando exitoso");
+        NivelMaximo = ArchivoDeGuardado.Nivel;
+        console.log("Nivel maximo " + NivelMaximo);
+    }
+    else {
+        console.log("No habia un salvado previo");
+    }
+}
+function saveArchivoGuardado(){
+    console.log("trantado de salvar")
+    console.log(ArchivoDeGuardado)
+    if (ArchivoDeGuardado == null){
+        NivelMaximo = nivelActual + 1;
+        console.log("no habia un salvado previo, salve")
+        ArchivoDeGuardado = {
+	Nivel: NivelMaximo,
+	Nota: null};
+        localStorage.setItem("Guardado", JSON.stringify(ArchivoDeGuardado));        
+        console.log("Nivel maximo: " + NivelMaximo);
+        console.log("Nota: " + NivelMaximo);
+    }
+    else if (nivelActual + 1 > ArchivoDeGuardado.Nivel){
+        NivelMaximo = nivelActual + 1;
+        console.log("habia un salvado previo, actualice")
+        ArchivoDeGuardado = {
+	Nivel: NivelMaximo,
+	Nota: null};
+        localStorage.setItem("Guardado", JSON.stringify(ArchivoDeGuardado));
+        console.log("Nivel maximo: " + NivelMaximo);
+        console.log("Nota: " + NivelMaximo);
+    }
+    else{
+        console.log("El nivel maximo es mayor al nivel superado, no se reemplaza el guardado")
+        
+    }
+}
+
 function loadAll(){
 //Esta funcion carga todas las imagenes que vamos a utilizar para el juego
 //Se usa load.spritesheet cuando se quiere usar para una animación
