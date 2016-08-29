@@ -120,33 +120,61 @@ function escribir(){
     var text = AñadirTexto(60,10,"Escoge un nivel:",colorTexto,50);
     text = AñadirTexto(212,60,"1",colorTexto,35);
     CrearBotonDeNivel(200, 100, 1);
-    text = AñadirTexto(315,60,"2",colorTexto,35);
-    CrearBotonDeNivel(300, 100, 2);
-    text = AñadirTexto(415,60,"3",colorTexto,35);
-    CrearBotonDeNivel(400, 100, 3);
-    text = AñadirTexto(515,60,"4",colorTexto,35);
-    CrearBotonDeNivel(500, 100, 4);
-    text = AñadirTexto(615,60,"5",colorTexto,35);
-    CrearBotonDeNivel(600, 100, 5);
-    text = AñadirTexto(215,165,"6",colorTexto,35);
-    CrearBotonDeNivel(200, 200, 6);
-    text = AñadirTexto(315,165,"7",colorTexto,35);
-    CrearBotonDeNivel(300, 200, 7);
-    text = AñadirTexto(415,165,"8",colorTexto,35);
-    CrearBotonDeNivel(400, 200, 8);
-    text = AñadirTexto(515,165,"9",colorTexto,35);
-    CrearBotonDeNivel(500, 200, 9);
-    text = AñadirTexto(615,165,"10",colorTexto,35);
-    CrearBotonDeNivel(600, 200, 10);
-    text = AñadirTexto(215,265,"11",colorTexto,35);
-    CrearBotonDeNivel(200, 300, 11);
-    text = AñadirTexto(315,265,"12",colorTexto,35);
-    CrearBotonDeNivel(300, 300, 12);
-    text = AñadirTexto(415,265,"13",colorTexto,35);
-    CrearBotonDeNivel(400, 300, 13);
-    text = AñadirTexto(515,265,"14",colorTexto,35);
-    CrearBotonDeNivel(500, 300, 14);
-    text = AñadirTexto(615,265,"15",colorTexto,35);
-    CrearBotonDeNivel(600, 300, 15);
+    if (NivelMaximo >= 2){
+        text = AñadirTexto(315,60,"2",colorTexto,35);
+        CrearBotonDeNivel(300, 100, 2);
+    }
+    if (NivelMaximo >= 3){
+        text = AñadirTexto(415,60,"3",colorTexto,35);
+        CrearBotonDeNivel(400, 100, 3);
+    }
+    if (NivelMaximo >= 4){
+        text = AñadirTexto(515,60,"4",colorTexto,35);
+        CrearBotonDeNivel(500, 100, 4);
+    }
+    if (NivelMaximo >= 5){
+        text = AñadirTexto(615,60,"5",colorTexto,35);
+        CrearBotonDeNivel(600, 100, 5);
+}
+    if (NivelMaximo >= 6){
+        text = AñadirTexto(215,165,"6",colorTexto,35);
+        CrearBotonDeNivel(200, 200, 6);
+}
+    if (NivelMaximo >= 7){
+        text = AñadirTexto(315,165,"7",colorTexto,35);
+        CrearBotonDeNivel(300, 200, 7);
+    }
+    if (NivelMaximo >= 8){
+        text = AñadirTexto(415,165,"8",colorTexto,35);
+        CrearBotonDeNivel(400, 200, 8);
+    }
+    if (NivelMaximo >= 9){
+        text = AñadirTexto(515,165,"9",colorTexto,35);
+        CrearBotonDeNivel(500, 200, 9);
+    }
+    if (NivelMaximo >= 10){
+        text = AñadirTexto(615,165,"10",colorTexto,35);
+        CrearBotonDeNivel(600, 200, 10);
+    }
+    if (NivelMaximo >= 11){
+        text = AñadirTexto(215,265,"11",colorTexto,35);
+        CrearBotonDeNivel(200, 300, 11);
+    }
+    if (NivelMaximo >= 12){
+        text = AñadirTexto(315,265,"12",colorTexto,35);
+        CrearBotonDeNivel(300, 300, 12);
+    }
+    if (NivelMaximo >= 13){
+        text = AñadirTexto(415,265,"13",colorTexto,35);
+        CrearBotonDeNivel(400, 300, 13);
+    }
+    if (NivelMaximo >= 14){
+        text = AñadirTexto(515,265,"14",colorTexto,35);
+        CrearBotonDeNivel(500, 300, 14);
+    }
+    if (NivelMaximo >= 15){
+        text = AñadirTexto(615,265,"15",colorTexto,35);
+        CrearBotonDeNivel(600, 300, 15);
+    }
 
 }
