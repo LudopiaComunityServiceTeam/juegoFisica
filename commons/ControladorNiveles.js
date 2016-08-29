@@ -40,17 +40,16 @@ function epilogoNivel(){
     if (!tiempoStart){
         startTimer();
         startTimerPuerta();
-        console.log("WACHU");
     }else {
         if (tiempo == 1){
             if(!menuFinalNivelDesplegado){
                 MenuFinalNivel();
+                saveArchivoGuardado();
                 menuFinalNivelDesplegado = true;
             }
         }
         else {
             actualizarTimerSinTexto();
-            console.log(salida.animations.currentAnim.currentFrame);
 
             if (salida.animations.currentAnim.currentFrame.index == 2){
                 player.kill();

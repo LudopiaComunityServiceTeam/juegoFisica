@@ -33,7 +33,6 @@ update: function()
     animarHuellas();
     animarPersonaje();
     SueloMovil();
-    console.log(huellas.length);
 }
 };
 function crearBotonDeInicio(x,y,nivel){
