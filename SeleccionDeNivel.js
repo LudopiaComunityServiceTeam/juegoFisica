@@ -99,6 +99,7 @@ create: function()
 //En Phaser X y Y estan en 0,0 en la esquina superior izquierda y cuentan
 //positivo hasta abajo.
     CrearFondo();
+    CallarCancion();
     CrearSilenciarSonido();
     CargarRepertorioMusica();
     CargarRepertorioSonido();

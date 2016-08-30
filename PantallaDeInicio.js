@@ -9,10 +9,15 @@ var avanzando = true;
 
 var PantallaDeInicio = {
 preload: function() {
-    loadPantallaDeInicio()
+    loadPantallaDeInicio();
+    loadAll();
+    PreCargarRepertorioMusica();
 },
 create: function()
 {
+    
+    CargarRepertorioMusica();
+    CargarRepertorioSonido();
     game.add.sprite(0,0,'fondoTitulo');
     lineas.push(game.add.sprite(0,400,'linea'))
     game.add.sprite(0,0,'capaIzq')
@@ -24,6 +29,8 @@ create: function()
     Sam.anchor.setTo(0.5,0.5);
     Sam.animations.add('right', [5, 6, 7, 8], 10, true);
     Sam.animations.play('right');
+    ReproducirLoopAudio(PaceItUp,0.3);
+    CrearSilenciarSonido();
 },
 
 update: function() 
