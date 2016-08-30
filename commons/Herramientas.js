@@ -182,45 +182,40 @@ function AñadirTexto(x,y,texto,color,tamanno){
 function gameOver(texto){
 
     Explotar();
-    if((postIt==null)||(gameOverText==null)){
-        postIt = game.add.sprite(100,50,'pedazoHoja');
-        postIt.inputEnabled = true;
-        postIt.events.onInputDown.add(resetGame, this);
-        if (texto == "Auch!"){
-            gameOverText = AñadirTexto(365,280,texto,colorTexto,45);
-        }
-        else{
-            gameOverText = AñadirTexto(340,280,texto,colorTexto,45);
-        }
-        reintentarText = AñadirTexto(345,340,"Haz click para\nreintentar",colorTexto,22);
+    hoja = game.add.sprite(100,50,'pedazoHoja');
+    hoja.scale.setTo(0.6,0.6);
+    cuadroVictoria.push(hoja);
+    // sello = game.add.sprite(370,295, 'sello');
+    // sello.scale.setTo(0.5, 0.5);
+    // cuadroVictoria.push(sello);
+    cuadroVictoria.push(CrearBotonRepetirNivel());
+    // victoria = game.add.sprite(235,120,'victoria');
+    // victoria.scale.setTo(0.5,0.5)
+    // cuadroVictoria.push(victoria);
 
+    if (texto == "Auch!"){
+        gameOverText = AñadirTexto(300,135,texto,colorTiempo,48);
     }
     else{
-
-        postIt.reset(300,200);
-        reintentarText.reset(340,340);
-        if (texto == "Auch!"){
-            gameOverText = AñadirTexto(365,280,texto,colorTexto,45);
-        }
-        else{
-            gameOverText = AñadirTexto(340,280,texto,colorTexto,45);
-        }
+        gameOverText = AñadirTexto(300,135,texto,colorTiempo,48);
     }
+    gameOverText.angle = -5;
+    cuadroVictoria.push(gameOverText);
 }
 
-/**
-* Funcion que quita el fin de juego de la pantalla
-*
-*/
-function gameOverDestroy(){
-    if (!(postIt==null)&&!(gameOverText==null)){
-        if((postIt.alive)||(gameOverText.alive)){
-            postIt.kill();
-            reintentarText.kill();
-            gameOverText.destroy();
-        }
-    }
-}
+// /**
+// * Funcion que quita el fin de juego de la pantalla
+// *
+// */
+// function gameOverDestroy(){
+//     if (!(postIt==null)&&!(gameOverText==null)){
+//         if((postIt.alive)||(gameOverText.alive)){
+//             postIt.kill();
+//             reintentarText.kill();
+//             gameOverText.destroy();
+//         }
+//     }
+// }
 
 /**
 * Funcion que reinicia el juego.
@@ -249,7 +244,7 @@ function resetGame(){
         player.body.velocity.x = 0;
     }
     salida.frame = 0;
-    gameOverDestroy();
+    // gameOverDestroy();
     if (explosion){
         cabeza.destroy();
         cuerpo.destroy();
