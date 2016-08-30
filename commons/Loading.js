@@ -13,7 +13,7 @@ function loadArchivoGuardado(){
     console.log("Cargando archivo");
     console.log(ArchivoDeGuardado)
     //localStorage.removeItem('Guardado'); //se usa para borrar un guardado en particular
-    //localStorage.clear(); //se usa para borrar todos los guardados    
+    //localStorage.clear(); //se usa para borrar todos los guardados
     if (ArchivoDeGuardado != null){
         console.log("Cargando exitoso");
         NivelMaximo = ArchivoDeGuardado.Nivel;
@@ -32,7 +32,7 @@ function saveArchivoGuardado(){
         ArchivoDeGuardado = {
 	Nivel: NivelMaximo,
 	Nota: null};
-        localStorage.setItem("Guardado", JSON.stringify(ArchivoDeGuardado));        
+        localStorage.setItem("Guardado", JSON.stringify(ArchivoDeGuardado));
         console.log("Nivel maximo: " + NivelMaximo);
         console.log("Nota: " + NivelMaximo);
     }
@@ -48,7 +48,7 @@ function saveArchivoGuardado(){
     }
     else{
         console.log("El nivel maximo es mayor al nivel superado, no se reemplaza el guardado")
-        
+
     }
 }
 
@@ -67,6 +67,8 @@ function loadAll(){
 //es cada imagen del muñequito y que tan alta es, pones el ancho en el primer
 //numero y la altura en el segundo
 
+    game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
+    
     game.load.image('cuerpo','assets/Cuerpo.png');
     game.load.image('brazo','assets/Brazo.png');
     game.load.image('pierna','assets/Pierna.png');

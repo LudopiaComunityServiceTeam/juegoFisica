@@ -156,6 +156,15 @@ function InicializarPlataformas(){
 * argumentos.
 *
 */
+function AñadirTexto(x,y,texto,color,tamanno){
+    var text = game.add.text(x, y, texto);
+    text.fill = color;
+    text.font = 'Indie Flower';
+    text.fontSize = tamanno;
+    text.align = 'center';
+    return text;
+
+}
 
 function ResaltarDudas(){
     if (!clickedPista){
@@ -164,10 +173,11 @@ function ResaltarDudas(){
         dudas = true;
     }
 }
-function AñadirTexto(x,y,texto,color,tamanno){
+
+function AñadirTextoMarcador(x,y,texto,color,tamanno){
     var text = game.add.text(x, y, texto);
     text.fill = color;
-    text.font = 'Indie Flower';
+    text.font = 'Permanent Marker';
     text.fontSize = tamanno;
     text.align = 'center';
     return text;
@@ -182,22 +192,25 @@ function AñadirTexto(x,y,texto,color,tamanno){
 function gameOver(texto){
 
     Explotar();
-    hoja = game.add.sprite(100,50,'pedazoHoja');
+    var hoja = game.add.sprite(100,50,'pedazoHoja');
     hoja.scale.setTo(0.6,0.6);
     cuadroVictoria.push(hoja);
-    // sello = game.add.sprite(370,295, 'sello');
-    // sello.scale.setTo(0.5, 0.5);
-    // cuadroVictoria.push(sello);
+    var sello = AñadirTextoMarcador(490,225,'0',colorTiempo,70);
+    sello.angle = -25;
+    cuadroVictoria.push(sello);
+    var subrayar = AñadirTextoMarcador(500,245,'_',colorTiempo,70);
+    subrayar.angle = -25;
+    cuadroVictoria.push(subrayar);
     cuadroVictoria.push(CrearBotonRepetirNivel());
     // victoria = game.add.sprite(235,120,'victoria');
     // victoria.scale.setTo(0.5,0.5)
     // cuadroVictoria.push(victoria);
 
     if (texto == "Auch!"){
-        gameOverText = AñadirTexto(300,135,texto,colorTiempo,48);
+        gameOverText = AñadirTextoMarcador(320,125,texto,colorTiempo,48);
     }
     else{
-        gameOverText = AñadirTexto(300,135,texto,colorTiempo,48);
+        gameOverText = AñadirTextoMarcador(300,125,texto,colorTiempo,48);
     }
     gameOverText.angle = -5;
     cuadroVictoria.push(gameOverText);
