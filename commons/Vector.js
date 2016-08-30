@@ -364,24 +364,47 @@ function mostrarCuadroVector(vector, cuadro){
 */
 function controlarCuadrosVectores(vector) {
 
-    if (Math.abs(vector.x - vector.cuadro.x) > 200 || Math.abs(vector.y - vector.cuadro.y) > 200){
-        vector.cuadro.x = vector.x;
-        vector.cuadro.y = vector.y - 120;
+    var rango = 160;
+    var movimiento = 20;
+    var distanciaX = vector.x - vector.cuadro.x;
+    var distanciaY = vector.y - vector.cuadro.y;
+
+    // El cuadro viene de la derecha
+    if (distanciaX <= -rango) {
+        vector.cuadro.x = vector.cuadro.x - movimiento;
+    }
+    else if (distanciaX >= rango) {
+        vector.cuadro.x = vector.cuadro.x + movimiento;
+    }
+
+    // El cuadro viene de arriba
+    if (distanciaY >= rango) {
+        vector.cuadro.y = vector.cuadro.y + movimiento;
+    }
+    else if (distanciaY <= -rango) {
+        vector.cuadro.y = vector.cuadro.y - movimiento;
+    }
+
+    // vector.cuadro.x = vector.x;
+    // vector.cuadro.y = vector.y - 120;
+    // No pasar el borde de la izquierda  del cuaderno
+    if (vector.cuadro.x < 135) {
+        vector.cuadro.x = 135;
     }
 
     // No pasar el borde de la derecha del cuaderno
-    if (vector.cuadro.x < 50) {
-        vector.cuadro.x = 50;
-    }
-
-    // No pasar el borde de la izquierda del cuaderno
-    if (vector.cuadro.x > 635) {
-        vector.cuadro.x = 635;
+    if (vector.cuadro.x > 600) {
+        vector.cuadro.x = 600;
     }
 
     // No pasar el borde de arriba del cuaderno
-    if (vector.cuadro.y < 0) {
-        vector.cuadro.y = 0;
+    if (vector.cuadro.y < 70) {
+        vector.cuadro.y = 70;
+    }
+
+    // No pasar el borde de abajo del cuaderno
+    if (vector.cuadro.y > 500) {
+        vector.cuadro.y = 500;
     }
     centrarValorCuadro(vector.cuadro, vector.cuadro.magnitudEnCuadro, "magnitud");
     centrarValorCuadro(vector.cuadro, vector.cuadro.anguloEnCuadro, "angulo");

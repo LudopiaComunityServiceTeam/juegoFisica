@@ -53,7 +53,7 @@ function CrearPlataforma(x,y,escalax,escalay) {
     var ledge = platforms.create(x, y, 'platform');
     ledge.body.immovable = true;
     ledge.scale.setTo(escalax, escalay);
-    return ledge
+    return ledge;
 }
 
 function MoverObjeto(plataforma,velocidadX,velocidadY) {
@@ -183,7 +183,7 @@ function gameOver(texto){
 
     Explotar();
     if((postIt==null)||(gameOverText==null)){
-        postIt = game.add.sprite(300, 200, 'post-it-verde');
+        postIt = game.add.sprite(100,50,'pedazoHoja');
         postIt.inputEnabled = true;
         postIt.events.onInputDown.add(resetGame, this);
         if (texto == "Auch!"){
