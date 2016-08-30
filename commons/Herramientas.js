@@ -67,12 +67,12 @@ function RestaurarObstaculos(){
     if (listaDeEspinas.length != 0){
         for (i = 0; i < listaDeEspinas.length; i++){
             listaDeEspinas[i][0].x = listaDeEspinas[i][1];
-            listaDeEspinas[i][0].y = listaDeEspinas[i][2];        
+            listaDeEspinas[i][0].y = listaDeEspinas[i][2];
         }
     }
     if (ListaDeCiclos.length != 0){
         for (i = 0; i < ListaDeCiclos.length; i++){
-            ListaDeCiclos[i][1] = false;  
+            ListaDeCiclos[i][1] = false;
             ListaDeCiclos[i][5] = 0;
         }
     }
@@ -162,7 +162,6 @@ function ResaltarDudas(){
         ResaltadorPista = game.add.sprite(botonPistas.x+25, botonPistas.y+25, 'rectanguloPista');
         ResaltadorPista.anchor.setTo(0.5,0.5)
         dudas = true;
-        textoDuda = AñadirTexto(100,560,"Dudas?",colorTexto,30);
     }
 }
 function AñadirTexto(x,y,texto,color,tamanno){

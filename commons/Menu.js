@@ -60,7 +60,7 @@ function CrearBotonRepetirNivel(){
     cuadroVictoria.push(texto);
 
     botonRepetir = game.add.sprite(230, 260, 'botonRepetirNivel');
-    botonRepetir.scale.setTo(0.7, 0.7)
+    botonRepetir.scale.setTo(0.7, 0.7);
     botonRepetir.frame = 0;
     botonRepetir.i = 0;
     botonRepetir.inputEnabled = true;
@@ -130,7 +130,6 @@ function MostrarPista(item){
     if (!pistaEnPantalla){
         dudas = false;
         ResaltadorPista.destroy();
-        textoDuda.destroy();
         AbrirPista(item);
     }
     else{
@@ -189,7 +188,7 @@ function silenciarSonido(item){
         item.frame = 3;
         game.sound.mute = true;
     }
-    
+
 }
 
 function reanudarSonido(){
