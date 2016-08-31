@@ -168,7 +168,9 @@ function MostrarPista(item){
     }
     if (!pistaEnPantalla){
         dudas = false;
-        ResaltadorPista.destroy();
+        if (ResaltadorPista != null){
+            ResaltadorPista.destroy();
+        }
         AbrirPista(item);
     }
     else{
