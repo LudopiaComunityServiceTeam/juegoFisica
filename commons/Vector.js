@@ -72,7 +72,7 @@ function CrearNumeroParaVector(numero,x,y,numeroMostrado) {
 
     var numeroMag;
     //creamos un objeto con forma de número
-    numeroMag = AñadirTexto(x,y,numeroMostrado, colorMagnitud, 48);
+    numeroMag = AñadirTexto(x,y,numeroMostrado, colorTexto, 48);
     numeroMag.anchor.y = -0.4;
     //Permitimos que se le pueda poner input al objeto
     numeroMag.inputEnabled = true;
@@ -86,7 +86,7 @@ function CrearNumeroParaVector(numero,x,y,numeroMostrado) {
 
 function CrearNumeroParaVectorControlable(numero,x,y,numeroMostrado) {
     var numeroMag = CrearNumeroParaVector(numero,x,y,numeroMostrado);
-
+    numeroMag.fill = colorMagnitud;
     //Permite arrastrar con el mouse, el "true" hace que el centro del
     //objeto quede en donde se tiene el mouse
     numeroMag.input.enableDrag(true);
@@ -170,7 +170,7 @@ function CrearAnguloParaVector(numero,x,y,numeroMostrado) {
 
     var numeroAngulo;
     //creamos un objeto con forma de número
-    numeroAngulo = AñadirTexto(x,y,numeroMostrado, colorAngulo, 48);
+    numeroAngulo = AñadirTexto(x,y,numeroMostrado, colorTexto, 48);
     numeroAngulo.anchor.y = -0.4;
     numeroAngulo.anchor.x = -0.25;
 
@@ -185,7 +185,7 @@ function CrearAnguloParaVector(numero,x,y,numeroMostrado) {
 }
 function CrearAnguloParaVectorControlable(numero,x,y,numeroMostrado) {
     var numeroAngulo = CrearAnguloParaVector(numero,x,y,numeroMostrado);
-
+    numeroMag.fill = colorAngulo;
     //Permite arrastrar con el mouse, el "true" hace que el centro del
     //objeto quede en donde se tiene el mouse
     numeroAngulo.input.enableDrag(true);
@@ -470,11 +470,9 @@ function centrarValorCuadro(cuadro, valor, tipoDeDato){
     valor.y = cuadro.y - 20;
 }
 /*function actualizarColaVector(){
-
     for (i = 0; i < listaDeVectores.length; i++){
         // Ocultar la magnitud del cuadro
             listaDeVectores[i].cola.x = listaDeVectores[i].x - 18;
             listaDeVectores[i].cola.y = listaDeVectores[i].y - 8.5;
     }
-
 }*/

@@ -67,7 +67,7 @@ function loadAll(){
 //es cada imagen del muñequito y que tan alta es, pones el ancho en el primer
 //numero y la altura en el segundo
 
-    //game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
+    game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
 
     game.load.image('cuerpo','assets/Cuerpo.png');
     game.load.image('brazo','assets/Brazo.png');
