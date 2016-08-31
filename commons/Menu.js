@@ -194,3 +194,37 @@ function silenciarSonido(item){
 function reanudarSonido(){
     game.sound.mute = false;
 }
+
+function pausar(){
+    for (var i = 0; i < ListaDeDatos.length; i++) {
+        ListaDeDatos[i].input.draggable = false;
+    }
+    for (i = 0; i < listaDeNumeros.length; i++) {
+        listaDeNumeros[i].input.draggable = false;
+    }
+    for (i = 0; i < listaDeAngulos.length; i++) {
+        listaDeAngulos[i].input.draggable = false;
+    }
+    for (i = 0; i < listaDeVectores.length; i++) {
+        listaDeVectores[i].input.draggable = false;
+    }
+    filtroBlanco = game.add.sprite(0,0,'fondoBlanco');
+    filtroBlanco.alpha = 0.5;
+    filtroBlanco.scale.setTo(5,2);
+}
+
+function quitarPausa(){
+    for (var i = 0; i < ListaDeDatos.length; i++) {
+        ListaDeDatos[i].input.draggable = true;
+    }
+    for (i = 0; i < listaDeNumeros.length; i++) {
+        listaDeNumeros[i].input.draggable = true;
+    }
+    for (i = 0; i < listaDeAngulos.length; i++) {
+        listaDeAngulos[i].input.draggable = true;
+    }
+    for (i = 0; i < listaDeVectores.length; i++) {
+        listaDeVectores[i].input.draggable = true;
+    }
+    filtroBlanco.destroy();
+}

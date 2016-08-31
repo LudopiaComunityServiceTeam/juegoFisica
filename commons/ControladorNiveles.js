@@ -192,6 +192,8 @@ function ControlarNivel() {
     }
 }
 function MenuFinalNivel() {
+    
+    pausar();
     hoja = game.add.sprite(100,50,'pedazoHoja');
     hoja.scale.setTo(0.6,0.6);
     cuadroVictoria.push(hoja);
@@ -203,7 +205,6 @@ function MenuFinalNivel() {
     victoria = game.add.sprite(235,120,'victoria');
     victoria.scale.setTo(0.5,0.5)
     cuadroVictoria.push(victoria);
-
 
 }
 function ReiniciarNivel() {

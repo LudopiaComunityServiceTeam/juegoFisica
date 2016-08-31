@@ -68,7 +68,7 @@ function loadAll(){
 //numero y la altura en el segundo
 
     game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
-    
+
     game.load.image('cuerpo','assets/Cuerpo.png');
     game.load.image('brazo','assets/Brazo.png');
     game.load.image('pierna','assets/Pierna.png');
@@ -97,6 +97,7 @@ function loadAll(){
     game.load.image('rectanguloPista','assets/rectanguloPista.png');
     game.load.image('rectangulo','assets/rectangulo.png');
     game.load.image('pared','assets/Pared.png');
+    game.load.image('fondoBlanco','assets/fondoblanco.png');
 
     game.load.spritesheet('simbolos','assets/Simbolos.png',28,28);
     game.load.spritesheet('PlayButton','assets/play.png',50,50);
