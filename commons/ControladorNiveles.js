@@ -194,6 +194,10 @@ function ControlarNivel() {
 function MenuFinalNivel() {
 
     inhabilitarJugar();
+    var filtroBlanco = game.add.sprite(0,0,'fondoBlanco');
+    filtroBlanco.alpha = 0.5;
+    filtroBlanco.scale.setTo(5,2);
+    cuadroVictoria.push(filtroBlanco);
     var hoja = game.add.sprite(100,50,'pedazoHoja');
     hoja.scale.setTo(0.6,0.6);
     cuadroVictoria.push(hoja);
@@ -225,6 +229,10 @@ function gameOver(texto){
 
     Explotar();
     inhabilitarJugar();
+    var filtroBlanco = game.add.sprite(0,0,'fondoBlanco');
+    filtroBlanco.alpha = 0.5;
+    filtroBlanco.scale.setTo(5,2);
+    cuadroVictoria.push(filtroBlanco);
     var hoja = game.add.sprite(100,50,'pedazoHoja');
     hoja.scale.setTo(0.6,0.6);
     cuadroVictoria.push(hoja);

@@ -271,9 +271,6 @@ function inhabilitarJugar(){
     for (i = 0; i < listaDeVectores.length; i++) {
         listaDeVectores[i].input.draggable = false;
     }
-    filtroBlanco = game.add.sprite(0,0,'fondoBlanco');
-    filtroBlanco.alpha = 0.5;
-    filtroBlanco.scale.setTo(5,2);
 }
 
 /**
@@ -293,5 +290,4 @@ function habilitarJugar(){
     for (i = 0; i < listaDeVectores.length; i++) {
         listaDeVectores[i].input.draggable = true;
     }
-    filtroBlanco.destroy();
 }
