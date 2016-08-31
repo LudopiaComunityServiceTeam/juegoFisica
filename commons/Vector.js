@@ -72,8 +72,8 @@ function CrearNumeroParaVector(numero,x,y,numeroMostrado) {
 
     var numeroMag;
     //creamos un objeto con forma de número
-    numeroMag = AñadirTexto(x,y,numeroMostrado, colorMagnitud, 48);
-    numeroMag.anchor.y = -0.4;
+    numeroMag = AñadirTextoStencil(x,y,numeroMostrado, colorTexto, 48);
+    numeroMag.anchor.y = -0.6;
     //Permitimos que se le pueda poner input al objeto
     numeroMag.inputEnabled = true;
 
@@ -86,7 +86,12 @@ function CrearNumeroParaVector(numero,x,y,numeroMostrado) {
 
 function CrearNumeroParaVectorControlable(numero,x,y,numeroMostrado) {
     var numeroMag = CrearNumeroParaVector(numero,x,y,numeroMostrado);
-
+    numeroMag.fill = colorMagnitud;
+    numeroMag.font = 'Indie Flower';
+    numeroMag.fontSize = 48;
+    numeroMag.fontWeight = 'bold';
+    numeroMag.scale.setTo(1,1);
+    numeroMag.anchor.y = -0.4;
     //Permite arrastrar con el mouse, el "true" hace que el centro del
     //objeto quede en donde se tiene el mouse
     numeroMag.input.enableDrag(true);
@@ -170,8 +175,8 @@ function CrearAnguloParaVector(numero,x,y,numeroMostrado) {
 
     var numeroAngulo;
     //creamos un objeto con forma de número
-    numeroAngulo = AñadirTexto(x,y,numeroMostrado, colorAngulo, 48);
-    numeroAngulo.anchor.y = -0.4;
+    numeroAngulo = AñadirTextoStencil(x,y,numeroMostrado, colorTexto, 48);
+    numeroAngulo.anchor.y = -0.6;
     numeroAngulo.anchor.x = -0.25;
 
     //Permitimos que se le pueda poner input al objeto
@@ -185,7 +190,13 @@ function CrearAnguloParaVector(numero,x,y,numeroMostrado) {
 }
 function CrearAnguloParaVectorControlable(numero,x,y,numeroMostrado) {
     var numeroAngulo = CrearAnguloParaVector(numero,x,y,numeroMostrado);
-
+    numeroAngulo.fill = colorAngulo;
+    numeroAngulo.font = 'Indie Flower';
+    numeroAngulo.fontSize = 48;
+    numeroAngulo.fontWeight = 'bold';
+    numeroAngulo.scale.setTo(1,1);
+    numeroAngulo.anchor.y = -0.4;
+    numeroAngulo.anchor.x = -0.25;
     //Permite arrastrar con el mouse, el "true" hace que el centro del
     //objeto quede en donde se tiene el mouse
     numeroAngulo.input.enableDrag(true);
