@@ -161,7 +161,7 @@ function DetectarPerdida() {
 //Perder por No llegar en tiempo correspondiente
     if (limiteDeTiempo != Infinity){
         if (((limiteDeTiempo + 1) == tiempo)&&(!(ChequearOverlap(player,salida)))) {
-	    player.body.velocity.x = 0;
+            player.body.velocity.x = 0;
             player.animations.stop();
             player.frame = 4;
             animacionCirculoIniciada = true;

@@ -214,6 +214,7 @@ function gameOver(texto){
     }
     gameOverText.angle = -5;
     cuadroVictoria.push(gameOverText);
+    stopTimerPuerta();
 }
 
 // /**

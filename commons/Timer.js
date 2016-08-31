@@ -117,6 +117,11 @@ function actualizarTimerPuerta() {
                 if (ListaDeDatos[i].tipo == "tiempo"){
                     tiempoR = ListaDeDatos[i].fantasma.text;
                     tiempoR--;
+                    // Si el timer se vuelve negativo se queda en 0
+                    if (tiempoR < 0) {
+                        tiempoR = 0;
+                    }
+                    
                     if (tiempoR % 2 != 0)
                     {
                         Tick.play();
