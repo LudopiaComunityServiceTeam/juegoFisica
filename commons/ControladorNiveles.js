@@ -153,7 +153,7 @@ function DetectarPerdida() {
             player.animations.stop();
             player.frame = 4;
             if (!explosion){
-                gameOver("Auch!");
+                gameOver("AUCH!");
             }
         }
     }
@@ -166,7 +166,7 @@ function DetectarPerdida() {
             player.frame = 4;
             animacionCirculoIniciada = true;
             if (!explosion){
-                gameOver("Tiempo!");
+                gameOver("TIEMPO!");
             }
         }
     }
@@ -245,13 +245,13 @@ function gameOver(texto){
     cuadroVictoria.push(CrearBotonRepetirNivel());
 
     var gameOverText;
-    if (texto == "Auch!"){
-        gameOverText = AñadirTextoMarcador(320,125,texto,colorTiempo,48);
+    if (texto == "AUCH!"){
+        gameOverText = AñadirTextoStencil(320,130,texto,colorTiempo,60);
     }
     else{
-        gameOverText = AñadirTextoMarcador(300,125,texto,colorTiempo,48);
+        gameOverText = AñadirTextoStencil(300,130,texto,colorTiempo,60);
     }
-    gameOverText.angle = -5;
+    gameOverText.angle = -4;
     cuadroVictoria.push(gameOverText);
     stopTimerPuerta();
 }
@@ -283,7 +283,6 @@ function resetGame(){
         player.body.velocity.x = 0;
     }
     salida.frame = 0;
-    // gameOverDestroy();
     if (explosion){
         cabeza.destroy();
         cuerpo.destroy();
