@@ -166,14 +166,20 @@ function AñadirTexto(x,y,texto,color,tamanno){
 
 }
 
-function ResaltarDudas(){
-    if (!clickedPista){
-        ResaltadorPista = game.add.sprite(botonPistas.x+25, botonPistas.y+25, 'rectanguloPista');
-        ResaltadorPista.anchor.setTo(0.5,0.5)
-        dudas = true;
-    }
-}
-
+/**
+* Funcion que agrega un texto en el juego con estilo de marcador
+* permanente.
+*
+* @param x: posicion en el eje x
+* @param y: posicion en el eje x
+* @param texto: texto a escribir en pantalla
+* @param color: color del texto
+* @param tamanno: tamaño de la fuente del texto
+*
+* @return text: el texto con las características de los
+* argumentos.
+*
+*/
 function AñadirTextoMarcador(x,y,texto,color,tamanno){
     var text = game.add.text(x, y, texto);
     text.fill = color;
@@ -182,130 +188,6 @@ function AñadirTextoMarcador(x,y,texto,color,tamanno){
     text.align = 'center';
     return text;
 
-}
-
-/**
-* Funcion que muestra el sprite de finalizar el juego
-* y reproduce el sonido correspondiente.
-*
-*/
-function gameOver(texto){
-
-    Explotar();
-    pausar();
-    var hoja = game.add.sprite(100,50,'pedazoHoja');
-    hoja.scale.setTo(0.6,0.6);
-    cuadroVictoria.push(hoja);
-    var sello = AñadirTextoMarcador(490,225,'0',colorTiempo,70);
-    sello.angle = -25;
-    cuadroVictoria.push(sello);
-    var subrayar = AñadirTextoMarcador(500,245,'_',colorTiempo,70);
-    subrayar.angle = -25;
-    cuadroVictoria.push(subrayar);
-    cuadroVictoria.push(CrearBotonRepetirNivel());
-    // victoria = game.add.sprite(235,120,'victoria');
-    // victoria.scale.setTo(0.5,0.5)
-    // cuadroVictoria.push(victoria);
-
-    if (texto == "Auch!"){
-        gameOverText = AñadirTextoMarcador(320,125,texto,colorTiempo,48);
-    }
-    else{
-        gameOverText = AñadirTextoMarcador(300,125,texto,colorTiempo,48);
-    }
-    gameOverText.angle = -5;
-    cuadroVictoria.push(gameOverText);
-    stopTimerPuerta();
-}
-
-// /**
-// * Funcion que quita el fin de juego de la pantalla
-// *
-// */
-// function gameOverDestroy(){
-//     if (!(postIt==null)&&!(gameOverText==null)){
-//         if((postIt.alive)||(gameOverText.alive)){
-//             postIt.kill();
-//             reintentarText.kill();
-//             gameOverText.destroy();
-//         }
-//     }
-// }
-
-/**
-* Funcion que reinicia el juego.
-*
-*/
-function resetGame(){
-    Reset.play();
-    //Detenemos el timer
-    stopTimer();
-    resetTimerSinTexto();
-    stopTimerPuerta();
-    resetTimerPuerta();
-    //y soltamos el boton
-    RestaurarObstaculos();
-    PlayButton.frame = 0;
-    clicked = false;
-    impulsado = false;
-    salidaAbierta = false;
-    epilogoCorriendo = false;
-    game.add.tween(player.body).to( { x: posInicXPlayer , y:posInicYPlayer}, 1, Phaser.Easing.Linear.None, true);
-    if (!player.alive){
-        player.reset(posInicXPlayer,posInicYPlayer);
-    }
-    else{
-        player.body.velocity.y = 0;
-        player.body.velocity.x = 0;
-    }
-    salida.frame = 0;
-    // gameOverDestroy();
-    if (explosion){
-        cabeza.destroy();
-        cuerpo.destroy();
-        brazoI.destroy();
-        brazoD.destroy();
-        piernaI.destroy();
-        piernaD.destroy();
-        explosion = false;
-    }
-    quitarPausa();
-}
-
-
-
-/**
-* Funcion reinicia todas la variables involucradas
-* en el juego.
-*
-*/
-function resetVariables(){
-    //resetea las variables del nivel para que al iniciar el nuevo
-    //nivel no se traigan variables del nivel anterior
-    clicked = false;
-    magnitudJugador = 0;
-    direccion = 1;
-    angulo = 0;
-    impulsado = false;
-    tieneDistancia = false;
-    tieneTiempo = false;
-    postIt = null;
-    gameOverText = null;
-    listaDeVectores = [];
-    listaDeNumeros = [];
-    listaDeEspinas = [];
-    listaDeAngulos = [];
-    ListaDeDatos = [];
-    ListaDeCiclos = []
-    cuadroVictoria = [];
-    inicio = [];
-    cuadroPista = [];
-    resaltadores = [];
-    indice = 0;
-    menuFinalNivelDesplegado = false;
-
-    salidaAbierta = false;
-    epilogoCorriendo = false;
 }
 
 /**

@@ -192,27 +192,133 @@ function ControlarNivel() {
     }
 }
 function MenuFinalNivel() {
-    
-    pausar();
-    hoja = game.add.sprite(100,50,'pedazoHoja');
+
+    inhabilitarJugar();
+    var hoja = game.add.sprite(100,50,'pedazoHoja');
     hoja.scale.setTo(0.6,0.6);
     cuadroVictoria.push(hoja);
-    sello = game.add.sprite(370,295, 'sello');
+    var sello = game.add.sprite(370,295, 'sello');
     sello.scale.setTo(0.5, 0.5);
     cuadroVictoria.push(sello);
     cuadroVictoria.push(CrearBotonContinuar());
     cuadroVictoria.push(CrearBotonRepetirNivel());
-    victoria = game.add.sprite(235,120,'victoria');
+    var victoria = game.add.sprite(235,120,'victoria');
     victoria.scale.setTo(0.5,0.5)
     cuadroVictoria.push(victoria);
 
 }
+
 function ReiniciarNivel() {
     menuFinalNivelDesplegado = false;
     for (i = 0; i < cuadroVictoria.length; i++){
         cuadroVictoria[i].destroy();
     }
     resetGame();
+}
+
+/**
+* Funcion que muestra el sprite de finalizar el juego
+* y reproduce el sonido correspondiente.
+*
+*/
+function gameOver(texto){
+
+    Explotar();
+    inhabilitarJugar();
+    var hoja = game.add.sprite(100,50,'pedazoHoja');
+    hoja.scale.setTo(0.6,0.6);
+    cuadroVictoria.push(hoja);
+    var sello = AñadirTextoMarcador(490,225,'0',colorTiempo,70);
+    sello.angle = -25;
+    cuadroVictoria.push(sello);
+    var subrayar = AñadirTextoMarcador(500,245,'_',colorTiempo,70);
+    subrayar.angle = -25;
+    cuadroVictoria.push(subrayar);
+    cuadroVictoria.push(CrearBotonRepetirNivel());
+
+    var gameOverText;
+    if (texto == "Auch!"){
+        gameOverText = AñadirTextoMarcador(320,125,texto,colorTiempo,48);
+    }
+    else{
+        gameOverText = AñadirTextoMarcador(300,125,texto,colorTiempo,48);
+    }
+    gameOverText.angle = -5;
+    cuadroVictoria.push(gameOverText);
+    stopTimerPuerta();
+}
+
+/**
+* Funcion que reinicia el juego.
+*
+*/
+function resetGame(){
+    Reset.play();
+    //Detenemos el timer
+    stopTimer();
+    resetTimerSinTexto();
+    stopTimerPuerta();
+    resetTimerPuerta();
+    //y soltamos el boton
+    RestaurarObstaculos();
+    PlayButton.frame = 0;
+    clicked = false;
+    impulsado = false;
+    salidaAbierta = false;
+    epilogoCorriendo = false;
+    game.add.tween(player.body).to( { x: posInicXPlayer , y:posInicYPlayer}, 1, Phaser.Easing.Linear.None, true);
+    if (!player.alive){
+        player.reset(posInicXPlayer,posInicYPlayer);
+    }
+    else{
+        player.body.velocity.y = 0;
+        player.body.velocity.x = 0;
+    }
+    salida.frame = 0;
+    // gameOverDestroy();
+    if (explosion){
+        cabeza.destroy();
+        cuerpo.destroy();
+        brazoI.destroy();
+        brazoD.destroy();
+        piernaI.destroy();
+        piernaD.destroy();
+        explosion = false;
+    }
+    habilitarJugar();
+}
+
+/**
+* Funcion reinicia todas la variables involucradas
+* en el juego.
+*
+*/
+function resetVariables(){
+    //resetea las variables del nivel para que al iniciar el nuevo
+    //nivel no se traigan variables del nivel anterior
+    clicked = false;
+    magnitudJugador = 0;
+    direccion = 1;
+    angulo = 0;
+    impulsado = false;
+    tieneDistancia = false;
+    tieneTiempo = false;
+    postIt = null;
+    listaDeVectores = [];
+    listaDeNumeros = [];
+    listaDeEspinas = [];
+    listaDeAngulos = [];
+    ListaDeDatos = [];
+    ListaDeCiclos = []
+    cuadroVictoria = [];
+    inicio = [];
+    cuadroPista = [];
+    resaltadores = [];
+    indice = 0;
+    menuFinalNivelDesplegado = false;
+
+    salidaAbierta = false;
+    epilogoCorriendo = false;
 }
 
 function TerminarNivel() {

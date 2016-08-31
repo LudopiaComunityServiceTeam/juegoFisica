@@ -25,7 +25,6 @@ function clickPlay(){
         //y apretamos el boton
         PlayButton.frame = 3;
         clicked = true;
-        // gameOverDestroy();
         // cierraSalida(limiteDeTiempo);
     }
     else{

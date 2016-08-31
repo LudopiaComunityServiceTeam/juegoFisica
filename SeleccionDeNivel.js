@@ -4,7 +4,6 @@ var platforms;
 var plataforma;
 var cursors;
 var postIt;
-var gameOverText;
 var reintentarText;
 var music1;
 var ImagenDivision;
@@ -111,7 +110,7 @@ create: function()
         escribir();
     }
     juegoInicializado = true;
-    console.log(NivelMaximo); 
+    console.log(NivelMaximo);
 },
 
 update: function() {

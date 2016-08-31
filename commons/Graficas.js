@@ -90,6 +90,16 @@ function AnimarMano(inicio,objetivo,offsets){
     }
 }
 
+/**
+* Funcion que resalta las dudas
+*/
+function ResaltarDudas(){
+    if (!clickedPista){
+        ResaltadorPista = game.add.sprite(botonPistas.x+25, botonPistas.y+25, 'rectanguloPista');
+        ResaltadorPista.anchor.setTo(0.5,0.5)
+        dudas = true;
+    }
+}
 
 
 /**
@@ -110,7 +120,7 @@ function resaltarVectores() {
     }
 }
 
-// funcion auxiliar del tutorial que remueve el resaltador y llama a la funcion que se lo pone al jugador 
+// funcion auxiliar del tutorial que remueve el resaltador y llama a la funcion que se lo pone al jugador
 function quitarResaltadorDeVectores(objeto) {
     pararTitilar();
     resaltarJugador();
@@ -172,7 +182,7 @@ function resaltarPlay(){
             }
         }
         if (overlapAlgunVector){
-        
+
             if (!overlap) {
                 overlap = true;
                 pararTitilar();
@@ -191,7 +201,7 @@ function resaltarPlay(){
 }
 
 /**
-* Funcion que crea una nube de pensamiento 
+* Funcion que crea una nube de pensamiento
 *
 */
 function CrearNube(x,y){
@@ -200,11 +210,11 @@ function CrearNube(x,y){
     xnube = x;
     ynube = y;
     nubeCreada = true;
-        
+
 }
 
 /**
-* Funcion que anima la nube de pensamiento para que flote suavemente 
+* Funcion que anima la nube de pensamiento para que flote suavemente
 * Parámetros:
 * x: posición original de la nube en x
 * y: posición original de la nube en y
@@ -243,4 +253,3 @@ function AnimarNube(){
 	    godown = true;
 	}
 }
-
