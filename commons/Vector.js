@@ -185,7 +185,7 @@ function CrearAnguloParaVector(numero,x,y,numeroMostrado) {
 }
 function CrearAnguloParaVectorControlable(numero,x,y,numeroMostrado) {
     var numeroAngulo = CrearAnguloParaVector(numero,x,y,numeroMostrado);
-    numeroMag.fill = colorAngulo;
+    numeroAngulo.fill = colorAngulo;
     //Permite arrastrar con el mouse, el "true" hace que el centro del
     //objeto quede en donde se tiene el mouse
     numeroAngulo.input.enableDrag(true);
