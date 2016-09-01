@@ -5,6 +5,7 @@ function PreCargarRepertorioMusica()
     game.load.audio('jazzFunkThoughts', ['assets/Music/jazzFunkThoughts.ogg','assets/jazzFunkThoughts.mp3']);
     game.load.audio('AnAmazingStart', ['assets/Music/AnAmazingStart.ogg']);
     game.load.audio('Stop_And_Think', ['assets/Music/Stop_And_Think.ogg']);
+    game.load.audio('PaceItUp', ['assets/Music/PaceItUp.ogg']);
 }
 /* PreCarga el repertorio de sonidos completo (Preload)*/
 function PreCargarRepertorioSonido() 
@@ -17,7 +18,6 @@ function PreCargarRepertorioSonido()
     game.load.audio('VectorFit', ['assets/Sounds/VectorFit.ogg']);
     game.load.audio('Tick', ['assets/Sounds/Tick.ogg']);
     game.load.audio('Tock', ['assets/Sounds/Tock.ogg']);
-    
 }
 /* PreCarga el repertorio de musica completo (Create)*/
 function CargarRepertorioMusica() 
@@ -26,6 +26,7 @@ function CargarRepertorioMusica()
     jazzFunkThoughts = game.add.audio('jazzFunkThoughts');
     AnAmazingStart = game.add.audio('AnAmazingStart');
     Stop_And_Think = game.add.audio('Stop_And_Think');
+    PaceItUp = game.add.audio('PaceItUp');
 }
 /* PreCarga el repertorio de sonidos completo (Create)*/
 function CargarRepertorioSonido() 
@@ -63,4 +64,13 @@ function ReproducirMusicaNivel(cancion)
 {
     AnAmazingStart.pause();
     ReproducirLoopAudio(cancion,0.3);
+}
+
+/* Pausa todas las canciones */
+function CallarCancion() 
+{
+    jazzFunkThoughts.pause();
+    AnAmazingStart.pause();
+    Stop_And_Think.pause();
+    PaceItUp.pause();
 }

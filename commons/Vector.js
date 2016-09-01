@@ -40,13 +40,17 @@ function CrearVector(x, y, magnitud, angulo, mostrarCuadro) {
     vector.events.onDragStop.add(pegarVector);
 
     // Cuadro del vector
-    vector.cuadro = CrearCuadroVector(x - 80, y - 180, vector);
+    vector.cuadro = CrearCuadroVector(x, y - 120, vector);
     vector.events.onDragUpdate.add(controlarCuadrosVectores);
     // Ocultar cuadro del vector cuando no se necesite
     if (mostrarCuadro){
         mostrarCuadroVector(vector, vector.cuadro);
         vector.events.onInputDown.add(function(vector){mostrarCuadroVector(vector, vector.cuadro);}, this);
     }
+
+    var bounds = new Phaser.Rectangle(65, 0, 715, 535);
+    vector.input.boundsRect = bounds;
+
     return vector;
 
 }
@@ -68,7 +72,7 @@ function CrearNumeroParaVector(numero,x,y,numeroMostrado) {
 
     var numeroMag;
     //creamos un objeto con forma de número
-    numeroMag = AñadirTexto(x,y,numeroMostrado, colorMagnitud, 48);
+    numeroMag = AñadirTexto(x,y,numeroMostrado, colorTexto, 48);
     numeroMag.anchor.y = -0.4;
     //Permitimos que se le pueda poner input al objeto
     numeroMag.inputEnabled = true;
@@ -82,7 +86,7 @@ function CrearNumeroParaVector(numero,x,y,numeroMostrado) {
 
 function CrearNumeroParaVectorControlable(numero,x,y,numeroMostrado) {
     var numeroMag = CrearNumeroParaVector(numero,x,y,numeroMostrado);
-
+    numeroMag.fill = colorMagnitud;
     //Permite arrastrar con el mouse, el "true" hace que el centro del
     //objeto quede en donde se tiene el mouse
     numeroMag.input.enableDrag(true);
@@ -166,7 +170,7 @@ function CrearAnguloParaVector(numero,x,y,numeroMostrado) {
 
     var numeroAngulo;
     //creamos un objeto con forma de número
-    numeroAngulo = AñadirTexto(x,y,numeroMostrado, colorAngulo, 48);
+    numeroAngulo = AñadirTexto(x,y,numeroMostrado, colorTexto, 48);
     numeroAngulo.anchor.y = -0.4;
     numeroAngulo.anchor.x = -0.25;
 
@@ -181,7 +185,7 @@ function CrearAnguloParaVector(numero,x,y,numeroMostrado) {
 }
 function CrearAnguloParaVectorControlable(numero,x,y,numeroMostrado) {
     var numeroAngulo = CrearAnguloParaVector(numero,x,y,numeroMostrado);
-
+    numeroMag.fill = colorAngulo;
     //Permite arrastrar con el mouse, el "true" hace que el centro del
     //objeto quede en donde se tiene el mouse
     numeroAngulo.input.enableDrag(true);
@@ -303,8 +307,9 @@ function pegarVector(item) {
 function CrearCuadroVector(x,y,vector){
 
     var cuadro = game.add.sprite(x, y, 'cuadroVector');
+    cuadro.anchor.setTo(0.5, 0.5);
 
-    var cerrar = game.add.sprite(140, 0, 'BotonCerrar');
+    var cerrar = game.add.sprite(55, -70, 'BotonCerrar');
     cerrar.scale.setTo(0.5, 0.5);
     cerrar.inputEnabled = true;
     cerrar.events.onInputDown.add(function(cerrar){ocultarCuadroVector(vector, cuadro);}, this);
@@ -358,8 +363,49 @@ function mostrarCuadroVector(vector, cuadro){
 *
 */
 function controlarCuadrosVectores(vector) {
-    vector.cuadro.x = vector.x - 80;
-    vector.cuadro.y = vector.y - 180;
+
+    var rango = 160;
+    var movimiento = 20;
+    var distanciaX = vector.x - vector.cuadro.x;
+    var distanciaY = vector.y - vector.cuadro.y;
+
+    // El cuadro viene de la derecha
+    if (distanciaX <= -rango) {
+        vector.cuadro.x = vector.cuadro.x - movimiento;
+    }
+    else if (distanciaX >= rango) {
+        vector.cuadro.x = vector.cuadro.x + movimiento;
+    }
+
+    // El cuadro viene de arriba
+    if (distanciaY >= rango) {
+        vector.cuadro.y = vector.cuadro.y + movimiento;
+    }
+    else if (distanciaY <= -rango) {
+        vector.cuadro.y = vector.cuadro.y - movimiento;
+    }
+
+    // vector.cuadro.x = vector.x;
+    // vector.cuadro.y = vector.y - 120;
+    // No pasar el borde de la izquierda  del cuaderno
+    if (vector.cuadro.x < 135) {
+        vector.cuadro.x = 135;
+    }
+
+    // No pasar el borde de la derecha del cuaderno
+    if (vector.cuadro.x > 600) {
+        vector.cuadro.x = 600;
+    }
+
+    // No pasar el borde de arriba del cuaderno
+    if (vector.cuadro.y < 70) {
+        vector.cuadro.y = 70;
+    }
+
+    // No pasar el borde de abajo del cuaderno
+    if (vector.cuadro.y > 500) {
+        vector.cuadro.y = 500;
+    }
     centrarValorCuadro(vector.cuadro, vector.cuadro.magnitudEnCuadro, "magnitud");
     centrarValorCuadro(vector.cuadro, vector.cuadro.anguloEnCuadro, "angulo");
 }
@@ -402,33 +448,31 @@ function centrarValorCuadro(cuadro, valor, tipoDeDato){
     switch (tipoDeDato) {
         case "magnitud":
                 if (valor.text < 10){
-                    valor.x = cuadro.x + 30;
+                    valor.x = cuadro.x - 50;
                 }
                 else if (valor.text >= 10 && valor.text < 100){
-                    valor.x = cuadro.x + 25;
+                    valor.x = cuadro.x + 55;
                 }
             break;
         case "angulo":
                 if (valor.text < 10){
-                    valor.x = cuadro.x + 105;
+                    valor.x = cuadro.x + 20;
                 }
                 else if (valor.text >= 10 && valor.text < 100){
-                    valor.x = cuadro.x + 90;
+                    valor.x = cuadro.x + 10;
                 }
                 else {
-                    valor.x = cuadro.x + 80;
+                    valor.x = cuadro.x;
                 }
             break;
 
     }
-    valor.y = cuadro.y + 50;
+    valor.y = cuadro.y - 20;
 }
 /*function actualizarColaVector(){
-
     for (i = 0; i < listaDeVectores.length; i++){
         // Ocultar la magnitud del cuadro
             listaDeVectores[i].cola.x = listaDeVectores[i].x - 18;
             listaDeVectores[i].cola.y = listaDeVectores[i].y - 8.5;
     }
-
 }*/

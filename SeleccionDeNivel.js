@@ -1,9 +1,9 @@
 var player;
 var salida;
 var platforms;
+var plataforma;
 var cursors;
 var postIt;
-var gameOverText;
 var reintentarText;
 var music1;
 var ImagenDivision;
@@ -13,6 +13,8 @@ var ResaltadorPista;
 var textoDuda;
 
 var magnitudJugador;
+var xnube;
+var ynube;
 var direccion = 1;
 var numeroMagnitud;
 var angulo = 0;//(3.1415)/4;
@@ -20,6 +22,7 @@ var posInicXPlayer;
 var posInicYPlayer;
 var limiteDeTiempo;
 var nivelActual = 0;
+var vertical = 0;
 
 var clicked = false;
 var tieneDistancia = false;
@@ -36,6 +39,11 @@ var epilogoCorriendo;
 var explosion = false;
 var dudas = false;
 var pistaEnPantalla;
+var clickedPista = false;
+var goleft = false;
+var goright = true;
+var godown = false;
+var nubeCreada = false;
 
 var listaDeVectores = [];
 var listaDeNumeros = [];
@@ -44,14 +52,18 @@ var listaDeAngulos = [];
 var ListaDeDatos = [];
 var cuadroPista = [];
 var cuadroVictoria = [];
-var niveles = ['SeleccionDeNivel','Nivel1','Nivel2','Nivel3','Nivel4','Nivel5', 'Nivel6', 'Nivel7', 'Nivel8', 'Nivel9', 'Nivel10', 'Nivel11'];
+var niveles = ['SeleccionDeNivel','Nivel1','Nivel2','Nivel3', 'Nivel4','Nivel5','Nivel6', 'Nivel7', 'Nivel8', 'Nivel9', 'Nivel10',  'Nivel11', 'Nivel12', 'Nivel13','Nivel15', 'Nivel14'];
 var resaltadores = [];
+var ListaDeCiclos = []; //objeto a mover, ciclo esta en fase 1 o fase 2, velx, vely, tiempo de cambio en el ciclo
+var ListaDeTiempos = [];
 
 
 var inicio;
 var indice;
 
-
+var ArchivoDeGuardado;
+var NivelMaximo;
+var Nota;
 
 
 var SeleccionDeNivel = {
@@ -71,7 +83,8 @@ preload: function() {
 //es cada imagen del muñequito y que tan alta es, pones el ancho en el primer
 //numero y la altura en el segundo
     if (!juegoInicializado){
-    loadAll();
+        loadAll();
+        loadArchivoGuardado();
     }
 },
 create: function()
@@ -85,6 +98,7 @@ create: function()
 //En Phaser X y Y estan en 0,0 en la esquina superior izquierda y cuentan
 //positivo hasta abajo.
     CrearFondo();
+    CallarCancion();
     CrearSilenciarSonido();
     CargarRepertorioMusica();
     CargarRepertorioSonido();
@@ -96,6 +110,7 @@ create: function()
         escribir();
     }
     juegoInicializado = true;
+    console.log(NivelMaximo);
 },
 
 update: function() {
@@ -110,27 +125,63 @@ update: function() {
 function escribir(){
 
     var text = AñadirTexto(60,10,"Escoge un nivel:",colorTexto,50);
-    text = AñadirTexto(312,150,"1",colorTexto,35);
-    CrearBotonDeNivel(300, 200, 1);
-    text = AñadirTexto(415,150,"2",colorTexto,35);
-    CrearBotonDeNivel(400, 200, 2);
-    text = AñadirTexto(515,150,"3",colorTexto,35);
-    CrearBotonDeNivel(500, 200, 3);
-    text = AñadirTexto(315,250,"4",colorTexto,35);
-    CrearBotonDeNivel(300, 300, 4);
-    text = AñadirTexto(415,250,"5",colorTexto,35);
-    CrearBotonDeNivel(400, 300, 5);
-    text = AñadirTexto(515,250,"6",colorTexto,35);
-    CrearBotonDeNivel(500, 300, 6);
-    text = AñadirTexto(315,350,"7",colorTexto,35);
-    CrearBotonDeNivel(300, 400, 7);
-    text = AñadirTexto(415,350,"8",colorTexto,35);
-    CrearBotonDeNivel(400, 400, 8);
-    text = AñadirTexto(515,350,"9",colorTexto,35);
-    CrearBotonDeNivel(500, 400, 9);
-    text = AñadirTexto(312,450,"10",colorTexto,35);
-    CrearBotonDeNivel(300, 500, 10);
-    text = AñadirTexto(414,450,"11",colorTexto,35);
-    CrearBotonDeNivel(400, 500, 11);
+    text = AñadirTexto(212,60,"1",colorTexto,35);
+    CrearBotonDeNivel(200, 100, 1);
+    if (NivelMaximo >= 2){
+        text = AñadirTexto(315,60,"2",colorTexto,35);
+        CrearBotonDeNivel(300, 100, 2);
+    }
+    if (NivelMaximo >= 3){
+        text = AñadirTexto(415,60,"3",colorTexto,35);
+        CrearBotonDeNivel(400, 100, 3);
+    }
+    if (NivelMaximo >= 4){
+        text = AñadirTexto(515,60,"4",colorTexto,35);
+        CrearBotonDeNivel(500, 100, 4);
+    }
+    if (NivelMaximo >= 5){
+        text = AñadirTexto(615,60,"5",colorTexto,35);
+        CrearBotonDeNivel(600, 100, 5);
+}
+    if (NivelMaximo >= 6){
+        text = AñadirTexto(215,165,"6",colorTexto,35);
+        CrearBotonDeNivel(200, 200, 6);
+}
+    if (NivelMaximo >= 7){
+        text = AñadirTexto(315,165,"7",colorTexto,35);
+        CrearBotonDeNivel(300, 200, 7);
+    }
+    if (NivelMaximo >= 8){
+        text = AñadirTexto(415,165,"8",colorTexto,35);
+        CrearBotonDeNivel(400, 200, 8);
+    }
+    if (NivelMaximo >= 9){
+        text = AñadirTexto(515,165,"9",colorTexto,35);
+        CrearBotonDeNivel(500, 200, 9);
+    }
+    if (NivelMaximo >= 10){
+        text = AñadirTexto(615,165,"10",colorTexto,35);
+        CrearBotonDeNivel(600, 200, 10);
+    }
+    if (NivelMaximo >= 11){
+        text = AñadirTexto(215,265,"11",colorTexto,35);
+        CrearBotonDeNivel(200, 300, 11);
+    }
+    if (NivelMaximo >= 12){
+        text = AñadirTexto(315,265,"12",colorTexto,35);
+        CrearBotonDeNivel(300, 300, 12);
+    }
+    if (NivelMaximo >= 13){
+        text = AñadirTexto(415,265,"13",colorTexto,35);
+        CrearBotonDeNivel(400, 300, 13);
+    }
+    if (NivelMaximo >= 14){
+        text = AñadirTexto(515,265,"14",colorTexto,35);
+        CrearBotonDeNivel(500, 300, 14);
+    }
+    if (NivelMaximo >= 15){
+        text = AñadirTexto(615,265,"15",colorTexto,35);
+        CrearBotonDeNivel(600, 300, 15);
+    }
 
 }

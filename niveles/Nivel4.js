@@ -1,7 +1,7 @@
 var Nivel4 = {
 preload: function() {
 
-
+    game.load.image('rectangulo','assets/rectangulo.png');
 },
 create: function() {
 
@@ -26,18 +26,26 @@ positivo hasta abajo.
 
     CrearBasico();
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
-    CrearBotonPista("La puerta tiene un número ahora\ny es del mismo color que el tiempo,\n¿Qué podrá significar?.\nPiensa bien que velocidad usar o la\n puerta se cerrará...");
-    CrearSalida(610,484);
-    limiteDeTiempo = 3;
-    CrearEspinas(710,440);
+    botonPistas = CrearBotonPista("Los vectores tienen magnitud (azul) que\ncambian su tamaño y rapidez.\n¿Qué sucederá si colocas una magnitud \nen el cuadro del mismo color?.\n¡ Inténtalo !");
+    CrearSalida(610,479);
+    limiteDeTiempo = Infinity;
     vector = CrearVector(400,300,0,0, true);
     posInicXPlayer = 50;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
-    numeroMagnitud = CrearNumeroParaVectorControlable(600,550,300,6);
+    numeroMagnitud = CrearNumeroParaVectorControlable(100,550,300,1);
     numeroMagnitud = CrearNumeroParaVectorControlable(300,650,300,3);
-    numeroMagnitud = CrearNumeroParaVectorControlable(200,750,300,2);
-    CrearDato(3,610,510,3,"tiempo");
+    numeroMagnitud = CrearNumeroParaVectorControlable(500,750,300,5);
+    CrearMano(listaDeNumeros[0].x -55 , listaDeNumeros[0].y + 25);
+    inicio = listaDeNumeros;
+    indice = 0;
+    // informacion sobre la magnitud
+    //info = "Un vector tiene magnitud, que\n es un valor asociado a una\n propiedad física y que cambia\n la intensidad del mismo";
+    //AñadirTexto(60, 60, info, colorTexto, 24);
+
+    tutorial();
+    //Variable para controlar el titilar del boton play
+    overlap = false;
 },
 
 update: function() {
@@ -47,5 +55,12 @@ update: function() {
 
     ControlJugador();
     ControlarNivel();
+    if (!(listaDeNumeros[0] === undefined && listaDeNumeros[0] === undefined)) {
+//    console.log("MAYONESA: " + listaDeNumeros)
+        AnimarMano(inicio,listaDeVectores[0].cuadro,[-55,25,-40,+60]);
+    }
+
+    //Parte del tutorial
+    resaltarPlay();
 }
 };

@@ -40,16 +40,21 @@ function epilogoNivel(){
     if (!tiempoStart){
         startTimer();
         startTimerPuerta();
-        console.log("WACHU");
     }else {
         if (tiempo == 1){
             if(!menuFinalNivelDesplegado){
                 MenuFinalNivel();
+                saveArchivoGuardado();
                 menuFinalNivelDesplegado = true;
             }
         }
         else {
             actualizarTimerSinTexto();
+
+            if (salida.animations.currentAnim.currentFrame.index == 2){
+                player.kill();
+            }
+
 	}
     }
 }
@@ -72,7 +77,30 @@ function DetectarVictoria() {
             stopTimer();
             stopTimerPuerta();
             resetTimerSinTexto();
-            player.kill();
+            //player.kill();
+        }
+    }
+}
+
+/**
+* Funcion que detecta si se gano un nivel
+*
+*/
+function ManejarObstaculos() {
+
+    //Detectar si el personaje toca la salida
+    if (ListaDeCiclos.length != 0){
+        for (i = 0; i < ListaDeCiclos.length; i++){
+            var ciclo = ListaDeCiclos[i];
+            CicloMovimientoSimple(ciclo[0][0],ciclo[1],ciclo[2],ciclo[3]);
+            if (ciclo[5]== null){
+                ciclo[5] = 0;
+            }
+            if (((tiempo % ciclo[4] ) == 0)&&(ciclo[5]!=tiempo)){
+                var faseCiclo = ciclo[1]
+                ciclo[1] = !(faseCiclo)
+                ciclo[5] = tiempo;
+            }
         }
     }
 }
@@ -96,6 +124,9 @@ function DetectarAnimaciones() {
     if (dudas){
         AnimarPista();
     }
+    if (nubeCreada){
+	AnimarNube();
+    }
 }
 
 /**
@@ -117,12 +148,12 @@ function DetectarPerdida() {
 
 //Perder por tocar una espina
     for (i = 0; i < listaDeEspinas.length; i++){
-        if (ChequearOverlap(player,listaDeEspinas[i])) {
+        if (ChequearOverlap(player,listaDeEspinas[i][0])) {
             player.body.velocity.x = 0;
             player.animations.stop();
             player.frame = 4;
             if (!explosion){
-                gameOver("Auch!");
+                gameOver("AUCH!");
             }
         }
     }
@@ -130,12 +161,12 @@ function DetectarPerdida() {
 //Perder por No llegar en tiempo correspondiente
     if (limiteDeTiempo != Infinity){
         if (((limiteDeTiempo + 1) == tiempo)&&(!(ChequearOverlap(player,salida)))) {
-	    player.body.velocity.x = 0;
+            player.body.velocity.x = 0;
             player.animations.stop();
             player.frame = 4;
             animacionCirculoIniciada = true;
             if (!explosion){
-                gameOver("Tiempo!");
+                gameOver("TIEMPO!");
             }
         }
     }
@@ -153,6 +184,7 @@ function ControlarNivel() {
             ManejarPuerta();
             DetectarPerdida();
             DetectarVictoria();
+            ManejarObstaculos();
         }
         else{
             epilogoNivel();
@@ -160,22 +192,140 @@ function ControlarNivel() {
     }
 }
 function MenuFinalNivel() {
-    hoja = game.add.sprite(200,100,'pedazoHoja');
+
+    inhabilitarJugar();
+    var filtroBlanco = game.add.sprite(0,0,'fondoBlanco');
+    filtroBlanco.alpha = 0.5;
+    filtroBlanco.scale.setTo(5,2);
+    cuadroVictoria.push(filtroBlanco);
+    var hoja = game.add.sprite(100,50,'pedazoHoja');
     hoja.scale.setTo(0.6,0.6);
     cuadroVictoria.push(hoja);
-    sello = game.add.sprite(300,150, 'sello');
+    var sello = game.add.sprite(370,295, 'sello');
     sello.scale.setTo(0.5, 0.5);
     cuadroVictoria.push(sello);
     cuadroVictoria.push(CrearBotonContinuar());
-
+    cuadroVictoria.push(CrearBotonRepetirNivel());
+    var victoria = game.add.sprite(235,120,'victoria');
+    victoria.scale.setTo(0.5,0.5)
+    cuadroVictoria.push(victoria);
 
 }
+
 function ReiniciarNivel() {
     menuFinalNivelDesplegado = false;
     for (i = 0; i < cuadroVictoria.length; i++){
         cuadroVictoria[i].destroy();
     }
     resetGame();
+}
+
+/**
+* Funcion que muestra el sprite de finalizar el juego
+* y reproduce el sonido correspondiente.
+*
+*/
+function gameOver(texto){
+
+    Explotar();
+    inhabilitarJugar();
+    var filtroBlanco = game.add.sprite(0,0,'fondoBlanco');
+    filtroBlanco.alpha = 0.5;
+    filtroBlanco.scale.setTo(5,2);
+    cuadroVictoria.push(filtroBlanco);
+    var hoja = game.add.sprite(100,50,'pedazoHoja');
+    hoja.scale.setTo(0.6,0.6);
+    cuadroVictoria.push(hoja);
+    var sello = AñadirTextoMarcador(490,225,'0',colorTiempo,70);
+    sello.angle = -25;
+    cuadroVictoria.push(sello);
+    var subrayar = AñadirTextoMarcador(500,245,'_',colorTiempo,70);
+    subrayar.angle = -25;
+    cuadroVictoria.push(subrayar);
+    cuadroVictoria.push(CrearBotonRepetirNivel());
+
+    var gameOverText;
+    if (texto == "AUCH!"){
+        gameOverText = AñadirTextoStencil(320,130,texto,colorTiempo,60);
+    }
+    else{
+        gameOverText = AñadirTextoStencil(300,130,texto,colorTiempo,60);
+    }
+    gameOverText.angle = -4;
+    cuadroVictoria.push(gameOverText);
+    stopTimerPuerta();
+}
+
+/**
+* Funcion que reinicia el juego.
+*
+*/
+function resetGame(){
+    Reset.play();
+    //Detenemos el timer
+    stopTimer();
+    resetTimerSinTexto();
+    stopTimerPuerta();
+    resetTimerPuerta();
+    //y soltamos el boton
+    RestaurarObstaculos();
+    PlayButton.frame = 0;
+    clicked = false;
+    impulsado = false;
+    salidaAbierta = false;
+    epilogoCorriendo = false;
+    game.add.tween(player.body).to( { x: posInicXPlayer , y:posInicYPlayer}, 1, Phaser.Easing.Linear.None, true);
+    if (!player.alive){
+        player.reset(posInicXPlayer,posInicYPlayer);
+    }
+    else{
+        player.body.velocity.y = 0;
+        player.body.velocity.x = 0;
+    }
+    salida.frame = 0;
+    if (explosion){
+        cabeza.destroy();
+        cuerpo.destroy();
+        brazoI.destroy();
+        brazoD.destroy();
+        piernaI.destroy();
+        piernaD.destroy();
+        explosion = false;
+    }
+    habilitarJugar();
+}
+
+/**
+* Funcion reinicia todas la variables involucradas
+* en el juego.
+*
+*/
+function resetVariables(){
+    //resetea las variables del nivel para que al iniciar el nuevo
+    //nivel no se traigan variables del nivel anterior
+    clicked = false;
+    magnitudJugador = 0;
+    direccion = 1;
+    angulo = 0;
+    impulsado = false;
+    tieneDistancia = false;
+    tieneTiempo = false;
+    postIt = null;
+    listaDeVectores = [];
+    listaDeNumeros = [];
+    listaDeEspinas = [];
+    listaDeAngulos = [];
+    ListaDeDatos = [];
+    ListaDeCiclos = []
+    cuadroVictoria = [];
+    inicio = [];
+    cuadroPista = [];
+    resaltadores = [];
+    indice = 0;
+    menuFinalNivelDesplegado = false;
+
+    salidaAbierta = false;
+    epilogoCorriendo = false;
 }
 
 function TerminarNivel() {

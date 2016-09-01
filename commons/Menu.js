@@ -17,6 +17,7 @@ function CrearBotonDeNivel(x,y,nivel){
     button.events.onInputOut.add(outButton, this);
 
 }
+
 /**
 * Funcion que inicia el nivel escogido.
 *
@@ -30,6 +31,11 @@ function SeleccionarNivel(item){
     nivelActual = item.i;
     resetVariables();
 }
+
+/**
+* Funcion que el boton de seleccionar nivel
+*
+*/
 function CrearBotonMenu(){
 
     botonMenu = game.add.sprite(750, 545, 'botonMenu');
@@ -41,6 +47,11 @@ function CrearBotonMenu(){
     botonMenu.events.onInputOut.add(outButton, this);
 
 }
+
+/**
+* Funcion que el boton de reiniciar nivel
+*
+*/
 function CrearBotonReset(){
 
     botonReset = game.add.sprite(150, 275, 'botonResetNivel');
@@ -52,13 +63,41 @@ function CrearBotonReset(){
     botonReset.events.onInputOut.add(outButton, this);
     return botonReset;
 }
+
+/**
+* Funcion que el boton de repetir nivel
+*
+*/
+function CrearBotonRepetirNivel(){
+
+    texto = AñadirTexto(180,200,'Repetir Nivel',colorTexto,35);
+    texto.inputEnabled = true;
+    texto.events.onInputDown.add(ReiniciarNivel, this);
+    cuadroVictoria.push(texto);
+
+    botonRepetir = game.add.sprite(230, 260, 'botonRepetirNivel');
+    botonRepetir.scale.setTo(0.7, 0.7);
+    botonRepetir.frame = 0;
+    botonRepetir.i = 0;
+    botonRepetir.inputEnabled = true;
+    botonRepetir.events.onInputDown.add(ReiniciarNivel, this);
+    botonRepetir.events.onInputOver.add(overButton, this);
+    botonRepetir.events.onInputOut.add(outButton, this);
+    return botonRepetir;
+}
+
+/**
+* Funcion que el boton de siguiente nivel
+*
+*/
 function CrearBotonContinuar(){
 
-    texto = AñadirTexto(300,400,'Siguiente Nivel',colorTexto,35);
+    texto = AñadirTexto(410,200,'Siguiente Nivel',colorTexto,35);
     texto.inputEnabled = true;
     texto.events.onInputDown.add(TerminarNivel, this);
     cuadroVictoria.push(texto);
-    botonContinuar = game.add.sprite(300, 350, 'botonSigNivel');
+
+    botonContinuar = game.add.sprite(425, 245, 'botonSigNivel');
     botonContinuar.frame = 0;
     botonContinuar.i = 0;
     botonContinuar.inputEnabled = true;
@@ -67,6 +106,11 @@ function CrearBotonContinuar(){
     botonContinuar.events.onInputOut.add(outButton, this);
     return botonContinuar;
 }
+
+/**
+* Funcion que el boton de la pista
+*
+*/
 function CrearBotonPista(pista){
 
     botonPista = game.add.sprite(0, 545, 'botonPista');
@@ -81,6 +125,11 @@ function CrearBotonPista(pista){
     return botonPista;
 
 }
+
+/**
+* Funcion que crea el boton de cerrar pista
+*
+*/
 function CrearBotonClose(){
 
     botonClose = game.add.sprite(300, 445, 'botonClose');
@@ -93,6 +142,10 @@ function CrearBotonClose(){
     return botonClose;
 }
 
+/**
+* Funcion que silencia la musica
+*
+*/
 function CrearSilenciarSonido(){
 
     botonClose = game.add.sprite(750, 20, 'botonMute');
@@ -105,17 +158,30 @@ function CrearSilenciarSonido(){
     return botonClose;
 }
 
+/**
+* Funcion que controla la pista
+*
+*/
 function MostrarPista(item){
+    if (!clickedPista){
+        clickedPista = true;
+    }
     if (!pistaEnPantalla){
         dudas = false;
-        ResaltadorPista.destroy();
-        textoDuda.destroy();
+        if (ResaltadorPista != null){
+            ResaltadorPista.destroy();
+        }
         AbrirPista(item);
     }
     else{
         CerrarPista();
     }
 }
+
+/**
+* Funcion que muestra el block de notas con la pista
+*
+*/
 function AbrirPista(boton){
         cuadroPista.push(game.add.sprite(250, 50, 'lienzoPista'));
         cuadroPista.push(AñadirTexto(300,150,"Pista",colorTexto,25));
@@ -126,6 +192,10 @@ function AbrirPista(boton){
         pistaEnPantalla = true;
 }
 
+/**
+* Funcion que oculta el block de notas con la pista
+*
+*/
 function CerrarPista(){
         for (i = 0; i < cuadroPista.length; i++){
             cuadroPista[i].destroy();
@@ -137,9 +207,11 @@ function overButton(item){
 
     item.frame = 1;
 }
+
 function outButton(item){
     item.frame = 0;
 }
+
 function overMuteButton(item){
     if (game.sound.mute){
         item.frame = 2;
@@ -148,6 +220,7 @@ function overMuteButton(item){
         item.frame = 1;
     }
 }
+
 function outMuteButton(item){
     if (game.sound.mute){
         item.frame = 3;
@@ -157,6 +230,10 @@ function outMuteButton(item){
     }
 }
 
+/**
+* Funcion que silencia el sonido
+*
+*/
 function silenciarSonido(item){
     if (game.sound.mute)
     {
@@ -168,9 +245,51 @@ function silenciarSonido(item){
         item.frame = 3;
         game.sound.mute = true;
     }
-    
+
 }
 
+/**
+* Funcion que vuelve a poner el sonido
+*
+*/
 function reanudarSonido(){
     game.sound.mute = false;
+}
+
+/**
+* Funcion que impide mover objetos en el juego
+*
+*/
+function inhabilitarJugar(){
+    for (var i = 0; i < ListaDeDatos.length; i++) {
+        ListaDeDatos[i].input.draggable = false;
+    }
+    for (i = 0; i < listaDeNumeros.length; i++) {
+        listaDeNumeros[i].input.draggable = false;
+    }
+    for (i = 0; i < listaDeAngulos.length; i++) {
+        listaDeAngulos[i].input.draggable = false;
+    }
+    for (i = 0; i < listaDeVectores.length; i++) {
+        listaDeVectores[i].input.draggable = false;
+    }
+}
+
+/**
+* Funcion permite volver a mover los objetos en el juego
+*
+*/
+function habilitarJugar(){
+    for (var i = 0; i < ListaDeDatos.length; i++) {
+        ListaDeDatos[i].input.draggable = true;
+    }
+    for (i = 0; i < listaDeNumeros.length; i++) {
+        listaDeNumeros[i].input.draggable = true;
+    }
+    for (i = 0; i < listaDeAngulos.length; i++) {
+        listaDeAngulos[i].input.draggable = true;
+    }
+    for (i = 0; i < listaDeVectores.length; i++) {
+        listaDeVectores[i].input.draggable = true;
+    }
 }
