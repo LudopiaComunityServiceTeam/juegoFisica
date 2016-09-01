@@ -11,7 +11,7 @@ var WebFontConfig = {
 
     google: {
         // Agregar la fuente de google que se quiere usar...
-        families: ['Indie Flower', 'Permanent Marker', 'Rock Salt']
+        families: ['Indie Flower', 'Permanent Marker', 'Stardos Stencil']
     }
 
 };

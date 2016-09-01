@@ -254,6 +254,32 @@ function AñadirTextoMarcador(x,y,texto,color,tamanno){
 }
 
 /**
+* Funcion que agrega un texto en el juego con estilo de
+* stencil o sello
+*
+* @param x: posicion en el eje x
+* @param y: posicion en el eje x
+* @param texto: texto a escribir en pantalla
+* @param color: color del texto
+* @param tamanno: tamaño de la fuente del texto
+*
+* @return text: el texto con las características de los
+* argumentos.
+*
+*/
+function AñadirTextoStencil(x,y,texto,color,tamanno){
+    var text = game.add.text(x, y, texto);
+    text.fill = color;
+    text.font = 'Stardos Stencil';
+    text.fontSize = tamanno;
+    text.fontWeight = 'normal';
+    text.align = 'center';
+    text.scale.setTo(1,0.8);
+    return text;
+
+}
+
+/**
 * Funcion que determina si dos objetos colisionaron
 *
 * @param Objeto1: objeto con el que se chequeara la colision
