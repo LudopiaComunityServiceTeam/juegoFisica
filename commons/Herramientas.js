@@ -6,6 +6,18 @@ colorAceleracion = "#005ce6";
 colorMagnitud = "#1e3bec";
 colorAngulo = "#9900cc";
 
+function Ciclo(objeto, velsX, velsY, limitesX, limitesY, fase) {
+//Describe los movimientos que debe hacer un objeto, cada argumento
+//Excepto objeto, es una lista, todos deben tener el mismo tamaño,
+//con el primer objeto de cada lista se puede formar un movimiento hasta el punto descrito
+    this.objeto = objeto;
+    this.velsX = velsX;
+    this.velsY = velsY;
+    this.limitesX = limitesX;
+    this.limitesY = limitesY;
+    this.faseInicial = fase;
+    this.fase = fase;
+}
 /**
 * Funcion que crea todo el piso del juego.
 */
@@ -72,17 +84,68 @@ function RestaurarObstaculos(){
     }
     if (ListaDeCiclos.length != 0){
         for (i = 0; i < ListaDeCiclos.length; i++){
-            ListaDeCiclos[i][1] = false;
-            ListaDeCiclos[i][5] = 0;
+            ListaDeCiclos[i].fase = ListaDeCiclos[i].faseInicial;
         }
     }
 }
-function CicloMovimientoSimple(plataforma,regresando,velX,velY) {
-    if (!regresando){
-        MoverObjeto(plataforma,velX,velY)
+function CicloMovimientoSimple(objeto,velX,velY,objetivoX,objetivoY) {
+    if (velX >= 0){
+        if (velY >= 0){
+            if((objeto.y > objetivoY)){
+                console.log("- objeto > objetivo ");
+                console.log("- objetivoY " + objetivoY);
+                return true;
+
+            }
+            else{
+                var xActual = objeto.x;
+                var yActual = objeto.y;
+                objeto.x = xActual + velX;
+                objeto.y = yActual + velY;
+                return false;
+            }
+        }
+        else if (velY < 0){
+            if((objeto.y < objetivoY)){
+                console.log("- objeto < objetivo ");
+                console.log("- objetivoY " + objetivoY);
+                return true;
+            }
+            else{
+                var xActual = objeto.x
+                var yActual = objeto.y
+                objeto.x = xActual + velX
+                objeto.y = yActual + velY
+                return false;
+            }
+        }
+
     }
-    else{
-        MoverObjeto(plataforma,-(velX),-(velY))
+    else if (velX < 0){
+        if (velY >= 0){
+            if((objeto.x < objetivoX)||(objeto.y > objetivoY)){
+                return true;
+            }
+            else{
+                var xActual = objeto.x
+                var yActual = objeto.y
+                objeto.x = xActual + velX
+                objeto.y = yActual + velY
+                return false;
+            }
+        }
+        else if (velY < 0){
+            if((objeto.x < objetivoX)||(objeto.y < objetivoY)){
+                return true;
+            }
+            else{
+                var xActual = objeto.x
+                var yActual = objeto.y
+                objeto.x = xActual + velX
+                objeto.y = yActual + velY
+                return false;
+            }
+        }
     }
 }
 

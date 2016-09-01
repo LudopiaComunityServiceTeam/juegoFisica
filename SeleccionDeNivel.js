@@ -52,9 +52,9 @@ var listaDeAngulos = [];
 var ListaDeDatos = [];
 var cuadroPista = [];
 var cuadroVictoria = [];
-var niveles = ['SeleccionDeNivel','Nivel1','Nivel2','Nivel3', 'Nivel4','Nivel5','Nivel6', 'Nivel7', 'Nivel8', 'Nivel9', 'Nivel10',  'Nivel11', 'Nivel12', 'Nivel13','Nivel15', 'Nivel14'];
+var niveles = ['SeleccionDeNivel','Nivel1','Nivel2','Nivel3', 'Nivel4','Nivel5','Nivel6', 'Nivel7', 'Nivel8', 'Nivel9', 'Nivel10',  'Nivel11', 'Nivel12', 'Nivel13', 'Nivel14', 'Nivel15'];
 var resaltadores = [];
-var ListaDeCiclos = []; //objeto a mover, ciclo esta en fase 1 o fase 2, velx, vely, tiempo de cambio en el ciclo
+var ListaDeCiclos = []; //objetos tipo Ciclo
 var ListaDeTiempos = [];
 
 

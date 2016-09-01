@@ -82,28 +82,7 @@ function DetectarVictoria() {
     }
 }
 
-/**
-* Funcion que detecta si se gano un nivel
-*
-*/
-function ManejarObstaculos() {
 
-    //Detectar si el personaje toca la salida
-    if (ListaDeCiclos.length != 0){
-        for (i = 0; i < ListaDeCiclos.length; i++){
-            var ciclo = ListaDeCiclos[i];
-            CicloMovimientoSimple(ciclo[0][0],ciclo[1],ciclo[2],ciclo[3]);
-            if (ciclo[5]== null){
-                ciclo[5] = 0;
-            }
-            if (((tiempo % ciclo[4] ) == 0)&&(ciclo[5]!=tiempo)){
-                var faseCiclo = ciclo[1]
-                ciclo[1] = !(faseCiclo)
-                ciclo[5] = tiempo;
-            }
-        }
-    }
-}
 
 /**
 * Funcion que detecta si se gano un nivel
@@ -333,4 +312,31 @@ function TerminarNivel() {
     game.state.start(niveles[nivelActual+1]);
     nivelActual = nivelActual + 1;
     resetVariables();
+}
+/**
+* Funcion que detecta si se gano un nivel
+
+*
+*/
+function ManejarObstaculos() {
+
+    //Detectar si el personaje toca la salida
+    if (ListaDeCiclos.length != 0){
+        for (i = 0; i < ListaDeCiclos.length; i++){
+            var ciclo = ListaDeCiclos[i];
+            var faseActual = ciclo.fase;
+            var veloXActual = ciclo.velsX[faseActual]
+            var veloYActual = ciclo.velsY[faseActual]
+            var LimXActual =ciclo.limitesX[faseActual]
+            var LimYActual = ciclo.limitesY[faseActual]
+            if (CicloMovimientoSimple(ciclo.objeto[0],veloXActual,veloYActual,LimXActual,LimYActual)){
+                if (faseActual + 1 >= ciclo.velsX.length){
+                    ciclo.fase = 0;
+                }
+                else{
+                    ciclo.fase = faseActual + 1;
+                }
+            }
+        }
+    }
 }
