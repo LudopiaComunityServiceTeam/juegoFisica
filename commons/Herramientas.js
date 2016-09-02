@@ -249,6 +249,7 @@ function AñadirTextoMarcador(x,y,texto,color,tamanno){
     text.fill = color;
     text.font = 'Permanent Marker';
     text.fontSize = tamanno;
+    text.fontWeight = 'normal';
     text.align = 'center';
     return text;
 
