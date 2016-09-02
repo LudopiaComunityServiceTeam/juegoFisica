@@ -30,7 +30,7 @@ positivo hasta abajo.
     CrearNube(400,366);
     salidaAbierta = false;
     limiteDeTiempo = 3;
-
+    pierdePuntos = 2;
     CrearEspinas(450,440);
     CrearEspinas(450,340);
     CrearEspinas(450,240);

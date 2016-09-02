@@ -31,6 +31,7 @@ positivo hasta abajo.
     CrearEspinas(600,440);
     salidaAbierta = false;
     limiteDeTiempo = 1;
+    pierdePuntos = 1;
     lineaizq = game.add.sprite(110, 470, 'linea');
     lineaizq.scale.setTo(5, 1);
     lineader = game.add.sprite(200, 470, 'linea');

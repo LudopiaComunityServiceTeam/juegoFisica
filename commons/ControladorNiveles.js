@@ -207,6 +207,7 @@ function ReiniciarNivel() {
 function gameOver(texto){
 
     Explotar();
+    actualizarPuntuacion();
     inhabilitarJugar();
     var filtroBlanco = game.add.sprite(0,0,'fondoBlanco');
     filtroBlanco.alpha = 0.5;
@@ -228,7 +229,7 @@ function gameOver(texto){
         gameOverText = AñadirTextoStencil(320,130,texto,colorTiempo,60);
     }
     else{
-        gameOverText = AñadirTextoStencil(300,130,texto,colorTiempo,60);
+        gameOverText = AñadirTextoStencil(280,130,texto,colorTiempo,60);
     }
     gameOverText.angle = -4;
     cuadroVictoria.push(gameOverText);
@@ -312,9 +313,9 @@ function TerminarNivel() {
     nivelActual = nivelActual + 1;
     resetVariables();
 }
+
 /**
 * Funcion que detecta si se gano un nivel
-
 *
 */
 function ManejarObstaculos() {

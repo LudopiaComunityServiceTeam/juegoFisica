@@ -35,53 +35,53 @@ positivo hasta abajo.
     CrearPlataforma(550,320,1,1);
     CrearPlataforma(650,320,1,1);
     limiteDeTiempo = Infinity;
-
+    pierdePuntos = 3;
     CrearEspinas(200,180);
     listaDeEspinas[0][0].anchor.setTo(0.5,0.5);
-    listaDeEspinas[0][0].angle = 270;    
+    listaDeEspinas[0][0].angle = 270;
     ListaDeCiclos.push(new Ciclo(listaDeEspinas[0],[0,0],[2,-2],[500,500],[290,150],1));
 
     CrearEspinas(200,450);
     listaDeEspinas[1][0].anchor.setTo(0.5,0.5);
-    listaDeEspinas[1][0].angle = 90;    
+    listaDeEspinas[1][0].angle = 90;
     ListaDeCiclos.push(new Ciclo(listaDeEspinas[1],[0,0],[-2,2],[500,500],[340,480],1));
 
     CrearEspinas(300,200);
     listaDeEspinas[2][0].anchor.setTo(0.5,0.5);
-    listaDeEspinas[2][0].angle = 270;    
+    listaDeEspinas[2][0].angle = 270;
     ListaDeCiclos.push(new Ciclo(listaDeEspinas[2],[0,0],[2,-2],[500,500],[290,150],1));
 
     CrearEspinas(300,430);
     listaDeEspinas[3][0].anchor.setTo(0.5,0.5);
-    listaDeEspinas[3][0].angle = 90;    
+    listaDeEspinas[3][0].angle = 90;
     ListaDeCiclos.push(new Ciclo(listaDeEspinas[3],[0,0],[-2,2],[500,500],[340,480],1));
 
     CrearEspinas(400,220);
     listaDeEspinas[4][0].anchor.setTo(0.5,0.5);
-    listaDeEspinas[4][0].angle = 270;    
+    listaDeEspinas[4][0].angle = 270;
     ListaDeCiclos.push(new Ciclo(listaDeEspinas[4],[0,0],[2,-2],[500,500],[290,150],1));
 
     CrearEspinas(400,410);
     listaDeEspinas[5][0].anchor.setTo(0.5,0.5);
-    listaDeEspinas[5][0].angle = 90;    
+    listaDeEspinas[5][0].angle = 90;
     ListaDeCiclos.push(new Ciclo(listaDeEspinas[5],[0,0],[-2,2],[500,500],[340,480],1));
     CrearEspinas(500,240);
     listaDeEspinas[6][0].anchor.setTo(0.5,0.5);
-    listaDeEspinas[6][0].angle = 270;    
+    listaDeEspinas[6][0].angle = 270;
     ListaDeCiclos.push(new Ciclo(listaDeEspinas[6],[0,0],[2,-2],[500,500],[290,150],1));
 
     CrearEspinas(500,390);
     listaDeEspinas[7][0].anchor.setTo(0.5,0.5);
-    listaDeEspinas[7][0].angle = 90;    
+    listaDeEspinas[7][0].angle = 90;
     ListaDeCiclos.push(new Ciclo(listaDeEspinas[7],[0,0],[-2,2],[500,500],[340,480],1));
     CrearEspinas(600,260);
     listaDeEspinas[8][0].anchor.setTo(0.5,0.5);
-    listaDeEspinas[8][0].angle = 270;    
+    listaDeEspinas[8][0].angle = 270;
     ListaDeCiclos.push(new Ciclo(listaDeEspinas[8],[0,0],[2,-2],[500,500],[290,150],1));
 
     CrearEspinas(600,370);
     listaDeEspinas[9][0].anchor.setTo(0.5,0.5);
-    listaDeEspinas[9][0].angle = 90;    
+    listaDeEspinas[9][0].angle = 90;
     ListaDeCiclos.push(new Ciclo(listaDeEspinas[9],[0,0],[-2,2],[500,500],[340,480],1));
 
     vector = CrearVector(300, 100, 300, 0, false);
@@ -96,10 +96,9 @@ update: function() {
 //La función update es la responsable de los "frames"
 //Aqui colocamos lo que es movimiento y cambios de variables
 //Se llama sola en forma de loop infinito
-    
+
     ControlJugador();
     ControlarNivel();
     game.debug.bodyInfo(player);
 }
 };
-

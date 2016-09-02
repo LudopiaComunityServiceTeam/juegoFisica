@@ -29,6 +29,7 @@ positivo hasta abajo.
     botonPistas = CrearBotonPista("Los vectores tienen magnitud (azul) que\ncambian su tamaño y rapidez.\n¿Qué sucederá si colocas una magnitud \nen el cuadro del mismo color?.\n¡ Inténtalo !");
     CrearSalida(610,479);
     limiteDeTiempo = Infinity;
+    pierdePuntos = 2;
     vector = CrearVector(400,300,0,0, true);
     posInicXPlayer = 50;
     posInicYPlayer = game.world.height - 110;

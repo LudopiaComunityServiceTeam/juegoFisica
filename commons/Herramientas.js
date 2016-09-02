@@ -31,6 +31,7 @@ function CrearBasico(){
     CrearTimer();
     CrearTimerPuerta();
     CrearSilenciarSonido();
+    crearPuntuacion();
 }
 function CrearPiso() {
 

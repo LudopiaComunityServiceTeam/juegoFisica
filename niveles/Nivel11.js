@@ -31,6 +31,7 @@ positivo hasta abajo.
     CrearSalida(560,479);
     CrearNube(560,545);
     limiteDeTiempo = 2;
+    pierdePuntos = 1;
     lineaizq = game.add.sprite(220, 380, 'linea');
     lineaizq.scale.setTo(20, 1);
     lineader = game.add.sprite(500, 380, 'linea');

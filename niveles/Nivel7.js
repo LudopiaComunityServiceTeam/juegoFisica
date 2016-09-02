@@ -29,6 +29,7 @@ positivo hasta abajo.
     CrearSalida(660,479);
     CrearNube(660,545);
     limiteDeTiempo = 3;
+    pierdePuntos = 2;
     CrearDato(3,675,515,3,"tiempo");
     vector = CrearVector(400,350,0,0, true);
     numeroAngulo = CrearAnguloParaVectorControlable(30,550,140,30);

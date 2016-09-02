@@ -29,6 +29,7 @@ positivo hasta abajo.
     salidaAbierta = false;
     CrearPlataforma(50,320,1,1);
     limiteDeTiempo = Infinity;
+    pierdePuntos = 2;
     vectorPequenno = CrearVector(700,150,300,0, false);
     vectorMediano = CrearVector(700,250,400,0);
     vectorGrande = CrearVector(700,350,500,0);

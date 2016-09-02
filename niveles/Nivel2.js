@@ -29,6 +29,7 @@ positivo hasta abajo.
     CrearSalida(100,479);
     salidaAbierta = false;
     limiteDeTiempo = Infinity;
+    pierdePuntos = 3;
     vectorDer = CrearVector(450,300,300,0, false);
     vectorIzq = CrearVector(350,300,300,180);
     posInicXPlayer = 400;

@@ -1,4 +1,6 @@
 var player;
+var puntuacion;
+var pierdePuntos;
 var salida;
 var platforms;
 var plataforma;
