@@ -180,9 +180,10 @@ function MenuFinalNivel() {
     var hoja = game.add.sprite(100,50,'pedazoHoja');
     hoja.scale.setTo(0.6,0.6);
     cuadroVictoria.push(hoja);
-    var sello = game.add.sprite(370,295, 'sello');
-    sello.scale.setTo(0.5, 0.5);
-    cuadroVictoria.push(sello);
+    ponerPuntuacionEnCuadro(350, 295);
+    // var sello = game.add.sprite(370,295, 'sello');
+    // sello.scale.setTo(0.5, 0.5);
+    // cuadroVictoria.push(sello);
     cuadroVictoria.push(CrearBotonContinuar());
     cuadroVictoria.push(CrearBotonRepetirNivel());
     var victoria = game.add.sprite(235,120,'victoria');
@@ -216,12 +217,7 @@ function gameOver(texto){
     var hoja = game.add.sprite(100,50,'pedazoHoja');
     hoja.scale.setTo(0.6,0.6);
     cuadroVictoria.push(hoja);
-    var sello = AñadirTextoMarcador(490,225,'0',colorTiempo,70);
-    sello.angle = -25;
-    cuadroVictoria.push(sello);
-    var subrayar = AñadirTextoMarcador(500,245,'_',colorTiempo,70);
-    subrayar.angle = -25;
-    cuadroVictoria.push(subrayar);
+    ponerPuntuacionEnCuadro(490, 225);
     cuadroVictoria.push(CrearBotonRepetirNivel());
 
     var gameOverText;

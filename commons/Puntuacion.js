@@ -9,6 +9,10 @@ function crearPuntuacion() {
     puntuacion = AñadirTexto(100 + notaX, notaY, '20', '#00cc00', 42);
 }
 
+/**
+* Funcion que actualiza la puntuacion del nivel
+*
+*/
 function actualizarPuntuacion(){
     var nuevaPuntuacion = puntuacion.text - pierdePuntos;
     if (nuevaPuntuacion > 0){
@@ -17,21 +21,27 @@ function actualizarPuntuacion(){
     else {
         puntuacion.setText(0);
     }
-    colorearPuntuacion();
+    colorearTexto(puntuacion);
 }
 
-function colorearPuntuacion() {
+/**
+* Funcion que pone la puntuacion en el menu final
+*
+*/
+function ponerPuntuacionEnCuadro(x, y) {
+    var sello;
 
-    if (puntuacion.text > 15 && puntuacion.text <= 20){
-        puntuacion.fill = '#00cc00'; // color verde
+    if (puntuacion.text == 20) {
+        sello = AñadirTextoMarcador(x - 12, y, puntuacion.text, colorTiempo, 70);
     }
-    else if (puntuacion.text > 9 && puntuacion.text <= 15) {
-        puntuacion.fill = '#ffcc00'; // color amarillo
+    else {
+        sello = AñadirTextoMarcador(x, y, puntuacion.text, colorTiempo, 70);
     }
-    else if (puntuacion.text > 4 && puntuacion.text <= 9) {
-        puntuacion.fill = '#ff9900'; // color naranja
-    }
-    else if (puntuacion.text >= 0 && puntuacion.text <= 4) {
-        puntuacion.fill = '#ff3333'; //color rojo
-    }
+    colorearTexto(sello);
+    sello.angle = -25;
+    cuadroVictoria.push(sello);
+    var subrayar = AñadirTextoMarcador(x - 5, y + 25, '_', sello.fill, 70);
+    subrayar.scale.setTo(1.5, 1);
+    subrayar.angle = -25;
+    cuadroVictoria.push(subrayar);
 }

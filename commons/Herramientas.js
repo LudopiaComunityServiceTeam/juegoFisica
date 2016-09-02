@@ -281,6 +281,26 @@ function AñadirTextoStencil(x,y,texto,color,tamanno){
 }
 
 /**
+* Funcion que colorea un texto segun su valor
+*
+*/
+function colorearTexto(texto) {
+
+    if (texto.text > 15 && texto.text <= 20){
+        texto.fill = '#00cc00'; // color verde
+    }
+    else if (texto.text > 9 && texto.text <= 15) {
+        texto.fill = '#ffcc00'; // color amarillo
+    }
+    else if (texto.text > 4 && texto.text <= 9) {
+        texto.fill = '#ff9900'; // color naranja
+    }
+    else if (texto.text >= 0 && texto.text <= 4) {
+        texto.fill = '#ff3333'; //color rojo
+    }
+}
+
+/**
 * Funcion que determina si dos objetos colisionaron
 *
 * @param Objeto1: objeto con el que se chequeara la colision
