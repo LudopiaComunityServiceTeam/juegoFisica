@@ -157,8 +157,16 @@ function DetectarPerdida() {
 *
 */
 function ControlarNivel() {
+    if (!clicked){
+        if (!vectorEnContacto){
+            ble();
+        }
+    }
     DetectarAnimaciones();
     if ((clicked)&&(direccion == 1)){
+        if (vectorEnContacto){
+            vectorEnContacto = false
+        }
         if (!(epilogoCorriendo)){
             ManejarPuerta();
             DetectarPerdida();

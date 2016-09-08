@@ -46,6 +46,7 @@ var goleft = false;
 var goright = true;
 var godown = false;
 var nubeCreada = false;
+var vectorEnContacto = false;
 
 var listaDeVectores = [];
 var listaDeNumeros = [];

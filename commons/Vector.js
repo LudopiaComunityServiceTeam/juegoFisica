@@ -118,20 +118,19 @@ function checkMagnitudInVector(item) {
         if (ChequearOverlap(item,listaDeVectores[i].cuadro)) {
             // Ocultar la magnitud inicial
             listaDeVectores[i].cuadro.magnitudInicial.visible = false;
-
+            // Centrar en el cuadro izquierdo al numero movido
             centrarValorCuadro(listaDeVectores[i].cuadro, item, "magnitud");
-
-            // Actualizar vector y jugador
+            // La magnitud del vector se convierte en la magnitud del numero
             listaDeVectores[i].magnitud = item.numero;
+            // Se hace un sonido
             VectorFit.play();
+            // Se cambia el tamaño del vector
             escalarVector(listaDeVectores[i], item.numero);
-            if (ChequearOverlap(listaDeVectores[i],player)||(ChequearOverlap(player,listaDeVectores[i].cola))){
-                magnitudJugador = listaDeVectores[i].magnitud;
-            }
-
-            // Devolver la magnitud que estaba en el cuadro a su posicion inicial
-            // si la magnitud que colisiono es diferente a la que estaba en cuadro
+            RevisarContactoJugadorVector(i);
             if (item != listaDeVectores[i].cuadro.magnitudEnCuadro) {
+            // Si la magnitud que colisiono es diferente a la que estaba en cuadro
+            // devolver la magnitud que estaba en el cuadro a su posicion inicial
+
                 listaDeVectores[i].cuadro.magnitudEnCuadro.x = listaDeVectores[i].cuadro.magnitudEnCuadro.posXInit;
                 listaDeVectores[i].cuadro.magnitudEnCuadro.y = listaDeVectores[i].cuadro.magnitudEnCuadro.posYInit;
                 // La magnitud movida se encuentra en cuadro
@@ -148,9 +147,7 @@ function checkMagnitudInVector(item) {
             // Actualizar vector y jugador
             listaDeVectores[i].magnitud = listaDeVectores[i].cuadro.magnitudInicial.numero;
             escalarVector(listaDeVectores[i], listaDeVectores[i].magnitud);
-            if (ChequearOverlap(listaDeVectores[i],player)||(ChequearOverlap(player,listaDeVectores[i].cola))){
-                magnitudJugador = listaDeVectores[i].magnitud;
-            }
+            RevisarContactoJugadorVector(i);
         }
     }
 }
@@ -224,9 +221,7 @@ function checkAnguloInVector(item) {
             listaDeVectores[i].angulo = item.numero;
             VectorFit.play();
             listaDeVectores[i].angle = ConvertirAngulo(item.numero);
-            if (ChequearOverlap(listaDeVectores[i],player)||(ChequearOverlap(player,listaDeVectores[i].cola))){
-                angulo = listaDeVectores[i].angulo;
-            }
+            RevisarContactoJugadorVector(i);
 
             // Devolver el angulo que estaba en el cuadro a su posicion inicial
             // si el angulo que colisiono es diferente a la que estaba en cuadro
@@ -247,9 +242,7 @@ function checkAnguloInVector(item) {
             // Actualizar vector y jugador
             listaDeVectores[i].angulo = listaDeVectores[i].cuadro.anguloInicial;
             listaDeVectores[i].angle = ConvertirAngulo(listaDeVectores[i].angulo);
-            if (ChequearOverlap(listaDeVectores[i],player)||(ChequearOverlap(player,listaDeVectores[i].cola))){
-                angulo = listaDeVectores[i].angulo;
-            }
+            RevisarContactoJugadorVector(i);
         }
     }
 }
@@ -470,10 +463,17 @@ function centrarValorCuadro(cuadro, valor, tipoDeDato){
     }
     valor.y = cuadro.y - 20;
 }
-/*function actualizarColaVector(){
+function ble(){
     for (i = 0; i < listaDeVectores.length; i++){
-        // Ocultar la magnitud del cuadro
-            listaDeVectores[i].cola.x = listaDeVectores[i].x - 18;
-            listaDeVectores[i].cola.y = listaDeVectores[i].y - 8.5;
+        RevisarContactoJugadorVector(i)
     }
-}*/
+}
+function RevisarContactoJugadorVector(i){
+    if (ChequearOverlap(listaDeVectores[i],player)){
+        //Si un vector toca a un jugador entonces
+        //la magnitud del jugador se convierte en la del vector
+        magnitudJugador = listaDeVectores[i].magnitud;
+        angulo = listaDeVectores[i].angulo;
+        vectorEnContacto = true
+    }
+}
