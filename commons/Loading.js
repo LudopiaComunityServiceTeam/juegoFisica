@@ -32,7 +32,7 @@ function saveArchivoGuardado(){
         NivelMaximo = nivelActual + 1;
         console.log("no habia un salvado previo, salve");
         ArchivoDeGuardado = { Nivel: NivelMaximo,
-	                          Nota: puntuacion};
+	                          Nota: puntuacion.text};
         localStorage.setItem("Guardado", JSON.stringify(ArchivoDeGuardado));
         console.log("Nivel maximo: " + NivelMaximo);
         console.log("Nota: " + NivelMaximo);
@@ -44,7 +44,7 @@ function saveArchivoGuardado(){
             puntuacion = ArchivoDeGuardado.Nota;
         }
         ArchivoDeGuardado = { Nivel: NivelMaximo,
-	                          Nota: puntuacion};
+	                          Nota: puntuacion.text};
         localStorage.setItem("Guardado", JSON.stringify(ArchivoDeGuardado));
         console.log("Nivel maximo: " + NivelMaximo);
         console.log("Nota: " + NivelMaximo);
