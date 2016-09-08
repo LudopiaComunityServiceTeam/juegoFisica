@@ -27,12 +27,37 @@ positivo hasta abajo.
     CrearBasico();
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     botonPistas = CrearBotonPista("Los vectores tienen magnitud (azul) que\ncambian su tamaño y rapidez.\n¿Qué sucederá si colocas una magnitud \nen el cuadro del mismo color?.\n¡ Inténtalo !");
-    CrearSalida(610,479);
+    CrearPlataforma(50,300,1,1)
+    CrearPlataforma(350,400,1,1)
+    CrearPlataforma(650,500,1,1)
+    CrearSalida(700,442);
+    CrearEspinas(350,200);
+    CrearEspinas(100,512);
+    listaDeEspinas[1][0].anchor.setTo(0.5, 0.5);
+    listaDeEspinas[1][0].angle = 90;
+    CrearEspinas(200,512);
+    listaDeEspinas[2][0].anchor.setTo(0.5, 0.5);
+    listaDeEspinas[2][0].angle = 90;
+    CrearEspinas(300,512);
+    listaDeEspinas[3][0].anchor.setTo(0.5, 0.5);
+    listaDeEspinas[3][0].angle = 90;
+    CrearEspinas(400,512);
+    listaDeEspinas[4][0].anchor.setTo(0.5, 0.5);
+    listaDeEspinas[4][0].angle = 90;
+    CrearEspinas(500,512);
+    listaDeEspinas[5][0].anchor.setTo(0.5, 0.5);
+    listaDeEspinas[5][0].angle = 90;
+    CrearEspinas(600,512);
+    listaDeEspinas[6][0].anchor.setTo(0.5, 0.5);
+    listaDeEspinas[6][0].angle = 90;
+    CrearPared(400,200);
+    CrearPared(400,100);
+    CrearPared(400,000);
     limiteDeTiempo = Infinity;
     pierdePuntos = 2;
-    vector = CrearVector(400,300,0,0, true);
+    vector = CrearVector(600,250,0,0, true);
     posInicXPlayer = 50;
-    posInicYPlayer = game.world.height - 110;
+    posInicYPlayer = game.world.height - 350;
     CrearJugador(posInicXPlayer, posInicYPlayer);
     numeroMagnitud = CrearNumeroParaVectorControlable(100,550,300,1);
     numeroMagnitud = CrearNumeroParaVectorControlable(300,650,300,3);
@@ -57,8 +82,7 @@ update: function() {
     ControlJugador();
     ControlarNivel();
     if (!(listaDeNumeros[0] === undefined && listaDeNumeros[0] === undefined)) {
-//    console.log("MAYONESA: " + listaDeNumeros)
-        AnimarMano(inicio,listaDeVectores[0].cuadro,[-55,25,-40,+60]);
+        AnimarMano(inicio,listaDeVectores[0].cuadro,[-55,25,-140,0]);
     }
 
     //Parte del tutorial

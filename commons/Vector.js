@@ -50,6 +50,7 @@ function CrearVector(x, y, magnitud, angulo, mostrarCuadro) {
 
     var bounds = new Phaser.Rectangle(65, 0, 715, 535);
     vector.input.boundsRect = bounds;
+    game.world.bringToTop(vector);
 
     return vector;
 

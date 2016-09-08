@@ -7,6 +7,8 @@ colorMagnitud = "#1e3bec";
 colorAngulo = "#9900cc";
 
 function Ciclo(objeto, velsX, velsY, limitesX, limitesY, fase) {
+//Esto es la declaracion de un objeto llamado Ciclo
+
 //Describe los movimientos que debe hacer un objeto, cada argumento
 //Excepto objeto, es una lista, todos deben tener el mismo tamaño,
 //con el primer objeto de cada lista se puede formar un movimiento hasta el punto descrito
@@ -44,17 +46,6 @@ function CrearPiso() {
     // Para que el piso no sea afectado por la gravedad le agregamos
     // esta propiedad
     piso.body.immovable = true;
-}
-
-/**
-* Funcion que crea dos plataformas flotantes.
-*/
-
-function CrearPlataformas() {
-
-    CrearPlataforma(400,400);
-
-    CrearPlataforma(-150,200);
 }
 
 /**
@@ -312,6 +303,7 @@ function colorearTexto(texto) {
 function ChequearOverlap(Objeto1,Objeto2){
 
     if((Objeto1.cola == null)) {
+
         var boundsA = Objeto1.getBounds();
         var boundsB = Objeto2.getBounds();
 
