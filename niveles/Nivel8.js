@@ -27,20 +27,30 @@ positivo hasta abajo.
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     botonPistas = CrearBotonPista("Todo lo que sube tiene que caer...\n¡Escoge la rapidez correcta!");
     CrearSalida(400,300);
-    CrearNube(400,366);
+    CrearNube(390,256,410,296);
     salidaAbierta = false;
     limiteDeTiempo = 3;
     pierdePuntos = 2;
     CrearEspinas(450,440);
+    pared = CrearPared(500,440);
     CrearEspinas(450,340);
+    pared = CrearPared(500,340);
     CrearEspinas(450,240);
+    pared = CrearPared(500,240);
     CrearEspinas(450,140);
+    pared = CrearPared(500,140);
     CrearEspinas(450,40);
+    pared = CrearPared(500,40);
     CrearEspinas(350,490);
+    pared = CrearPared(275,440);
     CrearEspinas(350,390);
+    pared = CrearPared(275,340);
     CrearEspinas(350,290);
+    pared = CrearPared(275,240);
     CrearEspinas(350,190);
+    pared = CrearPared(275,140);
     CrearEspinas(350,90);
+    pared = CrearPared(275,40);
     listaDeEspinas[5][0].anchor.setTo(0.5, 0.5);
     listaDeEspinas[5][0].angle = 180;
     listaDeEspinas[6][0].anchor.setTo(0.5, 0.5);
@@ -59,15 +69,15 @@ positivo hasta abajo.
     posInicXPlayer = 400;
     posInicYPlayer = 450;
     CrearJugador(posInicXPlayer, posInicYPlayer);
-    CrearDato(3,415,336,3,"tiempo");
-    numeroAngulo = CrearAnguloParaVectorControlable(90,550,200,90);
+    CrearDato(3,405,226,3,"tiempo");
+    numeroAngulo = CrearAnguloParaVectorControlable(90,390,50,90);
 
     //Datos falsos
-    numeroMagnitud = CrearNumeroParaVectorControlable(600,550,300,6);
-    numeroMagnitud = CrearNumeroParaVectorControlable(500,550,400,5);
+    numeroMagnitud = CrearNumeroParaVectorControlable(600,660,300,6);
+    numeroMagnitud = CrearNumeroParaVectorControlable(500,660,400,5);
 
-    numeroMagnitud = CrearNumeroParaVectorControlable(400,250,300,4);
-    numeroMagnitud = CrearNumeroParaVectorControlable(200,250,400,2);
+    numeroMagnitud = CrearNumeroParaVectorControlable(400,160,300,4);
+    numeroMagnitud = CrearNumeroParaVectorControlable(200,160,400,2);
 
 },
 

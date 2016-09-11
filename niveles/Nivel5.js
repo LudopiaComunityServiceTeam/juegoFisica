@@ -27,19 +27,36 @@ positivo hasta abajo.
     CrearBasico();
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     botonPistas = CrearBotonPista("La puerta tiene un número ahora\ny es del mismo color que el tiempo,\n¿Qué podrá significar?.\nPiensa bien que velocidad usar o la\n puerta se cerrará...");
+    var pared = CrearPared(150,290)
+    pared.angle = 90;
+    pared = CrearPared(250,290)
+    pared.angle = 90;
+    pared = CrearPared(350,290)
+    pared.angle = 90;
+    pared = CrearPared(450,290)
+    pared.angle = 90;
+    pared = CrearPared(550,290)
+    pared.angle = 90;
+    pared = CrearPared(650,290)
+    pared.angle = 90;
+    pared = CrearPared(750,290)
+    pared.angle = 90;
+    pared = CrearPared(750,340)
+    pared = CrearPared(750,440)
+
     CrearSalida(610,479);
-    CrearNube(610,545);
+    CrearNube(600,435,618,475);
     limiteDeTiempo = 3;
     pierdePuntos = 2;
-    CrearEspinas(710,440);
-    vector = CrearVector(400,300,0,0, true);
+    CrearEspinas(700,440);
+    vector = CrearVector(625,250,0,0, true);
     posInicXPlayer = 50;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
-    numeroMagnitud = CrearNumeroParaVectorControlable(600,550,300,6);
-    numeroMagnitud = CrearNumeroParaVectorControlable(300,650,300,3);
-    numeroMagnitud = CrearNumeroParaVectorControlable(200,750,300,2);
-    CrearDato(3,625,515,3,"tiempo");
+    numeroMagnitud = CrearNumeroParaVectorControlable(600,160,125,6);
+    numeroMagnitud = CrearNumeroParaVectorControlable(300,260,125,3);
+    numeroMagnitud = CrearNumeroParaVectorControlable(200,360,125,2);
+    CrearDato(3,615,405,3,"tiempo");
 },
 
 update: function() {

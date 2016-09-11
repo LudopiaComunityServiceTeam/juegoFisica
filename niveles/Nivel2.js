@@ -36,6 +36,7 @@ positivo hasta abajo.
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
     CrearEspinas(600,440);
+    pared = CrearPared(650,440);
     tutorial();
     //Variable para controlar el titilar del boton play
     overlap = false;

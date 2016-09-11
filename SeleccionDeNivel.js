@@ -17,6 +17,8 @@ var textoDuda;
 var magnitudJugador;
 var xnube;
 var ynube;
+var xorigen;
+var yorigen;
 var direccion = 1;
 var numeroMagnitud;
 var angulo = 0;//(3.1415)/4;
