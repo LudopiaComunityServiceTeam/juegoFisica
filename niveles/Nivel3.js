@@ -58,7 +58,8 @@ positivo hasta abajo.
     tutorial();
     //Variable para controlar el titilar del boton play
     overlap = false;
-
+	DetenerCancion();
+    ReproducirLoopAudio(Stop_And_Think,0.3);
 },
 
 update: function() {

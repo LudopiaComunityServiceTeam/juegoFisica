@@ -90,6 +90,8 @@ positivo hasta abajo.
     posInicYPlayer = game.world.height - 350;
     jugador = CrearJugador(posInicXPlayer, posInicYPlayer);
     indice = 0;
+    DetenerCancion();
+    ReproducirLoopAudio(Stop_And_Think,0.3);
 },
 
 update: function() {

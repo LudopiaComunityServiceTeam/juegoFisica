@@ -57,6 +57,8 @@ positivo hasta abajo.
     //Datos falsos
     CrearDato(8,450,330,8,"distancia");
     CrearDato(4,725,515,4,"tiempo");
+    DetenerCancion();
+    ReproducirLoopAudio(Stop_And_Think,0.3);
 
 },
 

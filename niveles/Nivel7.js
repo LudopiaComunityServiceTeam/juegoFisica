@@ -63,6 +63,8 @@ positivo hasta abajo.
     posInicXPlayer = 50;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
+    DetenerCancion();
+    ReproducirLoopAudio(Stop_And_Think,0.3);
     // informacion sobre el angulo
     //info = "Un vector también tiene un \nángulo que define su sentido, \nhacia donde apunta";
     //AñadirTexto(100, 40, info, colorTexto, 24);

@@ -45,6 +45,8 @@ positivo hasta abajo.
     CrearMano(ListaDeDatos[0].x -55 , ListaDeDatos[0].y + 25);
     inicio = ListaDeDatos;
     indice = 0;
+    DetenerCancion();
+    ReproducirLoopAudio(Stop_And_Think,0.3);
 },
 
 update: function() {

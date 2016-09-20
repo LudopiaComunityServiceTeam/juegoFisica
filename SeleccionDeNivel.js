@@ -70,6 +70,7 @@ var ArchivoDeGuardado;
 var NivelMaximo;
 var Nota;
 
+var cancionActual;
 
 var SeleccionDeNivel = {
 preload: function() {
@@ -103,7 +104,7 @@ create: function()
 //En Phaser X y Y estan en 0,0 en la esquina superior izquierda y cuentan
 //positivo hasta abajo.
     CrearFondo();
-    CallarCancion();
+    DetenerCancion();
     CrearSilenciarSonido();
     CargarRepertorioMusica();
     CargarRepertorioSonido();
@@ -112,6 +113,8 @@ create: function()
         game.time.events.add(Phaser.Timer.SECOND/2, escribir, this);
     }
     else{
+		DetenerCancion();
+		ReproducirLoopAudio(jazzFunkThoughts,0.3);
         escribir();
     }
     juegoInicializado = true;

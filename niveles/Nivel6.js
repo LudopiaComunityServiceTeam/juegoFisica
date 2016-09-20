@@ -41,6 +41,8 @@ positivo hasta abajo.
     numeroAngulo = CrearAnguloParaVectorControlable(30,600,300,30);
     numeroAngulo = CrearAnguloParaVectorControlable(60,700,300,60);
     CrearMano(listaDeAngulos[0].x -55 , listaDeAngulos[0].y + 25);
+    DetenerCancion();
+    ReproducirLoopAudio(Stop_And_Think,0.3);
 
     inicio = listaDeAngulos;
     indice = 0;

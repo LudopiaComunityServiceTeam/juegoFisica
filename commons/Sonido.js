@@ -57,6 +57,8 @@ function ReproducirLoopAudio(cancion,volumen)
     cancion.volume = volumen;
     /* Reproducimos el audio */
     cancion.play();
+    /* Guardo la cancion como la actual */
+    cancionActual=cancion;
 }
 
 /* Pausa la cancion de la intro y coloca una nueva cancion para el nivel */
@@ -67,10 +69,7 @@ function ReproducirMusicaNivel(cancion)
 }
 
 /* Pausa todas las canciones */
-function CallarCancion() 
+function DetenerCancion() 
 {
-    jazzFunkThoughts.pause();
-    AnAmazingStart.pause();
-    Stop_And_Think.pause();
-    PaceItUp.pause();
+	cancionActual.pause();
 }

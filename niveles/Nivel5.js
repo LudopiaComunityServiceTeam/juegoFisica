@@ -57,6 +57,8 @@ positivo hasta abajo.
     numeroMagnitud = CrearNumeroParaVectorControlable(300,260,125,3);
     numeroMagnitud = CrearNumeroParaVectorControlable(200,360,125,2);
     CrearDato(3,615,405,3,"tiempo");
+    DetenerCancion();
+    ReproducirLoopAudio(Stop_And_Think,0.3);
 },
 
 update: function() {

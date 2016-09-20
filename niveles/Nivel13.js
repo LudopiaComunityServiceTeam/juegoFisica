@@ -74,7 +74,8 @@ positivo hasta abajo.
     //Datos falsos
     CrearDato(3,215,330,3,"distancia");
     CrearDato(9,215,430,9,"distancia");
-
+	DetenerCancion();
+    ReproducirLoopAudio(Stop_And_Think,0.3);
 },
 
 update: function() {

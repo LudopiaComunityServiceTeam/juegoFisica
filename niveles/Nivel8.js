@@ -78,6 +78,9 @@ positivo hasta abajo.
 
     numeroMagnitud = CrearNumeroParaVectorControlable(400,160,300,4);
     numeroMagnitud = CrearNumeroParaVectorControlable(200,160,400,2);
+    
+    DetenerCancion();
+    ReproducirLoopAudio(Stop_And_Think,0.3);
 
 },
 
