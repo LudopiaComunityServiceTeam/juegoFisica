@@ -57,7 +57,9 @@ var listaDeAngulos = [];
 var ListaDeDatos = [];
 var cuadroPista = [];
 var cuadroVictoria = [];
-var niveles = ['SeleccionDeNivel','Nivel1','Nivel2','Nivel3', 'Nivel4','Nivel5','Nivel6', 'Nivel7', 'Nivel8', 'Nivel9', 'Nivel10',  'Nivel11', 'Nivel12', 'Nivel13', 'Nivel14', 'Nivel15','Nivel16'];
+var niveles = ['SeleccionDeNivel','Nivel1','Nivel2','Nivel3', 'Nivel4','Nivel5','Nivel6', 
+               'Nivel7', 'Nivel8', 'Nivel9', 'Nivel10',  'Nivel11', 'Nivel12', 'Nivel13', 
+               'Nivel14', 'Nivel15','Nivel16','Nivel17','Nivel18'];
 var resaltadores = [];
 var ListaDeCiclos = []; //objetos tipo Ciclo
 var ListaDeTiempos = [];
@@ -136,9 +138,6 @@ function escribir(){
 	text = AñadirTexto(212,60,"1",colorTexto,35);
 	CrearBotonDeNivel(200, 100, 1);
 	
-	text = AñadirTexto(212,365,"16",colorTexto,35);
-	CrearBotonDeNivel(200, 400, 16);
-	
 	if (NivelMaximo >= 2){
 		text = AñadirTexto(315,60,"2",colorTexto,35);
 		CrearBotonDeNivel(300, 100, 2);
@@ -194,6 +193,18 @@ function escribir(){
 	if (NivelMaximo >= 15){
 		text = AñadirTexto(615,265,"15",colorTexto,35);
 		CrearBotonDeNivel(600, 300, 15);
+	}
+	if (NivelMaximo >= 16){
+		text = AñadirTexto(215,365,"16",colorTexto,35);
+		CrearBotonDeNivel(200, 400, 16);
+	}
+	if (NivelMaximo >= 17){
+		text = AñadirTexto(315,365,"17",colorTexto,35);
+		CrearBotonDeNivel(300, 400, 17);
+	}
+	if (NivelMaximo >= 18){
+		text = AñadirTexto(415,365,"18",colorTexto,35);
+		CrearBotonDeNivel(400, 400, 18);
 	}
 	
 

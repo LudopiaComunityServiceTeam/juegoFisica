@@ -24,16 +24,16 @@ positivo hasta abajo.
 /********************************************************************************/
     CrearBasico();
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
-    limiteDeTiempo = 4;
+    limiteDeTiempo = 3;
     
     
     botonPistas = CrearBotonPista("¡Magnitudes y ángulos! Calcula la\ncombinación correcta de ellos para\nllegar a tiempo a la puerta;\nel monigote lo agradecerá.");
     /* Dato Distancia */
-    lineaizq = game.add.sprite(70, 465, 'linea');
+    lineaizq = game.add.sprite(70, 430, 'linea');
     lineaizq.scale.setTo(30, 1);
-    lineader = game.add.sprite(420, 465, 'linea');
+    lineader = game.add.sprite(420, 430, 'linea');
     lineader.scale.setTo(35, 1);
-    CrearDato(10,380,430,10,"distancia");
+    CrearDato(10,380,380,10,"distancia");
     
     
     var posicionPuertaRealX = 750
@@ -81,10 +81,15 @@ positivo hasta abajo.
     listaDeEspinas[0][0].angle = 0;
     listaDeEspinas[1][0].angle = 0;
     
+    CrearEspinas(400,510);
+    listaDeEspinas[2][0].angle = 90;
+    listaDeEspinas[2][0].anchor.setTo(1,1);
+    ListaDeCiclos.push(new Ciclo(listaDeEspinas[2],[0,0],[2,-2],[450,486],[450,100],1));
+    
     vector = CrearVector(400,200,0,0, true);
 
     numeroMagnitud = CrearNumeroParaVectorControlable(600,400,300,6);
-    numeroMagnitud = CrearNumeroParaVectorControlable(100,300,300,1);
+    numeroMagnitud = CrearNumeroParaVectorControlable(500,300,300,5);
     numeroMagnitud = CrearNumeroParaVectorControlable(200,200,300,2);
     
     numeroAngulo = CrearAnguloParaVectorControlable(45,50,350,45);
