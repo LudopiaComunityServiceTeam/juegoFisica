@@ -24,43 +24,40 @@ positivo hasta abajo.
 /********************************************************************************/
     CrearBasico();
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
+    limiteDeTiempo = 2;
+    
+    
     botonPistas = CrearBotonPista("¡Magnitudes y ángulos! Calcula la\ncombinación correcta de ellos para\nllegar a tiempo a la puerta;\nel monigote lo agradecerá.");
-    lineaizq = game.add.sprite(170, 475, 'linea');
-    lineaizq.scale.setTo(7, 1);
-    lineader = game.add.sprite(300, 475, 'linea');
-    lineader.scale.setTo(7, 1);
-    lineaizq2 = game.add.sprite(430, 475, 'linea');
-    lineaizq2.scale.setTo(7, 1);
-    lineader2 = game.add.sprite(550, 475, 'linea');
-    lineader2.scale.setTo(7, 1);
+    /* Dato Distancia */
+    lineaizq = game.add.sprite(270, 475, 'linea');
+    lineaizq.scale.setTo(10, 1);
+    lineader = game.add.sprite(420, 475, 'linea');
+    lineader.scale.setTo(10, 1);
+    CrearDato(5,380,430,5,"distancia");
     
     
     var posicionPuertaRealX = 512
-    var posicionPuertaRealY = 260
+    var posicionPuertaRealY = 340
     
     CrearSalida(posicionPuertaRealX,posicionPuertaRealY);
 
 
-    limiteDeTiempo = 1;
+    
     // Puerta falsa
-    var posicionPuertaFalsa1X = 612
-    var posicionPuertaFalsa1Y = 484
-    salidaFalsa1 = game.add.sprite(posicionPuertaFalsa1X,posicionPuertaFalsa1Y, 'salida');
-
 
     pierdePuntos = 2;
 
-//pared izq
+    // pared izq
 
     pared = CrearPared(200,200);
     pared = CrearPared(200,100);
 
     CrearPlataforma(200,300,1,1);
-    CrearPlataforma(300,300,1,1);
-    CrearPlataforma(500,320,1,1);
+    //CrearPlataforma(300,300,1,1);
+    CrearPlataforma(500,400,1,1);
     
     
-//techo
+    // techo
     techo = CrearPared(150,50);
     techo.angle = 90;
 
@@ -83,8 +80,9 @@ positivo hasta abajo.
     techo.angle = 90;
 
 //pared der
-    pared = CrearPared(550,200);
     pared = CrearPared(550,100);
+    pared = CrearPared(550,200);
+    pared = CrearPared(550,300);
 
     CrearEspinas(100,486);
     CrearEspinas(200,486);
@@ -105,17 +103,12 @@ positivo hasta abajo.
     
     vector = CrearVector(400,200,0,0, true);
 
-    numeroAngulo = CrearAnguloParaVectorControlable(45,200,200,45);
-    numeroAngulo = CrearAnguloParaVectorControlable(180,350,200,180);
-    numeroAngulo = CrearAnguloParaVectorControlable(135,500,200,135);
     numeroMagnitud = CrearNumeroParaVectorControlable(400,400,300,4);
+    numeroMagnitud = CrearNumeroParaVectorControlable(100,300,300,1);
+    numeroMagnitud = CrearNumeroParaVectorControlable(200,200,300,2);
 
     CrearNube(posicionPuertaRealX-10,posicionPuertaRealY-50,posicionPuertaRealX+10,posicionPuertaRealY-10);
-    CrearNube(posicionPuertaFalsa1X-10,posicionPuertaFalsa1Y-50,posicionPuertaFalsa1X+10,posicionPuertaFalsa1Y-10);
-    CrearDato(1,posicionPuertaRealX,posicionPuertaRealY-76,1,"tiempo");
-    CrearDato(3,posicionPuertaFalsa1X,posicionPuertaFalsa1Y-76,3,"tiempo");
-    CrearDato(4,260,430,4,"distancia");
-    CrearDato(4,515,430,4,"distancia");
+    CrearDato(limiteDeTiempo,posicionPuertaRealX,posicionPuertaRealY-76,limiteDeTiempo,"tiempo");
     posInicXPlayer = 260;
     posInicYPlayer = game.world.height - 360;
     CrearJugador(posInicXPlayer, posInicYPlayer);
