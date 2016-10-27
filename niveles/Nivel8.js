@@ -30,7 +30,6 @@ positivo hasta abajo.
     CrearNube(390,256,410,296);
     salidaAbierta = false;
     limiteDeTiempo = 3;
-    pierdePuntos = 2;
     CrearEspinas(450,440);
     pared = CrearPared(500,440);
     CrearEspinas(450,340);
@@ -78,7 +77,7 @@ positivo hasta abajo.
 
     numeroMagnitud = CrearNumeroParaVectorControlable(400,160,300,4);
     numeroMagnitud = CrearNumeroParaVectorControlable(200,160,400,2);
-    
+
     DetenerCancion();
     ReproducirLoopAudio(Stop_And_Think,0.3);
 

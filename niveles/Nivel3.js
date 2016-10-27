@@ -29,7 +29,6 @@ positivo hasta abajo.
     salidaAbierta = false;
     CrearPlataforma(50,320,1,1);
     limiteDeTiempo = Infinity;
-    pierdePuntos = 2;
     vectorPequenno = CrearVector(700,150,300,0, false);
     vectorMediano = CrearVector(700,250,400,0);
     vectorGrande = CrearVector(700,350,500,0);
@@ -39,19 +38,19 @@ positivo hasta abajo.
     CrearEspinas(200,360);
     listaDeEspinas[0][0].anchor.setTo(0.5, 0.5);
     listaDeEspinas[0][0].angle = 90;
-    CrearPlataforma(150,382,1,1)
+    CrearPlataforma(150,382,1,1);
     CrearEspinas(300,400);
     listaDeEspinas[1][0].anchor.setTo(0.5, 0.5);
     listaDeEspinas[1][0].angle = 90;
-    CrearPlataforma(250,422,1,1)
+    CrearPlataforma(250,422,1,1);
     CrearEspinas(400,440);
     listaDeEspinas[2][0].anchor.setTo(0.5, 0.5);
     listaDeEspinas[2][0].angle = 90;
-    CrearPlataforma(350,462,1,1)
+    CrearPlataforma(350,462,1,1);
     CrearEspinas(500,480);
     listaDeEspinas[3][0].anchor.setTo(0.5, 0.5);
     listaDeEspinas[3][0].angle = 90;
-    CrearPlataforma(450,502,1,1)
+    CrearPlataforma(450,502,1,1);
     CrearEspinas(600,514);
     listaDeEspinas[4][0].anchor.setTo(0.5, 0.5);
     listaDeEspinas[4][0].angle = 90;

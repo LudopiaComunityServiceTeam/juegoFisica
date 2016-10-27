@@ -29,11 +29,10 @@ positivo hasta abajo.
     CrearSalida(610,479);
     CrearNube(610,545);
     limiteDeTiempo = 5;
-    pierdePuntos = 2;
     CrearDato(5,620,518,5,"tiempo");
     vector = CrearVector(400,350,400,0, true);
     CrearEspinas(300,440);
-    pared = CrearPared(350,440)
+    pared = CrearPared(350,440);
     posInicXPlayer = 50;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);

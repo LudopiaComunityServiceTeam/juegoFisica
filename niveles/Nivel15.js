@@ -33,27 +33,25 @@ positivo hasta abajo.
     lineaizq2.scale.setTo(7, 1);
     lineader2 = game.add.sprite(550, 475, 'linea');
     lineader2.scale.setTo(7, 1);
-    var posicionPuertaRealX = 512
-    var posicionPuertaRealY = 384
+    var posicionPuertaRealX = 512;
+    var posicionPuertaRealY = 384;
     CrearSalida(posicionPuertaRealX,posicionPuertaRealY);
 
 
     limiteDeTiempo = 1;
     // Puerta falsa
-    var posicionPuertaFalsa1X = 612
-    var posicionPuertaFalsa1Y = 484
+    var posicionPuertaFalsa1X = 612;
+    var posicionPuertaFalsa1Y = 484;
     salidaFalsa1 = game.add.sprite(posicionPuertaFalsa1X,posicionPuertaFalsa1Y, 'salida');
     // Puerta falsa
-    var posicionPuertaFalsa2X = 262
-    var posicionPuertaFalsa2Y = 384
+    var posicionPuertaFalsa2X = 262;
+    var posicionPuertaFalsa2Y = 384;
     salidaFalsa2 = game.add.sprite(posicionPuertaFalsa2X,posicionPuertaFalsa2Y, 'salida');
     // Puerta falsa
-    var posicionPuertaFalsa3X = 162
-    var posicionPuertaFalsa3Y = 484
+    var posicionPuertaFalsa3X = 162;
+    var posicionPuertaFalsa3Y = 484;
     salidaFalsa3 = game.add.sprite(posicionPuertaFalsa3X,posicionPuertaFalsa3Y, 'salida');
 
-
-    pierdePuntos = 2;
 
 //pared izq
 

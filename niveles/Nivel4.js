@@ -27,9 +27,9 @@ positivo hasta abajo.
     CrearBasico();
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     botonPistas = CrearBotonPista("Los vectores tienen magnitud (azul) que\ncambian su tamaño y rapidez.\n¿Qué sucederá si colocas una magnitud \nen el cuadro del mismo color?.\n¡ Inténtalo !");
-    CrearPlataforma(50,300,1,1)
-    CrearPlataforma(350,400,1,1)
-    CrearPlataforma(650,500,1,1)
+    CrearPlataforma(50,300,1,1);
+    CrearPlataforma(350,400,1,1);
+    CrearPlataforma(650,500,1,1);
     CrearSalida(700,442);
     CrearEspinas(350,200);
     CrearEspinas(100,512);
@@ -54,7 +54,6 @@ positivo hasta abajo.
     CrearPared(400,100);
     CrearPared(400,000);
     limiteDeTiempo = Infinity;
-    pierdePuntos = 2;
     vector = CrearVector(600,250,0,0, true);
     posInicXPlayer = 50;
     posInicYPlayer = game.world.height - 350;

@@ -35,7 +35,6 @@ positivo hasta abajo.
     CrearPlataforma(550,320,1,1);
     CrearPlataforma(650,320,1,1);
     limiteDeTiempo = Infinity;
-    pierdePuntos = 3;
     CrearEspinas(200,180);
     listaDeEspinas[0][0].anchor.setTo(0.5,0.5);
     listaDeEspinas[0][0].angle = 270;

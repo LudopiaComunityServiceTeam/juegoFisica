@@ -28,7 +28,6 @@ positivo hasta abajo.
     CrearSalida(660,479);
     salidaAbierta = false;
     limiteDeTiempo = Infinity;
-    pierdePuntos = 2;
     CrearEspinas(450,440);
     CrearEspinas(450,340);
     CrearEspinas(450,240);

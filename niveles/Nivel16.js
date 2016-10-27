@@ -25,8 +25,8 @@ positivo hasta abajo.
     CrearBasico();
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     limiteDeTiempo = 2;
-    
-    
+
+
     botonPistas = CrearBotonPista("¡Magnitudes y ángulos! Calcula la\ncombinación correcta de ellos para\nllegar a tiempo a la puerta;\nel monigote lo agradecerá.");
     /* Dato Distancia */
     lineaizq = game.add.sprite(270, 475, 'linea');
@@ -34,18 +34,12 @@ positivo hasta abajo.
     lineader = game.add.sprite(420, 475, 'linea');
     lineader.scale.setTo(10, 1);
     CrearDato(5,380,430,5,"distancia");
-    
-    
-    var posicionPuertaRealX = 512
-    var posicionPuertaRealY = 340
-    
+
+
+    var posicionPuertaRealX = 512;
+    var posicionPuertaRealY = 340;
+
     CrearSalida(posicionPuertaRealX,posicionPuertaRealY);
-
-
-    
-    // Puerta falsa
-
-    pierdePuntos = 2;
 
     // pared izq
 
@@ -55,8 +49,8 @@ positivo hasta abajo.
     CrearPlataforma(200,300,1,1);
     //CrearPlataforma(300,300,1,1);
     CrearPlataforma(500,400,1,1);
-    
-    
+
+
     // techo
     techo = CrearPared(150,50);
     techo.angle = 90;
@@ -100,7 +94,7 @@ positivo hasta abajo.
     listaDeEspinas[5][0].angle = 90;
     listaDeEspinas[6][0].angle = 90;
     listaDeEspinas[7][0].angle = 90;
-    
+
     vector = CrearVector(400,200,0,0, true);
 
     numeroMagnitud = CrearNumeroParaVectorControlable(400,400,300,4);

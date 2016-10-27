@@ -33,7 +33,6 @@ positivo hasta abajo.
     CrearPlataforma(50,320,1,1);
     CrearPlataforma(150,320,1,1);
     limiteDeTiempo = 3;
-    pierdePuntos = 2;
     lineaizq = game.add.sprite(150, 380, 'linea');
     lineaizq.scale.setTo(5, 1);
     lineader = game.add.sprite(250, 380, 'linea');

@@ -27,27 +27,26 @@ positivo hasta abajo.
     CrearBasico();
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     botonPistas = CrearBotonPista("La puerta tiene un número ahora\ny es del mismo color que el tiempo,\n¿Qué podrá significar?.\nPiensa bien que velocidad usar o la\n puerta se cerrará...");
-    var pared = CrearPared(150,290)
+    var pared = CrearPared(150,290);
     pared.angle = 90;
-    pared = CrearPared(250,290)
+    pared = CrearPared(250,290);
     pared.angle = 90;
-    pared = CrearPared(350,290)
+    pared = CrearPared(350,290);
     pared.angle = 90;
-    pared = CrearPared(450,290)
+    pared = CrearPared(450,290);
     pared.angle = 90;
-    pared = CrearPared(550,290)
+    pared = CrearPared(550,290);
     pared.angle = 90;
-    pared = CrearPared(650,290)
+    pared = CrearPared(650,290);
     pared.angle = 90;
-    pared = CrearPared(750,290)
+    pared = CrearPared(750,290);
     pared.angle = 90;
-    pared = CrearPared(750,340)
-    pared = CrearPared(750,440)
+    pared = CrearPared(750,340);
+    pared = CrearPared(750,440);
 
     CrearSalida(610,479);
     CrearNube(600,435,618,475);
     limiteDeTiempo = 3;
-    pierdePuntos = 2;
     CrearEspinas(700,440);
     vector = CrearVector(625,250,0,0, true);
     posInicXPlayer = 50;

@@ -34,6 +34,7 @@ function CrearBasico(){
     CrearTimerPuerta();
     CrearSilenciarSonido();
     crearPuntuacion();
+    primerIntento = true;
 }
 function CrearPiso() {
 

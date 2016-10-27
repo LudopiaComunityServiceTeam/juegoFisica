@@ -28,6 +28,7 @@ function clickPlay(){
         // cierraSalida(limiteDeTiempo);
     }
     else{
+        primerIntento = false;
         ReiniciarNivel();
     }
 }

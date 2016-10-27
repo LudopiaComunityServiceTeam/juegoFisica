@@ -165,7 +165,7 @@ function ControlarNivel() {
     DetectarAnimaciones();
     if ((clicked)&&(direccion == 1)){
         if (vectorEnContacto){
-            vectorEnContacto = false
+            vectorEnContacto = false;
         }
         if (!(epilogoCorriendo)){
             ManejarPuerta();
@@ -181,6 +181,9 @@ function ControlarNivel() {
 function MenuFinalNivel() {
 
     inhabilitarJugar();
+    if (primerIntento){ //si gana a la primera
+        actualizarPuntuacion(1);
+    }
     var filtroBlanco = game.add.sprite(0,0,'fondoBlanco');
     filtroBlanco.alpha = 0.5;
     filtroBlanco.scale.setTo(5,2);
@@ -195,7 +198,7 @@ function MenuFinalNivel() {
     cuadroVictoria.push(CrearBotonContinuar());
     cuadroVictoria.push(CrearBotonRepetirNivel());
     var victoria = game.add.sprite(235,120,'victoria');
-    victoria.scale.setTo(0.5,0.5)
+    victoria.scale.setTo(0.5,0.5);
     cuadroVictoria.push(victoria);
 
 }
@@ -216,7 +219,8 @@ function ReiniciarNivel() {
 function gameOver(texto){
 
     Explotar();
-    actualizarPuntuacion();
+    primerIntento = false;
+    actualizarPuntuacion(-1);
     inhabilitarJugar();
     var filtroBlanco = game.add.sprite(0,0,'fondoBlanco');
     filtroBlanco.alpha = 0.5;
@@ -300,7 +304,7 @@ function resetVariables(){
     listaDeEspinas = [];
     listaDeAngulos = [];
     ListaDeDatos = [];
-    ListaDeCiclos = []
+    ListaDeCiclos = [];
     cuadroVictoria = [];
     inicio = [];
     cuadroPista = [];
@@ -329,10 +333,10 @@ function ManejarObstaculos() {
         for (i = 0; i < ListaDeCiclos.length; i++){
             var ciclo = ListaDeCiclos[i];
             var faseActual = ciclo.fase;
-            var veloXActual = ciclo.velsX[faseActual]
-            var veloYActual = ciclo.velsY[faseActual]
-            var LimXActual =ciclo.limitesX[faseActual]
-            var LimYActual = ciclo.limitesY[faseActual]
+            var veloXActual = ciclo.velsX[faseActual];
+            var veloYActual = ciclo.velsY[faseActual];
+            var LimXActual =ciclo.limitesX[faseActual];
+            var LimYActual = ciclo.limitesY[faseActual];
             if (CicloMovimientoSimple(ciclo.objeto[0],veloXActual,veloYActual,LimXActual,LimYActual)){
                 if (faseActual + 1 >= ciclo.velsX.length){
                     ciclo.fase = 0;

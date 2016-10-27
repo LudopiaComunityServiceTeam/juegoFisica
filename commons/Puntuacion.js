@@ -14,16 +14,13 @@ function crearPuntuacion() {
 * Funcion que actualiza la puntuacion del nivel
 *
 */
-function actualizarPuntuacion(){
-    var nuevaPuntuacion = puntuacion.text - pierdePuntos;
-    if (nuevaPuntuacion > 0){
+function actualizarPuntuacion(puntos){
+    var nuevaPuntuacion = parseInt(puntuacion.text) + puntos;
+    if (nuevaPuntuacion >= 0 && nuevaPuntuacion < 21){
         puntuacion.setText(nuevaPuntuacion);
-    }
-    else {
-        puntuacion.setText(0);
+        Nota = nuevaPuntuacion;
     }
     colorearTexto(puntuacion);
-    Nota = nuevaPuntuacion;
 }
 
 /**
