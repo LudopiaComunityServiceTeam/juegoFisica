@@ -3,7 +3,7 @@
 *
 */
 function crearPuntuacion() {
-    var notaX = 50;
+    var notaX = 350;
     var notaY = 10;
     AñadirTexto(notaX, notaY, 'Nota: ', colorTexto, 40);
     puntuacion = AñadirTexto(100 + notaX, notaY, Nota, '#00cc00', 42);

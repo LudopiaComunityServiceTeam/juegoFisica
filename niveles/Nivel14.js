@@ -23,6 +23,7 @@ positivo hasta abajo.
 */
 /********************************************************************************/
     CrearBasico();
+    CrearCabezeraNivel(14);
     botonPistas = CrearBotonPista("Observa bien lo que indican los cuadros\nverdes, esa es la secuencia de juego.\nArrastra el vector, déjalo caer sobre el\nmonigote y le das a \"play \"");
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     CrearSalida(720,262);

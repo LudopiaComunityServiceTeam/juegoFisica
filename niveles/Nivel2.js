@@ -24,6 +24,7 @@ positivo hasta abajo.
 /********************************************************************************/
 
     CrearBasico();
+    CrearCabezeraNivel(2);
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     botonPistas = CrearBotonPista("¿Izquierda o derecha?");
     CrearSalida(100,479);

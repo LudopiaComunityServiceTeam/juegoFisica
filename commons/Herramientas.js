@@ -323,3 +323,9 @@ function ChequearOverlap(Objeto1,Objeto2){
         return false;
     }
 }
+
+function CrearCabezeraNivel(nivel){
+    var nivelX = 50;
+    var nivelY = 10;
+    AñadirTexto(nivelX, nivelY, 'Nivel: '+ nivel, colorTexto, 40);
+}

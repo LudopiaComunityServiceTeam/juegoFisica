@@ -23,6 +23,7 @@ positivo hasta abajo.
 */
 /********************************************************************************/
     CrearBasico();
+    CrearCabezeraNivel(18);
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     limiteDeTiempo = 2;
 

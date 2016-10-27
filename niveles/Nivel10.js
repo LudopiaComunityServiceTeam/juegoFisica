@@ -24,6 +24,7 @@ positivo hasta abajo.
 /********************************************************************************/
 
     CrearBasico();
+    CrearCabezeraNivel(10);
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     botonPistas = CrearBotonPista("Con la magnitud cero no te puedes\nmover... Trata de crear una nueva\nmagnitud con el resolvedor. Usa la\ndistancia (número naranja) y el tiempo\n(número rojo), te ayudarán.");
     CrearSalida(670,479);
