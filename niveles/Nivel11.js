@@ -24,7 +24,6 @@ positivo hasta abajo.
 /********************************************************************************/
 
     CrearBasico();
-    CrearCabezeraNivel(11);
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     botonPistas = CrearBotonPista("¡Wow! Espinas, distancias y tiempos...\nEl resolvedor nos ayudará en este\ndilema, piensa bien que distancia y\ntiempo usar agregarás en él, hay\nuna puerta a la que no puedes\nllegar.");
 

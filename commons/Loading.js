@@ -24,15 +24,17 @@ function loadArchivoGuardado(){
     }
     else {
         console.log("No habia un salvado previo");
-        Nota = 20;
+        NivelMaximo = 1;
+        Nota[0] = 20;
     }
 }
 
 function saveArchivoGuardado(){
-    console.log("trantado de salvar");
+    console.log("tratando de salvar");
     console.log(ArchivoDeGuardado);
     if (ArchivoDeGuardado == null){
         NivelMaximo = nivelActual + 1;
+        Nota[nivelActual] = puntuacion.text;
         console.log("no habia un salvado previo, salve");
         ArchivoDeGuardado = { Nivel: NivelMaximo,
 	                          Nota: puntuacion.text};
@@ -40,21 +42,25 @@ function saveArchivoGuardado(){
         console.log("Nivel maximo: " + NivelMaximo);
         console.log("Nota: " + puntuacion.text);
     }
-    else if (nivelActual + 1 > ArchivoDeGuardado.Nivel){
+    else if (!explosion) { //paso el nivel actual
+    // else if (nivelActual + 1 > ArchivoDeGuardado.Nivel){
         NivelMaximo = nivelActual + 1;
+        // Nota[Nivel - 1] = puntuacion.text;
         console.log("habia un salvado previo, actualice");
-        // if (ArchivoDeGuardado.Nota > puntuacion) {
-        //     puntuacion = ArchivoDeGuardado.Nota;
-        // }
         ArchivoDeGuardado = { Nivel: NivelMaximo,
-	                          Nota: puntuacion.text};
+	                          Nota: Nota};
         localStorage.setItem("Guardado", JSON.stringify(ArchivoDeGuardado));
         console.log("Nivel maximo: " + NivelMaximo);
         console.log("Nota: " + puntuacion.text);
     }
-    else {
-        console.log("El nivel maximo es mayor al nivel superado, no se reemplaza el guardado");
+    else { //no ha pasado el nivel actual
+        NivelMaximo = nivelActual;
+        ArchivoDeGuardado = { Nivel: NivelMaximo,
+	                          Nota: Nota};
     }
+    // else {
+    //     console.log("El nivel maximo es mayor al nivel superado, no se reemplaza el guardado");
+    // }
 }
 
 function loadAll(){

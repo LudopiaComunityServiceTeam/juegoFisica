@@ -21,9 +21,7 @@ En Phaser X y Y el 0,0 está en la esquina superior izquierda y "y" se cuenta
 positivo hasta abajo.
 */
 /********************************************************************************/
-
     CrearBasico();
-    CrearCabezeraNivel(1);
     botonPistas = CrearBotonPista("Observa bien lo que indican los cuadros\nverdes, esa es la secuencia de juego.\nArrastra el vector, déjalo caer sobre el\nmonigote y le das a \"play \"");
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     CrearSalida(610,479);

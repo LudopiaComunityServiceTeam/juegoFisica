@@ -57,8 +57,8 @@ var listaDeAngulos = [];
 var ListaDeDatos = [];
 var cuadroPista = [];
 var cuadroVictoria = [];
-var niveles = ['SeleccionDeNivel','Nivel1','Nivel2','Nivel3', 'Nivel4','Nivel5','Nivel6', 
-               'Nivel7', 'Nivel8', 'Nivel9', 'Nivel10',  'Nivel11', 'Nivel12', 'Nivel13', 
+var niveles = ['SeleccionDeNivel','Nivel1','Nivel2','Nivel3', 'Nivel4','Nivel5','Nivel6',
+               'Nivel7', 'Nivel8', 'Nivel9', 'Nivel10',  'Nivel11', 'Nivel12', 'Nivel13',
                'Nivel14', 'Nivel15','Nivel16','Nivel17','Nivel18'];
 var resaltadores = [];
 var ListaDeCiclos = []; //objetos tipo Ciclo
@@ -70,7 +70,7 @@ var indice;
 
 var ArchivoDeGuardado;
 var NivelMaximo;
-var Nota;
+var Nota = [];
 
 var cancionActual;
 
@@ -137,7 +137,7 @@ function escribir(){
 	var text = AñadirTexto(60,10,"Escoge un nivel:",colorTexto,50);
 	text = AñadirTexto(212,60,"1",colorTexto,35);
 	CrearBotonDeNivel(200, 100, 1);
-	
+
 	if (NivelMaximo >= 2){
 		text = AñadirTexto(315,60,"2",colorTexto,35);
 		CrearBotonDeNivel(300, 100, 2);
@@ -206,6 +206,6 @@ function escribir(){
 		text = AñadirTexto(415,365,"18",colorTexto,35);
 		CrearBotonDeNivel(400, 400, 18);
 	}
-	
+
 
 }

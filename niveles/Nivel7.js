@@ -24,7 +24,6 @@ positivo hasta abajo.
 
 
     CrearBasico();
-    CrearCabezeraNivel(7);
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     botonPistas = CrearBotonPista("¡Magnitudes y ángulos! Calcula la\ncombinación correcta de ellos para\nllegar a tiempo a la puerta;\nel monigote lo agradecerá.");
     CrearSalida(660,479);
