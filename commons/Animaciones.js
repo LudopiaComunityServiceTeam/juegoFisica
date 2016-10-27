@@ -2,7 +2,7 @@ function AnimarDivision(){
     if (!animacionDivisionCreada){
         ImagenDivision = game.add.sprite(0,0, 'division');
         ImagenDivision.alpha = 1;
-        ImagenDivision.anchor.setTo(0.5,0.5)
+        ImagenDivision.anchor.setTo(0.5,0.5);
         ImagenDivision.scale.setTo(2,2);
         ImagenDivision.x =  EcuacionVelocidad.x + 150;
         ImagenDivision.y =  EcuacionVelocidad.y + 75;
@@ -26,7 +26,7 @@ function AnimarCirculo(){
     if (!animacionCirculoCreada){
         ImagenCirculo = game.add.sprite(0,0, 'circulo');
         ImagenCirculo.alpha = 1;
-        ImagenCirculo.anchor.setTo(0.5,0.5)
+        ImagenCirculo.anchor.setTo(0.5,0.5);
         ImagenCirculo.scale.setTo(0.1,0.1);
         ImagenCirculo.x =  salida.x + 10;
         ImagenCirculo.y =  salida.y + 25;
@@ -55,7 +55,7 @@ function AnimarResaltador(){
         resaltadores[i].scale.setTo(Escalax + 0.01,Escalay + 0.01);
         resaltadores[i].alpha = transparencia - 0.01;
         if (resaltadores[i].alpha <= 0){
-            console.log("quedan " + resaltadores.length)
+            console.log("quedan " + resaltadores.length);
             resaltadores[i].alpha = 1;
             resaltadores[i].scale.setTo( resaltadores[i].escalax, resaltadores[i].escalay);
         }
@@ -68,7 +68,7 @@ function AnimarPista(){
         ResaltadorPista.scale.setTo(Escalax + 0.02,Escalay + 0.02);
         ResaltadorPista.alpha = transparencia - 0.01;
         if (ResaltadorPista.alpha <= 0){
-            console.log("quedan " + resaltadores.length)
+            console.log("quedan " + resaltadores.length);
             ResaltadorPista.alpha = 1;
             ResaltadorPista.scale.setTo(1,1);
         }
@@ -151,7 +151,7 @@ function AnimarMano(inicio,objetivo,offsets){
     else if (((mano.alive)&&(manoInnecesaria))||clicked){
 
         mano.kill();
-   
+
     }
 }
 /**

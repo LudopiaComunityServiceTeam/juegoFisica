@@ -6,7 +6,8 @@ function crearPuntuacion() {
     var notaX = 50;
     var notaY = 10;
     AñadirTexto(notaX, notaY, 'Nota: ', colorTexto, 40);
-    puntuacion = AñadirTexto(100 + notaX, notaY, '20', '#00cc00', 42);
+    puntuacion = AñadirTexto(100 + notaX, notaY, Nota, '#00cc00', 42);
+    colorearTexto(puntuacion);
 }
 
 /**
@@ -22,6 +23,7 @@ function actualizarPuntuacion(){
         puntuacion.setText(0);
     }
     colorearTexto(puntuacion);
+    Nota = nuevaPuntuacion;
 }
 
 /**

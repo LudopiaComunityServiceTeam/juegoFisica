@@ -22,7 +22,7 @@ function CrearMano(x,y){
 function ResaltarDudas(){
     if (!clickedPista){
         ResaltadorPista = game.add.sprite(botonPistas.x+25, botonPistas.y+25, 'rectanguloPista');
-        ResaltadorPista.anchor.setTo(0.5,0.5)
+        ResaltadorPista.anchor.setTo(0.5,0.5);
         dudas = true;
     }
 }
@@ -145,5 +145,3 @@ function CrearNube(x,y,xo,yo){
     nubeCreada = true;
 
 }
-
-
