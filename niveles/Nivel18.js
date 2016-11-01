@@ -42,59 +42,21 @@ positivo hasta abajo.
 
     CrearSalida(posicionPuertaRealX,posicionPuertaRealY);
 
-    // pared izq
+    CrearPlataforma(50,300,1,1);
+    CrearPlataforma(150,300,1,1);
 
-    pared = CrearPared(200,200);
-    pared = CrearPared(200,100);
-
-    CrearPlataforma(200,300,1,1);
+    CrearEspinas(150,100);
+    listaDeEspinas[0][0].angle = 270;
     //CrearPlataforma(300,300,1,1);
-    CrearPlataforma(500,400,1,1);
+    CrearPlataforma(300,200,1,1);
 
-
-    // techo
-    techo = CrearPared(150,50);
-    techo.angle = 90;
-
-    techo = CrearPared(250,50);
-    techo.angle = 90;
-
-    techo = CrearPared(350,50);
-    techo.angle = 90;
-
-    techo = CrearPared(450,50);
-    techo.angle = 90;
-
-    techo = CrearPared(550,50);
-    techo.angle = 90;
-
-    techo = CrearPared(650,50);
-    techo.angle = 90;
-
-    techo = CrearPared(750,50);
-    techo.angle = 90;
 
 //pared der
-    pared = CrearPared(550,100);
-    pared = CrearPared(550,200);
-    pared = CrearPared(550,300);
-
-    CrearEspinas(100,486);
-    CrearEspinas(200,486);
-    CrearEspinas(300,486);
-    CrearEspinas(400,486);
-    CrearEspinas(500,486);
-    CrearEspinas(600,486);
-    CrearEspinas(700,486);
-    CrearEspinas(800,486);
-    listaDeEspinas[0][0].angle = 90;
-    listaDeEspinas[1][0].angle = 90;
-    listaDeEspinas[2][0].angle = 90;
-    listaDeEspinas[3][0].angle = 90;
-    listaDeEspinas[4][0].angle = 90;
-    listaDeEspinas[5][0].angle = 90;
-    listaDeEspinas[6][0].angle = 90;
-    listaDeEspinas[7][0].angle = 90;
+    CrearEspinas(50,535);
+    CrearEspinas(50,435);
+    listaDeEspinas[1][0].angle = 180;
+    listaDeEspinas[2][0].angle = 180;
+    CrearEspinas(750,435);
 
     vector = CrearVector(400,200,0,0, true);
 
@@ -104,10 +66,10 @@ positivo hasta abajo.
 
     CrearNube(posicionPuertaRealX-10,posicionPuertaRealY-50,posicionPuertaRealX+10,posicionPuertaRealY-10);
     CrearDato(limiteDeTiempo,posicionPuertaRealX,posicionPuertaRealY-76,limiteDeTiempo,"tiempo");
-    posInicXPlayer = 260;
+    posInicXPlayer = 85;
     posInicYPlayer = game.world.height - 360;
     CrearJugador(posInicXPlayer, posInicYPlayer);
-	DetenerCancion();
+    DetenerCancion();
     ReproducirLoopAudio(Stop_And_Think,0.3);
 },
 
