@@ -104,15 +104,36 @@ function loadAll(){
     game.load.image('pared','assets/Pared.png');
     game.load.image('fondoBlanco','assets/fondoblanco.png');
 
+    game.load.image('mapa1','assets/Mapa/mapa1.png');
+    game.load.image('mapa2','assets/Mapa/mapa2.png');
+    game.load.image('mapa3','assets/Mapa/mapa3.png');
+    game.load.image('mapa4','assets/Mapa/mapa4.png');
+    game.load.image('mapa5','assets/Mapa/mapa5.png');
+    game.load.image('mapa6','assets/Mapa/mapa6.png');
+    game.load.image('mapa7','assets/Mapa/mapa7.png');
+    game.load.image('mapa8','assets/Mapa/mapa8.png');
+    game.load.image('mapa9','assets/Mapa/mapa9.png');
+    game.load.image('mapa10','assets/Mapa/mapa10.png');
+    game.load.image('mapa11','assets/Mapa/mapa11.png');
+    game.load.image('mapa12','assets/Mapa/mapa12.png');
+    game.load.image('mapa13','assets/Mapa/mapa13.png');
+    game.load.image('mapa14','assets/Mapa/mapa14.png');
+    game.load.image('mapa15','assets/Mapa/mapa15.png');
+    game.load.image('mapa16','assets/Mapa/mapa16.png');
+    game.load.image('mapa17','assets/Mapa/mapa17.png');
+    game.load.image('mapa18','assets/Mapa/mapa18.png');
+    game.load.image('mapa19','assets/Mapa/mapa19.png');
+    game.load.image('mapa20','assets/Mapa/mapa20.png');
+
     game.load.spritesheet('simbolos','assets/Simbolos.png',28,28);
     game.load.spritesheet('PlayButton','assets/play.png',50,50);
     game.load.spritesheet('vector', 'assets/Vector.png',12,17);
     game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
     game.load.spritesheet('salida', 'assets/ptanimacion.png',30,59);
     game.load.spritesheet('botonMenu','assets/BotonMenu.png',50,50);
-    game.load.spritesheet('botonPista','assets/BotonPista.png',50,50);
+    game.load.spritesheet('botonPista','assets/BotonPista.png',52,52);
     game.load.spritesheet('botonClose','assets/BotonClose.png',50,50);
-    game.load.spritesheet('BotonCerrar','assets/BotonCerrar.png',50,50);
+    game.load.spritesheet('BotonCerrar','assets/BotonCerrar.png', 40,39);
     game.load.spritesheet('botonResetNivel','assets/Reset.png',50,50);
     game.load.spritesheet('botonSigNivel','assets/flechaverdetitila.png',209,55);
 

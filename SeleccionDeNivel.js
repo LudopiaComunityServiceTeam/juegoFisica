@@ -132,79 +132,173 @@ var SeleccionDeNivel = {
 			//en el grupo de las plataformas
 		}
 };
-function escribir(){
 
-	var text = AñadirTexto(60,10,"Escoge un nivel:",colorTexto,50);
-	text = AñadirTexto(212,60,"1",colorTexto,35);
-	CrearBotonDeNivel(200, 100, 1);
+function mapBackground(){
+        mapa = game.add.sprite(70,100,'mapa1');
+        mapa.scale.setTo(0.9,0.9);
 	
 	if (NivelMaximo >= 2){
-		text = AñadirTexto(315,60,"2",colorTexto,35);
-		CrearBotonDeNivel(300, 100, 2);
+                mapa.kill();
+                mapa = game.add.sprite(70,100,'mapa2');
+                mapa.scale.setTo(0.9,0.9);
 	}
 	if (NivelMaximo >= 3){
-		text = AñadirTexto(415,60,"3",colorTexto,35);
-		CrearBotonDeNivel(400, 100, 3);
+                mapa.kill();
+                mapa = game.add.sprite(70,100,'mapa3');
+                mapa.scale.setTo(0.9,0.9);
 	}
 	if (NivelMaximo >= 4){
-		text = AñadirTexto(515,60,"4",colorTexto,35);
-		CrearBotonDeNivel(500, 100, 4);
+                mapa.kill();
+		mapa = game.add.sprite(70,100,'mapa4');
+                mapa.scale.setTo(0.9,0.9);
 	}
 	if (NivelMaximo >= 5){
-		text = AñadirTexto(615,60,"5",colorTexto,35);
-		CrearBotonDeNivel(600, 100, 5);
+                mapa.kill();
+		mapa = game.add.sprite(70,100,'mapa5');
+                mapa.scale.setTo(0.9,0.9);
 	}
 	if (NivelMaximo >= 6){
-		text = AñadirTexto(215,165,"6",colorTexto,35);
-		CrearBotonDeNivel(200, 200, 6);
+                mapa.kill();
+		mapa = game.add.sprite(70,100,'mapa6');
+                mapa.scale.setTo(0.9,0.9);
 	}
 	if (NivelMaximo >= 7){
-		text = AñadirTexto(315,165,"7",colorTexto,35);
-		CrearBotonDeNivel(300, 200, 7);
+                mapa.kill();
+		mapa = game.add.sprite(70,100,'mapa7');
+                mapa.scale.setTo(0.9,0.9);
 	}
 	if (NivelMaximo >= 8){
-		text = AñadirTexto(415,165,"8",colorTexto,35);
-		CrearBotonDeNivel(400, 200, 8);
+                mapa.kill();
+		mapa = game.add.sprite(70,100,'mapa8');
+                mapa.scale.setTo(0.9,0.9);
 	}
 	if (NivelMaximo >= 9){
-		text = AñadirTexto(515,165,"9",colorTexto,35);
-		CrearBotonDeNivel(500, 200, 9);
+                mapa.kill();
+		mapa = game.add.sprite(70,100,'mapa9');
+                mapa.scale.setTo(0.9,0.9);
 	}
 	if (NivelMaximo >= 10){
-		text = AñadirTexto(615,165,"10",colorTexto,35);
-		CrearBotonDeNivel(600, 200, 10);
+                mapa.kill();
+		mapa = game.add.sprite(70,100,'mapa10');
+                mapa.scale.setTo(0.9,0.9);
 	}
 	if (NivelMaximo >= 11){
-		text = AñadirTexto(215,265,"11",colorTexto,35);
-		CrearBotonDeNivel(200, 300, 11);
+                mapa.kill();
+		mapa = game.add.sprite(70,100,'mapa11');
+                mapa.scale.setTo(0.9,0.9);
 	}
 	if (NivelMaximo >= 12){
-		text = AñadirTexto(315,265,"12",colorTexto,35);
-		CrearBotonDeNivel(300, 300, 12);
+                mapa.kill();
+		mapa = game.add.sprite(70,100,'mapa12');
+                mapa.scale.setTo(0.9,0.9);
 	}
 	if (NivelMaximo >= 13){
-		text = AñadirTexto(415,265,"13",colorTexto,35);
-		CrearBotonDeNivel(400, 300, 13);
+                mapa.kill();
+		mapa = game.add.sprite(70,100,'mapa13');
+                mapa.scale.setTo(0.9,0.9);
 	}
 	if (NivelMaximo >= 14){
-		text = AñadirTexto(515,265,"14",colorTexto,35);
-		CrearBotonDeNivel(500, 300, 14);
+                mapa.kill();
+		mapa = game.add.sprite(70,100,'mapa14');
+                mapa.scale.setTo(0.9,0.9);
 	}
 	if (NivelMaximo >= 15){
-		text = AñadirTexto(615,265,"15",colorTexto,35);
-		CrearBotonDeNivel(600, 300, 15);
+                mapa.kill();
+		mapa = game.add.sprite(70,100,'mapa15');
+                mapa.scale.setTo(0.9,0.9);
 	}
 	if (NivelMaximo >= 16){
-		text = AñadirTexto(215,365,"16",colorTexto,35);
-		CrearBotonDeNivel(200, 400, 16);
+                mapa.kill();
+		mapa = game.add.sprite(70,100,'mapa16');
+                mapa.scale.setTo(0.9,0.9);
 	}
 	if (NivelMaximo >= 17){
-		text = AñadirTexto(315,365,"17",colorTexto,35);
-		CrearBotonDeNivel(300, 400, 17);
+                mapa.kill();
+		mapa = game.add.sprite(70,100,'mapa17');
+                mapa.scale.setTo(0.9,0.9);
 	}
 	if (NivelMaximo >= 18){
-		text = AñadirTexto(415,365,"18",colorTexto,35);
-		CrearBotonDeNivel(400, 400, 18);
+                mapa.kill();
+		mapa = game.add.sprite(70,100,'mapa18');
+                mapa.scale.setTo(0.9,0.9);
+	}
+}
+
+function escribir(){
+
+	//var text = AñadirTexto(60,10,"Escoge un nivel:",colorTexto,50);
+       
+        mapBackground();
+	text = AñadirTexto(95,75,"1",colorTexto,35);
+	CrearBotonDeNivel(80, 110, 1);
+	
+	if (NivelMaximo >= 2){
+		text = AñadirTexto(175,85,"2",colorTexto,35);
+		CrearBotonDeNivel(160, 120, 2);
+	}
+	if (NivelMaximo >= 3){
+		text = AñadirTexto(265,35,"3",colorTexto,35);
+		CrearBotonDeNivel(250, 70, 3);
+	}
+	if (NivelMaximo >= 4){
+		text = AñadirTexto(350,65,"4",colorTexto,35);
+		CrearBotonDeNivel(335, 100, 4);
+	}
+	if (NivelMaximo >= 5){
+		text = AñadirTexto(455,60,"5",colorTexto,35);
+		CrearBotonDeNivel(440, 100, 5);
+	}
+	if (NivelMaximo >= 6){
+		text = AñadirTexto(555,25,"6",colorTexto,35);
+		CrearBotonDeNivel(540, 60, 6);
+	}
+	if (NivelMaximo >= 7){
+		text = AñadirTexto(645,35,"7",colorTexto,35);
+		CrearBotonDeNivel(630, 70, 7);
+	}
+	if (NivelMaximo >= 8){
+		text = AñadirTexto(585,125,"8",colorTexto,35);
+		CrearBotonDeNivel(570, 160, 8);
+	}
+	if (NivelMaximo >= 9){
+		text = AñadirTexto(640,245,"9",colorTexto,35);
+		CrearBotonDeNivel(625, 280, 9);
+	}
+	if (NivelMaximo >= 10){
+		text = AñadirTexto(520,215,"10",colorTexto,35);
+		CrearBotonDeNivel(505, 250, 10);
+	}
+	if (NivelMaximo >= 11){
+		text = AñadirTexto(410,165,"11",colorTexto,35);
+		CrearBotonDeNivel(395, 200, 11);
+	}
+	if (NivelMaximo >= 12){
+		text = AñadirTexto(415,290,"12",colorTexto,35);
+		CrearBotonDeNivel(400, 325, 12);
+	}
+	if (NivelMaximo >= 13){
+		text = AñadirTexto(275,290,"13",colorTexto,35);
+		CrearBotonDeNivel(260, 325, 13);
+	}
+	if (NivelMaximo >= 14){
+		text = AñadirTexto(265,165,"14",colorTexto,35);
+		CrearBotonDeNivel(250, 200, 14);
+	}
+	if (NivelMaximo >= 15){
+		text = AñadirTexto(110,205,"15",colorTexto,35);
+		CrearBotonDeNivel(105, 240, 15);
+	}
+	if (NivelMaximo >= 16){
+		text = AñadirTexto(110,300,"16",colorTexto,35);
+		CrearBotonDeNivel(95, 335, 16);
+	}
+	if (NivelMaximo >= 17){
+		text = AñadirTexto(115,415,"17",colorTexto,35);
+		CrearBotonDeNivel(100, 450, 17);
+	}
+	if (NivelMaximo >= 18){
+		text = AñadirTexto(290,430,"18",colorTexto,35);
+		CrearBotonDeNivel(275, 465, 18);
 	}
 	
 

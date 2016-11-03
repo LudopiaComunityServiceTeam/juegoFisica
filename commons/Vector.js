@@ -303,9 +303,13 @@ function CrearCuadroVector(x,y,vector){
     var cuadro = game.add.sprite(x, y, 'cuadroVector');
     cuadro.anchor.setTo(0.5, 0.5);
 
-    var cerrar = game.add.sprite(55, -70, 'BotonCerrar');
-    cerrar.scale.setTo(0.5, 0.5);
+    var cerrar = game.add.sprite(55, -60, 'BotonCerrar');
+    cerrar.frame = 0;
+    cerrar.i = 0;
+    cerrar.scale.setTo(0.45, 0.45);
     cerrar.inputEnabled = true;
+    cerrar.events.onInputOver.add(overButton, this);
+    cerrar.events.onInputOut.add(outButton, this);
     cerrar.events.onInputDown.add(function(cerrar){ocultarCuadroVector(vector, cuadro);}, this);
     cuadro.addChild(cerrar);
 
