@@ -114,6 +114,7 @@ function CrearBotonContinuar(){
 function CrearBotonPista(pista){
 
     botonPista = game.add.sprite(0, 545, 'botonPista');
+    botonPista.scale.setTo(0.9,0.9);
     pista.width = 1;
     botonPista.informacion = pista;
     botonPista.frame = 0;
