@@ -1,3 +1,62 @@
+function loadPantallaDeInicio(){
+    game.load.image('titulo','assets/Titulo.png');
+    game.load.image('fondoTitulo','assets/FondoTitleScreen.png');
+    game.load.image('capaIzq','assets/CapaIzq.png');
+    game.load.image('capaDer','assets/CapaDer.png');
+    game.load.image('huellas','assets/huellas.png');
+    game.load.image('linea','assets/LaLinea.png');
+    game.load.spritesheet('PlayButton','assets/play.png',50,50);
+    game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
+}
+
+function loadArchivoGuardado(){
+    ArchivoDeGuardado = JSON.parse(localStorage.getItem('Guardado'));
+    console.log("Cargando archivo");
+    console.log(ArchivoDeGuardado);
+    //localStorage.removeItem('Guardado'); //se usa para borrar un guardado en particular
+    //localStorage.clear(); //se usa para borrar todos los guardados
+    if (ArchivoDeGuardado != null){
+        console.log("Cargando exitoso");
+        NivelMaximo = ArchivoDeGuardado.Nivel;
+        console.log("Nivel maximo " + NivelMaximo);
+        Nota = ArchivoDeGuardado.Nota;
+        console.log("Nota " + Nota);
+    }
+    else {
+        console.log("No habia un salvado previo");
+        Nota = 20;
+    }
+}
+
+function saveArchivoGuardado(){
+    console.log("trantado de salvar");
+    console.log(ArchivoDeGuardado);
+    if (ArchivoDeGuardado == null){
+        NivelMaximo = nivelActual + 1;
+        console.log("no habia un salvado previo, salve");
+        ArchivoDeGuardado = { Nivel: NivelMaximo,
+	                          Nota: puntuacion.text};
+        localStorage.setItem("Guardado", JSON.stringify(ArchivoDeGuardado));
+        console.log("Nivel maximo: " + NivelMaximo);
+        console.log("Nota: " + puntuacion.text);
+    }
+    else if (nivelActual + 1 > ArchivoDeGuardado.Nivel){
+        NivelMaximo = nivelActual + 1;
+        console.log("habia un salvado previo, actualice");
+        // if (ArchivoDeGuardado.Nota > puntuacion) {
+        //     puntuacion = ArchivoDeGuardado.Nota;
+        // }
+        ArchivoDeGuardado = { Nivel: NivelMaximo,
+	                          Nota: puntuacion.text};
+        localStorage.setItem("Guardado", JSON.stringify(ArchivoDeGuardado));
+        console.log("Nivel maximo: " + NivelMaximo);
+        console.log("Nota: " + puntuacion.text);
+    }
+    else {
+        console.log("El nivel maximo es mayor al nivel superado, no se reemplaza el guardado");
+    }
+}
+
 function loadAll(){
 //Esta funcion carga todas las imagenes que vamos a utilizar para el juego
 //Se usa load.spritesheet cuando se quiere usar para una animación
@@ -12,6 +71,8 @@ function loadAll(){
 //a la izq, luego al frente y luego a la derecha, tienes que ver que tan ancha
 //es cada imagen del muñequito y que tan alta es, pones el ancho en el primer
 //numero y la altura en el segundo
+
+    //game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
 
     game.load.image('cuerpo','assets/Cuerpo.png');
     game.load.image('brazo','assets/Brazo.png');
@@ -30,10 +91,18 @@ function loadAll(){
     game.load.image('ecuacionAceleracion','assets/Ecuacion aceleracion.png');
     game.load.image('lienzoPista','assets/libreta.png');
     game.load.image('sello','assets/NivelPasado.png');
-    game.load.image('pedazoHoja','assets/pedazohoja.png');
+
+    game.load.image('pedazoHoja','assets/pedazohojaancha.png');
+    game.load.image('victoria','assets/victoria.png');
+    game.load.image('nube','assets/nube.png');
+    game.load.image('nubeOrigen','assets/nubeorigen.png');
+
     game.load.image('division','assets/SimboloDivision.png');
     game.load.image('circulo','assets/circuloExplosion.png');
     game.load.image('rectanguloPista','assets/rectanguloPista.png');
+    game.load.image('rectangulo','assets/rectangulo.png');
+    game.load.image('pared','assets/Pared.png');
+    game.load.image('fondoBlanco','assets/fondoblanco.png');
 
     game.load.spritesheet('simbolos','assets/Simbolos.png',28,28);
     game.load.spritesheet('PlayButton','assets/play.png',50,50);
@@ -46,6 +115,9 @@ function loadAll(){
     game.load.spritesheet('BotonCerrar','assets/BotonCerrar.png',50,50);
     game.load.spritesheet('botonResetNivel','assets/Reset.png',50,50);
     game.load.spritesheet('botonSigNivel','assets/flechaverdetitila.png',209,55);
+
+    game.load.spritesheet('botonRepetirNivel','assets/retry.png',154,115);
+
     game.load.spritesheet('botonMute','assets/Mute.png',50,50);
 
 

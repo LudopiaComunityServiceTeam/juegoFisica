@@ -4,6 +4,7 @@ preload: function() {
 
 },
 create: function() {
+
 /********************************************************************************/
 /*
 
@@ -24,26 +25,40 @@ positivo hasta abajo.
 
 
     CrearBasico();
+    CrearCabezeraNivel(5);
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
-    CrearBotonPista("Los vectores tienen ángulo (morado) que\ncambian su inclinación. ¡Ahora puedes\nsaltar! Ten cuidado de no saltar muy\n bajo...");
-    CrearSalida(610,484);
-    limiteDeTiempo = 5;
-    CrearDato(5,610,510,5,"tiempo");
-    vector = CrearVector(400,350,400,0, true);
-    CrearEspinas(300,440);
+    botonPistas = CrearBotonPista("La puerta tiene un número ahora\ny es del mismo color que el tiempo,\n¿Qué podrá significar?.\nPiensa bien que velocidad usar o la\n puerta se cerrará...");
+    var pared = CrearPared(150,290);
+    pared.angle = 90;
+    pared = CrearPared(250,290);
+    pared.angle = 90;
+    pared = CrearPared(350,290);
+    pared.angle = 90;
+    pared = CrearPared(450,290);
+    pared.angle = 90;
+    pared = CrearPared(550,290);
+    pared.angle = 90;
+    pared = CrearPared(650,290);
+    pared.angle = 90;
+    pared = CrearPared(750,290);
+    pared.angle = 90;
+    pared = CrearPared(750,340);
+    pared = CrearPared(750,440);
+
+    CrearSalida(610,479);
+    CrearNube(600,435,618,475);
+    limiteDeTiempo = 3;
+    CrearEspinas(700,440);
+    vector = CrearVector(625,250,0,0, true);
     posInicXPlayer = 50;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
-    numeroAngulo = CrearAnguloParaVectorControlable(90,500,300,90);
-    numeroAngulo = CrearAnguloParaVectorControlable(30,600,300,30);
-    numeroAngulo = CrearAnguloParaVectorControlable(60,700,300,60);
-    CrearMano(listaDeAngulos[0].x -55 , listaDeAngulos[0].y + 25);
-
-    inicio = listaDeAngulos;
-    indice = 0;
-    // informacion sobre el angulo
-    //info = "Un vector también tiene un \nángulo que define su sentido, \nhacia donde apunta";
-    //AñadirTexto(100, 40, info, colorTexto, 24);
+    numeroMagnitud = CrearNumeroParaVectorControlable(600,160,125,6);
+    numeroMagnitud = CrearNumeroParaVectorControlable(300,260,125,3);
+    numeroMagnitud = CrearNumeroParaVectorControlable(200,360,125,2);
+    CrearDato(3,615,405,3,"tiempo");
+    DetenerCancion();
+    ReproducirLoopAudio(Stop_And_Think,0.3);
 },
 
 update: function() {
@@ -52,9 +67,6 @@ update: function() {
 //Se llama sola en forma de loop infinito
 
     ControlJugador();
-    if (!(inicio[0] === undefined)) {
-        AnimarMano(inicio,listaDeVectores[0].cuadro,[-55,40,60,65]);
-    }
     ControlarNivel();
 }
 };

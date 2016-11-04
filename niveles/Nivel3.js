@@ -1,7 +1,7 @@
 var Nivel3 = {
 preload: function() {
 
-    game.load.image('rectangulo','assets/rectangulo.png');
+
 },
 create: function() {
 
@@ -22,45 +22,53 @@ En Phaser X y Y el 0,0 está en la esquina superior izquierda y "y" se cuenta
 positivo hasta abajo.
 */
 /********************************************************************************/
-
-
     CrearBasico();
+    CrearCabezeraNivel(3);
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
-    CrearBotonPista("Los vectores tienen magnitud (azul) que\ncambian su tamaño y rapidez.\n¿Qué sucederá si colocas una magnitud \nen el cuadro del mismo color?.\n¡ Inténtalo !");
-    CrearSalida(610,484);
+    botonPistas = CrearBotonPista("Rapido o lento?");
+    CrearSalida(700,479);
+    salidaAbierta = false;
+    CrearPlataforma(50,320,1,1);
     limiteDeTiempo = Infinity;
-    vector = CrearVector(400,300,0,0, true);
-    posInicXPlayer = 50;
-    posInicYPlayer = game.world.height - 110;
+    vectorPequenno = CrearVector(700,150,300,0, false);
+    vectorMediano = CrearVector(700,250,400,0);
+    vectorGrande = CrearVector(700,350,500,0);
+    posInicXPlayer = 100;
+    posInicYPlayer = 270;
     CrearJugador(posInicXPlayer, posInicYPlayer);
-    numeroMagnitud = CrearNumeroParaVectorControlable(100,550,300,1);
-    numeroMagnitud = CrearNumeroParaVectorControlable(300,650,300,3);
-    numeroMagnitud = CrearNumeroParaVectorControlable(500,750,300,5);
-    CrearMano(listaDeNumeros[0].x -55 , listaDeNumeros[0].y + 25);
-    inicio = listaDeNumeros;
-    indice = 0;
-    // informacion sobre la magnitud
-    //info = "Un vector tiene magnitud, que\n es un valor asociado a una\n propiedad física y que cambia\n la intensidad del mismo";
-    //AñadirTexto(60, 60, info, colorTexto, 24);
-
+    CrearEspinas(200,360);
+    listaDeEspinas[0][0].anchor.setTo(0.5, 0.5);
+    listaDeEspinas[0][0].angle = 90;
+    CrearPlataforma(150,382,1,1);
+    CrearEspinas(300,400);
+    listaDeEspinas[1][0].anchor.setTo(0.5, 0.5);
+    listaDeEspinas[1][0].angle = 90;
+    CrearPlataforma(250,422,1,1);
+    CrearEspinas(400,440);
+    listaDeEspinas[2][0].anchor.setTo(0.5, 0.5);
+    listaDeEspinas[2][0].angle = 90;
+    CrearPlataforma(350,462,1,1);
+    CrearEspinas(500,480);
+    listaDeEspinas[3][0].anchor.setTo(0.5, 0.5);
+    listaDeEspinas[3][0].angle = 90;
+    CrearPlataforma(450,502,1,1);
+    CrearEspinas(600,514);
+    listaDeEspinas[4][0].anchor.setTo(0.5, 0.5);
+    listaDeEspinas[4][0].angle = 90;
     tutorial();
     //Variable para controlar el titilar del boton play
     overlap = false;
+	DetenerCancion();
+    ReproducirLoopAudio(Stop_And_Think,0.3);
 },
 
 update: function() {
 //La función update es la responsable de los "frames"
 //Aqui colocamos lo que es movimiento y cambios de variables
 //Se llama sola en forma de loop infinito
-
-    ControlJugador();
-    ControlarNivel();
-    if (!(listaDeNumeros[0] === undefined && listaDeNumeros[0] === undefined)) {
-//    console.log("MAYONESA: " + listaDeNumeros)
-        AnimarMano(inicio,listaDeVectores[0].cuadro,[-55,25,-40,+60]);
-    }
-
     //Parte del tutorial
     resaltarPlay();
+    ControlJugador();
+    ControlarNivel();
 }
 };

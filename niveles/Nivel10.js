@@ -24,39 +24,29 @@ positivo hasta abajo.
 /********************************************************************************/
 
     CrearBasico();
+    CrearCabezeraNivel(10);
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
-    CrearBotonPista("Y ahora hay ángulos... \n¿Cuál puerta será la correcta?\n¿Derecha o izquierda?");
-    CrearSalida(110,484);
-    CrearEspinas(600,440);
-    salidaAbierta = false;
-    limiteDeTiempo = 1;
-    lineaizq = game.add.sprite(110, 470, 'linea');
-    lineaizq.scale.setTo(5, 1);
-    lineader = game.add.sprite(200, 470, 'linea');
-    lineader.scale.setTo(5, 1);
-
-    // Puerta falsa
-    salidaFalsa = game.add.sprite(710,484, 'salida');
-    // salidaFalsa.tint = 0xff9999;
-    lineaizq = game.add.sprite(280, 430, 'linea');
-    lineaizq.scale.setTo(18, 1);
-    lineader = game.add.sprite(520, 430, 'linea');
-    lineader.scale.setTo(18, 1);
-
+    botonPistas = CrearBotonPista("Con la magnitud cero no te puedes\nmover... Trata de crear una nueva\nmagnitud con el resolvedor. Usa la\ndistancia (número naranja) y el tiempo\n(número rojo), te ayudarán.");
+    CrearSalida(670,479);
+    CrearNube(670,545);
+    limiteDeTiempo = 4;
+    lineaizq = game.add.sprite(70, 450, 'linea');
+    lineaizq.scale.setTo(23, 1);
+    lineader = game.add.sprite(401, 450, 'linea');
+    lineader.scale.setTo(26, 1);
     ecuacionVelocidad = CrearEcuacionVelocidad(100,100);
     vector = CrearVector(400,300,0,0, true);
-    posInicXPlayer = 250;
+    posInicXPlayer = 50;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
-    numeroAngulo = CrearAnguloParaVectorControlable(180,550,250,180);
-    numeroAngulo = CrearAnguloParaVectorControlable(30,650,250,30);
-    CrearDato(2,165,420,2,"distancia");
-    CrearDato(1,110,510,1,"tiempo");
+    CrearDato(12,330,400,12,"distancia");
+    CrearDato(4,685,518,4,"tiempo");
 
-    //Datos falsos
-    CrearDato(8,480,380,8,"distancia");
-    CrearDato(2,710,510,2,"tiempo");
-
+    CrearMano(ListaDeDatos[0].x -55 , ListaDeDatos[0].y + 25);
+    inicio = ListaDeDatos;
+    indice = 0;
+    DetenerCancion();
+    ReproducirLoopAudio(Stop_And_Think,0.3);
 },
 
 update: function() {
@@ -66,5 +56,8 @@ update: function() {
 
     ControlJugador();
     ControlarNivel();
+    if (!(inicio[0] === undefined)) {
+        AnimarMano(inicio,ecuacionVelocidad,[-65,25,-40,50]);
+    }
 }
 };

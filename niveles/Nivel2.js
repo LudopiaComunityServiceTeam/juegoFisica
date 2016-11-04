@@ -24,9 +24,10 @@ positivo hasta abajo.
 /********************************************************************************/
 
     CrearBasico();
+    CrearCabezeraNivel(2);
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
-    CrearBotonPista("¿Izquierda o derecha?");
-    CrearSalida(100,484);
+    botonPistas = CrearBotonPista("¿Izquierda o derecha?");
+    CrearSalida(100,479);
     salidaAbierta = false;
     limiteDeTiempo = Infinity;
     vectorDer = CrearVector(450,300,300,0, false);
@@ -35,9 +36,12 @@ positivo hasta abajo.
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
     CrearEspinas(600,440);
+    pared = CrearPared(650,440);
     tutorial();
     //Variable para controlar el titilar del boton play
     overlap = false;
+    DetenerCancion();
+    ReproducirLoopAudio(Stop_And_Think,0.3);
 
 },
 

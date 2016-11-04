@@ -15,78 +15,17 @@ function CrearMano(x,y){
 
 }
 
+
 /**
-* Funcion que anima la mano, la mueve desde el inicio
-* hasta el objetivo
-*
-* @param inicio: objeto de donde parte la animacion
-* @param objetivo: objeto a donde llega la animacion
-* @param offsets: lista con los offsets del inicio y el objetivo.
-*
+* Funcion que resalta las dudas
 */
-function AnimarMano(inicio,objetivo,offsets){
-    //Nota: esta funcion debe ir entre un if que asegure que los
-    //objetos que seran verificados por colision estan definidos
-    if (!ChequearOverlap(inicio[indice],objetivo)&&(!clicked)){
-        if (!mano.alive){
-            mano.reset(inicio[indice].x + offsets[0], inicio[indice].y + offsets[1]);
-        }
-        var distanciaObjX = objetivo.x + offsets[2];
-        var distanciaObjY = objetivo.y + offsets[3];
-
-        var distanciaX = Math.abs(mano.x - distanciaObjX);
-        var distanciaY = Math.abs(mano.y - distanciaObjY);
-
-        var proporcion;
-        var velocidad = 3.5;
-
-        var movEnX;
-        var movEnY;
-        var suma;
-
-        if (Math.abs(distanciaX) < Math.abs(distanciaY))
-        {
-
-            proporcion = (distanciaY)/(distanciaX);
-            suma = proporcion + 1;
-            movEnX = (1/suma)*velocidad;
-            movEnY = (proporcion/suma)*velocidad;
-        }
-        else
-        {
-            proporcion = (distanciaX)/(distanciaY);
-            suma = proporcion + 1;
-            movEnX = (proporcion/suma)*velocidad;
-            movEnY = (1/suma)*velocidad;
-        }
-        if ((mano.x - distanciaObjX)<0){
-            mano.x = mano.x + movEnX;
-        }
-        else {
-            mano.x = mano.x - movEnX;
-        }
-        if ((mano.y - distanciaObjY)<0){
-            mano.y = mano.y + movEnY;
-        }
-        else {
-            mano.y = mano.y - movEnY;
-        }
-
-        if (((mano.x <= distanciaObjX + 10) && (mano.x >= distanciaObjX-10))&&((mano.y<=distanciaObjY + 10) && (mano.y >= distanciaObjY-10))){
-            indice = indice + 1;
-            if (indice == inicio.length){
-               indice = 0;
-            }
-            mano.x = inicio[indice].x + offsets[0];
-            mano.y = inicio[indice].y + offsets[1];
-        }
-    }
-    else if (((mano.alive)&&(ChequearOverlap(inicio[indice],objetivo)))||clicked){
-
-        mano.kill();
+function ResaltarDudas(){
+    if (!clickedPista){
+        ResaltadorPista = game.add.sprite(botonPistas.x+25, botonPistas.y+25, 'rectanguloPista');
+        ResaltadorPista.anchor.setTo(0.5,0.5);
+        dudas = true;
     }
 }
-
 
 
 /**
@@ -103,11 +42,11 @@ function resaltarVectores() {
     ResaltadoresParaVectores = [];
     for (var i = 0; i <  listaDeVectores.length; i++) {
         CrearResaltador(listaDeVectores[i].x,listaDeVectores[i].y, 1.6, 0.8, 'rectangulo');
-        listaDeVectores[i].events.onInputDown.addOnce(quitarResaltadorDeVectores, this);
+        listaDeVectores[i].events.onInputDown.add(quitarResaltadorDeVectores, this);
     }
 }
 
-// funcion auxiliar del tutorial que remueve el resaltador y llama a la funcion que se lo pone al jugador 
+// funcion auxiliar del tutorial que remueve el resaltador y llama a la funcion que se lo pone al jugador
 function quitarResaltadorDeVectores(objeto) {
     pararTitilar();
     resaltarJugador();
@@ -129,6 +68,7 @@ function pararTitilar() {
 
 // Esta funcion le pone resaltador al jugador
 function resaltarJugador() {
+    overlap = false;
     titilarPlayer = CrearResaltador(posInicXPlayer+15, posInicYPlayer+23, 1.2, 1.2, 'rectangulo');
 }
 
@@ -160,17 +100,48 @@ function CrearResaltador(x, y, scaleX, scaleY, sprite) {
 */
 function resaltarPlay(){
     //poner esta funcion en el update del nivel.
-    var overlapAlgunVector;
-    for (var i = 0; i < listaDeVectores.length; i++) {
-        if (ChequearOverlap(player, listaDeVectores[i])){
-            overlapAlgunVector = true;
+    if (!clicked){
+        var overlapAlgunVector;
+        for (var i = 0; i < listaDeVectores.length; i++) {
+            if (ChequearOverlap(player,listaDeVectores[i])||ChequearOverlap(player,listaDeVectores[i].cola)){
+                overlapAlgunVector = true;
+            }
         }
-    }
-    if (!overlap && overlapAlgunVector) {
-        overlap = true;
-        pararTitilar();
-        titilarplay = CrearResaltador(400, 570, 1.1, 0.8, 'rectangulo');
-        PlayButton.events.onInputDown.addOnce(pararTitilar, this);
+        if (overlapAlgunVector){
+
+            if (!overlap) {
+                overlap = true;
+                pararTitilar();
+                titilarplay = CrearResaltador(400, 570, 1.1, 0.8, 'rectangulo');
+                PlayButton.events.onInputDown.add(pararTitilar, this);
+            }
+        }
+        else{
+            if (overlap) {
+                pararTitilar();
+                resaltarJugador();
+                overlap = false;
+            }
+        }
     }
 }
 
+/**
+* Funcion que crea una nube de pensamiento
+*
+*/
+function CrearNube(x,y,xo,yo){
+    nube = game.add.sprite(x,y,'nube');
+    if ((xo != null)&&(yo != null)){
+        origen = game.add.sprite(xo,yo,'nubeOrigen');
+    }
+    else{
+        origen = game.add.sprite(x+5,y-4,'nubeOrigen');
+    }
+    xnube = x;
+    ynube = y;
+    xorigen = xo;
+    yorigen = yo;
+    nubeCreada = true;
+
+}

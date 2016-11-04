@@ -6,6 +6,20 @@ colorAceleracion = "#005ce6";
 colorMagnitud = "#1e3bec";
 colorAngulo = "#9900cc";
 
+function Ciclo(objeto, velsX, velsY, limitesX, limitesY, fase) {
+//Esto es la declaracion de un objeto llamado Ciclo
+
+//Describe los movimientos que debe hacer un objeto, cada argumento
+//Excepto objeto, es una lista, todos deben tener el mismo tamaño,
+//con el primer objeto de cada lista se puede formar un movimiento hasta el punto descrito
+    this.objeto = objeto;
+    this.velsX = velsX;
+    this.velsY = velsY;
+    this.limitesX = limitesX;
+    this.limitesY = limitesY;
+    this.faseInicial = fase;
+    this.fase = fase;
+}
 /**
 * Funcion que crea todo el piso del juego.
 */
@@ -19,6 +33,8 @@ function CrearBasico(){
     CrearTimer();
     CrearTimerPuerta();
     CrearSilenciarSonido();
+    crearPuntuacion();
+    primerIntento = true;
 }
 function CrearPiso() {
 
@@ -37,25 +53,101 @@ function CrearPiso() {
 * Funcion que crea dos plataformas flotantes.
 */
 
-function CrearPlataformas() {
-
-    CrearPlataforma(400,400);
-
-    CrearPlataforma(-150,200);
-}
-
-/**
-* Funcion que crea dos plataformas flotantes.
-*/
-
 function CrearPlataforma(x,y,escalax,escalay) {
 
     var ledge = platforms.create(x, y, 'platform');
     ledge.body.immovable = true;
     ledge.scale.setTo(escalax, escalay);
-
+    return ledge;
 }
 
+function MoverObjeto(plataforma,velocidadX,velocidadY) {
+
+    var platX = plataforma.x;
+    var platY = plataforma.y;
+    plataforma.x = platX + velocidadX;
+    plataforma.y = platY + velocidadY;
+}
+function RestaurarObstaculos(){
+    if (listaDeEspinas.length != 0){
+        for (i = 0; i < listaDeEspinas.length; i++){
+            listaDeEspinas[i][0].x = listaDeEspinas[i][1];
+            listaDeEspinas[i][0].y = listaDeEspinas[i][2];
+        }
+    }
+    if (ListaDeCiclos.length != 0){
+        for (i = 0; i < ListaDeCiclos.length; i++){
+            ListaDeCiclos[i].fase = ListaDeCiclos[i].faseInicial;
+        }
+    }
+}
+function CicloMovimientoSimple(objeto,velX,velY,objetivoX,objetivoY) {
+    if (velX >= 0){
+        if (velY >= 0){
+            if((objeto.y > objetivoY)){
+                console.log("- objeto > objetivo ");
+                console.log("- objetivoY " + objetivoY);
+                return true;
+
+            }
+            else{
+                var xActual = objeto.x;
+                var yActual = objeto.y;
+                objeto.x = xActual + velX;
+                objeto.y = yActual + velY;
+                return false;
+            }
+        }
+        else if (velY < 0){
+            if((objeto.y < objetivoY)){
+                console.log("- objeto < objetivo ");
+                console.log("- objetivoY " + objetivoY);
+                return true;
+            }
+            else{
+                var xActual = objeto.x
+                var yActual = objeto.y
+                objeto.x = xActual + velX
+                objeto.y = yActual + velY
+                return false;
+            }
+        }
+
+    }
+    else if (velX < 0){
+        if (velY >= 0){
+            if((objeto.x < objetivoX)||(objeto.y > objetivoY)){
+                return true;
+            }
+            else{
+                var xActual = objeto.x
+                var yActual = objeto.y
+                objeto.x = xActual + velX
+                objeto.y = yActual + velY
+                return false;
+            }
+        }
+        else if (velY < 0){
+            if((objeto.x < objetivoX)||(objeto.y < objetivoY)){
+                return true;
+            }
+            else{
+                var xActual = objeto.x
+                var yActual = objeto.y
+                objeto.x = xActual + velX
+                objeto.y = yActual + velY
+                return false;
+            }
+        }
+    }
+}
+
+function CrearPared(x,y) {
+
+    var pared = platforms.create(x, y, 'pared');
+    pared.body.immovable = true;
+    return pared
+}
 
 /**
 * Funcion que crea el sprite de la salida en la posicion
@@ -69,6 +161,7 @@ function CrearPlataforma(x,y,escalax,escalay) {
 function CrearSalida(x,y) {
 
     salida = game.add.sprite(x,y,'salida');
+    salida.scale.setTo(1, 1.1);
     salida.animations.add('accionar',[1,2,3,4],10,false);
     salida.animations.add('cerrar',[3,2,1,0],10,false);
 
@@ -85,10 +178,10 @@ function CrearFondo(){
 
 
 
-function CrearEspinas(x,y,rotacion){
+function CrearEspinas(x,y){
 
     espinas = game.add.sprite(x,y,'Espinas');
-    listaDeEspinas.push(espinas);
+    listaDeEspinas.push([espinas,x,y]);
 
 }
 function ActivarFisica(){
@@ -119,13 +212,6 @@ function InicializarPlataformas(){
 * argumentos.
 *
 */
-
-function ResaltarDudas(){
-    ResaltadorPista = game.add.sprite(botonPistas.x+25, botonPistas.y+25, 'rectanguloPista');
-    ResaltadorPista.anchor.setTo(0.5,0.5)
-    dudas = true;
-    textoDuda = AñadirTexto(100,560,"Dudas?",colorTexto,30)
-}
 function AñadirTexto(x,y,texto,color,tamanno){
     var text = game.add.text(x, y, texto);
     text.fill = color;
@@ -137,124 +223,74 @@ function AñadirTexto(x,y,texto,color,tamanno){
 }
 
 /**
-* Funcion que muestra el sprite de finalizar el juego
-* y reproduce el sonido correspondiente.
+* Funcion que agrega un texto en el juego con estilo de marcador
+* permanente.
+*
+* @param x: posicion en el eje x
+* @param y: posicion en el eje x
+* @param texto: texto a escribir en pantalla
+* @param color: color del texto
+* @param tamanno: tamaño de la fuente del texto
+*
+* @return text: el texto con las características de los
+* argumentos.
 *
 */
-function gameOver(texto){
+function AñadirTextoMarcador(x,y,texto,color,tamanno){
+    var text = game.add.text(x, y, texto);
+    text.fill = color;
+    text.font = 'Permanent Marker';
+    text.fontSize = tamanno;
+    text.fontWeight = 'normal';
+    text.align = 'center';
+    return text;
 
-    Explotar();
-    if((postIt==null)||(gameOverText==null)){
-        postIt = game.add.sprite(300, 200, 'post-it-verde');
-        postIt.inputEnabled = true;
-        postIt.events.onInputDown.add(resetGame, this);
-        if (texto == "Auch!"){
-            gameOverText = AñadirTexto(365,280,texto,colorTexto,45);
-        }
-        else{
-            gameOverText = AñadirTexto(340,280,texto,colorTexto,45);
-        }
-        reintentarText = AñadirTexto(345,340,"Haz click para\nreintentar",colorTexto,22);
-
-    }
-    else{
-
-        postIt.reset(300,200);
-        reintentarText.reset(340,340);
-        if (texto == "Auch!"){
-            gameOverText = AñadirTexto(365,280,texto,colorTexto,45);
-        }
-        else{
-            gameOverText = AñadirTexto(340,280,texto,colorTexto,45);
-        }
-    }
 }
 
 /**
-* Funcion que quita el fin de juego de la pantalla
+* Funcion que agrega un texto en el juego con estilo de
+* stencil o sello
+*
+* @param x: posicion en el eje x
+* @param y: posicion en el eje x
+* @param texto: texto a escribir en pantalla
+* @param color: color del texto
+* @param tamanno: tamaño de la fuente del texto
+*
+* @return text: el texto con las características de los
+* argumentos.
 *
 */
-function gameOverDestroy(){
-    if (!(postIt==null)&&!(gameOverText==null)){
-        if((postIt.alive)||(gameOverText.alive)){
-            postIt.kill();
-            reintentarText.kill();
-            gameOverText.destroy();
-        }
-    }
+function AñadirTextoStencil(x,y,texto,color,tamanno){
+    var text = game.add.text(x, y, texto);
+    text.fill = color;
+    text.font = 'Stardos Stencil';
+    text.fontSize = tamanno;
+    text.fontWeight = 'normal';
+    text.align = 'center';
+    text.scale.setTo(1,0.8);
+    return text;
+
 }
 
 /**
-* Funcion que reinicia el juego.
+* Funcion que colorea un texto segun su valor
 *
 */
-function resetGame(){
-    Reset.play();
-    //Detenemos el timer
-    stopTimer();
-    resetTimerSinTexto();
-    stopTimerPuerta();
-    resetTimerPuerta();
-    //y soltamos el boton
-    PlayButton.frame = 0;
-    clicked = false;
-    impulsado = false;
-    salidaAbierta = false;
-    epilogoCorriendo = false;
-    game.add.tween(player.body).to( { x: posInicXPlayer , y:posInicYPlayer}, 1, Phaser.Easing.Linear.None, true);
-    if (!player.alive){
-        player.reset(posInicXPlayer,posInicYPlayer);
+function colorearTexto(texto) {
+
+    if (texto.text > 15 && texto.text <= 20){
+        texto.fill = '#00cc00'; // color verde
     }
-    else{
-        player.body.velocity.y = 0;
-        player.body.velocity.x = 0;
+    else if (texto.text > 9 && texto.text <= 15) {
+        texto.fill = '#ffcc00'; // color amarillo
     }
-    salida.frame = 0;
-    gameOverDestroy();
-    if (explosion){
-        cabeza.destroy();
-        cuerpo.destroy();
-        brazoI.destroy();
-        brazoD.destroy();
-        piernaI.destroy();
-        piernaD.destroy();
-        explosion = false;
+    else if (texto.text > 4 && texto.text <= 9) {
+        texto.fill = '#ff9900'; // color naranja
     }
-}
-
-
-
-/**
-* Funcion reinicia todas la variables involucradas
-* en el juego.
-*
-*/
-function resetVariables(){
-    //resetea las variables del nivel para que al iniciar el nuevo
-    //nivel no se traigan variables del nivel anterior
-    clicked = false;
-    magnitudJugador = 0;
-    direccion = 1;
-    angulo = 0;
-    impulsado = false;
-    tieneDistancia = false;
-    tieneTiempo = false;
-    postIt = null;
-    gameOverText = null;
-    listaDeVectores = [];
-    listaDeNumeros = [];
-    listaDeEspinas = [];
-    listaDeAngulos = [];
-    ListaDeDatos = [];
-    cuadroVictoria = [];
-    inicio = [];
-    cuadroPista = [];
-    resaltadores = [];
-    indice = 0;
-    menuFinalNivelDesplegado = false;
-
-    salidaAbierta = false;
-    epilogoCorriendo = false;
+    else if (texto.text >= 0 && texto.text <= 4) {
+        texto.fill = '#ff3333'; //color rojo
+    }
 }
 
 /**
@@ -266,8 +302,30 @@ function resetVariables(){
 *
 */
 function ChequearOverlap(Objeto1,Objeto2){
-    var boundsA = Objeto1.getBounds();
-    var boundsB = Objeto2.getBounds();
 
-    return Phaser.Rectangle.intersects(boundsA, boundsB);
+    if((Objeto1.cola == null)) {
+
+        var boundsA = Objeto1.getBounds();
+        var boundsB = Objeto2.getBounds();
+
+        return Phaser.Rectangle.intersects(boundsA, boundsB);
+    }
+    else {
+        var boundsA = Objeto1.getBounds();
+        var boundsB = Objeto2.getBounds();
+        if (Phaser.Rectangle.intersects(boundsA, boundsB) == true){
+            return true;
+        }
+        boundsA = Objeto1.cola.getBounds();
+        if (Phaser.Rectangle.intersects(boundsA, boundsB) == true){
+            return true;
+        }
+        return false;
+    }
+}
+
+function CrearCabezeraNivel(nivel){
+    var nivelX = 50;
+    var nivelY = 10;
+    AñadirTexto(nivelX, nivelY, 'Nivel: '+ nivel, colorTexto, 40);
 }
