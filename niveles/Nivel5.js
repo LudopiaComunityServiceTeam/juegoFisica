@@ -25,7 +25,6 @@ positivo hasta abajo.
 
 
     CrearBasico();
-    CrearCabezeraNivel(5);
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     botonPistas = CrearBotonPista("La puerta tiene un número ahora\ny es del mismo color que el tiempo,\n¿Qué podrá significar?.\nPiensa bien que velocidad usar o la\n puerta se cerrará...");
     var pared = CrearPared(150,290);

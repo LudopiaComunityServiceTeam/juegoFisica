@@ -242,6 +242,7 @@ function gameOver(texto){
     gameOverText.angle = -4;
     cuadroVictoria.push(gameOverText);
     stopTimerPuerta();
+    saveArchivoGuardado();
 }
 
 /**

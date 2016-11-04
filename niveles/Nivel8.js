@@ -24,7 +24,6 @@ positivo hasta abajo.
 /********************************************************************************/
 
     CrearBasico();
-    CrearCabezeraNivel(8);
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     botonPistas = CrearBotonPista("Todo lo que sube tiene que caer...\n¡Escoge la rapidez correcta!");
     CrearSalida(400,300);

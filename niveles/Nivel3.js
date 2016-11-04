@@ -23,7 +23,6 @@ positivo hasta abajo.
 */
 /********************************************************************************/
     CrearBasico();
-    CrearCabezeraNivel(3);
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     botonPistas = CrearBotonPista("Rapido o lento?");
     CrearSalida(700,479);

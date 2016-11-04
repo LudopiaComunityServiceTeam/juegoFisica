@@ -34,6 +34,7 @@ function CrearBasico(){
     CrearTimerPuerta();
     CrearSilenciarSonido();
     crearPuntuacion();
+    CrearCabezeraNivel();
     primerIntento = true;
 }
 function CrearPiso() {
@@ -105,10 +106,10 @@ function CicloMovimientoSimple(objeto,velX,velY,objetivoX,objetivoY) {
                 return true;
             }
             else{
-                var xActual = objeto.x
-                var yActual = objeto.y
-                objeto.x = xActual + velX
-                objeto.y = yActual + velY
+                var xActual = objeto.x;
+                var yActual = objeto.y;
+                objeto.x = xActual + velX;
+                objeto.y = yActual + velY;
                 return false;
             }
         }
@@ -120,10 +121,10 @@ function CicloMovimientoSimple(objeto,velX,velY,objetivoX,objetivoY) {
                 return true;
             }
             else{
-                var xActual = objeto.x
-                var yActual = objeto.y
-                objeto.x = xActual + velX
-                objeto.y = yActual + velY
+                var xActual = objeto.x;
+                var yActual = objeto.y;
+                objeto.x = xActual + velX;
+                objeto.y = yActual + velY;
                 return false;
             }
         }
@@ -132,10 +133,10 @@ function CicloMovimientoSimple(objeto,velX,velY,objetivoX,objetivoY) {
                 return true;
             }
             else{
-                var xActual = objeto.x
-                var yActual = objeto.y
-                objeto.x = xActual + velX
-                objeto.y = yActual + velY
+                var xActual = objeto.x;
+                var yActual = objeto.y;
+                objeto.x = xActual + velX;
+                objeto.y = yActual + velY;
                 return false;
             }
         }
@@ -324,8 +325,8 @@ function ChequearOverlap(Objeto1,Objeto2){
     }
 }
 
-function CrearCabezeraNivel(nivel){
+function CrearCabezeraNivel(){
     var nivelX = 50;
     var nivelY = 10;
-    AñadirTexto(nivelX, nivelY, 'Nivel: '+ nivel, colorTexto, 40);
+    AñadirTexto(nivelX, nivelY, 'Nivel: '+ nivelActual, colorTexto, 40);
 }

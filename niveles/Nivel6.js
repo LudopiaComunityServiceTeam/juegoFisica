@@ -24,7 +24,6 @@ positivo hasta abajo.
 
 
     CrearBasico();
-    CrearCabezeraNivel(6);
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     botonPistas = CrearBotonPista("Los vectores tienen ángulo (morado) que\ncambian su inclinación. ¡Ahora puedes\nsaltar! Ten cuidado de no saltar muy\n bajo...");
     CrearSalida(610,479);

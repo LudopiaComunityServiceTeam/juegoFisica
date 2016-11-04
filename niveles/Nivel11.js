@@ -24,13 +24,12 @@ positivo hasta abajo.
 /********************************************************************************/
 
     CrearBasico();
-    CrearCabezeraNivel(11);
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     botonPistas = CrearBotonPista("¡Wow! Espinas, distancias y tiempos...\nEl resolvedor nos ayudará en este\ndilema, piensa bien que distancia y\ntiempo usar agregarás en él, hay\nuna puerta a la que no puedes\nllegar.");
 
     CrearEspinas(630,440);
-    CrearSalida(560,479);
-    CrearNube(560,545);
+    CrearSalida(555,479);
+    CrearNube(555,545);
     limiteDeTiempo = 2;
     lineaizq = game.add.sprite(220, 380, 'linea');
     lineaizq.scale.setTo(20, 1);
