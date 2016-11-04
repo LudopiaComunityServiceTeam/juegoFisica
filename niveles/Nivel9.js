@@ -23,6 +23,7 @@ positivo hasta abajo.
 */
 /********************************************************************************/
     CrearBasico();
+    CrearCabezeraNivel(9);
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     botonPistas = CrearBotonPista("¡Magnitudes y ángulos! Calcula la\ncombinación correcta de ellos para\nllegar a tiempo a la puerta;\nel monigote lo agradecerá.");
     CrearSalida(660,479);
@@ -47,8 +48,11 @@ positivo hasta abajo.
     posInicXPlayer = 50;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
+<<<<<<< HEAD
     DetenerCancion();
     ReproducirLoopAudio(Stop_And_Think,0.3);
+=======
+>>>>>>> a264ae0a1072e17e5b858f8ef7ee85ed2d149691
 
 },
 
@@ -62,3 +66,4 @@ update: function() {
     game.debug.bodyInfo(player);
 }
 };
+

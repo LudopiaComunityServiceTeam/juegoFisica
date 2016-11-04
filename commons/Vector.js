@@ -24,8 +24,6 @@ function CrearVector(x, y, magnitud, angulo, mostrarCuadro) {
     vector.cargado = false;
     vector.anchor.setTo(0.5, 0.5);
     vector.angle = ConvertirAngulo(angulo);
-    vector.posXInit = x;
-    vector.posYInit = y;
     escalarVector(vector, magnitud);
     if (magnitud != 0){
         vector.cargado = true;
@@ -52,7 +50,10 @@ function CrearVector(x, y, magnitud, angulo, mostrarCuadro) {
 
     var bounds = new Phaser.Rectangle(65, 0, 715, 535);
     vector.input.boundsRect = bounds;
+<<<<<<< HEAD
     game.world.bringToTop(vector);
+=======
+>>>>>>> a264ae0a1072e17e5b858f8ef7ee85ed2d149691
 
     return vector;
 
@@ -275,25 +276,18 @@ function ConvertirAngulo(angulo){
 function pegarVector(item) {
     //Chequea si el vector esta fuera de un rango y si no es asi,
     //lo lleva a dicho rango
+
     if (ChequearOverlap(player,item)||ChequearOverlap(player,item.cola)) {
         VectorFit.play();
         item.x = (player.x+(player.width/2));
         item.y = (player.y+(player.height/2));
         magnitudJugador = item.magnitud;
         angulo = item.angulo;
-        if (player.vectorEnPlayer !== undefined){
-            player.vectorEnPlayer.x = player.vectorEnPlayer.posXInit;
-            player.vectorEnPlayer.y = player.vectorEnPlayer.posYInit;
-        }
-        player.vectorEnPlayer = item; // el vector
     }
-    // el vector arrastrado era el que estaba encima del jugador y se quita del jugador
-    else if (player.vectorEnPlayer == item) {
+    else{
         magnitudJugador = 0;
         angulo = 0;
-        player.vectorEnPlayer = undefined;
     }
-
 }
 
 /**
@@ -312,13 +306,9 @@ function CrearCuadroVector(x,y,vector){
     var cuadro = game.add.sprite(x, y, 'cuadroVector');
     cuadro.anchor.setTo(0.5, 0.5);
 
-    var cerrar = game.add.sprite(55, -60, 'BotonCerrar');
-    cerrar.frame = 0;
-    cerrar.i = 0;
-    cerrar.scale.setTo(0.45, 0.45);
+    var cerrar = game.add.sprite(55, -70, 'BotonCerrar');
+    cerrar.scale.setTo(0.5, 0.5);
     cerrar.inputEnabled = true;
-    cerrar.events.onInputOver.add(overButton, this);
-    cerrar.events.onInputOut.add(outButton, this);
     cerrar.events.onInputDown.add(function(cerrar){ocultarCuadroVector(vector, cuadro);}, this);
     cuadro.addChild(cerrar);
 
@@ -476,10 +466,15 @@ function centrarValorCuadro(cuadro, valor, tipoDeDato){
     }
     valor.y = cuadro.y - 20;
 }
+<<<<<<< HEAD
 function ble(){
+=======
+/*function actualizarColaVector(){
+>>>>>>> a264ae0a1072e17e5b858f8ef7ee85ed2d149691
     for (i = 0; i < listaDeVectores.length; i++){
-        RevisarContactoJugadorVector(i);
+        RevisarContactoJugadorVector(i)
     }
+<<<<<<< HEAD
 }
 function RevisarContactoJugadorVector(i){
     if (ChequearOverlap(listaDeVectores[i],player)){
@@ -487,6 +482,9 @@ function RevisarContactoJugadorVector(i){
         //la magnitud del jugador se convierte en la del vector
         magnitudJugador = listaDeVectores[i].magnitud;
         angulo = listaDeVectores[i].angulo;
-        vectorEnContacto = true;
+        vectorEnContacto = true
     }
 }
+=======
+}*/
+>>>>>>> a264ae0a1072e17e5b858f8ef7ee85ed2d149691

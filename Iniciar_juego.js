@@ -15,9 +15,12 @@ game.state.add('Nivel12', Nivel12);
 game.state.add('Nivel13', Nivel13);
 game.state.add('Nivel14', Nivel14);
 game.state.add('Nivel15', Nivel15);
+<<<<<<< HEAD
 game.state.add('Nivel16', Nivel16);
 game.state.add('Nivel17', Nivel17);
 game.state.add('Nivel18', Nivel18);
+=======
+>>>>>>> a264ae0a1072e17e5b858f8ef7ee85ed2d149691
 game.state.add('Main_game', MainGame);
 game.state.add('SeleccionDeNivel', SeleccionDeNivel);
 game.state.add('PantallaDeInicio', PantallaDeInicio);

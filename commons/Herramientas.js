@@ -34,7 +34,6 @@ function CrearBasico(){
     CrearTimerPuerta();
     CrearSilenciarSonido();
     crearPuntuacion();
-    CrearCabezeraNivel();
     primerIntento = true;
 }
 function CrearPiso() {
@@ -78,6 +77,7 @@ function RestaurarObstaculos(){
     }
     if (ListaDeCiclos.length != 0){
         for (i = 0; i < ListaDeCiclos.length; i++){
+<<<<<<< HEAD
             ListaDeCiclos[i].fase = ListaDeCiclos[i].faseInicial;
         }
     }
@@ -106,10 +106,10 @@ function CicloMovimientoSimple(objeto,velX,velY,objetivoX,objetivoY) {
                 return true;
             }
             else{
-                var xActual = objeto.x;
-                var yActual = objeto.y;
-                objeto.x = xActual + velX;
-                objeto.y = yActual + velY;
+                var xActual = objeto.x
+                var yActual = objeto.y
+                objeto.x = xActual + velX
+                objeto.y = yActual + velY
                 return false;
             }
         }
@@ -121,10 +121,10 @@ function CicloMovimientoSimple(objeto,velX,velY,objetivoX,objetivoY) {
                 return true;
             }
             else{
-                var xActual = objeto.x;
-                var yActual = objeto.y;
-                objeto.x = xActual + velX;
-                objeto.y = yActual + velY;
+                var xActual = objeto.x
+                var yActual = objeto.y
+                objeto.x = xActual + velX
+                objeto.y = yActual + velY
                 return false;
             }
         }
@@ -133,13 +133,26 @@ function CicloMovimientoSimple(objeto,velX,velY,objetivoX,objetivoY) {
                 return true;
             }
             else{
-                var xActual = objeto.x;
-                var yActual = objeto.y;
-                objeto.x = xActual + velX;
-                objeto.y = yActual + velY;
+                var xActual = objeto.x
+                var yActual = objeto.y
+                objeto.x = xActual + velX
+                objeto.y = yActual + velY
                 return false;
             }
         }
+=======
+            ListaDeCiclos[i][1] = false;
+            ListaDeCiclos[i][5] = 0;
+        }
+    }
+}
+function CicloMovimientoSimple(plataforma,regresando,velX,velY) {
+    if (!regresando){
+        MoverObjeto(plataforma,velX,velY)
+    }
+    else{
+        MoverObjeto(plataforma,-(velX),-(velY))
+>>>>>>> a264ae0a1072e17e5b858f8ef7ee85ed2d149691
     }
 }
 
@@ -242,7 +255,10 @@ function AñadirTextoMarcador(x,y,texto,color,tamanno){
     text.fill = color;
     text.font = 'Permanent Marker';
     text.fontSize = tamanno;
+<<<<<<< HEAD
     text.fontWeight = 'normal';
+=======
+>>>>>>> a264ae0a1072e17e5b858f8ef7ee85ed2d149691
     text.align = 'center';
     return text;
 
@@ -251,6 +267,7 @@ function AñadirTextoMarcador(x,y,texto,color,tamanno){
 /**
 * Funcion que agrega un texto en el juego con estilo de
 * stencil o sello
+<<<<<<< HEAD
 *
 * @param x: posicion en el eje x
 * @param y: posicion en el eje x
@@ -292,6 +309,29 @@ function colorearTexto(texto) {
     else if (texto.text >= 0 && texto.text <= 4) {
         texto.fill = '#ff3333'; //color rojo
     }
+=======
+*
+* @param x: posicion en el eje x
+* @param y: posicion en el eje x
+* @param texto: texto a escribir en pantalla
+* @param color: color del texto
+* @param tamanno: tamaño de la fuente del texto
+*
+* @return text: el texto con las características de los
+* argumentos.
+*
+*/
+function AñadirTextoStencil(x,y,texto,color,tamanno){
+    var text = game.add.text(x, y, texto);
+    text.fill = color;
+    text.font = 'Stardos Stencil';
+    text.fontSize = tamanno;
+    text.fontWeight = 'normal';
+    text.align = 'center';
+    text.scale.setTo(1,0.8);
+    return text;
+
+>>>>>>> a264ae0a1072e17e5b858f8ef7ee85ed2d149691
 }
 
 /**
@@ -305,7 +345,10 @@ function colorearTexto(texto) {
 function ChequearOverlap(Objeto1,Objeto2){
 
     if((Objeto1.cola == null)) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> a264ae0a1072e17e5b858f8ef7ee85ed2d149691
         var boundsA = Objeto1.getBounds();
         var boundsB = Objeto2.getBounds();
 
@@ -323,10 +366,13 @@ function ChequearOverlap(Objeto1,Objeto2){
         }
         return false;
     }
+<<<<<<< HEAD
 }
 
-function CrearCabezeraNivel(){
+function CrearCabezeraNivel(nivel){
     var nivelX = 50;
     var nivelY = 10;
-    AñadirTexto(nivelX, nivelY, 'Nivel: '+ nivelActual, colorTexto, 40);
+    AñadirTexto(nivelX, nivelY, 'Nivel: '+ nivel, colorTexto, 40);
+=======
+>>>>>>> a264ae0a1072e17e5b858f8ef7ee85ed2d149691
 }

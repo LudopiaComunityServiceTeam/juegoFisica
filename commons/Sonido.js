@@ -69,7 +69,17 @@ function ReproducirMusicaNivel(cancion)
 }
 
 /* Pausa todas las canciones */
+<<<<<<< HEAD
 function DetenerCancion() 
 {
 	cancionActual.pause();
 }
+=======
+function CallarCancion() 
+{
+    jazzFunkThoughts.pause();
+    AnAmazingStart.pause();
+    Stop_And_Think.pause();
+    PaceItUp.pause();
+}
+>>>>>>> a264ae0a1072e17e5b858f8ef7ee85ed2d149691

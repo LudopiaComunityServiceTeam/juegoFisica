@@ -78,6 +78,32 @@ function DetectarVictoria() {
             stopTimerPuerta();
             resetTimerSinTexto();
             //player.kill();
+<<<<<<< HEAD
+=======
+        }
+    }
+}
+
+/**
+* Funcion que detecta si se gano un nivel
+*
+*/
+function ManejarObstaculos() {
+
+    //Detectar si el personaje toca la salida
+    if (ListaDeCiclos.length != 0){
+        for (i = 0; i < ListaDeCiclos.length; i++){
+            var ciclo = ListaDeCiclos[i];
+            CicloMovimientoSimple(ciclo[0][0],ciclo[1],ciclo[2],ciclo[3]);
+            if (ciclo[5]== null){
+                ciclo[5] = 0;
+            }
+            if (((tiempo % ciclo[4] ) == 0)&&(ciclo[5]!=tiempo)){
+                var faseCiclo = ciclo[1]
+                ciclo[1] = !(faseCiclo)
+                ciclo[5] = tiempo;
+            }
+>>>>>>> a264ae0a1072e17e5b858f8ef7ee85ed2d149691
         }
     }
 }
@@ -181,9 +207,12 @@ function ControlarNivel() {
 function MenuFinalNivel() {
 
     inhabilitarJugar();
+<<<<<<< HEAD
     if (primerIntento){ //si gana a la primera
         actualizarPuntuacion(1);
     }
+=======
+>>>>>>> a264ae0a1072e17e5b858f8ef7ee85ed2d149691
     var filtroBlanco = game.add.sprite(0,0,'fondoBlanco');
     filtroBlanco.alpha = 0.5;
     filtroBlanco.scale.setTo(5,2);
@@ -191,6 +220,7 @@ function MenuFinalNivel() {
     var hoja = game.add.sprite(100,50,'pedazoHoja');
     hoja.scale.setTo(0.6,0.6);
     cuadroVictoria.push(hoja);
+<<<<<<< HEAD
     ponerPuntuacionEnCuadro(350, 305);
     // var sello = game.add.sprite(370,295, 'sello');
     // sello.scale.setTo(0.5, 0.5);
@@ -199,6 +229,15 @@ function MenuFinalNivel() {
     cuadroVictoria.push(CrearBotonRepetirNivel());
     var victoria = game.add.sprite(235,120,'victoria');
     victoria.scale.setTo(0.5,0.5);
+=======
+    var sello = game.add.sprite(370,295, 'sello');
+    sello.scale.setTo(0.5, 0.5);
+    cuadroVictoria.push(sello);
+    cuadroVictoria.push(CrearBotonContinuar());
+    cuadroVictoria.push(CrearBotonRepetirNivel());
+    var victoria = game.add.sprite(235,120,'victoria');
+    victoria.scale.setTo(0.5,0.5)
+>>>>>>> a264ae0a1072e17e5b858f8ef7ee85ed2d149691
     cuadroVictoria.push(victoria);
 
 }
@@ -219,8 +258,11 @@ function ReiniciarNivel() {
 function gameOver(texto){
 
     Explotar();
+<<<<<<< HEAD
     primerIntento = false;
     actualizarPuntuacion(-1);
+=======
+>>>>>>> a264ae0a1072e17e5b858f8ef7ee85ed2d149691
     inhabilitarJugar();
     var filtroBlanco = game.add.sprite(0,0,'fondoBlanco');
     filtroBlanco.alpha = 0.5;
@@ -229,7 +271,16 @@ function gameOver(texto){
     var hoja = game.add.sprite(100,50,'pedazoHoja');
     hoja.scale.setTo(0.6,0.6);
     cuadroVictoria.push(hoja);
+<<<<<<< HEAD
     ponerPuntuacionEnCuadro(490, 225);
+=======
+    var sello = AñadirTextoMarcador(490,225,'0',colorTiempo,70);
+    sello.angle = -25;
+    cuadroVictoria.push(sello);
+    var subrayar = AñadirTextoMarcador(500,245,'_',colorTiempo,70);
+    subrayar.angle = -25;
+    cuadroVictoria.push(subrayar);
+>>>>>>> a264ae0a1072e17e5b858f8ef7ee85ed2d149691
     cuadroVictoria.push(CrearBotonRepetirNivel());
 
     var gameOverText;
@@ -237,12 +288,15 @@ function gameOver(texto){
         gameOverText = AñadirTextoStencil(320,130,texto,colorTiempo,60);
     }
     else{
+<<<<<<< HEAD
         gameOverText = AñadirTextoStencil(280,130,texto,colorTiempo,60);
+=======
+        gameOverText = AñadirTextoStencil(300,130,texto,colorTiempo,60);
+>>>>>>> a264ae0a1072e17e5b858f8ef7ee85ed2d149691
     }
     gameOverText.angle = -4;
     cuadroVictoria.push(gameOverText);
     stopTimerPuerta();
-    saveArchivoGuardado();
 }
 
 /**
@@ -305,7 +359,11 @@ function resetVariables(){
     listaDeEspinas = [];
     listaDeAngulos = [];
     ListaDeDatos = [];
+<<<<<<< HEAD
     ListaDeCiclos = [];
+=======
+    ListaDeCiclos = []
+>>>>>>> a264ae0a1072e17e5b858f8ef7ee85ed2d149691
     cuadroVictoria = [];
     inicio = [];
     cuadroPista = [];

@@ -25,8 +25,10 @@ positivo hasta abajo.
 
 
     CrearBasico();
+    CrearCabezeraNivel(4);
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     botonPistas = CrearBotonPista("Los vectores tienen magnitud (azul) que\ncambian su tamaño y rapidez.\n¿Qué sucederá si colocas una magnitud \nen el cuadro del mismo color?.\n¡ Inténtalo !");
+<<<<<<< HEAD
     CrearPlataforma(50,300,1,1);
     CrearPlataforma(350,400,1,1);
     CrearPlataforma(650,500,1,1);
@@ -55,6 +57,11 @@ positivo hasta abajo.
     CrearPared(400,000);
     limiteDeTiempo = Infinity;
     vector = CrearVector(600,250,0,0, true);
+=======
+    CrearSalida(610,479);
+    limiteDeTiempo = Infinity;
+    vector = CrearVector(400,300,0,0, true);
+>>>>>>> a264ae0a1072e17e5b858f8ef7ee85ed2d149691
     posInicXPlayer = 50;
     posInicYPlayer = game.world.height - 350;
     CrearJugador(posInicXPlayer, posInicYPlayer);
@@ -71,8 +78,11 @@ positivo hasta abajo.
     tutorial();
     //Variable para controlar el titilar del boton play
     overlap = false;
+<<<<<<< HEAD
     DetenerCancion();
     ReproducirLoopAudio(Stop_And_Think,0.3);
+=======
+>>>>>>> a264ae0a1072e17e5b858f8ef7ee85ed2d149691
 },
 
 update: function() {
@@ -83,7 +93,12 @@ update: function() {
     ControlJugador();
     ControlarNivel();
     if (!(listaDeNumeros[0] === undefined && listaDeNumeros[0] === undefined)) {
+<<<<<<< HEAD
         AnimarMano(inicio,listaDeVectores[0].cuadro,[-55,25,-140,0]);
+=======
+//    console.log("MAYONESA: " + listaDeNumeros)
+        AnimarMano(inicio,listaDeVectores[0].cuadro,[-55,25,-40,+60]);
+>>>>>>> a264ae0a1072e17e5b858f8ef7ee85ed2d149691
     }
 
     //Parte del tutorial
