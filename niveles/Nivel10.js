@@ -24,7 +24,6 @@ positivo hasta abajo.
 /********************************************************************************/
 
     CrearBasico();
-    CrearCabezeraNivel(10);
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     botonPistas = CrearBotonPista("Con la magnitud cero no te puedes\nmover... Trata de crear una nueva\nmagnitud con el resolvedor. Usa la\ndistancia (número naranja) y el tiempo\n(número rojo), te ayudarán.");
     CrearSalida(670,479);
@@ -45,11 +44,8 @@ positivo hasta abajo.
     CrearMano(ListaDeDatos[0].x -55 , ListaDeDatos[0].y + 25);
     inicio = ListaDeDatos;
     indice = 0;
-<<<<<<< HEAD
     DetenerCancion();
     ReproducirLoopAudio(Stop_And_Think,0.3);
-=======
->>>>>>> a264ae0a1072e17e5b858f8ef7ee85ed2d149691
 },
 
 update: function() {

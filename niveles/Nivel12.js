@@ -24,10 +24,6 @@ positivo hasta abajo.
 /********************************************************************************/
 
     CrearBasico();
-<<<<<<< HEAD
-    CrearCabezeraNivel(12);
-=======
->>>>>>> a264ae0a1072e17e5b858f8ef7ee85ed2d149691
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     botonPistas = CrearBotonPista("Y ahora hay ángulos... \n¿Cuál puerta será la correcta?\n¿Derecha o izquierda?");
     CrearSalida(110,479);
@@ -62,12 +58,8 @@ positivo hasta abajo.
     //Datos falsos
     CrearDato(8,480,380,8,"distancia");
     CrearDato(2,725,515,2,"tiempo");
-<<<<<<< HEAD
 	DetenerCancion();
     ReproducirLoopAudio(Stop_And_Think,0.3);
-=======
-
->>>>>>> a264ae0a1072e17e5b858f8ef7ee85ed2d149691
 },
 
 update: function() {

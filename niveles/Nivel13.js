@@ -24,10 +24,6 @@ positivo hasta abajo.
 /********************************************************************************/
 
     CrearBasico();
-<<<<<<< HEAD
-    CrearCabezeraNivel(13);
-=======
->>>>>>> a264ae0a1072e17e5b858f8ef7ee85ed2d149691
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     botonPistas = CrearBotonPista("La velocidad que tienes depende\nla distancia (y el tiempo) que elijas.\nEscoge sabiamente y llega a la puerta.");
     CrearSalida(470,479);
@@ -37,10 +33,6 @@ positivo hasta abajo.
     CrearPlataforma(50,320,1,1);
     CrearPlataforma(150,320,1,1);
     limiteDeTiempo = 3;
-<<<<<<< HEAD
-=======
-
->>>>>>> a264ae0a1072e17e5b858f8ef7ee85ed2d149691
     lineaizq = game.add.sprite(150, 380, 'linea');
     lineaizq.scale.setTo(5, 1);
     lineader = game.add.sprite(250, 380, 'linea');
@@ -81,12 +73,8 @@ positivo hasta abajo.
     //Datos falsos
     CrearDato(3,215,330,3,"distancia");
     CrearDato(9,215,430,9,"distancia");
-<<<<<<< HEAD
 	DetenerCancion();
     ReproducirLoopAudio(Stop_And_Think,0.3);
-=======
-
->>>>>>> a264ae0a1072e17e5b858f8ef7ee85ed2d149691
 },
 
 update: function() {

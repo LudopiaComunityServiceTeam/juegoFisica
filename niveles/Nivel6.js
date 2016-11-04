@@ -24,7 +24,6 @@ positivo hasta abajo.
 
 
     CrearBasico();
-    CrearCabezeraNivel(6);
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     botonPistas = CrearBotonPista("Los vectores tienen ángulo (morado) que\ncambian su inclinación. ¡Ahora puedes\nsaltar! Ten cuidado de no saltar muy\n bajo...");
     CrearSalida(610,479);
@@ -33,10 +32,7 @@ positivo hasta abajo.
     CrearDato(5,620,518,5,"tiempo");
     vector = CrearVector(400,350,400,0, true);
     CrearEspinas(300,440);
-<<<<<<< HEAD
     pared = CrearPared(350,440);
-=======
->>>>>>> a264ae0a1072e17e5b858f8ef7ee85ed2d149691
     posInicXPlayer = 50;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
@@ -44,11 +40,8 @@ positivo hasta abajo.
     numeroAngulo = CrearAnguloParaVectorControlable(30,600,300,30);
     numeroAngulo = CrearAnguloParaVectorControlable(60,700,300,60);
     CrearMano(listaDeAngulos[0].x -55 , listaDeAngulos[0].y + 25);
-<<<<<<< HEAD
     DetenerCancion();
     ReproducirLoopAudio(Stop_And_Think,0.3);
-=======
->>>>>>> a264ae0a1072e17e5b858f8ef7ee85ed2d149691
 
     inicio = listaDeAngulos;
     indice = 0;

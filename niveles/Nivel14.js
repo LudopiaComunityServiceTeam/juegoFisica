@@ -23,8 +23,6 @@ positivo hasta abajo.
 */
 /********************************************************************************/
     CrearBasico();
-<<<<<<< HEAD
-    CrearCabezeraNivel(14);
     botonPistas = CrearBotonPista("Observa bien lo que indican los cuadros\nverdes, esa es la secuencia de juego.\nArrastra el vector, déjalo caer sobre el\nmonigote y le das a \"play \"");
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     CrearSalida(720,262);
@@ -93,39 +91,15 @@ positivo hasta abajo.
     indice = 0;
     DetenerCancion();
     ReproducirLoopAudio(Stop_And_Think,0.3);
-=======
-    botonPistas = CrearBotonPista("Observa bien lo que indican los cuadros\nverdes, esa es la secuencia de juego.\nArrastra el vector, déjalo caer sobre el\nmonigote y le das a \"play \"");
-    game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
-    CrearSalida(610,479);
-    salidaAbierta = false;
-    limiteDeTiempo = Infinity;
-    CrearEspinas(400,400);
-    listaDeEspinas[0][0].anchor.setTo(0.5,0.5);
-    listaDeEspinas[0][0].angle = 270;    
-    ListaDeCiclos.push([listaDeEspinas[0],false,0,2,2]);
-    vector = CrearVector(400, 300, 300, 0, false);
-    posInicXPlayer = 50;
-    posInicYPlayer = game.world.height - 110;
-    jugador = CrearJugador(posInicXPlayer, posInicYPlayer);
-    indice = 0;
->>>>>>> a264ae0a1072e17e5b858f8ef7ee85ed2d149691
 },
 
 update: function() {
 //La función update es la responsable de los "frames"
 //Aqui colocamos lo que es movimiento y cambios de variables
 //Se llama sola en forma de loop infinito
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> a264ae0a1072e17e5b858f8ef7ee85ed2d149691
     ControlJugador();
     ControlarNivel();
     game.debug.bodyInfo(player);
 }
 };
-<<<<<<< HEAD
-=======
-
->>>>>>> a264ae0a1072e17e5b858f8ef7ee85ed2d149691

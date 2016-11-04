@@ -24,11 +24,9 @@ positivo hasta abajo.
 /********************************************************************************/
 
     CrearBasico();
-    CrearCabezeraNivel(8);
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     botonPistas = CrearBotonPista("Todo lo que sube tiene que caer...\n¡Escoge la rapidez correcta!");
     CrearSalida(400,300);
-<<<<<<< HEAD
     CrearNube(390,256,410,296);
     salidaAbierta = false;
     limiteDeTiempo = 3;
@@ -52,22 +50,6 @@ positivo hasta abajo.
     pared = CrearPared(275,140);
     CrearEspinas(350,90);
     pared = CrearPared(275,40);
-=======
-    CrearNube(400,366);
-    salidaAbierta = false;
-    limiteDeTiempo = 3;
-
-    CrearEspinas(450,440);
-    CrearEspinas(450,340);
-    CrearEspinas(450,240);
-    CrearEspinas(450,140);
-    CrearEspinas(450,40);
-    CrearEspinas(350,490);
-    CrearEspinas(350,390);
-    CrearEspinas(350,290);
-    CrearEspinas(350,190);
-    CrearEspinas(350,90);
->>>>>>> a264ae0a1072e17e5b858f8ef7ee85ed2d149691
     listaDeEspinas[5][0].anchor.setTo(0.5, 0.5);
     listaDeEspinas[5][0].angle = 180;
     listaDeEspinas[6][0].anchor.setTo(0.5, 0.5);
@@ -86,7 +68,6 @@ positivo hasta abajo.
     posInicXPlayer = 400;
     posInicYPlayer = 450;
     CrearJugador(posInicXPlayer, posInicYPlayer);
-<<<<<<< HEAD
     CrearDato(3,405,226,3,"tiempo");
     numeroAngulo = CrearAnguloParaVectorControlable(90,390,50,90);
 
@@ -99,17 +80,6 @@ positivo hasta abajo.
 
     DetenerCancion();
     ReproducirLoopAudio(Stop_And_Think,0.3);
-=======
-    CrearDato(3,415,336,3,"tiempo");
-    numeroAngulo = CrearAnguloParaVectorControlable(90,550,200,90);
-
-    //Datos falsos
-    numeroMagnitud = CrearNumeroParaVectorControlable(600,550,300,6);
-    numeroMagnitud = CrearNumeroParaVectorControlable(500,550,400,5);
-
-    numeroMagnitud = CrearNumeroParaVectorControlable(400,250,300,4);
-    numeroMagnitud = CrearNumeroParaVectorControlable(200,250,400,2);
->>>>>>> a264ae0a1072e17e5b858f8ef7ee85ed2d149691
 
 },
 

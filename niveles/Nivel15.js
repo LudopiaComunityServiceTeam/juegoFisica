@@ -23,8 +23,6 @@ positivo hasta abajo.
 */
 /********************************************************************************/
     CrearBasico();
-<<<<<<< HEAD
-    CrearCabezeraNivel(15);
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     botonPistas = CrearBotonPista("¡Magnitudes y ángulos! Calcula la\ncombinación correcta de ellos para\nllegar a tiempo a la puerta;\nel monigote lo agradecerá.");
     lineaizq = game.add.sprite(170, 475, 'linea');
@@ -141,33 +139,6 @@ positivo hasta abajo.
     CrearJugador(posInicXPlayer, posInicYPlayer);
 	DetenerCancion();
     ReproducirLoopAudio(Stop_And_Think,0.3);
-=======
-    game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
-    botonPistas = CrearBotonPista("¡Magnitudes y ángulos! Calcula la\ncombinación correcta de ellos para\nllegar a tiempo a la puerta;\nel monigote lo agradecerá.");
-    CrearSalida(660,479);
-    salidaAbierta = false;
-    limiteDeTiempo = Infinity;
-    CrearEspinas(450,440);
-    CrearEspinas(450,340);
-    CrearEspinas(450,240);
-    CrearEspinas(450,140);
-    plataforma = CrearPared(700,37);
-    plataforma = CrearPared(700,137);
-    plataforma = CrearPared(700,237);
-    plataforma = CrearPared(700,337);
-    plataforma = CrearPared(700,437);
-    vector = CrearVector(320,350,0,0, true);
-
-    numeroAngulo = CrearAnguloParaVectorControlable(80,150,140,80);
-    numeroAngulo = CrearAnguloParaVectorControlable(60,150,240,70);
-    numeroMagnitud = CrearNumeroParaVectorControlable(400,100,140,4);
-    numeroMagnitud = CrearNumeroParaVectorControlable(500,100,240,5);
-    numeroMagnitud = CrearNumeroParaVectorControlable(600,100,340,6);
-    posInicXPlayer = 50;
-    posInicYPlayer = game.world.height - 110;
-    CrearJugador(posInicXPlayer, posInicYPlayer);
-
->>>>>>> a264ae0a1072e17e5b858f8ef7ee85ed2d149691
 },
 
 update: function() {
@@ -180,7 +151,3 @@ update: function() {
     game.debug.bodyInfo(player);
 }
 };
-<<<<<<< HEAD
-=======
-
->>>>>>> a264ae0a1072e17e5b858f8ef7ee85ed2d149691
