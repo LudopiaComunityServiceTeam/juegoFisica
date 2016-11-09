@@ -37,6 +37,10 @@ positivo hasta abajo.
     plataforma = CrearPared(700,237);
     plataforma = CrearPared(700,337);
     plataforma = CrearPared(700,437);
+    plataforma = CrearPared(500,137);
+    plataforma = CrearPared(500,237);
+    plataforma = CrearPared(500,337);
+    plataforma = CrearPared(500,437);
     vector = CrearVector(320,350,0,0, true);
 
     numeroAngulo = CrearAnguloParaVectorControlable(80,150,140,80);

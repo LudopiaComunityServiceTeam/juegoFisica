@@ -150,6 +150,26 @@ function CrearPared(x,y) {
     return pared
 }
 
+function CrearPared50(x,y,rotacion) {
+
+    var pared = platforms.create(x, y, 'pared50');
+    pared.body.immovable = true;
+    pared.anchor.setTo(0.5, 0.5);
+    if (rotacion == 0){
+        pared.angle = 0;
+    }
+    else if (rotacion == 1){
+        pared.angle = 90;
+    }
+    else if (rotacion == 2){
+        pared.angle = 180;
+    }
+    else {
+        pared.angle = 270;
+    }
+    return pared
+}
+
 /**
 * Funcion que crea el sprite de la salida en la posicion
 * indicada.
