@@ -27,18 +27,40 @@ positivo hasta abajo.
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     botonPistas = CrearBotonPista("¡Wow! Espinas, distancias y tiempos...\nEl resolvedor nos ayudará en este\ndilema, piensa bien que distancia y\ntiempo usar agregarás en él, hay\nuna puerta a la que no puedes\nllegar.");
 
-    CrearEspinas(630,440);
+    CrearEspinas(600,440);
+    paredEspina = CrearPared(650,437);
+    paredDer = CrearPared(750,237);
+    paredDer = CrearPared(750,337);
+    paredDer = CrearPared(750,437);
+    paredIzq = CrearPared(100,237);
+    paredIzq = CrearPared(100,337);
+    paredIzq = CrearPared(100,437);
+    techoRoto = CrearPared(700,286);
+    techoRoto.anchor.setTo(0.5, 0.5);
+    techoRoto.angle = 90;
+    techoRoto = CrearPared(600,286);
+    techoRoto.anchor.setTo(0.5, 0.5);
+    techoRoto.angle = 90;
+    techoRoto = CrearPared50(525,286,1);
+    techoRoto = CrearPared50(425,286,2);
+    techoRoto = CrearPared(300,286);
+    techoRoto.anchor.setTo(0.5, 0.5);
+    techoRoto.angle = 90;
+    techoRoto = CrearPared(200,286);
+    techoRoto.anchor.setTo(0.5, 0.5);
+    techoRoto.angle = 90;
+
     CrearSalida(555,479);
-    CrearNube(555,545);
+    CrearNube(555,430,565,475);
     limiteDeTiempo = 2;
-    lineaizq = game.add.sprite(220, 380, 'linea');
+    lineaizq = game.add.sprite(220, 360, 'linea');
     lineaizq.scale.setTo(20, 1);
-    lineader = game.add.sprite(500, 380, 'linea');
+    lineader = game.add.sprite(500, 360, 'linea');
     lineader.scale.setTo(20, 1);
 
     // Puerta falsa
     salidaFalsa = game.add.sprite(710,484, 'salida');
-    CrearNube(710,545);
+    CrearNube(705,430,725,475);
     // salidaFalsa.tint = 0xff9999;
     lineaizq = game.add.sprite(220, 450, 'linea');
     lineaizq.scale.setTo(13, 1);
@@ -46,16 +68,16 @@ positivo hasta abajo.
     lineader.scale.setTo(12, 1);
 
     ecuacionVelocidad = CrearEcuacionVelocidad(100,100);
-    vector = CrearVector(400,300,0,0, true);
+    vector = CrearVector(635,250,0,0, true);
     posInicXPlayer = 200;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
     CrearDato(6,380,400,6,"distancia");
-    CrearDato(2,575,515,2,"tiempo");
+    CrearDato(2,570,400,2,"tiempo");
 
     //Datos falsos
-    CrearDato(8,450,330,8,"distancia");
-    CrearDato(4,725,515,4,"tiempo");
+    CrearDato(8,450,310,8,"distancia");
+    CrearDato(4,720,400,4,"tiempo");
     DetenerCancion();
     ReproducirLoopAudio(Stop_And_Think,0.3);
 

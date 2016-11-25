@@ -101,6 +101,7 @@ function loadAll(){
     game.load.image('rectanguloPista','assets/rectanguloPista.png');
     game.load.image('rectangulo','assets/rectangulo.png');
     game.load.image('pared','assets/Pared.png');
+    game.load.image('pared50','assets/Pared50.png');
     game.load.image('fondoBlanco','assets/fondoblanco.png');
 
     game.load.image('mapa1','assets/Mapa/mapa1.png');

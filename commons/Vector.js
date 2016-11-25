@@ -281,7 +281,7 @@ function pegarVector(item) {
         item.y = (player.y+(player.height/2));
         magnitudJugador = item.magnitud;
         angulo = item.angulo;
-        if (player.vectorEnPlayer !== undefined){
+        if (player.vectorEnPlayer !== undefined && player.vectorEnPlayer !== item){
             player.vectorEnPlayer.x = player.vectorEnPlayer.posXInit;
             player.vectorEnPlayer.y = player.vectorEnPlayer.posYInit;
         }
