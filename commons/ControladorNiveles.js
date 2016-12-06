@@ -184,6 +184,7 @@ function MenuFinalNivel() {
     if (primerIntento){ //si gana a la primera
         actualizarPuntuacion(1);
     }
+    primerIntento = false;
     var filtroBlanco = game.add.sprite(0,0,'fondoBlanco');
     filtroBlanco.alpha = 0.5;
     filtroBlanco.scale.setTo(5,2);
