@@ -6,17 +6,17 @@ var Nivel16 = {
 
 		/** ***************************************************************************** */
 		/*
-		 * 
+		 *
 		 * Esta funcion dibuja objetos en pantalla en el orden en que se añadan
-		 * 
+		 *
 		 * Si un objeto se dibuja primero, quedara como background
-		 * 
+		 *
 		 * La funcion "create" se corre sola despues de preload, asi que no se
 		 * preocupen en llamarla
-		 * 
+		 *
 		 * Cuando se crea un objeto se pide la ubicacion en x y y, y el nombre
 		 * de la imagen que tendra
-		 * 
+		 *
 		 * En Phaser X y Y el 0,0 está en la esquina superior izquierda y "y" se
 		 * cuenta positivo hasta abajo.
 		 */
@@ -27,13 +27,13 @@ var Nivel16 = {
 
 		botonPistas = CrearBotonPista("¡Magnitudes y ángulos! Calcula la\ncombinación correcta de ellos para\nllegar a tiempo a la puerta;\nel monigote lo agradecerá.");
 		/* Dato Distancia */
-		lineaizq = game.add.sprite(270, 455, 'linea');
-		lineaizq.scale.setTo(8, 1);
-		lineader = game.add.sprite(390, 455, 'linea');
-		lineader.scale.setTo(8, 1);
-		CrearDato(5, 355, 410, 4, "distancia");
+		lineaizq = game.add.sprite(300, 455, 'linea');
+		lineaizq.scale.setTo(7, 1);
+		lineader = game.add.sprite(440, 455, 'linea');
+		lineader.scale.setTo(7, 1);
+		CrearDato(4, 390, 410, 4, "distancia");
 
-		var posicionPuertaRealX = 460;
+		var posicionPuertaRealX = 510;
 		var posicionPuertaRealY = 340;
 
 		CrearSalida(posicionPuertaRealX, posicionPuertaRealY);
@@ -46,6 +46,7 @@ var Nivel16 = {
 		CrearPlataforma(200, 300, 1, 1);
 		// CrearPlataforma(300,300,1,1);
 		CrearPlataforma(450, 400, 1, 1);
+		CrearPlataforma(550, 400, 1, 1);
 
 		// techo
 		techo = CrearPared(150, 50);
@@ -70,9 +71,9 @@ var Nivel16 = {
 		techo.angle = 90;
 
 		// pared der
-		pared = CrearPared(500, 100);
-		pared = CrearPared(500, 200);
-		pared = CrearPared(500, 300);
+		pared = CrearPared(600, 100);
+		pared = CrearPared(600, 200);
+		pared = CrearPared(600, 300);
 
 		CrearEspinas(100, 486);
 		CrearEspinas(200, 486);
@@ -93,15 +94,15 @@ var Nivel16 = {
 
 		vector = CrearVector(400, 200, 0, 0, true);
 
-		numeroMagnitud = CrearNumeroParaVectorControlable(400, 400, 300, 4);
-		numeroMagnitud = CrearNumeroParaVectorControlable(100, 300, 300, 1);
-		numeroMagnitud = CrearNumeroParaVectorControlable(200, 200, 300, 2);
+		numeroMagnitud = CrearNumeroParaVectorControlable(400, 360, 330, 4);
+		numeroMagnitud = CrearNumeroParaVectorControlable(100, 310, 330, 1);
+		numeroMagnitud = CrearNumeroParaVectorControlable(200, 260, 330, 2);
 
 		CrearNube(posicionPuertaRealX - 10, posicionPuertaRealY - 50,
 				posicionPuertaRealX + 10, posicionPuertaRealY - 10);
 		CrearDato(limiteDeTiempo, posicionPuertaRealX,
 				posicionPuertaRealY - 76, limiteDeTiempo, "tiempo");
-		posInicXPlayer = 250;
+		posInicXPlayer = 270;
 		posInicYPlayer = game.world.height - 360;
 		CrearJugador(posInicXPlayer, posInicYPlayer);
 		DetenerCancion();
