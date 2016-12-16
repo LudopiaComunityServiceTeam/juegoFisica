@@ -20,6 +20,7 @@ function clickPlay(){
 
     if (!clicked){
         //Iniciamos el timer
+        regresarVectoresInicio();
         startTimer();
         startTimerPuerta();
         //y apretamos el boton
