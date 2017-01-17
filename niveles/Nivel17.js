@@ -27,7 +27,7 @@ positivo hasta abajo.
     limiteDeTiempo = 3;
 
 
-    botonPistas = CrearBotonPista("¡Magnitudes y ángulos! Calcula la\ncombinación correcta de ellos para\nllegar a tiempo a la puerta;\nel monigote lo agradecerá.");
+    botonPistas = CrearBotonPista("Otras espinas sospechosas.\nSi mis calculos son ciertos\nno deberia tenerle miedo.");
     /* Dato Distancia */
     lineaizq = game.add.sprite(70, 430, 'linea');
     lineaizq.scale.setTo(30, 1);

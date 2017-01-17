@@ -29,9 +29,9 @@ positivo hasta abajo.
     salidaAbierta = false;
     CrearPlataforma(50,320,1,1);
     limiteDeTiempo = Infinity;
-    vectorPequenno = CrearVector(700,150,300,0, false);
-    vectorMediano = CrearVector(700,250,400,0);
-    vectorGrande = CrearVector(700,350,500,0);
+    vectorPequenno = CrearVector(726,150,300,0, false);
+    vectorMediano = CrearVector(720,250,400,0);
+    vectorGrande = CrearVector(716,350,500,0);
     posInicXPlayer = 100;
     posInicYPlayer = 270;
     CrearJugador(posInicXPlayer, posInicYPlayer);

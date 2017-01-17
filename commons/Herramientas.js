@@ -85,7 +85,7 @@ function RestaurarObstaculos(){
 function CicloMovimientoSimple(objeto,velX,velY,objetivoX,objetivoY) {
     if (velX >= 0){
         if (velY >= 0){
-            if((objeto.y > objetivoY)){
+            if((objeto.y > objetivoY)||(objeto.x > objetivoX)){
                 console.log("- objeto > objetivo ");
                 console.log("- objetivoY " + objetivoY);
                 return true;
@@ -100,7 +100,7 @@ function CicloMovimientoSimple(objeto,velX,velY,objetivoX,objetivoY) {
             }
         }
         else if (velY < 0){
-            if((objeto.y < objetivoY)){
+            if((objeto.y < objetivoY)||(objeto.x > objetivoX)){
                 console.log("- objeto < objetivo ");
                 console.log("- objetivoY " + objetivoY);
                 return true;

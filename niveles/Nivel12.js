@@ -29,6 +29,7 @@ positivo hasta abajo.
     CrearSalida(110,479);
     CrearNube(100,425,118,465);
     CrearEspinas(600,440);
+    paredDer = CrearPared(650,437);
     salidaAbierta = false;
     limiteDeTiempo = 1;
     lineaizq = game.add.sprite(110, 470, 'linea');

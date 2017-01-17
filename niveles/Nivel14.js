@@ -23,7 +23,7 @@ positivo hasta abajo.
 */
 /********************************************************************************/
     CrearBasico();
-    botonPistas = CrearBotonPista("Observa bien lo que indican los cuadros\nverdes, esa es la secuencia de juego.\nArrastra el vector, déjalo caer sobre el\nmonigote y le das a \"play \"");
+    botonPistas = CrearBotonPista("Un segundo, esas espinas \nse ven sospechosas,\nlo mejor sera no esperar mucho.");
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     CrearSalida(720,262);
     salidaAbierta = false;
@@ -76,12 +76,12 @@ positivo hasta abajo.
     CrearEspinas(600,260);
     listaDeEspinas[8][0].anchor.setTo(0.5,0.5);
     listaDeEspinas[8][0].angle = 270;
-    ListaDeCiclos.push(new Ciclo(listaDeEspinas[8],[0,0],[2,-2],[500,500],[290,150],1));
+    ListaDeCiclos.push(new Ciclo(listaDeEspinas[8],[0,0],[2,-2],[800,800],[290,150],1));
 
     CrearEspinas(600,370);
     listaDeEspinas[9][0].anchor.setTo(0.5,0.5);
     listaDeEspinas[9][0].angle = 90;
-    ListaDeCiclos.push(new Ciclo(listaDeEspinas[9],[0,0],[-2,2],[500,500],[340,480],1));
+    ListaDeCiclos.push(new Ciclo(listaDeEspinas[9],[0,0],[-2,2],[800,800],[340,480],1));
 
     vector = CrearVector(300, 100, 300, 0, false);
     vector2 = CrearVector(500, 100, 400, 0, false);

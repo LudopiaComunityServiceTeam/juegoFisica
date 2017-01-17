@@ -25,7 +25,7 @@ var Nivel16 = {
 		game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
 		limiteDeTiempo = 2;
 
-		botonPistas = CrearBotonPista("¡Magnitudes y ángulos! Calcula la\ncombinación correcta de ellos para\nllegar a tiempo a la puerta;\nel monigote lo agradecerá.");
+		botonPistas = CrearBotonPista("Un salto de fe?\nNo, hay algo mas aqui,\ntiempo y distancia...\nque haria el resolvedor?");
 		/* Dato Distancia */
 		lineaizq = game.add.sprite(300, 455, 'linea');
 		lineaizq.scale.setTo(7, 1);

@@ -24,10 +24,10 @@ positivo hasta abajo.
 /********************************************************************************/
     CrearBasico();
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
-    limiteDeTiempo = 10;
+    limiteDeTiempo = 5;
 
 
-    botonPistas = CrearBotonPista("¡Magnitudes y ángulos! Calcula la\ncombinación correcta de ellos para\nllegar a tiempo a la puerta;\nel monigote lo agradecerá.");
+    botonPistas = CrearBotonPista("Ok...\nAhora si deberia preocuparme,\nAlgo me dice que\nlas espinas de abajo son rapidas.");
 
     var posicionPuertaRealX = 613;
     var posicionPuertaRealY = 480;
@@ -44,13 +44,14 @@ positivo hasta abajo.
 
 
 //pared der
-    CrearEspinas(50,535);
-    CrearEspinas(50,435);
+    CrearEspinas(100,535);
+    CrearEspinas(100,435);
     listaDeEspinas[1][0].angle = 180;
     listaDeEspinas[2][0].angle = 180;
-    ListaDeCiclos.push(new Ciclo(listaDeEspinas[1],[0,2],[0,0],[50,535],[450,535],1));
-    ListaDeCiclos.push(new Ciclo(listaDeEspinas[2],[0,2],[0,-0],[50,435],[450,435],1));
-    CrearEspinas(750,435);
+    ListaDeCiclos.push(new Ciclo(listaDeEspinas[1],[0,6],[0,0],[50,750],[450,535],1));
+    ListaDeCiclos.push(new Ciclo(listaDeEspinas[2],[0,6],[0,-0],[50,750],[450,435],1));
+    paredDer = CrearPared(750,435);
+    CrearEspinas(700,435);
 
     vector = CrearVector(400,200,0,0, true);
 
