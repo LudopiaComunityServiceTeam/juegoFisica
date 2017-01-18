@@ -284,13 +284,23 @@ function pegarVector(item) {
         if (player.vectorEnPlayer !== undefined && player.vectorEnPlayer !== item){
             player.vectorEnPlayer.x = player.vectorEnPlayer.posXInit;
             player.vectorEnPlayer.y = player.vectorEnPlayer.posYInit;
+            player.vectorEnPlayer.tint = 0xFFFFFF;
+            player.vectorEnPlayer.cola.tint = 0xFFFFFF;
         }
         player.vectorEnPlayer = item; // el vector
+        item.tint = 0xFF0050;
+        item.cola.tint = 0xFF0050;
+        // item.tint = 0xff80aa;
+        // item.cola.tint = 0xff80aa;
+        // item.tint = 0x66ff66;
+        // item.cola.tint = 0x66ff66;
     }
     // el vector arrastrado era el que estaba encima del jugador y se quita del jugador
     else if (player.vectorEnPlayer == item) {
         magnitudJugador = 0;
         angulo = 0;
+        player.vectorEnPlayer.tint = 0xFFFFFF;
+        player.vectorEnPlayer.cola.tint = 0xFFFFFF;
         player.vectorEnPlayer = undefined;
     }
 
@@ -475,6 +485,19 @@ function centrarValorCuadro(cuadro, valor, tipoDeDato){
 
     }
     valor.y = cuadro.y - 20;
+}
+/**
+* Funcion regresa los vectores a su posicion inicial exceptuando
+* el que esta sobre el jugador
+*
+*/
+function regresarVectoresInicio(){
+    for (i = 0; i < listaDeVectores.length; i++){
+        if (player.vectorEnPlayer !== listaDeVectores[i]) {
+            listaDeVectores[i].x = listaDeVectores[i].posXInit;
+            listaDeVectores[i].y = listaDeVectores[i].posYInit;
+        }
+    }
 }
 function ble(){
     for (i = 0; i < listaDeVectores.length; i++){

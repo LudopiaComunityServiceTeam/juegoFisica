@@ -24,7 +24,7 @@ positivo hasta abajo.
 /********************************************************************************/
     CrearBasico();
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
-    botonPistas = CrearBotonPista("¡Magnitudes y ángulos! Calcula la\ncombinación correcta de ellos para\nllegar a tiempo a la puerta;\nel monigote lo agradecerá.");
+    botonPistas = CrearBotonPista("¡Pánico, números, espinas, ayuda!\n¿Donde esta el resolvedor? \nEspera...\nquiza los colores sean la clave.");
     lineaizq = game.add.sprite(170, 475, 'linea');
     lineaizq.scale.setTo(7, 1);
     lineader = game.add.sprite(300, 475, 'linea');

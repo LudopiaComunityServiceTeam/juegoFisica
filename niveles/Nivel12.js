@@ -27,8 +27,9 @@ positivo hasta abajo.
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     botonPistas = CrearBotonPista("Y ahora hay ángulos... \n¿Cuál puerta será la correcta?\n¿Derecha o izquierda?");
     CrearSalida(110,479);
-    CrearNube(110,545);
+    CrearNube(100,425,118,465);
     CrearEspinas(600,440);
+    paredDer = CrearPared(650,437);
     salidaAbierta = false;
     limiteDeTiempo = 1;
     lineaizq = game.add.sprite(110, 470, 'linea');
@@ -38,7 +39,7 @@ positivo hasta abajo.
 
     // Puerta falsa
     salidaFalsa = game.add.sprite(710,484, 'salida');
-    CrearNube(710,545);
+    CrearNube(700,425,718,465);
     // salidaFalsa.tint = 0xff9999;
     lineaizq = game.add.sprite(280, 430, 'linea');
     lineaizq.scale.setTo(18, 1);
@@ -53,11 +54,11 @@ positivo hasta abajo.
     numeroAngulo = CrearAnguloParaVectorControlable(180,550,250,180);
     numeroAngulo = CrearAnguloParaVectorControlable(30,650,250,30);
     CrearDato(2,165,420,2,"distancia");
-    CrearDato(1,125,515,1,"tiempo");
+    CrearDato(1,115,395,1,"tiempo");
 
     //Datos falsos
     CrearDato(8,480,380,8,"distancia");
-    CrearDato(2,725,515,2,"tiempo");
+    CrearDato(2,715,395,2,"tiempo");
 	DetenerCancion();
     ReproducirLoopAudio(Stop_And_Think,0.3);
 },

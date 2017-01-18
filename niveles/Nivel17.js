@@ -27,7 +27,7 @@ positivo hasta abajo.
     limiteDeTiempo = 3;
 
 
-    botonPistas = CrearBotonPista("¡Magnitudes y ángulos! Calcula la\ncombinación correcta de ellos para\nllegar a tiempo a la puerta;\nel monigote lo agradecerá.");
+    botonPistas = CrearBotonPista("Otras espinas sospechosas.\nSi mis calculos son ciertos\nno deberia tenerle miedo.");
     /* Dato Distancia */
     lineaizq = game.add.sprite(70, 430, 'linea');
     lineaizq.scale.setTo(30, 1);
@@ -72,13 +72,19 @@ positivo hasta abajo.
 //pared der
     CrearEspinas(750,340);
     CrearEspinas(750,440);
+
+
     listaDeEspinas[0][0].angle = 0;
     listaDeEspinas[1][0].angle = 0;
 
     CrearEspinas(400,510);
+    CrearPropulsores(400,560);
+
     listaDeEspinas[2][0].angle = 90;
     listaDeEspinas[2][0].anchor.setTo(1,1);
     ListaDeCiclos.push(new Ciclo(listaDeEspinas[2],[0,0],[2,-2],[450,486],[450,100],1));
+    ListaDeCiclos.push(new Ciclo(listaDePropulsores[0],[0,0],[2,-2],[800,800],[450,100],1));
+
 
     vector = CrearVector(400,200,0,0, true);
 

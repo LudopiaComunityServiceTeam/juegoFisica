@@ -33,30 +33,20 @@ positivo hasta abajo.
     CrearPlataforma(50,320,1,1);
     CrearPlataforma(150,320,1,1);
     limiteDeTiempo = 3;
-    lineaizq = game.add.sprite(150, 380, 'linea');
-    lineaizq.scale.setTo(5, 1);
-    lineader = game.add.sprite(250, 380, 'linea');
-    lineader.scale.setTo(5, 1);
-
     lineaizq = game.add.sprite(150, 430, 'linea');
     lineaizq.scale.setTo(5, 1);
     lineader = game.add.sprite(250, 430, 'linea');
-    lineader.scale.setTo(2.5, 1);
-    lineader = game.add.sprite(270, 435, 'linea');
-    lineader.scale.setTo(2.5, 1);
-    lineader.angle = 270;
-    lineader = game.add.sprite(270, 405, 'linea');
-    lineader.scale.setTo(18, 1);
+    lineader.scale.setTo(20, 1);
+
+    lineaizq = game.add.sprite(150, 380, 'linea');
+    lineaizq.scale.setTo(5, 1);
+    lineader = game.add.sprite(250, 380, 'linea');
+    lineader.scale.setTo(35, 1);
 
     lineaizq = game.add.sprite(150, 480, 'linea');
     lineaizq.scale.setTo(5, 1);
     lineader = game.add.sprite(250, 480, 'linea');
-    lineader.scale.setTo(4.5, 1);
-    lineader = game.add.sprite(290, 485, 'linea');
     lineader.scale.setTo(5, 1);
-    lineader.angle = 270;
-    lineader = game.add.sprite(290, 430, 'linea');
-    lineader.scale.setTo(31, 1);
 
     CrearEspinas(600,437);
     CrearEspinas(350,537);
@@ -71,8 +61,8 @@ positivo hasta abajo.
     CrearDato(3,480,510,3,"tiempo");
 
     //Datos falsos
-    CrearDato(3,215,330,3,"distancia");
-    CrearDato(9,215,430,9,"distancia");
+    CrearDato(3,215,430,3,"distancia");
+    CrearDato(9,215,330,9,"distancia");
 	DetenerCancion();
     ReproducirLoopAudio(Stop_And_Think,0.3);
 },
