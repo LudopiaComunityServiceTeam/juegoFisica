@@ -121,7 +121,6 @@ var SeleccionDeNivel = {
 				escribir();
 			}
 			juegoInicializado = true;
-			console.log(NivelMaximo);
 		},
 
 		update: function() {

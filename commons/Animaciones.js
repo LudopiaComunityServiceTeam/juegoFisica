@@ -55,7 +55,6 @@ function AnimarResaltador(){
         resaltadores[i].scale.setTo(Escalax + 0.01,Escalay + 0.01);
         resaltadores[i].alpha = transparencia - 0.01;
         if (resaltadores[i].alpha <= 0){
-            console.log("quedan " + resaltadores.length);
             resaltadores[i].alpha = 1;
             resaltadores[i].scale.setTo( resaltadores[i].escalax, resaltadores[i].escalay);
         }
@@ -68,7 +67,6 @@ function AnimarPista(){
         ResaltadorPista.scale.setTo(Escalax + 0.02,Escalay + 0.02);
         ResaltadorPista.alpha = transparencia - 0.01;
         if (ResaltadorPista.alpha <= 0){
-            console.log("quedan " + resaltadores.length);
             ResaltadorPista.alpha = 1;
             ResaltadorPista.scale.setTo(1,1);
         }

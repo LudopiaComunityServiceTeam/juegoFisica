@@ -7,7 +7,12 @@ function crearPuntuacion() {
     var notaY = 10;
     AñadirTexto(notaX, notaY, 'Nota: ', colorTexto, 40);
     // Inicia con una puntuacion guardad para el nivel
-    puntuacion = AñadirTexto(100 + notaX, notaY, Nota[nivelActual], '#00cc00', 42);
+    if (nivelActual == 1){
+        puntuacion = AñadirTexto(100 + notaX, notaY, Nota[0], '#00cc00', 42);
+    }
+    else{
+        puntuacion = AñadirTexto(100 + notaX, notaY, Nota[nivelActual-2], '#00cc00', 42);
+    }
     colorearTexto(puntuacion);
 }
 
@@ -23,8 +28,11 @@ function actualizarPuntuacion(puntos){
     else if (nuevaPuntuacion > 20) {
         nuevaPuntuacion = 20;
     }
+    
+    console.log("puntuacion:" + puntuacion);
+
     puntuacion.setText(nuevaPuntuacion);
-    Nota[nivelActual + 1] = nuevaPuntuacion;
+    Nota[nivelActual - 1] = nuevaPuntuacion;
     colorearTexto(puntuacion);
 }
 

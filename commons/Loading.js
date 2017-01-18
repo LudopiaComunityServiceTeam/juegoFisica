@@ -13,8 +13,8 @@ function loadArchivoGuardado(){
     ArchivoDeGuardado = JSON.parse(localStorage.getItem('Guardado'));
     console.log("Cargando archivo");
     console.log(ArchivoDeGuardado);
-    //localStorage.removeItem('Guardado'); //se usa para borrar un guardado en particular
-    //localStorage.clear(); //se usa para borrar todos los guardados
+    localStorage.removeItem('Guardado'); //se usa para borrar un guardado en particular
+    localStorage.clear(); //se usa para borrar todos los guardados
     if (ArchivoDeGuardado != null){
         console.log("Cargando exitoso");
         NivelMaximo = ArchivoDeGuardado.Nivel;
@@ -26,7 +26,9 @@ function loadArchivoGuardado(){
         console.log("No habia un salvado previo");
         NivelMaximo = 1;
         Nota[0] = 20;
-        Nota[1] = 20;
+        for (i = 0; i < 20; i++){
+            Nota[i] = 20;
+        }
     }
 }
 
