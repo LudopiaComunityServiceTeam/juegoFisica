@@ -36,20 +36,28 @@ positivo hasta abajo.
 
     CrearPlataforma(50,300,1,1);
     CrearPlataforma(150,300,1,1);
+    CrearPlataforma(250,300,1,1);
 
     CrearEspinas(150,100);
+    CrearPropulsores(250,0,1);
     listaDeEspinas[0][0].angle = 270;
-    ListaDeCiclos.push(new Ciclo(listaDeEspinas[0],[0,0],[2,-2],[450,300],[300,100],1));
-    CrearPlataforma(300,200,1,1);
+    ListaDeCiclos.push(new Ciclo(listaDeEspinas[0],[0,0],[-2,2],[800,800],[100,300],1));
+    ListaDeCiclos.push(new Ciclo(listaDePropulsores[0],[0,0],[-2,2],[800,800],[0,200],1));
+
+
 
 
 //pared der
+    CrearPropulsores(0,435,0);
+    CrearPropulsores(0,335,0);
     CrearEspinas(100,535);
     CrearEspinas(100,435);
     listaDeEspinas[1][0].angle = 180;
     listaDeEspinas[2][0].angle = 180;
     ListaDeCiclos.push(new Ciclo(listaDeEspinas[1],[0,6],[0,0],[50,750],[450,535],1));
     ListaDeCiclos.push(new Ciclo(listaDeEspinas[2],[0,6],[0,-0],[50,750],[450,435],1));
+    ListaDeCiclos.push(new Ciclo(listaDePropulsores[1],[0,6],[0,0],[50,650],[450,535],1));
+    ListaDeCiclos.push(new Ciclo(listaDePropulsores[2],[0,6],[0,-0],[50,650],[450,435],1));
     paredDer = CrearPared(750,435);
     CrearEspinas(700,435);
 

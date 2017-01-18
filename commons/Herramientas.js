@@ -76,6 +76,12 @@ function RestaurarObstaculos(){
             listaDeEspinas[i][0].y = listaDeEspinas[i][2];
         }
     }
+    if (listaDePropulsores.length != 0){
+        for (i = 0; i < listaDePropulsores.length; i++){
+            listaDePropulsores[i][0].x = listaDePropulsores[i][1];
+            listaDePropulsores[i][0].y = listaDePropulsores[i][2];
+        }
+    }
     if (ListaDeCiclos.length != 0){
         for (i = 0; i < ListaDeCiclos.length; i++){
             ListaDeCiclos[i].fase = ListaDeCiclos[i].faseInicial;
@@ -86,8 +92,6 @@ function CicloMovimientoSimple(objeto,velX,velY,objetivoX,objetivoY) {
     if (velX >= 0){
         if (velY >= 0){
             if((objeto.y > objetivoY)||(objeto.x > objetivoX)){
-                console.log("- objeto > objetivo ");
-                console.log("- objetivoY " + objetivoY);
                 return true;
 
             }
@@ -101,8 +105,7 @@ function CicloMovimientoSimple(objeto,velX,velY,objetivoX,objetivoY) {
         }
         else if (velY < 0){
             if((objeto.y < objetivoY)||(objeto.x > objetivoX)){
-                console.log("- objeto < objetivo ");
-                console.log("- objetivoY " + objetivoY);
+
                 return true;
             }
             else{
@@ -205,6 +208,25 @@ function CrearEspinas(x,y){
     listaDeEspinas.push([espinas,x,y]);
 
 }
+
+function CrearPropulsores(x,y,direccion){
+
+    propulsor = game.add.sprite(x,y,'propulsor');
+    if (direccion == 0){
+    }
+    else if (direccion == 1){
+        propulsor.angle = 90;
+    }
+    else if (direccion == 2){
+        propulsor.angle = 180;
+    }
+    else{
+        propulsor.angle = 270;
+    }
+    listaDePropulsores.push([propulsor,x,y]);
+
+}
+
 function ActivarFisica(){
     //Se activa la fisica de tipo "Arcade Physics"
     game.physics.startSystem(Phaser.Physics.ARCADE);

@@ -53,6 +53,7 @@ var vectorEnContacto = false;
 var listaDeVectores = [];
 var listaDeNumeros = [];
 var listaDeEspinas = [];
+var listaDePropulsores = [];
 var listaDeAngulos = [];
 var ListaDeDatos = [];
 var cuadroPista = [];

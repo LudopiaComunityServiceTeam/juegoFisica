@@ -72,13 +72,19 @@ positivo hasta abajo.
 //pared der
     CrearEspinas(750,340);
     CrearEspinas(750,440);
+
+
     listaDeEspinas[0][0].angle = 0;
     listaDeEspinas[1][0].angle = 0;
 
     CrearEspinas(400,510);
+    CrearPropulsores(400,560);
+
     listaDeEspinas[2][0].angle = 90;
     listaDeEspinas[2][0].anchor.setTo(1,1);
     ListaDeCiclos.push(new Ciclo(listaDeEspinas[2],[0,0],[2,-2],[450,486],[450,100],1));
+    ListaDeCiclos.push(new Ciclo(listaDePropulsores[0],[0,0],[2,-2],[800,800],[450,100],1));
+
 
     vector = CrearVector(400,200,0,0, true);
 
