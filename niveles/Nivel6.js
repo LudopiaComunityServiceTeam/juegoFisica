@@ -27,9 +27,9 @@ positivo hasta abajo.
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     botonPistas = CrearBotonPista("Los vectores tienen ángulo (morado) que\ncambian su inclinación. ¡Ahora puedes\nsaltar! Ten cuidado de no saltar muy\n bajo...");
     CrearSalida(610,479);
-    CrearNube(610,545);
+    CrearNube(600,435,618,475);
     limiteDeTiempo = 5;
-    CrearDato(5,620,518,5,"tiempo");
+    CrearDato(5,615,405,5,"tiempo");
     vector = CrearVector(400,350,400,0, true);
     CrearEspinas(300,440);
     pared = CrearPared(350,440);
@@ -38,7 +38,7 @@ positivo hasta abajo.
     CrearJugador(posInicXPlayer, posInicYPlayer);
     //monologo de Sam
     monologo = AñadirTexto(100,500,"Conozco este lugar...",colorTexto,20);
-    monologo.alpha = 0.01; 
+    monologo.alpha = 0.01;
     faseBorrado = 0;
     //
     numeroAngulo = CrearAnguloParaVectorControlable(90,500,300,90);

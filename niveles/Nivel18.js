@@ -24,60 +24,89 @@ positivo hasta abajo.
 /********************************************************************************/
     CrearBasico();
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
-    limiteDeTiempo = 5;
+    limiteDeTiempo = 3;
 
 
-    botonPistas = CrearBotonPista("Ok...\nAhora si deberia preocuparme,\nAlgo me dice que\nlas espinas de abajo son rapidas.");
+    botonPistas = CrearBotonPista("Otras espinas sospechosas.\nSi mis calculos son ciertos\nno deberia tenerle miedo.");
+    /* Dato Distancia */
+    lineaizq = game.add.sprite(70, 430, 'linea');
+    lineaizq.scale.setTo(30, 1);
+    lineader = game.add.sprite(420, 430, 'linea');
+    lineader.scale.setTo(35, 1);
+    CrearDato(10,380,380,10,"distancia");
 
-    var posicionPuertaRealX = 613;
-    var posicionPuertaRealY = 480;
+
+    var posicionPuertaRealX = 750;
+    var posicionPuertaRealY = 240;
 
     CrearSalida(posicionPuertaRealX,posicionPuertaRealY);
 
-    CrearPlataforma(50,300,1,1);
-    CrearPlataforma(150,300,1,1);
-    CrearPlataforma(250,300,1,1);
+    // pared izq
 
-    CrearEspinas(150,100);
-    CrearPropulsores(250,0,1);
-    listaDeEspinas[0][0].angle = 270;
-    ListaDeCiclos.push(new Ciclo(listaDeEspinas[0],[0,0],[-2,2],[800,800],[100,300],1));
-    ListaDeCiclos.push(new Ciclo(listaDePropulsores[0],[0,0],[-2,2],[800,800],[0,200],1));
+    //CrearPlataforma(300,300,1,1);
+    CrearPlataforma(700,300,1,1);
 
 
+    // techo
+    techo = CrearPared(150,50);
+    techo.angle = 90;
 
+    techo = CrearPared(250,50);
+    techo.angle = 90;
+
+    techo = CrearPared(350,50);
+    techo.angle = 90;
+
+    techo = CrearPared(450,50);
+    techo.angle = 90;
+
+    techo = CrearPared(550,50);
+    techo.angle = 90;
+
+    techo = CrearPared(650,50);
+    techo.angle = 90;
+
+    techo = CrearPared(750,50);
+    techo.angle = 90;
 
 //pared der
-    CrearPropulsores(0,435,0);
-    CrearPropulsores(0,335,0);
-    CrearEspinas(100,535);
-    CrearEspinas(100,435);
-    listaDeEspinas[1][0].angle = 180;
-    listaDeEspinas[2][0].angle = 180;
-    ListaDeCiclos.push(new Ciclo(listaDeEspinas[1],[0,6],[0,0],[50,750],[450,535],1));
-    ListaDeCiclos.push(new Ciclo(listaDeEspinas[2],[0,6],[0,-0],[50,750],[450,435],1));
-    ListaDeCiclos.push(new Ciclo(listaDePropulsores[1],[0,6],[0,0],[50,650],[450,535],1));
-    ListaDeCiclos.push(new Ciclo(listaDePropulsores[2],[0,6],[0,-0],[50,650],[450,435],1));
-    paredDer = CrearPared(750,435);
-    CrearEspinas(700,435);
+    CrearEspinas(750,340);
+    CrearEspinas(750,440);
+
+
+    listaDeEspinas[0][0].angle = 0;
+    listaDeEspinas[1][0].angle = 0;
+
+    CrearEspinas(400,510);
+    CrearPropulsores(400,560);
+
+    listaDeEspinas[2][0].angle = 90;
+    listaDeEspinas[2][0].anchor.setTo(1,1);
+    ListaDeCiclos.push(new Ciclo(listaDeEspinas[2],[0,0],[2,-2],[450,486],[450,100],1));
+    ListaDeCiclos.push(new Ciclo(listaDePropulsores[0],[0,0],[2,-2],[800,800],[450,100],1));
+
 
     vector = CrearVector(400,200,0,0, true);
 
-    numeroMagnitud = CrearNumeroParaVectorControlable(400,400,300,4);
-    numeroMagnitud = CrearNumeroParaVectorControlable(100,300,300,1);
+    numeroMagnitud = CrearNumeroParaVectorControlable(600,400,300,6);
+    numeroMagnitud = CrearNumeroParaVectorControlable(500,300,300,5);
     numeroMagnitud = CrearNumeroParaVectorControlable(200,200,300,2);
+
+    numeroAngulo = CrearAnguloParaVectorControlable(45,50,350,45);
+    numeroAngulo = CrearAnguloParaVectorControlable(60,50,250,60);
+    numeroAngulo = CrearAnguloParaVectorControlable(25,50,150,25);
 
     CrearNube(posicionPuertaRealX-10,posicionPuertaRealY-50,posicionPuertaRealX+10,posicionPuertaRealY-10);
     CrearDato(limiteDeTiempo,posicionPuertaRealX,posicionPuertaRealY-76,limiteDeTiempo,"tiempo");
-    posInicXPlayer = 85;
-    posInicYPlayer = game.world.height - 360;
+    posInicXPlayer = 50;
+    posInicYPlayer = game.world.height - 110;
     //monologo de Sam
-    monologo = AñadirTexto(100,200,"Si será mi decisión!",colorTexto,20);
-    monologo.alpha = 0.01; 
+    monologo = AñadirTexto(575,500,"Y esta vez...",colorTexto,20);
+    monologo.alpha = 0.01;
     faseBorrado = 0;
     //
     CrearJugador(posInicXPlayer, posInicYPlayer);
-    DetenerCancion();
+	DetenerCancion();
     ReproducirLoopAudio(Stop_And_Think,0.3);
 },
 
@@ -89,7 +118,6 @@ update: function() {
     ControlJugador();
     ControlarNivel();
     BorrarTexto();
-
     game.debug.bodyInfo(player);
 }
 };

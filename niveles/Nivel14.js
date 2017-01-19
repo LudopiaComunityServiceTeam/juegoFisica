@@ -113,7 +113,7 @@ positivo hasta abajo.
     posInicYPlayer = game.world.height - 350;
     //monologo de Sam
     monologo = AñadirTexto(500,300,"Lo vi desaparecer",colorTexto,20);
-    monologo.alpha = 0.01; 
+    monologo.alpha = 0.01;
     faseBorrado = 0;
     //
     jugador = CrearJugador(posInicXPlayer, posInicYPlayer);
