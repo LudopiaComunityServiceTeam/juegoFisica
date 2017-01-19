@@ -71,6 +71,11 @@ positivo hasta abajo.
     CrearDato(limiteDeTiempo,posicionPuertaRealX,posicionPuertaRealY-76,limiteDeTiempo,"tiempo");
     posInicXPlayer = 85;
     posInicYPlayer = game.world.height - 360;
+    //monologo de Sam
+    monologo = AñadirTexto(100,200,"Si será mi decisión!",colorTexto,20);
+    monologo.alpha = 0.01; 
+    faseBorrado = 0;
+    //
     CrearJugador(posInicXPlayer, posInicYPlayer);
     DetenerCancion();
     ReproducirLoopAudio(Stop_And_Think,0.3);
@@ -83,6 +88,8 @@ update: function() {
 
     ControlJugador();
     ControlarNivel();
+    BorrarTexto();
+
     game.debug.bodyInfo(player);
 }
 };

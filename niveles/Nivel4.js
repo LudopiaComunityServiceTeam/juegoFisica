@@ -53,6 +53,11 @@ positivo hasta abajo.
     CrearPared(400,200);
     CrearPared(400,100);
     CrearPared(400,000);
+    //monologo de Sam
+    monologo = AñadirTexto(360,350,"Un amigo",colorTexto,20);
+    monologo.alpha = 0.01; 
+    faseBorrado = 0;
+    //
     limiteDeTiempo = Infinity;
     vector = CrearVector(600,250,0,0, true);
     posInicXPlayer = 50;
@@ -82,6 +87,7 @@ update: function() {
 
     ControlJugador();
     ControlarNivel();
+    BorrarTexto();
     if (!(listaDeNumeros[0] === undefined && listaDeNumeros[0] === undefined)) {
         AnimarMano(inicio,listaDeVectores[0].cuadro,[-55,25,-140,0]);
     }

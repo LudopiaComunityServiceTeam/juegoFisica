@@ -71,6 +71,11 @@ positivo hasta abajo.
     vector = CrearVector(635,250,0,0, true);
     posInicXPlayer = 200;
     posInicYPlayer = game.world.height - 110;
+    //monologo de Sam
+    monologo = AñadirTexto(300,225,"Pero la respuesta no llegaba",colorTexto,20);
+    monologo.alpha = 0.01; 
+    faseBorrado = 0;
+    //
     CrearJugador(posInicXPlayer, posInicYPlayer);
     CrearDato(6,380,400,6,"distancia");
     CrearDato(2,570,400,2,"tiempo");
@@ -90,5 +95,6 @@ update: function() {
 
     ControlJugador();
     ControlarNivel();
+    BorrarTexto();
 }
 };

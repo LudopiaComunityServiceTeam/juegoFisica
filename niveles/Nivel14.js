@@ -111,6 +111,11 @@ positivo hasta abajo.
     vector2 = CrearVector(500, 100, 400, 0, false);
     posInicXPlayer = 50;
     posInicYPlayer = game.world.height - 350;
+    //monologo de Sam
+    monologo = AñadirTexto(500,300,"Lo vi desaparecer",colorTexto,20);
+    monologo.alpha = 0.01; 
+    faseBorrado = 0;
+    //
     jugador = CrearJugador(posInicXPlayer, posInicYPlayer);
     indice = 0;
     DetenerCancion();
@@ -124,6 +129,7 @@ update: function() {
 
     ControlJugador();
     ControlarNivel();
+    BorrarTexto();
     game.debug.bodyInfo(player);
 }
 };

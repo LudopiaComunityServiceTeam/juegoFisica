@@ -117,7 +117,7 @@ positivo hasta abajo.
     pared = CrearPared(700,236);
     pared = CrearPared(700,136);
 
-    vector = CrearVector(400,200,0,0, true);
+    vector = CrearVector(630,200,0,0, true);
 
     numeroAngulo = CrearAnguloParaVectorControlable(45,200,200,45);
     numeroAngulo = CrearAnguloParaVectorControlable(180,350,200,180);
@@ -136,6 +136,11 @@ positivo hasta abajo.
     CrearDato(4,515,430,4,"distancia");
     posInicXPlayer = 388;
     posInicYPlayer = game.world.height - 110;
+    //monologo de Sam
+    monologo = AñadirTexto(50,60,"A él, al problema... y a mi",colorTexto,20);
+    monologo.alpha = 0.01; 
+    faseBorrado = 0;
+    //
     CrearJugador(posInicXPlayer, posInicYPlayer);
 	DetenerCancion();
     ReproducirLoopAudio(Stop_And_Think,0.3);
@@ -148,6 +153,7 @@ update: function() {
 
     ControlJugador();
     ControlarNivel();
+    BorrarTexto();
     game.debug.bodyInfo(player);
 }
 };

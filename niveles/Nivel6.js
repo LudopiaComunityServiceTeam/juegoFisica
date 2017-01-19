@@ -36,6 +36,11 @@ positivo hasta abajo.
     posInicXPlayer = 50;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
+    //monologo de Sam
+    monologo = AñadirTexto(100,500,"Conozco este lugar...",colorTexto,20);
+    monologo.alpha = 0.01; 
+    faseBorrado = 0;
+    //
     numeroAngulo = CrearAnguloParaVectorControlable(90,500,300,90);
     numeroAngulo = CrearAnguloParaVectorControlable(30,600,300,30);
     numeroAngulo = CrearAnguloParaVectorControlable(60,700,300,60);
@@ -60,5 +65,6 @@ update: function() {
         AnimarMano(inicio,listaDeVectores[0].cuadro,[-55,40,60,65]);
     }
     ControlarNivel();
+    BorrarTexto();
 }
 };

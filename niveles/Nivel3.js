@@ -54,6 +54,11 @@ positivo hasta abajo.
     CrearEspinas(600,514);
     listaDeEspinas[4][0].anchor.setTo(0.5, 0.5);
     listaDeEspinas[4][0].angle = 90;
+    //monologo de Sam
+    monologo = AñadirTexto(50,500,"Pero recuerdo a alguien mas",colorTexto,20);
+    monologo.alpha = 0.01; 
+    faseBorrado = 0;
+    //
     tutorial();
     //Variable para controlar el titilar del boton play
     overlap = false;
@@ -67,6 +72,7 @@ update: function() {
 //Se llama sola en forma de loop infinito
     //Parte del tutorial
     resaltarPlay();
+    BorrarTexto();
     ControlJugador();
     ControlarNivel();
 }

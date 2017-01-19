@@ -192,3 +192,29 @@ function AnimarNube(){
 	    godown = true;
 	}
 }
+function BorrarTexto(){
+    if (faseBorrado == 0){
+        if (monologo.alpha < 0.8){
+            monologo.alpha = monologo.alpha + 0.01;
+        }
+        if ((monologo.alpha >= 0.8)&&(monologo.alpha < 1)){
+            monologo.alpha = monologo.alpha + 0.002;
+        }
+        if (monologo.alpha >= 1){
+            monologo.alpha = 1;
+            faseBorrado = 1;
+        }
+    }else{
+        if (monologo.alpha > 0){
+            if (monologo.alpha > 0.8){
+                monologo.alpha = monologo.alpha - 0.002;
+            }
+            if ((monologo.alpha <= 0.8)&&(monologo.alpha > 0)){
+                monologo.alpha = monologo.alpha - 0.01;
+            }
+            if (monologo.alpha <= 0){
+                monologo.alpha = 0;
+            }  
+        }
+    } 
+}

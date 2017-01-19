@@ -50,6 +50,11 @@ positivo hasta abajo.
     numeroMagnitud = CrearNumeroParaVectorControlable(600,100,340,6);
     posInicXPlayer = 50;
     posInicYPlayer = game.world.height - 110;
+    //monologo de Sam
+    monologo = AñadirTexto(25,450,"Todos menos uno",colorTexto,20);
+    monologo.alpha = 0.01; 
+    faseBorrado = 0;
+    //
     CrearJugador(posInicXPlayer, posInicYPlayer);
     DetenerCancion();
     ReproducirLoopAudio(Stop_And_Think,0.3);
@@ -64,5 +69,6 @@ update: function() {
     ControlJugador();
     ControlarNivel();
     game.debug.bodyInfo(player);
+    BorrarTexto();
 }
 };
