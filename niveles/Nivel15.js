@@ -43,10 +43,10 @@ positivo hasta abajo.
 
     /* Dato Distancia */
     lineaizq = game.add.sprite(100, 400, 'linea');
-    lineaizq.scale.setTo(30, 1);
-    lineader = game.add.sprite(450, 400, 'linea');
-    lineader.scale.setTo(25, 1);
-    CrearDato(10,405,350,12,"distancia");
+    lineaizq.scale.setTo(10, 1);
+    lineader = game.add.sprite(250, 400, 'linea');
+    lineader.scale.setTo(10, 1);
+    CrearDato(5,205,350,5,"distancia");
 
     CrearPlataforma(50,300,1,1);
     CrearPlataforma(150,300,1,1);
