@@ -19,8 +19,6 @@ var WebFontConfig = {
 var PantallaDeInicio = {
 preload: function() {
     loadPantallaDeInicio();
-    loadAll();
-    PreCargarRepertorioMusica();
 },
 create: function()
 {
