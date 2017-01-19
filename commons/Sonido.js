@@ -2,7 +2,7 @@
 function PreCargarRepertorioMusica() 
 {
     /* Repertorio De Musica */
-    game.load.audio('jazzFunkThoughts', ['assets/Music/jazzFunkThoughts.ogg','assets/jazzFunkThoughts.mp3']);
+    game.load.audio('jazzFunkThoughts', ['assets/Music/jazzFunkThoughts.ogg']);
     game.load.audio('AnAmazingStart', ['assets/Music/AnAmazingStart.ogg']);
     game.load.audio('Stop_And_Think', ['assets/Music/Stop_And_Think.ogg']);
     game.load.audio('PaceItUp', ['assets/Music/PaceItUp.ogg']);
