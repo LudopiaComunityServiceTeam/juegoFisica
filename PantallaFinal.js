@@ -16,8 +16,8 @@ create: function() {
     AñadirTexto(150,100,"¡Felicidades! ¡Acabaste el juego!",colorTexto,40);
     AñadirTexto(300,150,"Tu puntuación es:",colorTexto,30);
     ponerPuntuacionEnCuadro(350, 250);
-    AñadirTexto(300,400,"¿Quieres jugar de nuevo?",colorTexto,30);
-    botonMenu = game.add.sprite(300, 450, 'botonRepetirNivel');
+    AñadirTexto(270,350,"¿Quieres jugar de nuevo?",colorTexto,30);
+    botonMenu = game.add.sprite(350, 400, 'botonRepetirNivel');
     botonMenu.frame = 0;
     botonMenu.i = 0;
     botonMenu.inputEnabled = true;
