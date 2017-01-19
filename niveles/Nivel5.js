@@ -51,6 +51,11 @@ positivo hasta abajo.
     vector = CrearVector(625,250,0,0, true);
     posInicXPlayer = 50;
     posInicYPlayer = game.world.height - 110;
+    //monologo de Sam
+    monologo = AñadirTexto(530,380,"Y él estaba en peligro.",colorTexto,20);
+    monologo.alpha = 0.01; 
+    faseBorrado = 0;
+    //
     CrearJugador(posInicXPlayer, posInicYPlayer);
     numeroMagnitud = CrearNumeroParaVectorControlable(600,160,125,6);
     numeroMagnitud = CrearNumeroParaVectorControlable(300,260,125,3);
@@ -67,5 +72,6 @@ update: function() {
 
     ControlJugador();
     ControlarNivel();
+    BorrarTexto();
 }
 };

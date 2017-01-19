@@ -68,6 +68,11 @@ positivo hasta abajo.
     posInicXPlayer = 400;
     posInicYPlayer = 450;
     CrearJugador(posInicXPlayer, posInicYPlayer);
+    //monologo de Sam
+    monologo = AñadirTexto(470,550,"y cruzamos cada obstáculo",colorTexto,20);
+    monologo.alpha = 0.01; 
+    faseBorrado = 0;
+    //
     CrearDato(3,405,226,3,"tiempo");
     numeroAngulo = CrearAnguloParaVectorControlable(90,390,50,90);
 
@@ -90,5 +95,6 @@ update: function() {
 
     ControlJugador();
     ControlarNivel();
+    BorrarTexto();
 }
 };

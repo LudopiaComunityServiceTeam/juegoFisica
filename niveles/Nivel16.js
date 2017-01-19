@@ -92,7 +92,7 @@ var Nivel16 = {
 		listaDeEspinas[6][0].angle = 90;
 		listaDeEspinas[7][0].angle = 90;
 
-		vector = CrearVector(400, 200, 0, 0, true);
+		vector = CrearVector(625, 210, 0, 0, true);
 
 		numeroMagnitud = CrearNumeroParaVectorControlable(400, 360, 330, 4);
 		numeroMagnitud = CrearNumeroParaVectorControlable(100, 310, 330, 1);
@@ -104,6 +104,11 @@ var Nivel16 = {
 				posicionPuertaRealY - 76, limiteDeTiempo, "tiempo");
 		posInicXPlayer = 270;
 		posInicYPlayer = game.world.height - 360;
+                //monologo de Sam
+                monologo = AñadirTexto(300,225,"Ya estoy cerca",colorTexto,20);
+                monologo.alpha = 0.01; 
+                faseBorrado = 0;
+                //
 		CrearJugador(posInicXPlayer, posInicYPlayer);
 		DetenerCancion();
 		ReproducirLoopAudio(Stop_And_Think, 0.3);
@@ -116,6 +121,7 @@ var Nivel16 = {
 
 		ControlJugador();
 		ControlarNivel();
+                BorrarTexto();
 		game.debug.bodyInfo(player);
 	}
 };

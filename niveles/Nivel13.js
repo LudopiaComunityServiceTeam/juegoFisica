@@ -53,9 +53,14 @@ positivo hasta abajo.
     listaDeEspinas[1][0].angle = 180;
 
     ecuacionVelocidad = CrearEcuacionVelocidad(100,50);
-    vector = CrearVector(400,300,0,0, true);
+    vector = CrearVector(600,300,0,0, true);
     posInicXPlayer = 100;
     posInicYPlayer = 270;
+    //monologo de Sam
+    monologo = AñadirTexto(500,265,"Pero no fué mi decisión",colorTexto,20);
+    monologo.alpha = 0.01; 
+    faseBorrado = 0;
+    //
     CrearJugador(posInicXPlayer, posInicYPlayer);
     CrearDato(6,215,380,6,"distancia");
     CrearDato(3,480,510,3,"tiempo");
@@ -74,5 +79,6 @@ update: function() {
 
     ControlJugador();
     ControlarNivel();
+    BorrarTexto();
 }
 };

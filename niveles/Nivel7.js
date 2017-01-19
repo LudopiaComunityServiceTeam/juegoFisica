@@ -30,7 +30,7 @@ positivo hasta abajo.
     CrearNube(660,545);
     limiteDeTiempo = 3;
     CrearDato(3,675,515,3,"tiempo");
-    vector = CrearVector(400,350,0,0, true);
+    vector = CrearVector(400,270,0,0, true);
     numeroAngulo = CrearAnguloParaVectorControlable(30,550,120,30);
     numeroAngulo = CrearAnguloParaVectorControlable(40,650,120,40);
     numeroMagnitud = CrearNumeroParaVectorControlable(400,220,120,4);
@@ -62,6 +62,11 @@ positivo hasta abajo.
     posInicXPlayer = 50;
     posInicYPlayer = game.world.height - 110;
     CrearJugador(posInicXPlayer, posInicYPlayer);
+    //monologo de Sam
+    monologo = AñadirTexto(225,350,"Si... paseabamos por cada página!",colorTexto,20);
+    monologo.alpha = 0.01; 
+    faseBorrado = 0;
+    //
     DetenerCancion();
     ReproducirLoopAudio(Stop_And_Think,0.3);
     // informacion sobre el angulo
@@ -76,5 +81,6 @@ update: function() {
 
     ControlJugador();
     ControlarNivel();
+    BorrarTexto();
 }
 };

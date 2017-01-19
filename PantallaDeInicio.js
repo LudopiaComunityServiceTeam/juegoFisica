@@ -168,12 +168,14 @@ function SueloMovil(){
     if (lineas[0] == null){
         lineas[0] = game.add.sprite(lineas[1].x + 800,400,'linea')
         lineas[0].sendToBack();
-        lineas[0].moveUp()
+        lineas[0].moveUp();
+        lineas[0].moveUp();
     }
     if (lineas[1] == null){
         lineas[1] = game.add.sprite(lineas[0].x + 800,400,'linea')
         lineas[1].sendToBack();
-        lineas[1].moveUp()
+        lineas[1].moveUp();
+        lineas[1].moveUp();
     }
 
 }

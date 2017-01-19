@@ -33,6 +33,11 @@ positivo hasta abajo.
     jugador = CrearJugador(posInicXPlayer, posInicYPlayer);
     text = AñadirTexto(110,240,"Este es un vector\n de velocidad",colorTexto,45);
     text.angle = -20;
+    //monologo de Sam
+    monologo = AñadirTexto(20,450,"Estoy... solo?",colorTexto,20);
+    monologo.alpha = 0.01; 
+    faseBorrado = 0;
+    //
     CrearMano(290, 275);
     inicio = [vector];
     indice = 0;
@@ -51,7 +56,7 @@ update: function() {
     ControlarNivel();
     //Parte del tutorial
     resaltarPlay();
-
+    BorrarTexto();
     //Animacion de la mano
     if (!(inicio[0] === undefined)) {
         AnimarMano(inicio,player,[-100,-25,-50,0]);

@@ -73,6 +73,11 @@ positivo hasta abajo.
     vector = CrearVector(625,250,0,0, true);
     posInicXPlayer = 100;
     posInicYPlayer = game.world.height - 110;
+    //monologo de Sam
+    monologo = AñadirTexto(150,125,"Una y otra vez",colorTexto,20);
+    monologo.alpha = 0.01; 
+    faseBorrado = 0;
+    //
     CrearJugador(posInicXPlayer, posInicYPlayer);
     CrearDato(12,405,350,12,"distancia");
     CrearDato(4,720,400,4,"tiempo");
@@ -91,6 +96,7 @@ update: function() {
 
     ControlJugador();
     ControlarNivel();
+    BorrarTexto();
     if (!(inicio[0] === undefined)) {
         AnimarMano(inicio,ecuacionVelocidad,[-65,25,-40,50]);
     }

@@ -36,6 +36,11 @@ positivo hasta abajo.
     CrearJugador(posInicXPlayer, posInicYPlayer);
     CrearEspinas(600,440);
     pared = CrearPared(650,440);
+    //monologo de Sam
+    monologo = AñadirTexto(270,450,"Recuerdo mi nombre. Soy Sam.",colorTexto,20);
+    monologo.alpha = 0.01; 
+    faseBorrado = 0;
+    //
     tutorial();
     //Variable para controlar el titilar del boton play
     overlap = false;
@@ -51,7 +56,7 @@ update: function() {
 
     ControlJugador();
     ControlarNivel();
-
+    BorrarTexto();
     //Parte del tutorial
     resaltarPlay();
 }

@@ -50,6 +50,11 @@ positivo hasta abajo.
     vector = CrearVector(400,300,0,0, true);
     posInicXPlayer = 250;
     posInicYPlayer = game.world.height - 110;
+    //monologo de Sam
+    monologo = AñadirTexto(325,500,"Nunca me hubiese rendido",colorTexto,20);
+    monologo.alpha = 0.01; 
+    faseBorrado = 0;
+    //
     CrearJugador(posInicXPlayer, posInicYPlayer);
     numeroAngulo = CrearAnguloParaVectorControlable(180,550,250,180);
     numeroAngulo = CrearAnguloParaVectorControlable(30,650,250,30);
@@ -70,5 +75,6 @@ update: function() {
 
     ControlJugador();
     ControlarNivel();
+    BorrarTexto();
 }
 };

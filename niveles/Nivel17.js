@@ -100,6 +100,11 @@ positivo hasta abajo.
     CrearDato(limiteDeTiempo,posicionPuertaRealX,posicionPuertaRealY-76,limiteDeTiempo,"tiempo");
     posInicXPlayer = 50;
     posInicYPlayer = game.world.height - 110;
+    //monologo de Sam
+    monologo = AñadirTexto(575,500,"Y esta vez...",colorTexto,20);
+    monologo.alpha = 0.01; 
+    faseBorrado = 0;
+    //
     CrearJugador(posInicXPlayer, posInicYPlayer);
 	DetenerCancion();
     ReproducirLoopAudio(Stop_And_Think,0.3);
@@ -112,6 +117,7 @@ update: function() {
 
     ControlJugador();
     ControlarNivel();
+    BorrarTexto();
     game.debug.bodyInfo(player);
 }
 };
