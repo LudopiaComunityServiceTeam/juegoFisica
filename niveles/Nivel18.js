@@ -34,6 +34,13 @@ positivo hasta abajo.
 
     CrearSalida(posicionPuertaRealX,posicionPuertaRealY);
 
+    /* Dato Distancia */
+    lineaizq = game.add.sprite(100, 430, 'linea');
+    lineaizq.scale.setTo(25, 1);
+    lineader = game.add.sprite(400, 430, 'linea');
+    lineader.scale.setTo(21, 1);
+    CrearDato(10,355,380,10,"distancia");
+
     CrearPlataforma(50,300,1,1);
     CrearPlataforma(150,300,1,1);
     CrearPlataforma(250,300,1,1);
@@ -43,9 +50,6 @@ positivo hasta abajo.
     listaDeEspinas[0][0].angle = 270;
     ListaDeCiclos.push(new Ciclo(listaDeEspinas[0],[0,0],[-2,2],[800,800],[100,300],1));
     ListaDeCiclos.push(new Ciclo(listaDePropulsores[0],[0,0],[-2,2],[800,800],[0,200],1));
-
-
-
 
 //pared der
     CrearPropulsores(0,435,0);
@@ -61,11 +65,11 @@ positivo hasta abajo.
     paredDer = CrearPared(750,435);
     CrearEspinas(700,435);
 
-    vector = CrearVector(400,200,0,0, true);
+    vector = CrearVector(350,250,0,0, true);
 
-    numeroMagnitud = CrearNumeroParaVectorControlable(400,400,300,4);
-    numeroMagnitud = CrearNumeroParaVectorControlable(100,300,300,1);
-    numeroMagnitud = CrearNumeroParaVectorControlable(200,200,300,2);
+    numeroMagnitud = CrearNumeroParaVectorControlable(400,410,200,4);
+    numeroMagnitud = CrearNumeroParaVectorControlable(100,510,200,1);
+    numeroMagnitud = CrearNumeroParaVectorControlable(200,610,200,2);
 
     CrearNube(posicionPuertaRealX-10,posicionPuertaRealY-50,posicionPuertaRealX+10,posicionPuertaRealY-10);
     CrearDato(limiteDeTiempo,posicionPuertaRealX,posicionPuertaRealY-76,limiteDeTiempo,"tiempo");
@@ -73,7 +77,7 @@ positivo hasta abajo.
     posInicYPlayer = game.world.height - 360;
     //monologo de Sam
     monologo = AñadirTexto(100,200,"Si será mi decisión!",colorTexto,20);
-    monologo.alpha = 0.01; 
+    monologo.alpha = 0.01;
     faseBorrado = 0;
     //
     CrearJugador(posInicXPlayer, posInicYPlayer);

@@ -27,9 +27,9 @@ positivo hasta abajo.
     game.time.events.add(Phaser.Timer.SECOND * 10, ResaltarDudas, this);
     botonPistas = CrearBotonPista("¡Magnitudes y ángulos! Calcula la\ncombinación correcta de ellos para\nllegar a tiempo a la puerta;\nel monigote lo agradecerá.");
     CrearSalida(660,479);
-    CrearNube(660,545);
+    CrearNube(650,435,668,475);
     limiteDeTiempo = 3;
-    CrearDato(3,675,515,3,"tiempo");
+    CrearDato(3,665,405,3,"tiempo");
     vector = CrearVector(400,270,0,0, true);
     numeroAngulo = CrearAnguloParaVectorControlable(30,550,120,30);
     numeroAngulo = CrearAnguloParaVectorControlable(40,650,120,40);
@@ -64,7 +64,7 @@ positivo hasta abajo.
     CrearJugador(posInicXPlayer, posInicYPlayer);
     //monologo de Sam
     monologo = AñadirTexto(225,350,"Si... paseabamos por cada página!",colorTexto,20);
-    monologo.alpha = 0.01; 
+    monologo.alpha = 0.01;
     faseBorrado = 0;
     //
     DetenerCancion();
