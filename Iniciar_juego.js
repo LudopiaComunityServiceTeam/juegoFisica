@@ -22,5 +22,6 @@ game.state.add('Main_game', MainGame);
 game.state.add('SeleccionDeNivel', SeleccionDeNivel);
 game.state.add('PantallaDeInicio', PantallaDeInicio);
 game.state.add('PantallaDeCargado', PantallaDeCargado);
+game.state.add('PantallaFinal', PantallaFinal);
 
 game.state.start('PantallaDeCargado');

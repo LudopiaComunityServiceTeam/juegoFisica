@@ -324,6 +324,7 @@ function TerminarNivel() {
     resetVariables();
 }
 
+
 /**
 * Funcion que detecta si se gano un nivel
 *
