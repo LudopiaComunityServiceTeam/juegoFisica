@@ -59,6 +59,7 @@ var listaDeAngulos = [];
 var ListaDeDatos = [];
 var cuadroPista = [];
 var cuadroVictoria = [];
+var alerta = [];
 var niveles = ['SeleccionDeNivel','Nivel1','Nivel2','Nivel3', 'Nivel4','Nivel5','Nivel6',
                'Nivel7', 'Nivel8', 'Nivel9', 'Nivel10',  'Nivel11', 'Nivel12', 'Nivel13',
                'Nivel14', 'Nivel15','Nivel16','Nivel17','Nivel18','PantallaFinal'];
@@ -137,7 +138,7 @@ var SeleccionDeNivel = {
 function mapBackground(){
         mapa = game.add.sprite(70,100,'mapa1');
         mapa.scale.setTo(0.9,0.9);
-	
+
 	if (NivelMaximo >= 2){
                 mapa.kill();
                 mapa = game.add.sprite(70,100,'mapa2');
@@ -228,7 +229,7 @@ function mapBackground(){
 function escribir(){
 
 	//var text = AñadirTexto(60,10,"Escoge un nivel:",colorTexto,50);
-       
+
         mapBackground();
 	text = AñadirTexto(95,75,"1",colorTexto,35);
 	CrearBotonDeNivel(80, 110, 1);
