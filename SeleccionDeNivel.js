@@ -231,7 +231,7 @@ function mapBackground(){
 	}
     if (NivelMaximo >= 20){
                 mapa.kill();
-		mapa = game.add.sprite(70,100,'mapa19');
+		mapa = game.add.sprite(70,100,'mapa20');
                 mapa.scale.setTo(0.9,0.9);
 	}
 }
