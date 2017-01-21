@@ -62,7 +62,7 @@ var cuadroVictoria = [];
 var alerta = [];
 var niveles = ['SeleccionDeNivel','Nivel1','Nivel2','Nivel3', 'Nivel4','Nivel5','Nivel6',
                'Nivel7', 'Nivel8', 'Nivel9', 'Nivel10',  'Nivel11', 'Nivel12', 'Nivel13',
-               'Nivel14', 'Nivel15','Nivel16','Nivel17','Nivel18','PantallaFinal'];
+               'Nivel14', 'Nivel15','Nivel16','Nivel17','Nivel18', 'Nivel19', 'Nivel20', 'PantallaFinal'];
 var resaltadores = [];
 var ListaDeCiclos = []; //objetos tipo Ciclo
 var ListaDeTiempos = [];
@@ -224,6 +224,16 @@ function mapBackground(){
 		mapa = game.add.sprite(70,100,'mapa18');
                 mapa.scale.setTo(0.9,0.9);
 	}
+    if (NivelMaximo >= 19){
+                mapa.kill();
+		mapa = game.add.sprite(70,100,'mapa19');
+                mapa.scale.setTo(0.9,0.9);
+	}
+    if (NivelMaximo >= 20){
+                mapa.kill();
+		mapa = game.add.sprite(70,100,'mapa19');
+                mapa.scale.setTo(0.9,0.9);
+	}
 }
 
 function escribir(){
@@ -302,6 +312,12 @@ function escribir(){
 		text = AñadirTexto(290,430,"18",colorTexto,35);
 		CrearBotonDeNivel(275, 465, 18);
 	}
-
-
+    if (NivelMaximo >= 19){
+		text = AñadirTexto(480,425,"19",colorTexto,35);
+		CrearBotonDeNivel(465, 460, 19);
+	}
+    if (NivelMaximo >= 20){
+		text = AñadirTexto(665,380,"20",colorTexto,35);
+		CrearBotonDeNivel(650, 415, 20);
+	}
 }
