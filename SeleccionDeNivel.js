@@ -309,6 +309,10 @@ function escribir(){
 		text = AñadirTexto(290,430,"18",colorTexto,35);
 		CrearBotonDeNivel(275, 465, 18);
 	}
+        if (NivelMaximo >= 19){
+		text = AñadirTexto(485,395,"19",colorTexto,35);
+		CrearBotonDeNivel(470,430, 18);
+	}
 
 
 }
