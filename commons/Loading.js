@@ -13,8 +13,8 @@ function loadArchivoGuardado(){
     ArchivoDeGuardado = JSON.parse(localStorage.getItem('Guardado'));
     console.log("Cargando archivo");
     console.log(ArchivoDeGuardado);
-    //localStorage.removeItem('Guardado'); //se usa para borrar un guardado en particular
-    //localStorage.clear(); //se usa para borrar todos los guardados
+    localStorage.removeItem('Guardado'); //se usa para borrar un guardado en particular
+    localStorage.clear(); //se usa para borrar todos los guardados
     if (ArchivoDeGuardado != null){
         console.log("Cargando exitoso");
         NivelMaximo = ArchivoDeGuardado.Nivel;
@@ -106,6 +106,7 @@ function loadAll(){
     game.load.image('pared','assets/Pared.png');
     game.load.image('pared50','assets/Pared50.png');
     game.load.image('fondoBlanco','assets/fondoblanco.png');
+    //game.load.image('signoInterrogacion','assets/signoInterrogacion.png');
 
     game.load.image('mapa1','assets/Mapa/mapa1.png');
     game.load.image('mapa2','assets/Mapa/mapa2.png');
@@ -139,10 +140,11 @@ function loadAll(){
     game.load.spritesheet('BotonCerrar','assets/BotonCerrar.png', 40,39);
     game.load.spritesheet('botonResetNivel','assets/Reset.png',50,50);
     game.load.spritesheet('botonSigNivel','assets/flechaverdetitila.png',209,55);
-
     game.load.spritesheet('botonRepetirNivel','assets/retry.png',154,115);
-
     game.load.spritesheet('botonMute','assets/Mute.png',50,50);
+
+    game.load.spritesheet('signoInterrogacion','assets/framesInterrogacion2.png',50.2,70);
+    
 
 
     PreCargarRepertorioSonido();

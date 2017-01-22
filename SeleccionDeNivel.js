@@ -65,6 +65,7 @@ var niveles = ['SeleccionDeNivel','Nivel1','Nivel2','Nivel3', 'Nivel4','Nivel5',
 var resaltadores = [];
 var ListaDeCiclos = []; //objetos tipo Ciclo
 var ListaDeTiempos = [];
+var ListaSignos = [];
 
 
 var inicio;
@@ -112,15 +113,22 @@ var SeleccionDeNivel = {
 			CrearSilenciarSonido();
 			CargarRepertorioMusica();
 			CargarRepertorioSonido();
+                        escribir();
+                        colocarInterrogaciones();
 			if (!juegoInicializado){
 				ReproducirLoopAudio(jazzFunkThoughts,0.3);
-				game.time.events.add(Phaser.Timer.SECOND/2, escribir, this);
+				//game.time.events.add(Phaser.Timer.SECOND/2, escribir, this);
+                                //colocarInterrogaciones();
 			}
 			else{
 				DetenerCancion();
 				ReproducirLoopAudio(jazzFunkThoughts,0.3);
-				escribir();
+				//escribir();
+                                //console.log('llamar a funcion');
+                                //colocarInterrogaciones();
 			}
+                        
+                        //colocarInterrogaciones();
 			juegoInicializado = true;
 		},
 
@@ -303,4 +311,102 @@ function escribir(){
 	}
 
 
+}
+
+function colocarInterrogaciones(){
+        if (NivelMaximo <= 18){
+		signo20 = game.add.sprite(660,400,'signoInterrogacion');
+                //signo20.scale.setTo(0.8,0.8);
+                signo20.animations.add('saltar',null,13,true);
+                signo20.animations.play('saltar');
+                signo19 = game.add.sprite(470,430,'signoInterrogacion');
+                //signo19.scale.setTo(0.8,0.8);
+                signo19.animations.add('saltar',null,10,true);
+                signo19.animations.play('saltar');
+        }if (NivelMaximo <= 17){
+                signo18 = game.add.sprite(280,440,'signoInterrogacion');
+                //signo18.scale.setTo(0.8,0.8);
+                signo18.animations.add('saltar',null,13,true);
+                signo18.animations.play('saltar');
+        }if (NivelMaximo <= 16){
+                signo17 = game.add.sprite(100,440,'signoInterrogacion');
+                //signo17.scale.setTo(0.8,0.8);
+                signo17.animations.add('saltar',null,10,true);
+                signo17.animations.play('saltar');
+        }if (NivelMaximo <= 15){
+                signo16 = game.add.sprite(95,325,'signoInterrogacion');
+                signo16.scale.setTo(0.9,0.9);
+                signo16.animations.add('saltar',null,11,true);
+                signo16.animations.play('saltar');
+        }if (NivelMaximo <= 14){
+                signo15 = game.add.sprite(115,230,'signoInterrogacion');
+                signo15.scale.setTo(0.7,0.7);
+                signo15.animations.add('saltar',null,10,true);
+                signo15.animations.play('saltar');
+        }if (NivelMaximo <= 13){
+                signo14 = game.add.sprite(255,200,'signoInterrogacion');
+                signo14.scale.setTo(0.7,0.7);
+                signo14.animations.add('saltar',null,14,true);
+                signo14.animations.play('saltar');
+        }if (NivelMaximo <= 12){
+                signo13 = game.add.sprite(260,315,'signoInterrogacion');
+                signo13.scale.setTo(0.9,0.9);
+                signo13.animations.add('saltar',null,10,true);
+                signo13.animations.play('saltar');
+        }if (NivelMaximo <= 11){
+                signo12 = game.add.sprite(410, 315,'signoInterrogacion');
+                signo12.scale.setTo(0.9,0.9);
+                signo12.animations.add('saltar',null,11,true);
+                signo12.animations.play('saltar');
+        }if (NivelMaximo <= 10){
+                signo11 = game.add.sprite(400, 200,'signoInterrogacion');
+                signo11.scale.setTo(0.7,0.7);
+                signo11.animations.add('saltar',null,15,true);
+                signo11.animations.play('saltar');
+        }if (NivelMaximo <= 9){
+                signo10 = game.add.sprite(515, 250,'signoInterrogacion');
+                signo10.scale.setTo(0.8,0.8);
+                signo10.animations.add('saltar',null,14,true);
+                signo10.animations.play('saltar');
+        }if (NivelMaximo <= 8){
+                signo9 = game.add.sprite(630, 270,'signoInterrogacion');
+                signo9.scale.setTo(0.8,0.8);
+                signo9.animations.add('saltar',null,10,true);
+                signo9.animations.play('saltar');
+        }if (NivelMaximo <= 7){
+                signo8 = game.add.sprite(585, 160,'signoInterrogacion');
+                signo8.scale.setTo(0.65,0.65);
+                signo8.animations.add('saltar',null,14,true);
+                signo8.animations.play('saltar');
+        }if (NivelMaximo <= 6){
+                signo7 = game.add.sprite(640, 85,'signoInterrogacion');
+                signo7.scale.setTo(0.5,0.5);
+                signo7.animations.add('saltar',null,10,true);
+                signo7.animations.play('saltar');
+        }if (NivelMaximo <= 5){
+                signo6 = game.add.sprite(550, 75,'signoInterrogacion');
+                signo6.scale.setTo(0.5,0.5);
+                signo6.animations.add('saltar',null,10,true);
+                signo6.animations.play('saltar');
+        }if (NivelMaximo <= 4){
+                signo5 = game.add.sprite(445, 115,'signoInterrogacion');
+                signo5.scale.setTo(0.6,0.6);
+                signo5.animations.add('saltar',null,12,true);
+                signo5.animations.play('saltar');
+        }if (NivelMaximo <= 3){
+                signo4 = game.add.sprite(345, 115,'signoInterrogacion');
+                signo4.scale.setTo(0.6,0.6);
+                signo4.animations.add('saltar',null,11,true);
+                signo4.animations.play('saltar');
+        }if (NivelMaximo <= 2){
+                signo3 = game.add.sprite(265, 85,'signoInterrogacion');
+                signo3.scale.setTo(0.5,0.5);
+                signo3.animations.add('saltar',null,14,true);
+                signo3.animations.play('saltar');
+        }if (NivelMaximo <= 1){
+                signo2 = game.add.sprite(170, 135,'signoInterrogacion');
+                signo2.scale.setTo(0.6,0.6);
+                signo2.animations.add('saltar',null,13,true);
+                signo2.animations.play('saltar');
+	}
 }

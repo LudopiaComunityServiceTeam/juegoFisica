@@ -145,3 +145,28 @@ function CrearNube(x,y,xo,yo){
     nubeCreada = true;
 
 }
+
+//function Crear
+
+/*
+*Funcion que crea un signo de interrogación animado
+*
+*/
+function animarInterrogacion(signo,limiteArriba,limiteAbajo,toqueArriba) {
+    //signo = game.add.sprite(x,y,'signoInterrogacion');
+    //limiteArriba = signo.y + 5;
+    //limiteAbajo = signo.y;
+    //toqueArriba = false;
+    if (signo.y < limiteArriba && !toqueArriba){
+        signo.y = signo.y + 1;
+    } else if (signo.y == limiteArriba && !toqueArriba){
+        toqueArriba = true;
+        signo.y = signo.y - 1;
+    } else if (signo.y > limiteAbajo && toqueArriba){
+        signo.y = signo.y - 1;
+    } else if (signo.y == limiteAbajo && toqueArriba){
+        toqueArriba = false;
+    }
+}
+
+
