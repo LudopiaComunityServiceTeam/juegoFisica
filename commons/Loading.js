@@ -86,7 +86,8 @@ function loadAll(){
     game.load.image('piso', 'assets/suelo.png');
     game.load.image('platform', 'assets/plataforma.png');
     game.load.image('mano', 'assets/hand1.png');
-    game.load.image('EcuacionVelocidadCamuflada', 'assets/EcuacionVelocidadCamuflada.png');
+    //game.load.image('EcuacionVelocidadCamuflada', 'assets/EcuacionVelocidadCamuflada.png');
+    game.load.image('EcuacionVelocidadCamuflada', 'assets/resolvedor.png');
     game.load.image('linea', 'assets/LineaDistancia.png');
     game.load.image('ecuacionVelocidad','assets/Ecuacion velocidad.png');
     game.load.image('ecuacionAceleracion','assets/Ecuacion aceleracion.png');

@@ -314,11 +314,12 @@ function escribir(){
 }
 
 function colocarInterrogaciones(){
-        if (NivelMaximo <= 18){
-		signo20 = game.add.sprite(660,400,'signoInterrogacion');
+        if (NivelMaximo <= 19)
+                signo20 = game.add.sprite(660,400,'signoInterrogacion');
                 //signo20.scale.setTo(0.8,0.8);
                 signo20.animations.add('saltar',null,13,true);
                 signo20.animations.play('saltar');
+        if (NivelMaximo <= 18){		
                 signo19 = game.add.sprite(470,430,'signoInterrogacion');
                 //signo19.scale.setTo(0.8,0.8);
                 signo19.animations.add('saltar',null,10,true);

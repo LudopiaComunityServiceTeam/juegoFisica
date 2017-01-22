@@ -95,7 +95,7 @@ function CheckDistanciaOnVelocidad(item){
             tieneDistancia = true;
         }
         EcuacionVelocidad.distancia = item;
-        item.x = EcuacionVelocidad.x + 30;
+        item.x = EcuacionVelocidad.x + 45;
         item.y = EcuacionVelocidad.y + 5;
         if (tieneTiempo){
             CrearVelocidad();
@@ -118,8 +118,8 @@ function CheckTiempoOnVelocidad(item){
             tieneTiempo = true;
         }
         EcuacionVelocidad.tiempo = item;
-        item.x = EcuacionVelocidad.x + 30;
-        item.y = (EcuacionVelocidad.y + 48);
+        item.x = EcuacionVelocidad.x + 50;
+        item.y = (EcuacionVelocidad.y + 65);
         if (tieneDistancia){
             CrearVelocidad();
         }
