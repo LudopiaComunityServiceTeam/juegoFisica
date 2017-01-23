@@ -62,7 +62,7 @@ var cuadroVictoria = [];
 var alerta = [];
 var niveles = ['SeleccionDeNivel','Nivel1','Nivel2','Nivel3', 'Nivel4','Nivel5','Nivel6',
                'Nivel7', 'Nivel8', 'Nivel9', 'Nivel10',  'Nivel11', 'Nivel12', 'Nivel13',
-               'Nivel14', 'Nivel15','Nivel16','Nivel17','Nivel18', 'Nivel19', 'Nivel20', 'PantallaFinal'];
+               'Nivel14', 'Nivel15','Nivel16','Nivel17'/*,'Nivel18', 'Nivel19', 'Nivel20'*/, 'PantallaFinal'];
 var resaltadores = [];
 var ListaDeCiclos = []; //objetos tipo Ciclo
 var ListaDeTiempos = [];
