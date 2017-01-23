@@ -80,7 +80,7 @@ positivo hasta abajo.
     posInicXPlayer = 85;
     posInicYPlayer = game.world.height - 360;
     //monologo de Sam
-    monologo = AñadirTexto(100,200,"Si será mi decisión!",colorTexto,20);
+    monologo = AñadirTexto(100,200,"A él, al problema... y a mi",colorTexto,20);
     monologo.alpha = 0.01;
     faseBorrado = 0;
     //
