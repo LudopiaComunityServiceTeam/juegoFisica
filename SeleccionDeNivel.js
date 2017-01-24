@@ -76,6 +76,7 @@ var NivelMaximo;
 var Nota = [];
 
 var cancionActual;
+var frames = 0;
 
 var SeleccionDeNivel = {
 		preload: function() {
@@ -139,6 +140,8 @@ var SeleccionDeNivel = {
 
 			//Permitimos que el jugador colisione con cualquier objeto
 			//en el grupo de las plataformas
+                        frames = frames + 1;
+    			animarHuellas(100,300,150,325);
 		}
 };
 
