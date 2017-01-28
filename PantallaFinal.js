@@ -28,26 +28,31 @@ create: function() {
 },
 update: function() {
     game.physics.arcade.collide(player, platforms);
-    
-    if ((tiemposEscena >= 0)&&(tiemposEscena < 400)){
-        MoverseALaDer(50);
-        //monologo de Sam
+    if ((tiemposEscena >= 0)&&(tiemposEscena < 200)){
+        MoverseALaDer(100);
         if (tiemposEscena == 50){
-            monologo = AñadirTexto(270,450,"Perrito!",colorTexto,20);
-            monologo.alpha = 0.01; 
-            faseBorrado = 0;
+            textoSam = AñadirTexto(240,450,"Perrito!",colorTexto,20);
+            textoSam.alpha = 0.01; 
+            faseDialogo1 = 0;
         }
         if (tiemposEscena > 50){
-            BorrarTexto();
+            faseDialogo1 = BorrarTextoEscenaFinal(textoSam,2,faseDialogo1);
         }
     }
-    if ((tiemposEscena >= 400)&&(tiemposEscena < 800)){
-        BorrarTexto();
-        if (tiemposEscena == 400){
+    if ((tiemposEscena >= 200)&&(tiemposEscena < 400)){
+        if (tiemposEscena == 200){
             Detenerse();
+            textoPerro = AñadirTexto(500,450,"woof!",colorTexto,20);
+            textoPerro.alpha = 0.01; 
+            faseDialogo2  = 0;
+        }
+        if (tiemposEscena > 200){
+            console.log(faseDialogo1);
+            faseDialogo1 = BorrarTextoEscenaFinal(textoSam,2,faseDialogo1);
+            faseDialogo2 = BorrarTextoEscenaFinal(textoPerro,2,faseDialogo2);
         }
     }
-    if (tiemposEscena == 800){
+    if (tiemposEscena == 400){
         if (Nota[nivelActual-2] >= 10){
             AñadirTexto(150,50,"¡Felicidades! ¡Acabaste el juego\n y pasaste!",colorTexto,40);
             AñadirTexto(300,150,"Tu puntuación es:",colorTexto,30);
@@ -83,4 +88,34 @@ function Detenerse() {
     player.body.velocity.x = 0;
     player.animations.stop();
     player.frame = 4;
+}
+function BorrarTextoEscenaFinal(linea,velocidad,fase){
+    if (fase == 0){
+        faseNueva = 0;
+        if (linea.alpha < 0.8){
+            linea.alpha = linea.alpha + 0.01*velocidad;
+        }
+        if ((linea.alpha >= 0.8)&&(linea.alpha < 1)){
+            linea.alpha = linea.alpha + 0.002*velocidad;
+        }
+        if (linea.alpha >= 1){
+            linea.alpha = 1;
+            faseNueva = 1;
+        }
+    }else{
+        faseNueva = 1;
+        if (linea.alpha > 0){
+            if (linea.alpha > 0.8){
+                linea.alpha = linea.alpha - 0.002*velocidad;
+            }
+            if ((linea.alpha <= 0.8)&&(linea.alpha > 0)){
+                linea.alpha = linea.alpha - 0.01*velocidad;
+            }
+            if (linea.alpha <= 0){
+                linea.alpha = 0;
+                linea.destroy();
+            }  
+        }
+    } 
+    return faseNueva; 
 }
