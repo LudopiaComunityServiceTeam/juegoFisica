@@ -140,8 +140,8 @@ var SeleccionDeNivel = {
 
 			//Permitimos que el jugador colisione con cualquier objeto
 			//en el grupo de las plataformas
-                        frames = frames + 1;
-    			animarHuellas(100,300,150,325);
+                        //frames = frames + 1;
+    			//animarHuellas(100,300,150,325);
 		}
 };
 
