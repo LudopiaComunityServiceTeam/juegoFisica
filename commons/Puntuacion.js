@@ -43,11 +43,11 @@ function actualizarPuntuacion(puntos){
 function ponerPuntuacionEnCuadro(x, y) {
     var sello;
 
-    if (puntuacion.text == 20) {
-        sello = AñadirTextoMarcador(x - 12, y, puntuacion.text, colorTiempo, 70);
+    if (Nota[nivelActual-2] == 20) {
+        sello = AñadirTextoMarcador(x - 12, y, Nota[nivelActual-2], colorTiempo, 70);
     }
     else {
-        sello = AñadirTextoMarcador(x, y, puntuacion.text, colorTiempo, 70);
+        sello = AñadirTextoMarcador(x, y, Nota[nivelActual-2], colorTiempo, 70);
     }
     colorearTexto(sello);
     sello.angle = -25;
