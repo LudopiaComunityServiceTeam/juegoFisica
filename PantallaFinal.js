@@ -18,12 +18,12 @@ create: function() {
     if (Nota[nivelActual-2] >= 10){
         AñadirTexto(150,50,"¡Felicidades! ¡Acabaste el juego\n y pasaste!",colorTexto,40);
         AñadirTexto(300,150,"Tu puntuación es:",colorTexto,30);
-        ponerPuntuacionEnCuadro(350, 250);
+        ponerPuntuacionFinal(350, 250);
     }
     else if (Nota[nivelActual-2] < 10){
         AñadirTexto(150,100,"Acabaste el juego, pero no pasaste.",colorTexto,40);
         AñadirTexto(300,150,"Tu puntuación es:",colorTexto,30);
-        ponerPuntuacionEnCuadro(350, 250);
+        ponerPuntuacionFinal(350, 250);
     }
 
     AñadirTexto(270,350,"¿Quieres jugar de nuevo?",colorTexto,30);
