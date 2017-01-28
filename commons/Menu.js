@@ -27,11 +27,60 @@ function CrearBotonDeNivel(x,y,nivel){
 
 function SeleccionarNivel(item){
     //Determina que pasa cuando se hace click en el boton de play
-    game.state.start(niveles[item.i]);
-    nivelActual = item.i;
+    if (item.i != NivelMaximo && item.i !== 0) {
+        alertaDestroy();
+        var hoja = game.add.sprite(200,150,'pedazoHoja');
+        hoja.scale.setTo(0.4,0.43);
+        alerta.push(hoja);
+        var texto = "Al volver a jugar el nivel " + item.i + "\nperderas el progreso a\npartir de ese nivel\n¿Quieres continuar? ";
+        var alertatexto = AñadirTexto(260,225,texto,colorTexto,25);
+        alertatexto.angle = -5;
+        alerta.push(alertatexto);
+
+        var si = AñadirTexto(350,370,"Si",colorTexto,25);
+        si.angle = -5;
+        si.inputEnabled = true;
+        si.input.useHandCursor = true;
+        si.events.onInputDown.add(function(si){iniciarNivel(item.i);}, this);
+        si.events.onInputOver.add(overText, this);
+        si.events.onInputOut.add(outText, this);
+        alerta.push(si);
+
+        var no = AñadirTexto(400,365,"No",colorTexto,25);
+        no.angle = -5;
+        no.inputEnabled = true;
+        no.input.useHandCursor = true;
+        no.events.onInputDown.add(function(no){alertaDestroy();}, this);
+        no.events.onInputOver.add(overText, this);
+        no.events.onInputOut.add(outText, this);
+        alerta.push(no);
+    }
+    else {
+        iniciarNivel(item.i);
+    }
+}
+
+function iniciarNivel(nivel) {
+    game.state.start(niveles[nivel]);
+    nivelActual = nivel;
     resetVariables();
 }
 
+function alertaDestroy(){
+    for (i = 0; i < alerta.length; i++){
+        if (alerta[i] !== undefined) {
+            alerta[i].destroy();
+        }
+    }
+}
+
+function overText(text){
+    text.fill = '#00cc00'; //verde
+}
+
+function outText(text){
+    text.fill = colorTexto;
+}
 /**
 * Funcion que el boton de seleccionar nivel
 *
