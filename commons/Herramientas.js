@@ -212,6 +212,7 @@ function CrearEspinas(x,y){
 function CrearPropulsores(x,y,direccion){
 
     propulsor = game.add.sprite(x,y,'propulsor');
+    propulsor.animations.add('prendido',[0,1,2,3],10,true);
     if (direccion == 0){
     }
     else if (direccion == 1){
