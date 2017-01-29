@@ -86,6 +86,7 @@ function loadAll(){
     game.load.image('piso', 'assets/suelo.png');
     game.load.image('platform', 'assets/plataforma.png');
     game.load.image('mano', 'assets/hand1.png');
+    game.load.image('camion','assets/truck.png');
     //game.load.image('EcuacionVelocidadCamuflada', 'assets/EcuacionVelocidadCamuflada.png');
     game.load.image('EcuacionVelocidadCamuflada', 'assets/resolvedor.png');
     game.load.image('linea', 'assets/LineaDistancia.png');
@@ -129,6 +130,7 @@ function loadAll(){
     game.load.image('mapa19','assets/Mapa/mapa19.png');
     game.load.image('mapa20','assets/Mapa/mapa20.png');
 
+    game.load.spritesheet('perrito','assets/cicloperro.png',40,30);
     game.load.spritesheet('propulsor','assets/Propulsores.png',50,100);
     game.load.spritesheet('simbolos','assets/Simbolos.png',28,28);
     game.load.spritesheet('PlayButton','assets/play.png',50,50);

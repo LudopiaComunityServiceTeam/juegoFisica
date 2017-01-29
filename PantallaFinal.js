@@ -24,6 +24,8 @@ create: function() {
     CrearJugador(posInicXPlayer, posInicYPlayer);
     tiemposEscena = 0;
     corriendo = false;
+    perro = game.add.sprite(500,508,'perrito');
+    perro.animations.add('perrito',[0,1,2,3,4],10,true);
 
 },
 update: function() {
@@ -52,7 +54,19 @@ update: function() {
             faseDialogo2 = BorrarTextoEscenaFinal(textoPerro,2,faseDialogo2);
         }
     }
-    if (tiemposEscena == 400){
+    if ((tiemposEscena >= 400)&&(tiemposEscena < 600)){
+        if (tiemposEscena == 400){
+            camion = game.add.sprite(450,212,'camion');
+            camion.alpha = 0.01;
+        }
+        if (camion.alpha < 1){
+            camion.alpha = camion.alpha + 0.01;
+        }
+        else{
+            camion.alpha = 1; 
+        }
+    }
+    if (tiemposEscena == 600){
         if (Nota[nivelActual-2] >= 10){
             AñadirTexto(150,50,"¡Felicidades! ¡Acabaste el juego\n y pasaste!",colorTexto,40);
             AñadirTexto(300,150,"Tu puntuación es:",colorTexto,30);
