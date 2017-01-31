@@ -94,7 +94,8 @@ update: function() {
             AñadirTexto(150,50,"¡Felicidades! ¡Acabaste el juego\n y pasaste!",colorTexto,40);
             AñadirTexto(300,150,"Tu puntuación es:",colorTexto,30);
             ponerPuntuacionFinal(350, 250);
-            CrearJugador(600,500);
+            jugadorVivo = game.add.sprite(600,485,"dude");
+            jugadorVivo.frame = 4;
             perro = game.add.sprite(650,500,'perrito');
             perro.animations.add('perrito',[0,1,2],10,true);
             perro.animations.play('perrito');
@@ -104,8 +105,9 @@ update: function() {
             AñadirTexto(150,100,"Acabaste el juego, pero no pasaste.",colorTexto,40);
             AñadirTexto(300,150,"Tu puntuación es:",colorTexto,30);
             ponerPuntuacionFinal(350, 250);
-            CrearJugador(600,500);
-            AñadirTexto(595,450,"No pude llegar a tiempo...",colorTexto,20);
+            jugadorVivo = game.add.sprite(600,485,"dude");
+            jugadorVivo.frame = 4;
+            AñadirTexto(545,450,"No pude llegar a tiempo...",colorTexto,20);
         }
         AñadirTexto(270,350,"¿Quieres jugar de nuevo?",colorTexto,30);
         botonMenu = game.add.sprite(350, 400, 'botonRepetirNivel');

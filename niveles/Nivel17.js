@@ -105,7 +105,7 @@ var Nivel17 = {
 		posInicXPlayer = 270;
 		posInicYPlayer = game.world.height - 360;
         //monologo de Sam
-        monologo = AñadirTexto(300,225,"Y esta vez...",colorTexto,20);
+        monologo = AñadirTexto(300,225,"Esta vez será diferente!",colorTexto,20);
         monologo.alpha = 0.01;
         faseBorrado = 0;
         //
