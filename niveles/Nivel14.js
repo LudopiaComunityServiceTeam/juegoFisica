@@ -120,6 +120,7 @@ positivo hasta abajo.
     indice = 0;
     DetenerCancion();
     ReproducirLoopAudio(Stop_And_Think,0.3);
+    propulsoresAnim = false;
 },
 
 update: function() {
@@ -127,6 +128,25 @@ update: function() {
 //Aqui colocamos lo que es movimiento y cambios de variables
 //Se llama sola en forma de loop infinito
 
+    if (clicked){
+        if (!propulsoresAnim){
+            console.log("entre!");
+            for (i = 0; i < listaDePropulsores.length; i++){
+                console.log("wolo");
+                listaDePropulsores[i][0].animations.play('prendido');
+            }
+            propulsoresAnim = true;
+        }
+    }
+    else {
+        if (propulsoresAnim){
+            console.log("sali!");
+            for (i = 0; i < listaDePropulsores.length; i++){
+                listaDePropulsores[i][0].animations.stop();
+            }
+            propulsoresAnim = false;
+        }
+    }
     ControlJugador();
     ControlarNivel();
     BorrarTexto();

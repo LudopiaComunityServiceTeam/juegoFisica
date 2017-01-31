@@ -1,4 +1,4 @@
-var Nivel18 = {
+var Nivel19 = {
 preload: function() {
 
 
@@ -101,7 +101,7 @@ positivo hasta abajo.
     posInicXPlayer = 50;
     posInicYPlayer = game.world.height - 110;
     //monologo de Sam
-    monologo = AñadirTexto(575,500,"Si será mi decisión!",colorTexto,20);
+    monologo = AñadirTexto(575,500,"Y esta vez...",colorTexto,20);
     monologo.alpha = 0.01;
     faseBorrado = 0;
     //

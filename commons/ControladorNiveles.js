@@ -304,6 +304,7 @@ function resetVariables(){
     listaDeVectores = [];
     listaDeNumeros = [];
     listaDeEspinas = [];
+    listaDePropulsores = [];
     listaDeAngulos = [];
     ListaDeDatos = [];
     ListaDeCiclos = [];

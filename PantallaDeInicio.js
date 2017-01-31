@@ -44,7 +44,7 @@ update: function()
 {
     frames = frames + 1;
     animarTitulo();
-    animarHuellas();
+    animarHuellas(550,390,550,415);
     animarPersonaje();
     SueloMovil();
 }
@@ -82,14 +82,14 @@ function animarTitulo(){
     }
 }
 
-function animarHuellas(){
+function animarHuellas(upx,upy,downx,downy){
     if (frames > 25){
         if (arriba){
-            huellas.push(game.add.sprite(550,390,'huellas'));
+            huellas.push(game.add.sprite(upx,upy,'huellas'));
             arriba = false;
         }
         else{
-            huellas.push(game.add.sprite(550,415,'huellas'));
+            huellas.push(game.add.sprite(downx,downy,'huellas'));
             arriba = true;
         }
         frames = 0;

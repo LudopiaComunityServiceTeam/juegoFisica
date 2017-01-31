@@ -57,3 +57,25 @@ function ponerPuntuacionEnCuadro(x, y) {
     subrayar.angle = -25;
     cuadroVictoria.push(subrayar);
 }
+/**
+
+* Funcion que pone la puntuacion en el menu final
+*
+*/
+function ponerPuntuacionFinal(x, y) {
+    var sello;
+
+    if (Nota[nivelActual-2] == 20) {
+        sello = AñadirTextoMarcador(x - 12, y, Nota[nivelActual-2], colorTiempo, 70);
+    }
+    else {
+        sello = AñadirTextoMarcador(x, y, Nota[nivelActual-2], colorTiempo, 70);
+    }
+    colorearTexto(sello);
+    sello.angle = -25;
+    cuadroVictoria.push(sello);
+    var subrayar = AñadirTextoMarcador(x - 5, y + 25, '_', sello.fill, 70);
+    subrayar.scale.setTo(1.5, 1);
+    subrayar.angle = -25;
+    cuadroVictoria.push(subrayar);
+}

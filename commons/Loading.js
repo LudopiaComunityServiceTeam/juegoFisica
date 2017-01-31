@@ -86,7 +86,9 @@ function loadAll(){
     game.load.image('piso', 'assets/suelo.png');
     game.load.image('platform', 'assets/plataforma.png');
     game.load.image('mano', 'assets/hand1.png');
-    game.load.image('EcuacionVelocidadCamuflada', 'assets/EcuacionVelocidadCamuflada.png');
+    game.load.image('camion','assets/truck.png');
+    //game.load.image('EcuacionVelocidadCamuflada', 'assets/EcuacionVelocidadCamuflada.png');
+    game.load.image('EcuacionVelocidadCamuflada', 'assets/resolvedor.png');
     game.load.image('linea', 'assets/LineaDistancia.png');
     game.load.image('ecuacionVelocidad','assets/Ecuacion velocidad.png');
     game.load.image('ecuacionAceleracion','assets/Ecuacion aceleracion.png');
@@ -102,10 +104,10 @@ function loadAll(){
     game.load.image('circulo','assets/circuloExplosion.png');
     game.load.image('rectanguloPista','assets/rectanguloPista.png');
     game.load.image('rectangulo','assets/rectangulo.png');
-    game.load.image('propulsor','assets/Propulsores.png');
     game.load.image('pared','assets/Pared.png');
     game.load.image('pared50','assets/Pared50.png');
     game.load.image('fondoBlanco','assets/fondoblanco.png');
+    //game.load.image('signoInterrogacion','assets/signoInterrogacion.png');
 
     game.load.image('mapa1','assets/Mapa/mapa1.png');
     game.load.image('mapa2','assets/Mapa/mapa2.png');
@@ -128,6 +130,11 @@ function loadAll(){
     game.load.image('mapa19','assets/Mapa/mapa19.png');
     game.load.image('mapa20','assets/Mapa/mapa20.png');
 
+    game.load.image('tapablanca','assets/tapablanca.png');
+
+    //game.load.spritesheet('perrito','assets/cicloperro.png',40,30);
+    game.load.spritesheet('perrito','assets/cicloperrocola.png',40,30);
+    game.load.spritesheet('propulsor','assets/Propulsores.png',50,100);
     game.load.spritesheet('simbolos','assets/Simbolos.png',28,28);
     game.load.spritesheet('PlayButton','assets/play.png',50,50);
     game.load.spritesheet('vector', 'assets/Vector.png',12,17);
@@ -139,10 +146,11 @@ function loadAll(){
     game.load.spritesheet('BotonCerrar','assets/BotonCerrar.png', 40,39);
     game.load.spritesheet('botonResetNivel','assets/Reset.png',50,50);
     game.load.spritesheet('botonSigNivel','assets/flechaverdetitila.png',209,55);
-
     game.load.spritesheet('botonRepetirNivel','assets/retry.png',154,115);
-
     game.load.spritesheet('botonMute','assets/Mute.png',50,50);
+
+    game.load.spritesheet('signoInterrogacion','assets/framesInterrogacion2.png',50.2,70);
+    
 
 
     PreCargarRepertorioSonido();

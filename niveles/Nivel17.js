@@ -104,11 +104,11 @@ var Nivel17 = {
 				posicionPuertaRealY - 76, limiteDeTiempo, "tiempo");
 		posInicXPlayer = 270;
 		posInicYPlayer = game.world.height - 360;
-                //monologo de Sam
-                monologo = AñadirTexto(300,225,"Ya estoy cerca",colorTexto,20);
-                monologo.alpha = 0.01;
-                faseBorrado = 0;
-                //
+        //monologo de Sam
+        monologo = AñadirTexto(300,225,"Esta vez será diferente!",colorTexto,20);
+        monologo.alpha = 0.01;
+        faseBorrado = 0;
+        //
 		CrearJugador(posInicXPlayer, posInicYPlayer);
 		DetenerCancion();
 		ReproducirLoopAudio(Stop_And_Think, 0.3);
