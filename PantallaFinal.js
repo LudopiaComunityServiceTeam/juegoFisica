@@ -8,6 +8,8 @@ var WebFontConfig = {
 };
 var tiemposEscena = 0;
 var corriendo = false;
+var escalaX = 0.1;
+var escalaY = 0.1;
 
 var PantallaFinal = {
 preload: function() {
@@ -24,8 +26,12 @@ create: function() {
     CrearJugador(posInicXPlayer, posInicYPlayer);
     tiemposEscena = 0;
     corriendo = false;
+    camion = game.add.sprite(450,412,'camion');
+    camion.alpha = 0;
     perro = game.add.sprite(500,508,'perrito');
-    perro.animations.add('perrito',[0,1,2,3,4],10,true);
+    perro.animations.add('perrito',[0,1,2],10,true);
+    tapa = game.add.sprite(0,0,'tapablanca');
+    tapa.alpha = 0.01;
 
 },
 update: function() {
@@ -39,6 +45,7 @@ update: function() {
         }
         if (tiemposEscena > 50){
             faseDialogo1 = BorrarTextoEscenaFinal(textoSam,2,faseDialogo1);
+            perro.animations.play('perrito');
         }
     }
     if ((tiemposEscena >= 200)&&(tiemposEscena < 400)){
@@ -56,7 +63,8 @@ update: function() {
     }
     if ((tiemposEscena >= 400)&&(tiemposEscena < 600)){
         if (tiemposEscena == 400){
-            camion = game.add.sprite(450,212,'camion');
+           
+            camion.scale.setTo(escalaX,escalaY)
             camion.alpha = 0.01;
         }
         if (camion.alpha < 1){
@@ -65,17 +73,39 @@ update: function() {
         else{
             camion.alpha = 1; 
         }
+        if (escalaX < 0.5 && escalaY < 0.5){
+            escalaX = escalaX + 0.001;
+            escalaY = escalaY + 0.001;
+            camion.scale.setTo(escalaX,escalaY);
+        }             
     }
-    if (tiemposEscena == 600){
+    if ((tiemposEscena >= 600) && (tiemposEscena < 700)){
+        if (tapa.alpha < 1){
+            tapa.alpha = tapa.alpha + 0.01;
+        }else{
+            tapa.alpha = 1;
+            camion.kill();
+            perro.kill();
+        }
+    }
+    if (tiemposEscena == 700){
+        
         if (Nota[nivelActual-2] >= 10){
             AñadirTexto(150,50,"¡Felicidades! ¡Acabaste el juego\n y pasaste!",colorTexto,40);
             AñadirTexto(300,150,"Tu puntuación es:",colorTexto,30);
             ponerPuntuacionFinal(350, 250);
+            CrearJugador(600,500);
+            perro = game.add.sprite(650,500,'perrito');
+            perro.animations.add('perrito',[0,1,2],10,true);
+            perro.animations.play('perrito');
+            AñadirTexto(600,450,"¡Estás a salvo!",colorTexto,20);
         }
         else if (Nota[nivelActual-2] < 10){
             AñadirTexto(150,100,"Acabaste el juego, pero no pasaste.",colorTexto,40);
             AñadirTexto(300,150,"Tu puntuación es:",colorTexto,30);
             ponerPuntuacionFinal(350, 250);
+            CrearJugador(600,500);
+            AñadirTexto(595,450,"No pude llegar a tiempo...",colorTexto,20);
         }
         AñadirTexto(270,350,"¿Quieres jugar de nuevo?",colorTexto,30);
         botonMenu = game.add.sprite(350, 400, 'botonRepetirNivel');
@@ -85,6 +115,10 @@ update: function() {
         botonMenu.events.onInputDown.add(SeleccionarNivel, this);
         botonMenu.events.onInputOver.add(overButton, this);
         botonMenu.events.onInputOut.add(outButton, this);
+        escalaX = 0.1;
+        escalaY = 0.1;
+        
+        
     }
     tiemposEscena = tiemposEscena + 1;
 }

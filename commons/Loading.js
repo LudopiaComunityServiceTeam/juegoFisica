@@ -130,7 +130,10 @@ function loadAll(){
     game.load.image('mapa19','assets/Mapa/mapa19.png');
     game.load.image('mapa20','assets/Mapa/mapa20.png');
 
-    game.load.spritesheet('perrito','assets/cicloperro.png',40,30);
+    game.load.image('tapablanca','assets/tapablanca.png');
+
+    //game.load.spritesheet('perrito','assets/cicloperro.png',40,30);
+    game.load.spritesheet('perrito','assets/cicloperrocola.png',40,30);
     game.load.spritesheet('propulsor','assets/Propulsores.png',50,100);
     game.load.spritesheet('simbolos','assets/Simbolos.png',28,28);
     game.load.spritesheet('PlayButton','assets/play.png',50,50);
