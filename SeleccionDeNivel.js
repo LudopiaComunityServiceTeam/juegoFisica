@@ -324,19 +324,19 @@ function escribir(){
 		CrearBotonDeNivel(275, 465, 18);
 	}
 
-        if (NivelMaximo >= 19){
+        /*if (NivelMaximo >= 19){
 		text = AñadirTexto(480,425,"19",colorTexto,35);
 		CrearBotonDeNivel(465, 460, 19);
 	}
         if (NivelMaximo >= 20){
 		text = AñadirTexto(665,380,"20",colorTexto,35);
 		CrearBotonDeNivel(650, 415, 20);
-        }
+        }*/
 
 }
 
 function colocarInterrogaciones(){
-        if (NivelMaximo <= 19)
+        /*if (NivelMaximo <= 19)
                 signo20 = game.add.sprite(660,400,'signoInterrogacion');
                 //signo20.scale.setTo(0.8,0.8);
                 signo20.animations.add('saltar',null,13,true);
@@ -346,7 +346,7 @@ function colocarInterrogaciones(){
                 //signo19.scale.setTo(0.8,0.8);
                 signo19.animations.add('saltar',null,10,true);
                 signo19.animations.play('saltar');
-        }if (NivelMaximo <= 17){
+        }*/if (NivelMaximo <= 17){
                 signo18 = game.add.sprite(280,440,'signoInterrogacion');
                 //signo18.scale.setTo(0.8,0.8);
                 signo18.animations.add('saltar',null,13,true);
